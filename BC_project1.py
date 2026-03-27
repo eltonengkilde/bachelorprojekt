@@ -237,12 +237,15 @@ bn = mpbn.MPBooleanNetwork(bn_dict)
 direct_targets = [gene for gene, func in bn.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(func))]
 
 # Step 2: find downstream activations (OFF->ON) from all-zero baseline
-initial_state  = {gene: 0 for gene in bn_dict}
-initial_state[source_gene] = 1
-
+# Baseline: all genes OFF (no perturbation)
+baseline_state = {gene: 0 for gene in bn_dict}
 baseline_active = set()
-for attractor in bn.attractors(reachable_from=initial_state):
+for attractor in bn.attractors(reachable_from=baseline_state):
     baseline_active.update(g for g, v in attractor.items() if v == 1)
+
+# Perturbed: source gene = 1
+initial_state = {gene: 0 for gene in bn_dict}
+initial_state[source_gene] = 1
 
 downstream_activated = set()
 for attractor in bn.attractors(reachable_from=initial_state):
