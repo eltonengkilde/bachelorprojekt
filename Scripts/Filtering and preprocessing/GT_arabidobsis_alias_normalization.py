@@ -20,7 +20,9 @@ SKIP_WORDS = {
     "SCW", "SWN", "SWNS", "TF", "TFS",
 }
 
-AT_PREFIX = re.compile(r'^At([A-Za-z].*)$')
+AT_PREFIX   = re.compile(r'^At([A-Za-z].*)$')
+PAREN_RE    = re.compile(r'\(([^)]+)\)\s*$')
+GENE_SYM_RE = re.compile(r'^[A-Za-z][A-Za-z0-9]{1,11}$')
 
 SUFFIX_RE = re.compile(r"""(
       \s+protein\(s\)\s+activity | \s+protein\s+activity
@@ -33,46 +35,67 @@ SUFFIX_RE = re.compile(r"""(
     | \s+mrna                    | \s+levels?
 )\s*$""", re.IGNORECASE | re.VERBOSE)
 
+# Last words that can appear at the end of a sub-entity name — used as a fast
+# pre-filter before running the full SUFFIX_RE on each name.
+SUFFIX_LAST_WORDS = frozenset({
+    "activity", "expression", "promoter", "function", "pathway",
+    "protein", "proteins", "overexpression", "transcript", "transcripts",
+    "mrna", "level", "levels",
+})
+
 
 def build_alias_map(df):
     """Scan every node name and return a dict of long→canonical for all three
     detection strategies: parenthesis abbreviation, At-prefix, and sub-entity suffix."""
-    names  = set(df["source"]) | set(df["target"])
+    # pd.unique on a concatenated Series is 5-10× faster than Python set() on
+    # object-dtype columns because it uses a Cython hash table internally.
+    names  = pd.unique(pd.concat([df["source"], df["target"]]))
     lookup = {n.upper(): n for n in names}
     alias_map = {}
 
     for name in names:
         # Strategy 1: "FULL NAME (ABBREV)" → ABBREV
-        m = re.search(r'\(([^)]+)\)\s*$', name)
-        if m:
-            abbrev = m.group(1).strip()
-            if (re.match(r'^[A-Za-z][A-Za-z0-9]{1,11}$', abbrev)
-                    and abbrev.upper() not in SKIP_WORDS
-                    and abbrev.upper() in lookup
-                    and lookup[abbrev.upper()] != name):
-                alias_map[name] = lookup[abbrev.upper()]
-                continue
+        if "(" in name:
+            m = PAREN_RE.search(name)
+            if m:
+                abbrev = m.group(1).strip()
+                if (GENE_SYM_RE.match(abbrev)
+                        and abbrev.upper() not in SKIP_WORDS
+                        and abbrev.upper() in lookup
+                        and lookup[abbrev.upper()] != name):
+                    alias_map[name] = lookup[abbrev.upper()]
+                    continue
 
         # Strategy 2: AtGENE → GENE when bare name exists
-        m = AT_PREFIX.match(name)
-        if m:
-            bare = m.group(1)
-            if bare.upper() in lookup and lookup[bare.upper()] != name:
-                alias_map[name] = lookup[bare.upper()]
-                continue
+        if name.startswith("At") and len(name) > 2 and name[2].isalpha():
+            m = AT_PREFIX.match(name)
+            if m:
+                bare = m.group(1)
+                if bare.upper() in lookup and lookup[bare.upper()] != name:
+                    alias_map[name] = lookup[bare.upper()]
+                    continue
 
         # Strategy 3: "GENE suffix" → GENE when bare name exists
-        stripped = SUFFIX_RE.sub("", name).strip()
-        if stripped and stripped != name and stripped.upper() in lookup and lookup[stripped.upper()] != name:
-            alias_map[name] = lookup[stripped.upper()]
+        # Two-level pre-filter: space present AND last word is a known suffix.
+        # This avoids running SUFFIX_RE on the vast majority of node names.
+        if " " in name:
+            last_word = name.rsplit(None, 1)[-1].lower().rstrip("s")
+            if last_word in SUFFIX_LAST_WORDS or (last_word + "s") in SUFFIX_LAST_WORDS:
+                stripped = SUFFIX_RE.sub("", name).strip()
+                if stripped and stripped != name and stripped.upper() in lookup and lookup[stripped.upper()] != name:
+                    alias_map[name] = lookup[stripped.upper()]
 
     return alias_map
 
 
 def apply_and_clean(df, alias_map):
     df = df.copy()
-    df["source"] = df["source"].replace(alias_map)
-    df["target"] = df["target"].replace(alias_map)
+    # Mask-based replacement is faster than .replace(dict) on object-dtype
+    # columns: isin() finds the rows to change, map() applies only to those.
+    src_mask = df["source"].isin(alias_map)
+    tgt_mask = df["target"].isin(alias_map)
+    df["source"] = df["source"].where(~src_mask, df["source"].map(alias_map))
+    df["target"] = df["target"].where(~tgt_mask, df["target"].map(alias_map))
     df = df[df["source"] != df["target"]]
     return df.drop_duplicates(subset=DEDUP)
 
@@ -81,8 +104,8 @@ def apply_and_clean(df, alias_map):
 df = pd.read_csv(INPUT_FILE)
 rows_raw = len(df)
 df = df.drop_duplicates(subset=DEDUP)
-print(f"Loaded {rows_raw} rows from {os.path.basename(INPUT_FILE)}")
-print(f"Initial dedup: {len(df)} rows kept\n")
+print(f"Loaded {rows_raw} rows from {os.path.basename(INPUT_FILE)}", flush=True)
+print(f"Initial dedup: {len(df)} rows kept\n", flush=True)
 
 # ── Alias normalisation — iterate until convergence ───────────────────────────
 # Each iteration re-scans the current node set, so chained aliases resolve
@@ -96,7 +119,7 @@ while True:
     df = apply_and_clean(df, alias_map)
     iteration += 1
     print(f"Iteration {iteration}: {len(alias_map):4d} aliases detected, "
-          f"{replacements:5d} replacements → {len(df)} rows")
+          f"{replacements:5d} replacements → {len(df)} rows", flush=True)
 
 print(f"\nConverged after {iteration} iteration(s)")
 

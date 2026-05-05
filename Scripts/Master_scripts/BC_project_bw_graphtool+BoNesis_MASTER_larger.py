@@ -3,7 +3,7 @@ import csv, os, re, heapq, time, keyword
 import graph_tool.all as gt
 import bonesis
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CATEGORIES_TO_KEEP = {
     "Gene / Protein",
     "Phenotype / Trait / Disease",
@@ -31,7 +31,7 @@ def clean_name(name):
 def _to_py(r): return r.replace("!", " not ").replace("|", " or ").replace("&", " and ")
 
 activators, suppressors, edges_act, edges_sup, all_nodes, gene_category = {}, {}, [], [], set(), {}
-with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_largerexperiment_normalized.csv"), newline="", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_normalized.csv"), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
         if row["source_category"] not in CATEGORIES_TO_KEEP or row["target_category"] not in CATEGORIES_TO_KEEP: continue
         rel = row["relationship_category"]

@@ -3,7 +3,7 @@ import csv, os, re, heapq, time, keyword, threading
 import graph_tool.all as gt
 import bonesis
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CATEGORIES_TO_KEEP = {
     "Gene / Protein",
     "Phenotype / Trait / Disease",
@@ -31,7 +31,7 @@ def clean_name(name):
 def _to_py(r): return r.replace("!", " not ").replace("|", " or ").replace("&", " and ")
 
 activators, suppressors, edges_act, edges_sup, all_nodes, gene_category = {}, {}, [], [], set(), {}
-with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_largerexperiment_normalized.csv"), newline="", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_normalized.csv"), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
         if row["source_category"] not in CATEGORIES_TO_KEEP or row["target_category"] not in CATEGORIES_TO_KEEP: continue
         rel = row["relationship_category"]
@@ -116,7 +116,7 @@ g_sub.ep["etype"] = sub_etype
 
 sub_comp, sub_hist = gt.label_components(g_sub)
 large_sub = int((sub_hist > 1).sum())
-print(f"  SCCs: {sub_hist.shape[0]}  |  non-trivial: {large_sub}")
+print(f"  SCCs (Strongly Connected Components): {sub_hist.shape[0]}  |  non-trivial: {large_sub}")
 if large_sub:
     scc_members = [sub_node_list[i] for i in range(g_sub.num_vertices()) if int(sub_comp[i]) == int(sub_hist.argmax())]
     print(f"  Largest SCC ({int(sub_hist.max())} nodes):")
@@ -136,7 +136,7 @@ else:
 
 if len(subgraph_nodes) <= 2000:
     t0 = time.perf_counter()
-    print(f"\n  Running SBM...")
+    print(f"\n  Running SBM (Stochastic Block Model)...")
     state = gt.minimize_blockmodel_dl(g_sub)
     b = state.get_blocks()
     for name in sub_node_list: community[name] = int(b[sub_node_idx[name]])
@@ -148,7 +148,7 @@ if len(subgraph_nodes) <= 2000:
         for m in (n for n, c in community.items() if c == cid): cats[cat(m)] = cats.get(cat(m), 0) + 1
         print(f"    Module {cid}: {sz:>4} nodes  ({', '.join(f'{v} {k}' for k,v in sorted(cats.items(), key=lambda x: x[1], reverse=True))})")
 else:
-    print(f"\n  SBM skipped ({len(subgraph_nodes)} nodes > 2000)")
+    print(f"\n  SBM (Stochastic Block Model) skipped ({len(subgraph_nodes)} nodes > 2000)")
 
 bn_dict = {}
 for target in set(activators) | set(suppressors):

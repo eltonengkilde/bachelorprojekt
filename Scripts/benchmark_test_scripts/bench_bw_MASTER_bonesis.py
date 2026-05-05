@@ -56,7 +56,7 @@ def eval_rule_simple(rule, state):
 # ── ONE-TIME DATA LOAD ─────────────────────────────────────────────────────────
 print(f"Loading: {SCRIPT_NAME}")
 activators, suppressors, edges_act, edges_sup, all_nodes = {}, {}, [], [], set()
-with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_large_normalized.csv"), newline="", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_normalized.csv"), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
         rel = row["relationship_category"]
         if rel not in (ACT_REL, SUP_REL): continue
