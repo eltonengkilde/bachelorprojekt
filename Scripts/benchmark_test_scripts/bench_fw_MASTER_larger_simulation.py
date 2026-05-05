@@ -1,12 +1,10 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
 import csv, os, re, heapq, time, keyword, contextlib
 import graph_tool.all as gt
-import bonesis
 
 GENE                    = "MYB46"
 MAX_TOTAL_SECONDS       = 3600   # 1-hour budget; a new hop only starts if time remains
 MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
-BONESIS_TIMEOUT         = 0   # seconds; set to 0 to force simulation always
 MAX_SIM_STEPS           = 1000
 SINK_RECOVERY_THRESHOLD = 10000
 SCRIPT_NAME = os.path.basename(__file__).replace('.py', '')
@@ -115,7 +113,7 @@ print(f"Phase 1: PageRank top hub: {node_list[max(range(g_full.num_vertices()), 
 if GENE not in node_idx:
     print(f"ERROR: '{GENE}' not found in network. Exiting."); exit(1)
 print(f"Gene '{GENE}' confirmed in network [{cat(GENE)}].")
-print(f"Benchmark: time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: {'BoNesis' if BONESIS_TIMEOUT > 0 else 'Synchronous simulation'}\n")
+print(f"Benchmark: time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: Synchronous simulation\n")
 
 # ── BENCHMARK LOOP ─────────────────────────────────────────────────────────────
 t_benchmark_start = time.perf_counter()
@@ -131,13 +129,12 @@ while True:
     print(f"  Hop {hops}... (remaining: {remaining:.0f}s)", end=" ", flush=True)
     t_start = time.perf_counter()
     source_gene = GENE
-    _bonesis_ok = False
     out_file = os.path.join(OUT_DIR, f"{SCRIPT_NAME}_MYB46_hops{hops}.txt")
 
     try:
         with open(out_file, 'w') as fout, contextlib.redirect_stdout(fout):
             print(f"# Benchmark: {SCRIPT_NAME}.py")
-            print(f"# Gene: {GENE}  |  Hops: {hops}  |  Mode: {'BoNesis' if BONESIS_TIMEOUT > 0 else 'Simulation'}")
+            print(f"# Gene: {GENE}  |  Hops: {hops}  |  Mode: Synchronous simulation")
             print(f"# Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
             dist = gt.shortest_distance(g_full, source=g_full.vertex(node_idx[source_gene]), directed=True)
@@ -214,42 +211,21 @@ while True:
             all_off = {g: 0 for g in subgraph_nodes}
             all_on  = {g: 1 for g in subgraph_nodes}
 
-            if BONESIS_TIMEOUT > 0:
-                bn_r = bonesis.BooleanNetwork(bn_resting_dict)
-                bn_p = bonesis.BooleanNetwork(bn_perturbed_dict)
-                dk   = {g: 0 for g in bn_dict_pruned}
-                sh   = {g: 1 for g in bn_dict_pruned}
-                print(f"  Attempting BoNesis ({n_pruned} nodes, timeout: {BONESIS_TIMEOUT}s)...")
-                t_bn = time.perf_counter(); _box = []
-                _t = threading.Thread(daemon=True, target=lambda: _box.append((
-                    list(bn_r.attractors(reachable_from=dk)),
-                    list(bn_p.attractors(reachable_from=dk)),
-                    list(bn_r.attractors(reachable_from=sh)),
-                    list(bn_p.attractors(reachable_from=sh)),
-                )))
-                _t.start(); _t.join(BONESIS_TIMEOUT)
-                if _box:
-                    dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = _box[0]
-                    print(f"  BoNesis: {time.perf_counter()-t_bn:.2f}s")
-                    _bonesis_ok = True
-                else:
-                    print(f"  BoNesis timed out ({BONESIS_TIMEOUT}s) — falling back to synchronous simulation")
+            print(f"  Running synchronous simulation ({n_pruned} nodes)...")
+            t_sim = time.perf_counter()
+            dr_s, _, dr_c = simulate(bn_dict_pruned, all_off, source_gene, 0)
+            dp_s, _, dp_c = simulate(bn_dict_pruned, all_off, source_gene, 1)
+            pr_s, _, pr_c = simulate(bn_dict_pruned, all_on,  source_gene, 0)
+            pp_s, _, pp_c = simulate(bn_dict_pruned, all_on,  source_gene, 1)
+            print(f"  dark rest: {_sim_label(dr_s,dr_c)}  pert: {_sim_label(dp_s,dp_c)}")
+            print(f"  perm rest: {_sim_label(pr_s,pr_c)}  pert: {_sim_label(pp_s,pp_c)}")
+            print(f"  [time] Synchronous simulation: {time.perf_counter()-t_sim:.3f}s")
+            if not all([dr_c, dp_c, pr_c, pp_c]):
+                print(f"  WARNING: not all runs converged within {MAX_SIM_STEPS} steps")
+            print(f"  NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.")
+            dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = dr_s, dp_s, pr_s, pp_s
 
-            if not _bonesis_ok:
-                t_sim = time.perf_counter()
-                dr_s, _, dr_c = simulate(bn_dict_pruned, all_off, source_gene, 0)
-                dp_s, _, dp_c = simulate(bn_dict_pruned, all_off, source_gene, 1)
-                pr_s, _, pr_c = simulate(bn_dict_pruned, all_on,  source_gene, 0)
-                pp_s, _, pp_c = simulate(bn_dict_pruned, all_on,  source_gene, 1)
-                print(f"  dark rest: {_sim_label(dr_s,dr_c)}  pert: {_sim_label(dp_s,dp_c)}")
-                print(f"  perm rest: {_sim_label(pr_s,pr_c)}  pert: {_sim_label(pp_s,pp_c)}")
-                print(f"  [time] Synchronous simulation: {time.perf_counter()-t_sim:.3f}s")
-                if not all([dr_c, dp_c, pr_c, pp_c]):
-                    print(f"  WARNING: not all runs converged within {MAX_SIM_STEPS} steps")
-                print(f"  NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.")
-                dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = dr_s, dp_s, pr_s, pp_s
-
-            using_simulation = not _bonesis_ok
+            using_simulation = True
 
             t_sink = time.perf_counter()
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
@@ -317,7 +293,7 @@ while True:
             else:
                 print(f"\n  Necessity test skipped — no genes stably activated in permissive baseline.")
 
-            mode = "synchronous simulation" if using_simulation else "bonesis attractors"
+            mode = "synchronous simulation"
             print(f"\n{'='*70}")
             print(f"  {source_gene} — {hops} hop(s)  |  mode: {mode}")
             print(f"\n  Direct targets: {len(direct_targets)}")
@@ -379,7 +355,7 @@ while True:
             print(f"======================================================================")
 
         elapsed = time.perf_counter() - t_start
-        mode_used = "BoNesis" if _bonesis_ok else "Simulation"
+        mode_used = "Simulation"
         timings.append((hops, elapsed, mode_used))
         print(f"{elapsed:.1f}s [{mode_used}] → {os.path.basename(out_file)}")
 
@@ -393,7 +369,7 @@ while True:
 
 print(f"\n{'='*70}")
 print(f"BENCHMARK SUMMARY: {SCRIPT_NAME}")
-print(f"Gene: {GENE}  |  Mode: {'BoNesis (timeout=' + str(BONESIS_TIMEOUT) + 's)' if BONESIS_TIMEOUT > 0 else 'Synchronous simulation'}")
+print(f"Gene: {GENE}  |  Mode: Synchronous simulation")
 print(f"{'Hops':>6}  {'Time (s)':>10}  {'Mode':>12}  Output file")
 print(f"{'-'*6}  {'-'*10}  {'-'*12}  {'-'*45}")
 for hops, t, mode in timings:
