@@ -1,13 +1,12 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
-import csv, os, re, heapq, time, keyword, threading, contextlib
+import csv, os, re, heapq, time, keyword, contextlib
 import graph_tool.all as gt
 import bonesis
 
 GENE                    = "MYB46"
-MAX_HOPS                = 7
-BONESIS_TIMEOUT         = 300   # seconds; set to 0 to force simulation always
+MAX_TOTAL_SECONDS       = 3600   # 1-hour budget; a new hop only starts if time remains
+MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
 MAX_SIM_STEPS           = 1000
-PER_HOP_CUTOFF          = 300
 SINK_RECOVERY_THRESHOLD = 10000
 SCRIPT_NAME = os.path.basename(__file__).replace('.py', '')
 OUT_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
@@ -26,7 +25,7 @@ SUP_REL = "Repression / Inhibition / Negative Regulation"
 CAT_MAP = {
     "Gene / Protein": "Gene",
     "Phenotype / Trait / Disease": "Phenotype",
-    "Chemical / Metabolite / Cofactor / Ligand": "Chemical",
+    "Chemical / Metabolite / Cofactor / Ligand": "Metabolite",
     "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism": "Pathway",
 }
 
@@ -63,9 +62,6 @@ def simulate(rules, start_state, locked, val, max_steps=MAX_SIM_STEPS):
             return [{g: s[idx[g]] for g in genes} for s in history[seen[key]:]], i, True
         seen[key] = i; history.append(list(state)); state = step_fn(state)
     return [{g: state[idx[g]] for g in genes}], max_steps, False
-
-def _sim_label(states, conv):
-    return ("fixed point" if len(states) == 1 else f"cycle/{len(states)}") + (" (conv)" if conv else " (max steps)")
 
 def eval_rule_simple(rule, state):
     try: return 1 if eval(_to_py(rule), {"__builtins__": {}}, {g: bool(v) for g, v in state.items()}) else 0
@@ -115,27 +111,35 @@ print(f"Phase 1: PageRank top hub: {node_list[max(range(g_full.num_vertices()), 
 if GENE not in node_idx:
     print(f"ERROR: '{GENE}' not found in network. Exiting."); exit(1)
 print(f"Gene '{GENE}' confirmed in network [{cat(GENE)}].")
-print(f"Benchmark: hops 1–{MAX_HOPS} | Mode: {'BoNesis (timeout=' + str(BONESIS_TIMEOUT) + 's)' if BONESIS_TIMEOUT > 0 else 'Synchronous simulation'}\n")
+print(f"Benchmark: time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: BoNesis (no timeout)\n")
 
 # ── BENCHMARK LOOP ─────────────────────────────────────────────────────────────
+t_benchmark_start = time.perf_counter()
 timings = []
-for hops in range(1, MAX_HOPS + 1):
-    print(f"  Hops {hops}...", end=" ", flush=True)
+hops = 0
+while True:
+    hops += 1
+    if hops > MAX_HOPS:
+        print(f"Safety cap of {MAX_HOPS} hops reached. Stopping."); break
+    remaining = MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)
+    if remaining <= 0:
+        print(f"Time limit ({MAX_TOTAL_SECONDS}s / {MAX_TOTAL_SECONDS//3600}h) reached before hop {hops}. Stopping."); break
+    print(f"  Hop {hops}... (remaining: {remaining:.0f}s)", end=" ", flush=True)
     t_start = time.perf_counter()
     source_gene = GENE
-    _bonesis_ok = False
     out_file = os.path.join(OUT_DIR, f"{SCRIPT_NAME}_MYB46_hops{hops}.txt")
 
     try:
         with open(out_file, 'w') as fout, contextlib.redirect_stdout(fout):
             print(f"# Benchmark: {SCRIPT_NAME}.py")
-            print(f"# Gene: {GENE}  |  Hops: {hops}  |  Mode: {'BoNesis' if BONESIS_TIMEOUT > 0 else 'Simulation'}")
+            print(f"# Gene: {GENE}  |  Hops: {hops}  |  Mode: BoNesis")
             print(f"# Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
             dist = gt.shortest_distance(g_full, source=g_full.vertex(node_idx[source_gene]), directed=True)
             subgraph_nodes = {node_list[i] for i in range(g_full.num_vertices()) if dist[i] <= hops}
             sub_node_list  = sorted(subgraph_nodes)
             sub_v_idx      = {name: i for i, name in enumerate(sub_node_list)}
+            print(f"  [time] Subgraph extraction: {time.perf_counter()-t_start:.3f}s")
             sc = {}
             for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
             print(f"\n{'='*70}")
@@ -202,46 +206,21 @@ for hops in range(1, MAX_HOPS + 1):
 
             bn_resting_dict   = dict(bn_dict_pruned); bn_resting_dict[source_gene]   = "0"
             bn_perturbed_dict = dict(bn_dict_pruned); bn_perturbed_dict[source_gene] = "1"
-            all_off = {g: 0 for g in subgraph_nodes}
             all_on  = {g: 1 for g in subgraph_nodes}
 
-            if BONESIS_TIMEOUT > 0:
-                bn_r = bonesis.BooleanNetwork(bn_resting_dict)
-                bn_p = bonesis.BooleanNetwork(bn_perturbed_dict)
-                dk   = {g: 0 for g in bn_dict_pruned}
-                sh   = {g: 1 for g in bn_dict_pruned}
-                print(f"  Attempting BoNesis ({n_pruned} nodes, timeout: {BONESIS_TIMEOUT}s)...")
-                t_bn = time.perf_counter(); _box = []
-                _t = threading.Thread(daemon=True, target=lambda: _box.append((
-                    list(bn_r.attractors(reachable_from=dk)),
-                    list(bn_p.attractors(reachable_from=dk)),
-                    list(bn_r.attractors(reachable_from=sh)),
-                    list(bn_p.attractors(reachable_from=sh)),
-                )))
-                _t.start(); _t.join(BONESIS_TIMEOUT)
-                if _box:
-                    dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = _box[0]
-                    print(f"  BoNesis: {time.perf_counter()-t_bn:.2f}s")
-                    _bonesis_ok = True
-                else:
-                    print(f"  BoNesis timed out ({BONESIS_TIMEOUT}s) — falling back to synchronous simulation")
+            print(f"  Running BoNesis ({n_pruned} nodes — no timeout, runs to completion)...")
+            t_bn = time.perf_counter()
+            bn_r = bonesis.BooleanNetwork(bn_resting_dict)
+            bn_p = bonesis.BooleanNetwork(bn_perturbed_dict)
+            dk   = {g: 0 for g in bn_dict_pruned}
+            sh   = {g: 1 for g in bn_dict_pruned}
+            dark_resting_att   = list(bn_r.attractors(reachable_from=dk))
+            dark_perturbed_att = list(bn_p.attractors(reachable_from=dk))
+            perm_resting_att   = list(bn_r.attractors(reachable_from=sh))
+            perm_perturbed_att = list(bn_p.attractors(reachable_from=sh))
+            print(f"  [time] BoNesis attractors: {time.perf_counter()-t_bn:.3f}s")
 
-            if not _bonesis_ok:
-                t_sim = time.perf_counter()
-                dr_s, _, dr_c = simulate(bn_dict_pruned, all_off, source_gene, 0)
-                dp_s, _, dp_c = simulate(bn_dict_pruned, all_off, source_gene, 1)
-                pr_s, _, pr_c = simulate(bn_dict_pruned, all_on,  source_gene, 0)
-                pp_s, _, pp_c = simulate(bn_dict_pruned, all_on,  source_gene, 1)
-                print(f"  dark rest: {_sim_label(dr_s,dr_c)}  pert: {_sim_label(dp_s,dp_c)}")
-                print(f"  perm rest: {_sim_label(pr_s,pr_c)}  pert: {_sim_label(pp_s,pp_c)}")
-                print(f"  Simulation: {time.perf_counter()-t_sim:.3f}s")
-                if not all([dr_c, dp_c, pr_c, pp_c]):
-                    print(f"  WARNING: not all runs converged within {MAX_SIM_STEPS} steps")
-                print(f"  NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.")
-                dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = dr_s, dp_s, pr_s, pp_s
-
-            using_simulation = not _bonesis_ok
-
+            t_sink = time.perf_counter()
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
             if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
                 dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0)
@@ -254,6 +233,7 @@ for hops in range(1, MAX_HOPS + 1):
                 dark_perturbed_full = [{**a, source_gene: 1} for a in dark_perturbed_att]
                 perm_resting_full   = [{**a, source_gene: 0} for a in perm_resting_att]
                 perm_perturbed_full = [{**a, source_gene: 1} for a in perm_perturbed_att]
+            print(f"  [time] Sink recovery: {time.perf_counter()-t_sink:.3f}s")
 
             direct_targets = sorted(set(
                 g for g, f in bn_resting_dict.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(f))
@@ -306,19 +286,19 @@ for hops in range(1, MAX_HOPS + 1):
             else:
                 print(f"\n  Necessity test skipped — no genes stably activated in permissive baseline.")
 
-            mode = "synchronous simulation" if using_simulation else "bonesis attractors"
+            mode = "bonesis attractors"
             print(f"\n{'='*70}")
             print(f"  {source_gene} — {hops} hop(s)  |  mode: {mode}")
             print(f"\n  Direct targets: {len(direct_targets)}")
             for g in direct_targets: print(f"    {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
-            print(f"  EXP A — dark  |  {len(dark_resting_att)} resting / {len(dark_perturbed_att)} perturbed")
+            print(f"  EXP A — dark background  |  {len(dark_resting_att)} resting / {len(dark_perturbed_att)} perturbed attractor(s)")
             print(f"\n  Activated (OFF→ON): {len(dark_activated)}")
             for g in dark_activated: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n  Suppressed (ON→OFF): {len(dark_suppressed)}")
             for g in dark_suppressed: print(f"    - {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
-            print(f"  EXP B — permissive  |  {len(perm_resting_att)} resting / {len(perm_perturbed_att)} perturbed")
+            print(f"  EXP B — permissive background  |  {len(perm_resting_att)} resting / {len(perm_perturbed_att)} perturbed attractor(s)")
             print(f"\n  Activated (OFF→ON): {len(perm_activated)}")
             for g in perm_activated: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n  Suppressed (ON→OFF): {len(perm_suppressed)}")
@@ -335,7 +315,8 @@ for hops in range(1, MAX_HOPS + 1):
             print(f"\n  Robustly suppressed: {len(robust_suppressed)}")
             for g in robust_suppressed: print(f"    - {g:40s}  {tags(g)}")
             if perm_activated:
-                print(f"\n{'='*70}\n  NECESSITY TEST")
+                print(f"\n{'='*70}")
+                print(f"  NECESSITY TEST  (knockout method: synchronous simulation from permissive background)")
                 print(f"    Necessary: {len(necessary)}")
                 for g, lost in necessary:
                     print(f"    ! {g:40s}  {tags(g)}")
@@ -361,14 +342,15 @@ for hops in range(1, MAX_HOPS + 1):
                     print(f"\n  Module {cid}: {len(members)} nodes")
                     for g in sorted(members)[:8]: print(f"    {g:40s}  {tags(g)}")
                     if len(members) > 8: print(f"    ... and {len(members)-8} more")
-            print(f"\n  Total hop time: {time.perf_counter()-t_start:.2f}s\n{'='*70}")
+            print(f"\n======================================================================")
+            print(f"  TIMING SUMMARY — {source_gene}, hop {hops}")
+            print(f"    Total hop time: {time.perf_counter()-t_start:.3f}s  |  step times logged above")
+            print(f"======================================================================")
 
         elapsed = time.perf_counter() - t_start
-        mode_used = "BoNesis" if _bonesis_ok else "Simulation"
+        mode_used = "BoNesis"
         timings.append((hops, elapsed, mode_used))
         print(f"{elapsed:.1f}s [{mode_used}] → {os.path.basename(out_file)}")
-        if elapsed > PER_HOP_CUTOFF:
-            print(f"  → Exceeded {PER_HOP_CUTOFF}s cutoff. Stopping benchmark."); break
 
     except Exception as e:
         import traceback
@@ -380,7 +362,7 @@ for hops in range(1, MAX_HOPS + 1):
 
 print(f"\n{'='*70}")
 print(f"BENCHMARK SUMMARY: {SCRIPT_NAME}")
-print(f"Gene: {GENE}  |  Mode: {'BoNesis (timeout=' + str(BONESIS_TIMEOUT) + 's)' if BONESIS_TIMEOUT > 0 else 'Synchronous simulation'}")
+print(f"Gene: {GENE}  |  Mode: BoNesis (no timeout)")
 print(f"{'Hops':>6}  {'Time (s)':>10}  {'Mode':>12}  Output file")
 print(f"{'-'*6}  {'-'*10}  {'-'*12}  {'-'*45}")
 for hops, t, mode in timings:

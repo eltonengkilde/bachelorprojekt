@@ -1,13 +1,13 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
-import csv, os, re, heapq, time, keyword, threading, contextlib
+import csv, os, re, heapq, time, keyword, contextlib
 import graph_tool.all as gt
 import bonesis
 
 GENE                    = "MYB46"
-MAX_HOPS                = 7
+MAX_TOTAL_SECONDS       = 3600   # 1-hour budget; a new hop only starts if time remains
+MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
 BONESIS_TIMEOUT         = 0   # seconds; set to 0 to force simulation always
 MAX_SIM_STEPS           = 1000
-PER_HOP_CUTOFF          = 300
 SINK_RECOVERY_THRESHOLD = 10000
 SCRIPT_NAME = os.path.basename(__file__).replace('.py', '')
 OUT_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
@@ -26,7 +26,7 @@ SUP_REL = "Repression / Inhibition / Negative Regulation"
 CAT_MAP = {
     "Gene / Protein": "Gene",
     "Phenotype / Trait / Disease": "Phenotype",
-    "Chemical / Metabolite / Cofactor / Ligand": "Chemical",
+    "Chemical / Metabolite / Cofactor / Ligand": "Metabolite",
     "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism": "Pathway",
 }
 
@@ -101,12 +101,20 @@ print(f"Phase 1: PageRank top hub: {node_list[max(range(g_full.num_vertices()), 
 if GENE not in node_idx:
     print(f"ERROR: '{GENE}' not found in network. Exiting."); exit(1)
 print(f"Gene '{GENE}' confirmed in network [{cat(GENE)}].")
-print(f"Benchmark (BACKWARDS): hops 1–{MAX_HOPS} | Mode: {'BoNesis (timeout=' + str(BONESIS_TIMEOUT) + 's)' if BONESIS_TIMEOUT > 0 else 'Synchronous simulation'}\n")
+print(f"Benchmark (BACKWARDS): time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: {'BoNesis' if BONESIS_TIMEOUT > 0 else 'Synchronous simulation'}")
 
 # ── BENCHMARK LOOP ─────────────────────────────────────────────────────────────
+t_benchmark_start = time.perf_counter()
 timings = []
-for hops in range(1, MAX_HOPS + 1):
-    print(f"  Hops {hops}...", end=" ", flush=True)
+hops = 0
+while True:
+    hops += 1
+    if hops > MAX_HOPS:
+        print(f"Safety cap of {MAX_HOPS} hops reached. Stopping."); break
+    remaining = MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)
+    if remaining <= 0:
+        print(f"Time limit ({MAX_TOTAL_SECONDS}s / {MAX_TOTAL_SECONDS//3600}h) reached before hop {hops}. Stopping."); break
+    print(f"  Hop {hops}... (remaining: {remaining:.0f}s)", end=" ", flush=True)
     t_start = time.perf_counter()
     target_gene = GENE
     _bonesis_ok = False
@@ -123,6 +131,7 @@ for hops in range(1, MAX_HOPS + 1):
             subgraph_nodes = {node_list[i] for i in range(g_full.num_vertices()) if dist[i] <= hops}
             sub_node_list  = sorted(subgraph_nodes)
             sub_v_idx      = {name: i for i, name in enumerate(sub_node_list)}
+            print(f"  [time] Subgraph extraction: {time.perf_counter()-t_start:.3f}s")
             sc = {}
             for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
             print(f"\n{'='*70}")
@@ -205,7 +214,7 @@ for hops in range(1, MAX_HOPS + 1):
                 states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
                 if target_on_any(states) and not baseline_target_on:
                     sufficient_activators.append(candidate)
-            print(f"  Sufficiency test completed in {time.perf_counter()-t0:.3f}s")
+            print(f"  [time] Sufficiency test: {time.perf_counter()-t0:.3f}s")
 
             candidates = sorted(set(direct_activators) | set(direct_suppressors))
             necessary_activators, redundant_activators, suppressor_releases = [], [], []
@@ -254,7 +263,7 @@ for hops in range(1, MAX_HOPS + 1):
                         elif cb and ko_t:   redundant_activators.append(cand)
                     if cand in direct_suppressors:
                         if not cb and ko_t: suppressor_releases.append(cand)
-                print(f"  Necessity test (simulation) completed in {time.perf_counter()-t0:.3f}s")
+                print(f"  [time] Necessity test (simulation): {time.perf_counter()-t0:.3f}s")
 
             mode_str = f"bonesis ({n_pruned} nodes)" if _bonesis_ok else f"synchronous simulation ({n_pruned} nodes)"
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
@@ -293,14 +302,15 @@ for hops in range(1, MAX_HOPS + 1):
                 for g in sorted(sink_nodes):
                     val = eval_rule_simple(sink_rules[g], sim_base[0])
                     print(f"    {g:40s}  permissive state: {'ON' if val else 'OFF':3s}  {tags(g)}")
-            print(f"\n  Total hop time: {time.perf_counter()-t_start:.2f}s\n{'='*70}")
+            print(f"\n======================================================================")
+            print(f"  TIMING SUMMARY — {target_gene}, hop {hops}")
+            print(f"    Total hop time: {time.perf_counter()-t_start:.3f}s  |  step times logged above")
+            print(f"======================================================================")
 
         elapsed = time.perf_counter() - t_start
         mode_used = "BoNesis" if _bonesis_ok else "Simulation"
         timings.append((hops, elapsed, mode_used))
         print(f"{elapsed:.1f}s [{mode_used}] → {os.path.basename(out_file)}")
-        if elapsed > PER_HOP_CUTOFF:
-            print(f"  → Exceeded {PER_HOP_CUTOFF}s cutoff. Stopping benchmark."); break
 
     except Exception as e:
         import traceback

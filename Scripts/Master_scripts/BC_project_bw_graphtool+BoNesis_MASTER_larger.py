@@ -3,7 +3,9 @@ import csv, os, re, heapq, time, keyword
 import graph_tool.all as gt
 import bonesis
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR             = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SIMULATION_THRESHOLD = 400   # n_pruned <= threshold → BoNesis necessity test; else simulation
+MAX_SIM_STEPS        = 1000  # max synchronous simulation steps before non-convergence warning
 CATEGORIES_TO_KEEP = {
     "Gene / Protein",
     "Phenotype / Trait / Disease",
@@ -16,7 +18,7 @@ SUP_REL = "Repression / Inhibition / Negative Regulation"
 CAT_MAP = {
     "Gene / Protein": "Gene",
     "Phenotype / Trait / Disease": "Phenotype",
-    "Chemical / Metabolite / Cofactor / Ligand": "Chemical",
+    "Chemical / Metabolite / Cofactor / Ligand": "Metabolite",
     "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism": "Pathway",
 }
 
@@ -45,11 +47,6 @@ with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_
 print(f"Loaded {len(edges_act)+len(edges_sup)} edges  ({len(all_nodes)} nodes)")
 
 def cat(g): c = gene_category.get(g); return CAT_MAP.get(c, c or "?")
-def tags(g):
-    parts = [cat(g)]
-    if g in sink_nodes: parts.append("sink")
-    return "[" + ", ".join(parts) + "]"
-
 cat_counts = {}
 for c in gene_category.values(): cat_counts[c] = cat_counts.get(c, 0) + 1
 print(f"\nEntity categories ({len(cat_counts)}):")
@@ -172,8 +169,10 @@ bn_dict_pruned = {g: f for g, f in bn_dict.items() if g not in sink_nodes}
 n_pruned = len(bn_dict_pruned)
 print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
 
-SIMULATION_THRESHOLD = 400
-MAX_SIM_STEPS        = 1000
+def tags(g):
+    parts = [cat(g)]
+    if g in sink_nodes: parts.append("sink")
+    return "[" + ", ".join(parts) + "]"
 
 def simulate(rules, start_state, locked=None, val=None, max_steps=MAX_SIM_STEPS):
     genes = sorted(start_state.keys())
@@ -264,7 +263,15 @@ def eval_rule_simple(rule, state):
 
 sink_rules = {g: bn_dict[g] for g in sink_nodes}
 
-print(f"\n{'='*70}")
+print("\n" + "="*70)
+print(f"  RUN METADATA")
+print(f"  Network  : filtered_networkL_normalized.csv")
+print(f"  Gene     : {target_gene}  [{cat(target_gene)}]")
+print(f"  Hops     : {MAX_HOPS}  (upstream)")
+print(f"  Solver   : {mode_str}")
+print(f"  Subgraph : {len(subgraph_nodes)} nodes  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
+print(f"  Run time : {time.strftime('%Y-%m-%d %H:%M:%S')}")
+print("\n" + "="*70)
 print(f"  BACKWARDS ANALYSIS — what regulates '{target_gene}'?")
 print(f"  {target_gene} — {MAX_HOPS} hop(s) upstream  |  mode: {mode_str}")
 
@@ -274,11 +281,11 @@ print(f"\n  Step 1 — Direct suppressors of '{target_gene}': {len(direct_suppre
 for gene in direct_suppressors: print(f"    - {gene:40s}  {tags(gene)}")
 
 print(f"\n{'='*70}")
-print(f"  Step 2 — Sufficient activators (activate alone from silent network): {len(sufficient_activators)}")
+print(f"  Step 2 — Sufficient activators (sufficient alone to activate {target_gene} from silent network): {len(sufficient_activators)}")
 for gene in sufficient_activators: print(f"    + {gene:40s}  {tags(gene)}")
 
 print(f"\n{'='*70}")
-print(f"  Step 3 — Necessity test (knockout from permissive background)")
+print(f"  Step 3 — Necessity test (knockout from permissive background; method: {'BoNesis' if using_bonesis else 'synchronous simulation'})")
 print(f"\n  Necessary activators (knockout turns '{target_gene}' OFF): {len(necessary_activators)}")
 for gene in necessary_activators: print(f"    ! {gene:40s}  [required]  {tags(gene)}")
 print(f"\n  Redundant activators ('{target_gene}' stays ON without them): {len(redundant_activators)}")

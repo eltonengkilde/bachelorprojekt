@@ -3,7 +3,10 @@ import csv, os, re, heapq, time, keyword, threading
 import graph_tool.all as gt
 import bonesis
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR             = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BONESIS_TIMEOUT      = 60    # seconds; BoNesis runs first, simulation fallback if stalled
+MAX_SIM_STEPS        = 1000  # max synchronous simulation steps before non-convergence warning
+SINK_RECOVERY_THRESHOLD = 10000
 CATEGORIES_TO_KEEP = {
     "Gene / Protein",
     "Phenotype / Trait / Disease",
@@ -166,8 +169,6 @@ bn_dict_pruned = {g: f for g, f in bn_dict.items() if g not in sink_nodes}
 n_pruned = len(bn_dict_pruned)
 print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
 
-BONESIS_TIMEOUT = 60  # seconds; BoNesis always runs first, simulation only if it stalls
-MAX_SIM_STEPS   = 1000
 bn_resting_dict   = dict(bn_dict_pruned); bn_resting_dict[source_gene]   = "0"
 bn_perturbed_dict = dict(bn_dict_pruned); bn_perturbed_dict[source_gene] = "1"
 all_off = {g: 0 for g in subgraph_nodes}
@@ -248,7 +249,6 @@ def recover_sinks(attractors, sink_rules, src, src_val):
     return result
 
 sink_rules = {g: bn_dict[g] for g in sink_nodes}
-SINK_RECOVERY_THRESHOLD = 10000
 if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
     dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0)
     dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1)
@@ -315,7 +315,15 @@ else:
     print(f"\n  Necessity skipped — no permissive-activated genes.")
 
 mode = "synchronous simulation" if using_simulation else "bonesis attractors"
-print(f"\n{'='*70}")
+print(f"\n" + "="*70)
+print(f"  RUN METADATA")
+print(f"  Network  : filtered_networkL_normalized.csv")
+print(f"  Gene     : {source_gene}  [{cat(source_gene)}]")
+print(f"  Hops     : {MAX_HOPS}  (downstream)")
+print(f"  Solver   : {mode}  |  BoNesis timeout: {BONESIS_TIMEOUT}s")
+print(f"  Subgraph : {len(subgraph_nodes)} nodes  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
+print(f"  Run time : {time.strftime('%Y-%m-%d %H:%M:%S')}")
+print(f"\n" + "="*70)
 print(f"  {source_gene} — {MAX_HOPS} hop(s)  |  mode: {mode}")
 
 print(f"\n  Direct targets: {len(direct_targets)}")
@@ -348,7 +356,7 @@ for g in robust_suppressed: print(f"    - {g:40s}  {tags(g)}")
 
 if perm_activated:
     print(f"\n{'='*70}")
-    print(f"  NECESSITY TEST")
+    print(f"  NECESSITY TEST  (knockout method: synchronous simulation from permissive background)")
     print(f"    Necessary: {len(necessary)}")
     for g, lost in necessary:
         print(f"    ! {g:38s}  {tags(g)}")
