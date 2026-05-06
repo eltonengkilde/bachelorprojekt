@@ -1,7 +1,7 @@
 # Benchmark: bench_bw_MASTER_larger_simulation.py
 # Gene: MYB46  |  Hops: 10  |  Mode: Synchronous simulation
-# Generated: 2026-05-06 12:29:57
-  [time] Subgraph extraction: 0.098s
+# Generated: 2026-05-06 15:40:44
+  [time] Subgraph extraction: 0.091s
 
 ======================================================================
 PHASE 2 — Upstream: MYB46, 10 hop(s)  |  70134 nodes, 118626 edges
@@ -31,9 +31,9 @@ PHASE 2.5 — Subgraph topology
   Regulated: 14471  |  pruned: 14471  |  sinks: 0
 
   Running sufficiency test on 18 direct activator(s)...
-  [time] Sufficiency test: 14.259s
+  [time] Sufficiency test: 13.793s
   Running simulation necessity test (14471 nodes)...
-  [time] Necessity test (simulation): 10.595s
+  [time] Necessity test (simulation): 10.318s
 
 ======================================================================
   BACKWARDS ANALYSIS — what regulates 'MYB46'?
@@ -99,5 +99,5 @@ PHASE 2.5 — Subgraph topology
 
 ======================================================================
   TIMING SUMMARY — MYB46, hop 10
-    Total hop time: 26.955s  |  step times logged above
+    Total hop time: 26.198s  |  step times logged above
 ======================================================================

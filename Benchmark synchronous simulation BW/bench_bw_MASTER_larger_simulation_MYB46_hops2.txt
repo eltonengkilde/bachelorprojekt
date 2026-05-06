@@ -1,7 +1,7 @@
 # Benchmark: bench_bw_MASTER_larger_simulation.py
 # Gene: MYB46  |  Hops: 2  |  Mode: Synchronous simulation
-# Generated: 2026-05-06 12:27:44
-  [time] Subgraph extraction: 0.072s
+# Generated: 2026-05-06 15:38:35
+  [time] Subgraph extraction: 0.069s
 
 ======================================================================
 PHASE 2 — Upstream: MYB46, 2 hop(s)  |  540 nodes, 1405 edges
@@ -39,18 +39,18 @@ PHASE 2.5 — Subgraph topology
     H2O2                                      0.009940  [Metabolite]
 
   Running SBM...
-  SBM (0.13s) — 9 modules:
-    Module 167:  216 nodes  (95 Gene, 76 Pathway, 26 Metabolite, 19 Phenotype)
-    Module 113:  149 nodes  (92 Gene, 25 Metabolite, 24 Pathway, 8 Phenotype)
-    Module 170:   64 nodes  (37 Gene, 16 Metabolite, 10 Pathway, 1 Phenotype)
-    Module 282:   47 nodes  (37 Gene, 8 Pathway, 2 Metabolite)
-    Module 483:   33 nodes  (16 Metabolite, 11 Gene, 5 Pathway, 1 Phenotype)
+  SBM (0.09s) — 20 modules:
+    Module 526:  216 nodes  (95 Gene, 76 Pathway, 26 Metabolite, 19 Phenotype)
+    Module 355:  137 nodes  (85 Gene, 23 Pathway, 21 Metabolite, 8 Phenotype)
+    Module 159:   64 nodes  (37 Gene, 16 Metabolite, 10 Pathway, 1 Phenotype)
+    Module 281:   53 nodes  (35 Gene, 11 Pathway, 5 Phenotype, 2 Metabolite)
+    Module 349:   11 nodes  (7 Gene, 2 Metabolite, 2 Pathway)
   Regulated: 151  |  pruned: 151  |  sinks: 0
 
   Running sufficiency test on 18 direct activator(s)...
   [time] Sufficiency test: 0.039s
   Running simulation necessity test (151 nodes)...
-  [time] Necessity test (simulation): 0.041s
+  [time] Necessity test (simulation): 0.039s
 
 ======================================================================
   BACKWARDS ANALYSIS — what regulates 'MYB46'?
@@ -95,9 +95,9 @@ PHASE 2.5 — Subgraph topology
   Suppressors whose removal de-represses 'MYB46': 0
 
 ======================================================================
-  REGULATORY MODULES (SBM) — 9 modules
+  REGULATORY MODULES (SBM) — 20 modules
 
-  Module 167: 216 nodes
+  Module 526: 216 nodes
     ABA_induced_susceptibility_to_RRNs_in_rice  [Phenotype]
     ABA_receptors_PYL4_and_PYL5               [Gene]
     ACO                                       [Gene]
@@ -108,18 +108,18 @@ PHASE 2.5 — Subgraph topology
     AUX                                       [Metabolite]
     ... and 208 more
 
-  Module 113: 149 nodes
+  Module 355: 137 nodes
     ABR1                                      [Gene]
     ALKBH10B                                  [Gene]
     ANAC019                                   [Gene]
     ANAC055                                   [Gene]
     ANAC072                                   [Gene]
     ATGSTF7_gene                              [Gene]
-    ATMYC2                                    [Gene]
     AaERF1                                    [Gene]
-    ... and 141 more
+    AaGSW1                                    [Gene]
+    ... and 129 more
 
-  Module 170: 64 nodes
+  Module 159: 64 nodes
     AP2C1                                     [Gene]
     ATP_induced_calcium_influx                [Pathway]
     Arabidopsis_MKK2                          [Gene]
@@ -130,32 +130,32 @@ PHASE 2.5 — Subgraph topology
     AtMKK4_and_AtMKK5                         [Gene]
     ... and 56 more
 
-  Module 282: 47 nodes
+  Module 281: 53 nodes
+    AN                                        [Phenotype]
     ATHB15                                    [Gene]
     AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
     CesA4                                     [Gene]
     CesA8                                     [Gene]
-    Csk1                                      [Gene]
     EMF1                                      [Gene]
     LBD29                                     [Gene]
-    LsNRL4                                    [Gene]
-    ... and 39 more
+    MYB26                                     [Gene]
+    ... and 45 more
 
-  Module 483: 33 nodes
-    ATP                                       [Metabolite]
-    BR                                        [Metabolite]
-    BRs                                       [Phenotype]
+  Module 349: 11 nodes
+    Ala                                       [Metabolite]
     COR                                       [Pathway]
-    ERF1                                      [Gene]
-    ERF4                                      [Gene]
-    GA                                        [Metabolite]
-    GAs                                       [Metabolite]
-    ... and 25 more
+    ERF109                                    [Gene]
+    ERF115                                    [Gene]
+    OPR1                                      [Gene]
+    PDF1_2                                    [Gene]
+    PRRs                                      [Gene]
+    WRKY45                                    [Gene]
+    ... and 3 more
 
 ======================================================================
   Sink nodes: 0
 
 ======================================================================
   TIMING SUMMARY — MYB46, hop 2
-    Total hop time: 0.346s  |  step times logged above
+    Total hop time: 0.305s  |  step times logged above
 ======================================================================
