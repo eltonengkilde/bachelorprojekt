@@ -1,10 +1,10 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
-import csv, os, re, heapq, time, keyword, contextlib
+import csv, os, re, heapq, time, keyword, contextlib, threading
 import graph_tool.all as gt
 import bonesis
 
 GENE                    = "MYB46"
-MAX_TOTAL_SECONDS       = 3600   # 1-hour budget; a new hop only starts if time remains
+MAX_TOTAL_SECONDS       = 1800   # 0.5-hour budget; a new hop only starts if time remains
 MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
 MAX_SIM_STEPS           = 1000
 SINK_RECOVERY_THRESHOLD = 10000
@@ -111,7 +111,9 @@ print(f"Phase 1: PageRank top hub: {node_list[max(range(g_full.num_vertices()), 
 if GENE not in node_idx:
     print(f"ERROR: '{GENE}' not found in network. Exiting."); exit(1)
 print(f"Gene '{GENE}' confirmed in network [{cat(GENE)}].")
-print(f"Benchmark: time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: BoNesis (no timeout)\n")
+print(f"Benchmark: time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: BoNesis (budget-limited)\n")
+
+class _BudgetExhausted(Exception): pass
 
 # ── BENCHMARK LOOP ─────────────────────────────────────────────────────────────
 t_benchmark_start = time.perf_counter()
@@ -208,17 +210,27 @@ while True:
             bn_perturbed_dict = dict(bn_dict_pruned); bn_perturbed_dict[source_gene] = "1"
             all_on  = {g: 1 for g in subgraph_nodes}
 
-            print(f"  Running BoNesis ({n_pruned} nodes — no timeout, runs to completion)...")
+            dk = {g: 0 for g in bn_dict_pruned}
+            sh = {g: 1 for g in bn_dict_pruned}
+            _remaining = max(0, MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start))
+            print(f"  Running BoNesis ({n_pruned} nodes — budget remaining: {_remaining:.0f}s)...")
             t_bn = time.perf_counter()
-            bn_r = bonesis.BooleanNetwork(bn_resting_dict)
-            bn_p = bonesis.BooleanNetwork(bn_perturbed_dict)
-            dk   = {g: 0 for g in bn_dict_pruned}
-            sh   = {g: 1 for g in bn_dict_pruned}
-            dark_resting_att   = list(bn_r.attractors(reachable_from=dk))
-            dark_perturbed_att = list(bn_p.attractors(reachable_from=dk))
-            perm_resting_att   = list(bn_r.attractors(reachable_from=sh))
-            perm_perturbed_att = list(bn_p.attractors(reachable_from=sh))
-            print(f"  [time] BoNesis attractors: {time.perf_counter()-t_bn:.3f}s")
+            _bn_r = bonesis.BooleanNetwork(bn_resting_dict)
+            _bn_p = bonesis.BooleanNetwork(bn_perturbed_dict)
+            _box = []
+            _t = threading.Thread(daemon=True, target=lambda: _box.append((
+                list(_bn_r.attractors(reachable_from=dk)),
+                list(_bn_p.attractors(reachable_from=dk)),
+                list(_bn_r.attractors(reachable_from=sh)),
+                list(_bn_p.attractors(reachable_from=sh)),
+            )))
+            _t.start(); _t.join(_remaining)
+            if _box:
+                dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = _box[0]
+                print(f"  [time] BoNesis attractors: {time.perf_counter()-t_bn:.3f}s")
+            else:
+                print(f"  BoNesis timed out — budget exhausted after {time.perf_counter()-t_bn:.0f}s")
+                raise _BudgetExhausted()
 
             t_sink = time.perf_counter()
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
@@ -348,9 +360,14 @@ while True:
             print(f"======================================================================")
 
         elapsed = time.perf_counter() - t_start
-        mode_used = "BoNesis"
-        timings.append((hops, elapsed, mode_used))
-        print(f"{elapsed:.1f}s [{mode_used}] → {os.path.basename(out_file)}")
+        timings.append((hops, elapsed, "BoNesis"))
+        print(f"{elapsed:.1f}s [BoNesis] | {len(subgraph_nodes)} nodes → {os.path.basename(out_file)}")
+
+    except _BudgetExhausted:
+        elapsed = time.perf_counter() - t_start
+        timings.append((hops, elapsed, "Timeout"))
+        print(f"{elapsed:.1f}s [Timeout] | {len(subgraph_nodes)} nodes → budget exhausted, stopping.")
+        break
 
     except Exception as e:
         import traceback
@@ -362,7 +379,7 @@ while True:
 
 print(f"\n{'='*70}")
 print(f"BENCHMARK SUMMARY: {SCRIPT_NAME}")
-print(f"Gene: {GENE}  |  Mode: BoNesis (no timeout)")
+print(f"Gene: {GENE}  |  Mode: BoNesis (budget-limited)")
 print(f"{'Hops':>6}  {'Time (s)':>10}  {'Mode':>12}  Output file")
 print(f"{'-'*6}  {'-'*10}  {'-'*12}  {'-'*45}")
 for hops, t, mode in timings:

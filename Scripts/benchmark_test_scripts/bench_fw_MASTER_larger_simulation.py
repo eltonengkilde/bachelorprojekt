@@ -3,7 +3,7 @@ import csv, os, re, heapq, time, keyword, contextlib
 import graph_tool.all as gt
 
 GENE                    = "MYB46"
-MAX_TOTAL_SECONDS       = 3600   # 1-hour budget; a new hop only starts if time remains
+MAX_TOTAL_SECONDS       = 1800   # 0.5-hour budget; a new hop only starts if time remains
 MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
 MAX_SIM_STEPS           = 1000
 SINK_RECOVERY_THRESHOLD = 10000
@@ -357,7 +357,7 @@ while True:
         elapsed = time.perf_counter() - t_start
         mode_used = "Simulation"
         timings.append((hops, elapsed, mode_used))
-        print(f"{elapsed:.1f}s [{mode_used}] → {os.path.basename(out_file)}")
+        print(f"{elapsed:.1f}s [{mode_used}] | {len(subgraph_nodes)} nodes → {os.path.basename(out_file)}")
 
     except Exception as e:
         import traceback

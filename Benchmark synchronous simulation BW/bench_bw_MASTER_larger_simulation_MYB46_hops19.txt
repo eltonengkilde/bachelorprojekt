@@ -1,0 +1,103 @@
+# Benchmark: bench_bw_MASTER_larger_simulation.py
+# Gene: MYB46  |  Hops: 19  |  Mode: Synchronous simulation
+# Generated: 2026-05-06 12:33:58
+  [time] Subgraph extraction: 0.095s
+
+======================================================================
+PHASE 2 — Upstream: MYB46, 19 hop(s)  |  70146 nodes, 118638 edges
+    27996  Pathway
+    22852  Gene
+    9928  Phenotype
+    9370  Metabolite
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 61724  |  non-trivial: 106
+  Largest SCC (8295 nodes):
+    A23                                       [Metabolite]
+    AA                                        [Metabolite]
+    AAAs                                      [Metabolite]
+    AAL_toxin                                 [Metabolite]
+    AAO3                                      [Gene]
+    AAO4                                      [Gene]
+    AAPK                                      [Gene]
+    ABA                                       [Metabolite]
+    ABA1                                      [Gene]
+    ABA2                                      [Gene]
+    ... and 8285 more
+  Betweenness skipped (70146 nodes > 5000)
+
+  SBM skipped (70146 nodes > 2000)
+  Regulated: 14473  |  pruned: 14473  |  sinks: 0
+
+  Running sufficiency test on 18 direct activator(s)...
+  [time] Sufficiency test: 15.025s
+  Running simulation necessity test (14473 nodes)...
+  [time] Necessity test (simulation): 11.225s
+
+======================================================================
+  BACKWARDS ANALYSIS — what regulates 'MYB46'?
+  MYB46 — 19 hop(s) upstream  |  mode: synchronous simulation (14473 nodes)
+
+  Step 1 — Direct activators of 'MYB46': 18
+    + AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
+    + JA                                        [Metabolite]
+    + MYB32_MYB7_and_MYB4                       [Gene]
+    + NST1                                      [Gene]
+    + NST2                                      [Gene]
+    + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [Gene]
+    + PtrEPSP_TF                                [Gene]
+    + SND1                                      [Gene]
+    + SND2                                      [Gene]
+    + SND3                                      [Gene]
+    + SND4                                      [Gene]
+    + SND5                                      [Gene]
+    + VND6_and_VND7                             [Gene]
+    + VND7_induction                            [Pathway]
+    + VND_and_NST_proteins                      [Gene]
+    + methyl_jasmonate_MJA                      [Metabolite]
+    + nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076  [Gene]
+    + secondary_cell_wall_SCW_biosynthesis      [Pathway]
+
+  Step 1 — Direct suppressors of 'MYB46': 4
+    - AN                                        [Phenotype]
+    - MPK6                                      [Gene]
+    - XND1                                      [Gene]
+    - stress_and_hormone_dependent_activation_of_MPK6  [Pathway]
+
+======================================================================
+  Step 2 — Sufficient activators: 17
+    + AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
+    + JA                                        [Metabolite]
+    + MYB32_MYB7_and_MYB4                       [Gene]
+    + NST1                                      [Gene]
+    + NST2                                      [Gene]
+    + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [Gene]
+    + PtrEPSP_TF                                [Gene]
+    + SND2                                      [Gene]
+    + SND3                                      [Gene]
+    + SND4                                      [Gene]
+    + SND5                                      [Gene]
+    + VND6_and_VND7                             [Gene]
+    + VND7_induction                            [Pathway]
+    + VND_and_NST_proteins                      [Gene]
+    + methyl_jasmonate_MJA                      [Metabolite]
+    + nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076  [Gene]
+    + secondary_cell_wall_SCW_biosynthesis      [Pathway]
+
+======================================================================
+  Step 3 — Necessity test
+
+  Necessary activators: 0
+
+  Redundant activators: 0
+
+  Suppressors whose removal de-represses 'MYB46': 0
+
+======================================================================
+  Sink nodes: 0
+
+======================================================================
+  TIMING SUMMARY — MYB46, hop 19
+    Total hop time: 28.424s  |  step times logged above
+======================================================================

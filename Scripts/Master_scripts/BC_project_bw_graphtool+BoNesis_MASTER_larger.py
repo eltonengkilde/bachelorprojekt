@@ -209,12 +209,10 @@ direct_suppressors = sorted(g for g in suppressors.get(target_gene, set()) if g 
 
 baseline_states, _, _ = simulate(bn_dict_pruned, all_zeros_sub)
 baseline_target_on    = target_on_any(baseline_states)
-upstream_genes = sorted(subgraph_nodes - {target_gene})
-
-print(f"\n  Running sufficiency test on {len(upstream_genes)} upstream gene(s)...")
+print(f"\n  Running sufficiency test on {len(direct_activators)} direct activator(s)...")
 t0 = time.perf_counter()
 sufficient_activators = []
-for candidate in upstream_genes:
+for candidate in direct_activators:
     states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
     if target_on_any(states) and not baseline_target_on:
         sufficient_activators.append(candidate)

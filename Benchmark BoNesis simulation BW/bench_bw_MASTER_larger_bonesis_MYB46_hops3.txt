@@ -1,0 +1,36 @@
+# Benchmark: bench_bw_MASTER_larger_bonesis.py
+# Gene: MYB46  |  Hops: 3  |  Mode: BoNesis
+# Generated: 2026-05-06 12:48:27
+  [time] Subgraph extraction: 0.071s
+
+======================================================================
+PHASE 2 — Upstream: MYB46, 3 hop(s)  |  7711 nodes, 20360 edges
+    3858  Gene
+    2201  Pathway
+    1042  Metabolite
+     610  Phenotype
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 6069  |  non-trivial: 8
+  Largest SCC (1635 nodes):
+    AA                                        [Metabolite]
+    AAPK                                      [Gene]
+    ABA3                                      [Gene]
+    ABA_abscisic_acid                         [Metabolite]
+    ABA_accumulation                          [Phenotype]
+    ABA_and_JA                                [Metabolite]
+    ABA_signal_transduction                   [Pathway]
+    ABA_signaling                             [Pathway]
+    ABCG16                                    [Gene]
+    ABCG25                                    [Gene]
+    ... and 1625 more
+  Betweenness skipped (7711 nodes > 5000)
+
+  SBM skipped (7711 nodes > 2000)
+  Regulated: 1872  |  pruned: 1872  |  sinks: 0
+
+  Running sufficiency test on 18 direct activator(s)...
+  [time] Sufficiency test: 0.837s
+  Running BoNesis necessity test (1872 nodes — budget remaining: 1563s)...
+  BoNesis necessity test timed out — budget exhausted after 1563s

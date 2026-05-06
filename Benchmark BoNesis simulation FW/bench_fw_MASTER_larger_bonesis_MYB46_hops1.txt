@@ -1,0 +1,261 @@
+# Benchmark: bench_fw_MASTER_larger_bonesis.py
+# Gene: MYB46  |  Hops: 1  |  Mode: BoNesis
+# Generated: 2026-05-06 13:38:15
+  [time] Subgraph extraction: 0.075s
+
+======================================================================
+PHASE 2 — MYB46, 1 hop(s)  |  33 nodes, 43 edges
+      23  Gene
+       8  Pathway
+       1  Metabolite
+       1  Phenotype
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 32  |  non-trivial: 1
+  Largest SCC (2 nodes):
+    JA                                        [Metabolite]
+    MYB46                                     [Gene]
+
+  Betweenness (0.000s) — top 10:
+    MYB46                                     0.031250  [Gene]
+    MYB63                                     0.001008  [Gene]
+
+  Running SBM...
+  SBM (0.00s) — 1 modules:
+    Module 0:   33 nodes  (23 Gene, 8 Pathway, 1 Metabolite, 1 Phenotype)
+  Regulated: 33  |  pruned: 9  |  sinks: 24
+  Running BoNesis (9 nodes — budget remaining: 1800s)...
+  [time] BoNesis attractors: 0.012s
+  [time] Sink recovery: 0.000s
+
+  Running necessity test on 32 direct target(s)...
+  Necessity test completed in 0.001s
+
+======================================================================
+  MYB46 — 1 hop(s)  |  mode: bonesis attractors
+
+  Direct targets: 32
+    AtC3H14_At1g66810                         [Gene, sink]
+    C3H1                                      [Gene, sink]
+    C4H                                       [Gene]
+    CAD6                                      [Gene, sink]
+    CCOAOMT1                                  [Gene, sink]
+    CCR                                       [Pathway, sink]
+    CCoAOMT                                   [Gene, sink]
+    CESA7                                     [Gene, sink]
+    CesA4                                     [Gene, sink]
+    CesA8                                     [Gene, sink]
+    F5H1                                      [Gene, sink]
+    HCT                                       [Gene, sink]
+    JA                                        [Metabolite]
+    KNAT7                                     [Gene]
+    LAC10                                     [Gene, sink]
+    MYB32                                     [Gene]
+    MYB4                                      [Gene]
+    MYB58                                     [Gene, sink]
+    MYB63                                     [Gene]
+    MYB7                                      [Gene]
+    PAL1                                      [Gene]
+    PAL4                                      [Gene, sink]
+    entire_process_of_secondary_cell_wall_formation  [Pathway, sink]
+    g4CL                                      [Gene, sink]
+    g4CL1                                     [Gene, sink]
+    phenylpropanoid                           [Pathway, sink]
+    resistance_to_fungal_necrotrophs          [Phenotype, sink]
+    secondary_cell_wall_synthesis             [Pathway, sink]
+    secondary_wall_biosynthesis               [Pathway, sink]
+    secondary_wall_synthesis                  [Pathway, sink]
+    transcriptional_cascade                   [Pathway, sink]
+    xylogenesis                               [Pathway, sink]
+
+======================================================================
+  EXP A — dark background  |  1 resting / 1 perturbed attractor(s)
+
+  Activated (OFF→ON): 27
+    + AtC3H14_At1g66810                         [Gene, sink]
+    + C3H1                                      [Gene, sink]
+    + C4H                                       [Gene]
+    + CAD6                                      [Gene, sink]
+    + CCOAOMT1                                  [Gene, sink]
+    + CCR                                       [Pathway, sink]
+    + CCoAOMT                                   [Gene, sink]
+    + CESA7                                     [Gene, sink]
+    + CesA4                                     [Gene, sink]
+    + CesA8                                     [Gene, sink]
+    + F5H1                                      [Gene, sink]
+    + HCT                                       [Gene, sink]
+    + JA                                        [Metabolite]
+    + KNAT7                                     [Gene]
+    + LAC10                                     [Gene, sink]
+    + MYB32                                     [Gene]
+    + MYB4                                      [Gene]
+    + MYB58                                     [Gene, sink]
+    + MYB63                                     [Gene]
+    + PAL1                                      [Gene]
+    + PAL4                                      [Gene, sink]
+    + entire_process_of_secondary_cell_wall_formation  [Pathway, sink]
+    + g4CL1                                     [Gene, sink]
+    + secondary_cell_wall_synthesis             [Pathway, sink]
+    + secondary_wall_synthesis                  [Pathway, sink]
+    + transcriptional_cascade                   [Pathway, sink]
+    + xylogenesis                               [Pathway, sink]
+
+  Suppressed (ON→OFF): 1
+    - resistance_to_fungal_necrotrophs          [Phenotype, sink]
+
+======================================================================
+  EXP B — permissive background  |  1 resting / 1 perturbed attractor(s)
+
+  Activated (OFF→ON): 27
+    + AtC3H14_At1g66810                         [Gene, sink]
+    + C3H1                                      [Gene, sink]
+    + C4H                                       [Gene]
+    + CAD6                                      [Gene, sink]
+    + CCOAOMT1                                  [Gene, sink]
+    + CCR                                       [Pathway, sink]
+    + CCoAOMT                                   [Gene, sink]
+    + CESA7                                     [Gene, sink]
+    + CesA4                                     [Gene, sink]
+    + CesA8                                     [Gene, sink]
+    + F5H1                                      [Gene, sink]
+    + HCT                                       [Gene, sink]
+    + JA                                        [Metabolite]
+    + KNAT7                                     [Gene]
+    + LAC10                                     [Gene, sink]
+    + MYB32                                     [Gene]
+    + MYB4                                      [Gene]
+    + MYB58                                     [Gene, sink]
+    + MYB63                                     [Gene]
+    + PAL1                                      [Gene]
+    + PAL4                                      [Gene, sink]
+    + entire_process_of_secondary_cell_wall_formation  [Pathway, sink]
+    + g4CL1                                     [Gene, sink]
+    + secondary_cell_wall_synthesis             [Pathway, sink]
+    + secondary_wall_synthesis                  [Pathway, sink]
+    + transcriptional_cascade                   [Pathway, sink]
+    + xylogenesis                               [Pathway, sink]
+
+  Suppressed (ON→OFF): 1
+    - resistance_to_fungal_necrotrophs          [Phenotype, sink]
+
+======================================================================
+  ROBUST EFFECTS
+
+  Robustly activated: 27
+    + AtC3H14_At1g66810                         [Gene, sink]
+    + C3H1                                      [Gene, sink]
+    + C4H                                       [Gene]
+    + CAD6                                      [Gene, sink]
+    + CCOAOMT1                                  [Gene, sink]
+    + CCR                                       [Pathway, sink]
+    + CCoAOMT                                   [Gene, sink]
+    + CESA7                                     [Gene, sink]
+    + CesA4                                     [Gene, sink]
+    + CesA8                                     [Gene, sink]
+    + F5H1                                      [Gene, sink]
+    + HCT                                       [Gene, sink]
+    + JA                                        [Metabolite]
+    + KNAT7                                     [Gene]
+    + LAC10                                     [Gene, sink]
+    + MYB32                                     [Gene]
+    + MYB4                                      [Gene]
+    + MYB58                                     [Gene, sink]
+    + MYB63                                     [Gene]
+    + PAL1                                      [Gene]
+    + PAL4                                      [Gene, sink]
+    + entire_process_of_secondary_cell_wall_formation  [Pathway, sink]
+    + g4CL1                                     [Gene, sink]
+    + secondary_cell_wall_synthesis             [Pathway, sink]
+    + secondary_wall_synthesis                  [Pathway, sink]
+    + transcriptional_cascade                   [Pathway, sink]
+    + xylogenesis                               [Pathway, sink]
+
+  Robustly suppressed: 1
+    - resistance_to_fungal_necrotrophs          [Phenotype, sink]
+
+======================================================================
+  NECESSITY TEST  (knockout method: synchronous simulation from permissive background)
+    Necessary: 0
+    Dispensable: 32
+      AtC3H14_At1g66810                         [Gene, sink]
+      C3H1                                      [Gene, sink]
+      C4H                                       [Gene]
+      CAD6                                      [Gene, sink]
+      CCOAOMT1                                  [Gene, sink]
+      CCR                                       [Pathway, sink]
+      CCoAOMT                                   [Gene, sink]
+      CESA7                                     [Gene, sink]
+      CesA4                                     [Gene, sink]
+      CesA8                                     [Gene, sink]
+      F5H1                                      [Gene, sink]
+      HCT                                       [Gene, sink]
+      JA                                        [Metabolite]
+      KNAT7                                     [Gene]
+      LAC10                                     [Gene, sink]
+      MYB32                                     [Gene]
+      MYB4                                      [Gene]
+      MYB58                                     [Gene, sink]
+      MYB63                                     [Gene]
+      MYB7                                      [Gene]
+      PAL1                                      [Gene]
+      PAL4                                      [Gene, sink]
+      entire_process_of_secondary_cell_wall_formation  [Pathway, sink]
+      g4CL                                      [Gene, sink]
+      g4CL1                                     [Gene, sink]
+      phenylpropanoid                           [Pathway, sink]
+      resistance_to_fungal_necrotrophs          [Phenotype, sink]
+      secondary_cell_wall_synthesis             [Pathway, sink]
+      secondary_wall_biosynthesis               [Pathway, sink]
+      secondary_wall_synthesis                  [Pathway, sink]
+      transcriptional_cascade                   [Pathway, sink]
+      xylogenesis                               [Pathway, sink]
+
+======================================================================
+  Context-dependent: 0 genes, 0 decision(s)
+
+======================================================================
+  Sink nodes: 24
+    AtC3H14_At1g66810                         resting: OFF       perturbed: ON        [Gene, sink]
+    C3H1                                      resting: OFF       perturbed: ON        [Gene, sink]
+    CAD6                                      resting: OFF       perturbed: ON        [Gene, sink]
+    CCOAOMT1                                  resting: OFF       perturbed: ON        [Gene, sink]
+    CCR                                       resting: OFF       perturbed: ON        [Pathway, sink]
+    CCoAOMT                                   resting: OFF       perturbed: ON        [Gene, sink]
+    CESA7                                     resting: OFF       perturbed: ON        [Gene, sink]
+    CesA4                                     resting: OFF       perturbed: ON        [Gene, sink]
+    CesA8                                     resting: OFF       perturbed: ON        [Gene, sink]
+    F5H1                                      resting: OFF       perturbed: ON        [Gene, sink]
+    HCT                                       resting: OFF       perturbed: ON        [Gene, sink]
+    LAC10                                     resting: OFF       perturbed: ON        [Gene, sink]
+    MYB58                                     resting: OFF       perturbed: ON        [Gene, sink]
+    PAL4                                      resting: OFF       perturbed: ON        [Gene, sink]
+    entire_process_of_secondary_cell_wall_formation  resting: OFF       perturbed: ON        [Pathway, sink]
+    g4CL                                      resting: OFF       perturbed: OFF       [Gene, sink]
+    g4CL1                                     resting: OFF       perturbed: ON        [Gene, sink]
+    phenylpropanoid                           resting: OFF       perturbed: OFF       [Pathway, sink]
+    resistance_to_fungal_necrotrophs          resting: ON        perturbed: OFF       [Phenotype, sink]
+    secondary_cell_wall_synthesis             resting: OFF       perturbed: ON        [Pathway, sink]
+    secondary_wall_biosynthesis               resting: OFF       perturbed: OFF       [Pathway, sink]
+    secondary_wall_synthesis                  resting: OFF       perturbed: ON        [Pathway, sink]
+    transcriptional_cascade                   resting: OFF       perturbed: ON        [Pathway, sink]
+    xylogenesis                               resting: OFF       perturbed: ON        [Pathway, sink]
+
+======================================================================
+  REGULATORY MODULES (SBM) — 1 modules
+
+  Module 0: 33 nodes
+    AtC3H14_At1g66810                         [Gene, sink]
+    C3H1                                      [Gene, sink]
+    C4H                                       [Gene]
+    CAD6                                      [Gene, sink]
+    CCOAOMT1                                  [Gene, sink]
+    CCR                                       [Pathway, sink]
+    CCoAOMT                                   [Gene, sink]
+    CESA7                                     [Gene, sink]
+    ... and 25 more
+
+======================================================================
+  TIMING SUMMARY — MYB46, hop 1
+    Total hop time: 0.156s  |  step times logged above
+======================================================================
