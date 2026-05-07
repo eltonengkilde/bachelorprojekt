@@ -130,6 +130,7 @@ while True:
             subgraph_nodes = {node_list[i] for i in range(g_full.num_vertices()) if dist[i] <= hops}
             sub_node_list  = sorted(subgraph_nodes)
             sub_v_idx      = {name: i for i, name in enumerate(sub_node_list)}
+            hop_of = {node_list[i]: int(dist[i]) for i in range(g_full.num_vertices()) if int(dist[i]) <= hops}
             print(f"  [time] Subgraph extraction: {time.perf_counter()-t_start:.3f}s")
             sc = {}
             for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
@@ -193,86 +194,161 @@ while True:
             bn_dict_pruned = {g: f for g, f in bn_dict.items() if g not in sink_nodes}
             n_pruned = len(bn_dict_pruned)
             print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
-            def tags(g): return "[" + ", ".join([cat(g)] + (["sink"] if g in sink_nodes else [])) + "]"
+            def tags(g):
+                parts = [cat(g)]
+                if g in sink_nodes: parts.append("sink")
+                h = hop_of.get(g)
+                if h is not None and h > 1: parts.append(f"hop {h}")
+                return "[" + ", ".join(parts) + "]"
 
             all_zeros_sub = {g: 0 for g in subgraph_nodes}
             all_ones_sub  = {g: 1 for g in subgraph_nodes}
 
-            def target_on_any(atts): return any(a.get(target_gene, 0) == 1 for a in atts)
+            def target_on_any(atts):  return any(a.get(target_gene, 0) == 1 for a in atts)
+            def stable_on(g, atts):  return bool(atts) and all(a.get(g, 0) == 1 for a in atts)
+            def stable_off(g, atts): return bool(atts) and all(a.get(g, 0) == 0 for a in atts)
 
             direct_activators  = sorted(g for g in activators.get(target_gene, set()) if g in subgraph_nodes)
             direct_suppressors = sorted(g for g in suppressors.get(target_gene, set()) if g in subgraph_nodes)
+            all_upstream       = sorted(subgraph_nodes - {target_gene})
 
-            baseline_states, _, _ = simulate(bn_dict_pruned, all_zeros_sub)
-            baseline_target_on    = target_on_any(baseline_states)
-            print(f"\n  Running sufficiency test on {len(direct_activators)} direct activator(s)...")
+            # Two baseline simulations (dark / permissive)
             t0 = time.perf_counter()
+            att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub)
+            att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub)
+            print(f"  [time] Baseline simulations: {time.perf_counter()-t0:.3f}s")
+            if not dark_conv: print(f"  WARNING: dark attractor did not converge within {MAX_SIM_STEPS} steps")
+            if not perm_conv: print(f"  WARNING: perm attractor did not converge within {MAX_SIM_STEPS} steps")
+            print(f"  NOTE: simulation finds ONE attractor per starting condition.")
+            target_in_dark = target_on_any(att_dark)
+            target_in_perm = target_on_any(att_perm)
+            _lbl = lambda atts, c: ("fixed point" if len(atts)==1 else f"cycle/{len(atts)}") + (" (conv)" if c else " (max)")
+            print(f"  Dark: target={'ON' if target_in_dark else 'OFF'}  {_lbl(att_dark, dark_conv)}")
+            print(f"  Perm: target={'ON' if target_in_perm else 'OFF'}  {_lbl(att_perm, perm_conv)}")
+
+            # Hop-by-hop stable-state attractor trace
+            all_hops = sorted({hop_of[g] for g in all_upstream if hop_of.get(g) is not None})
+            hop_pod = {h: [] for h in all_hops}
+            hop_opd = {h: [] for h in all_hops}
+            for g in all_upstream:
+                h = hop_of.get(g)
+                if h is None: continue
+                if stable_on(g, att_perm) and stable_off(g, att_dark): hop_pod[h].append(g)
+                elif stable_off(g, att_perm) and stable_on(g, att_dark): hop_opd[h].append(g)
+
+            perm_on_stable  = sorted(g for g in all_upstream if stable_on(g,  att_perm))
+            perm_off_stable = sorted(g for g in all_upstream if stable_off(g, att_perm))
+            necessity_act_candidates = perm_on_stable if target_in_perm else []
+            sufficiency_candidates   = sorted(g for g in necessity_act_candidates
+                                              if stable_off(g, att_dark)) if (target_in_perm and not target_in_dark) else []
+            necessity_sup_candidates = perm_off_stable if target_in_perm else []
+            suppressor_release_cands = perm_off_stable if not target_in_perm else []
+            print(f"  Candidate pools: suff={len(sufficiency_candidates)}  nec-act={len(necessity_act_candidates)}"
+                  f"  nec-sup={len(necessity_sup_candidates)}")
+
+            PER_HOP_BUDGET = max(0, (MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)) * 0.5)
+            t_gene_tests = time.perf_counter()
+            budget_exceeded = False
+
             sufficient_activators = []
-            for candidate in direct_activators:
+            print(f"  Sufficiency test: {len(sufficiency_candidates)} candidates (budget: {PER_HOP_BUDGET:.0f}s)...")
+            t0 = time.perf_counter()
+            for candidate in sufficiency_candidates:
+                if time.perf_counter() - t_gene_tests > PER_HOP_BUDGET:
+                    print(f"    Stopped: per-hop budget reached"); budget_exceeded = True; break
                 states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
-                if target_on_any(states) and not baseline_target_on:
+                if target_on_any(states) and not target_in_dark:
                     sufficient_activators.append(candidate)
-            print(f"  [time] Sufficiency test: {time.perf_counter()-t0:.3f}s")
+            print(f"  [time] Sufficiency: {time.perf_counter()-t0:.3f}s")
 
-            candidates = sorted(set(direct_activators) | set(direct_suppressors))
-            necessary_activators, redundant_activators, suppressor_releases = [], [], []
-            baseline_all_on_target_on = False
+            necessary_activators, redundant_activators, necessary_suppressors, suppressor_releases = [], [], [], []
+            _remaining = max(0, MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start))
+            print(f"  BoNesis necessity test: {len(necessity_act_candidates)} act + {len(necessity_sup_candidates)} sup"
+                  f" candidates ({n_pruned} nodes — budget: {_remaining:.0f}s)...")
+            t_bn = time.perf_counter()
+            _box = []
+            def _run_bonesis_necessity():
+                _base = target_on_any(
+                    list(bonesis.BooleanNetwork(bn_dict_pruned).attractors(
+                        reachable_from={g: 1 for g in bn_dict_pruned})))
+                _nec, _red, _nsup, _sup = [], [], [], []
+                # Activator necessity: KO from permissive
+                for cand in necessity_act_candidates:
+                    ko = dict(bn_dict_pruned); ko[cand] = "0"
+                    ko_t = target_on_any(list(bonesis.BooleanNetwork(ko).attractors(
+                        reachable_from={g: 1 for g in ko})))
+                    cb = _base
+                    if cand not in bn_dict_pruned:
+                        pd2 = dict(bn_dict_pruned); pd2[cand] = "1"
+                        cb = target_on_any(list(bonesis.BooleanNetwork(pd2).attractors(
+                            reachable_from={g: 1 for g in pd2})))
+                    if cb and not ko_t: _nec.append(cand)
+                    elif cb and ko_t:   _red.append(cand)
+                # Suppressor necessity: force ON from permissive
+                for cand in necessity_sup_candidates:
+                    forced = dict(bn_dict_pruned); forced[cand] = "1"
+                    f_t = target_on_any(list(bonesis.BooleanNetwork(forced).attractors(
+                        reachable_from={g: 1 for g in forced})))
+                    if _base and not f_t: _nsup.append(cand)
+                # Suppressor release: KO when target is OFF
+                for cand in suppressor_release_cands:
+                    ko = dict(bn_dict_pruned); ko[cand] = "0"
+                    ko_t = target_on_any(list(bonesis.BooleanNetwork(ko).attractors(
+                        reachable_from={g: 1 for g in ko})))
+                    if not _base and ko_t: _sup.append(cand)
+                _box.append((_base, _nec, _red, _nsup, _sup))
+            _t = threading.Thread(daemon=True, target=_run_bonesis_necessity)
+            _t.start(); _t.join(_remaining)
+            if _box:
+                baseline_perm_on, necessary_activators, redundant_activators, necessary_suppressors, suppressor_releases = _box[0]
+                print(f"  [time] BoNesis necessity: {time.perf_counter()-t_bn:.3f}s")
+            else:
+                print(f"  BoNesis necessity timed out — budget exhausted after {time.perf_counter()-t_bn:.0f}s")
+                raise _BudgetExhausted()
 
-            if candidates:
-                _remaining = max(0, MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start))
-                print(f"  Running BoNesis necessity test ({n_pruned} nodes — budget remaining: {_remaining:.0f}s)...")
-                t_bn = time.perf_counter()
-                _box = []
-                def _run_bonesis_necessity():
-                    _base = target_on_any(
-                        list(bonesis.BooleanNetwork(bn_dict_pruned).attractors(
-                            reachable_from={g: 1 for g in bn_dict_pruned})))
-                    _nec, _red, _sup = [], [], []
-                    for cand in candidates:
-                        ko = dict(bn_dict_pruned); ko[cand] = "0"
-                        ko_t = target_on_any(list(bonesis.BooleanNetwork(ko).attractors(
-                            reachable_from={g: 1 for g in ko})))
-                        cb = _base
-                        if cand not in bn_dict_pruned:
-                            pd2 = dict(bn_dict_pruned); pd2[cand] = "1"
-                            cb = target_on_any(list(bonesis.BooleanNetwork(pd2).attractors(
-                                reachable_from={g: 1 for g in pd2})))
-                        if cand in direct_activators:
-                            if cb and not ko_t: _nec.append(cand)
-                            elif cb and ko_t:   _red.append(cand)
-                        if cand in direct_suppressors:
-                            if not cb and ko_t: _sup.append(cand)
-                    _box.append((_base, _nec, _red, _sup))
-                _t = threading.Thread(daemon=True, target=_run_bonesis_necessity)
-                _t.start(); _t.join(_remaining)
-                if _box:
-                    baseline_all_on_target_on, necessary_activators, redundant_activators, suppressor_releases = _box[0]
-                    print(f"  [time] BoNesis necessity: {time.perf_counter()-t_bn:.3f}s")
-                else:
-                    print(f"  BoNesis necessity test timed out — budget exhausted after {time.perf_counter()-t_bn:.0f}s")
-                    raise _BudgetExhausted()
-
-            mode_str = "BoNesis (no timeout)"
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
 
             print(f"\n{'='*70}")
-            print(f"  BACKWARDS ANALYSIS — what regulates '{target_gene}'?")
-            print(f"  {target_gene} — {hops} hop(s) upstream  |  mode: {mode_str}")
-            print(f"\n  Step 1 — Direct activators of '{target_gene}': {len(direct_activators)}")
-            for g in direct_activators: print(f"    + {g:40s}  {tags(g)}")
-            print(f"\n  Step 1 — Direct suppressors of '{target_gene}': {len(direct_suppressors)}")
-            for g in direct_suppressors: print(f"    - {g:40s}  {tags(g)}")
+            print(f"  UPSTREAM REGULATORY ANALYSIS of '{target_gene}'")
+            print(f"  {hops} hop(s)  |  BoNesis + synchronous simulation ({n_pruned} nodes)")
+            print(f"  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd")
+            print(f"  NOTE: simulation finds ONE attractor per starting condition.")
+            print(f"\n  Step 1 — Structural direct regulators (1-hop):")
+            print(f"    Activators: {len(direct_activators)}")
+            for g in direct_activators:  print(f"      + {g:40s}  {tags(g)}")
+            print(f"    Suppressors: {len(direct_suppressors)}")
+            for g in direct_suppressors: print(f"      - {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
-            print(f"  Step 2 — Sufficient activators: {len(sufficient_activators)}")
+            print(f"  Step 2 — Attractor state comparison (dark vs permissive) [CORRELATION ONLY]")
+            print(f"    Dark: target={'ON' if target_in_dark else 'OFF'}  |  Perm: target={'ON' if target_in_perm else 'OFF'}")
+            print(f"  {'Hop':>4}  {'Total':>6}  {'Perm-ON/Dark-OFF':>17}  {'Perm-OFF/Dark-ON':>17}")
+            for h in all_hops:
+                genes_h = [g for g in all_upstream if hop_of.get(g) == h]
+                print(f"  {h:>4}  {len(genes_h):>6}  {len(hop_pod[h]):>17}  {len(hop_opd[h]):>17}")
+                for g in sorted(hop_pod[h])[:8]:
+                    print(f"      + {g:40s}  [stably ON perm / OFF dark]  {tags(g)}")
+                if len(hop_pod[h]) > 8: print(f"      ... and {len(hop_pod[h])-8} more at hop {h}")
+                for g in sorted(hop_opd[h])[:5]:
+                    print(f"      - {g:40s}  [stably OFF perm / ON dark]  {tags(g)}")
+                if len(hop_opd[h]) > 5: print(f"      ... and {len(hop_opd[h])-5} more at hop {h}")
+            print(f"\n{'='*70}")
+            print(f"  Step 3 — Sufficient upstream activators:")
+            if budget_exceeded: print(f"    NOTE: per-hop budget reached — results may be partial")
+            print(f"  {len(sufficient_activators)} found")
             for g in sufficient_activators: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
-            print(f"  Step 3 — Necessity test")
-            print(f"\n  Necessary activators: {len(necessary_activators)}")
-            for g in necessary_activators: print(f"    ! {g:40s}  [required]  {tags(g)}")
-            print(f"\n  Redundant activators: {len(redundant_activators)}")
-            for g in redundant_activators: print(f"    {g:40s}  [dispensable]  {tags(g)}")
-            print(f"\n  Suppressors whose removal de-represses '{target_gene}': {len(suppressor_releases)}")
-            for g in suppressor_releases: print(f"    ~ {g:40s}  [KO turns target ON]  {tags(g)}")
+            print(f"  Step 4 — Necessary activators (KO from permissive, BoNesis):")
+            if budget_exceeded: print(f"    NOTE: per-hop budget reached — results may be partial")
+            print(f"\n  Necessary activators (KO turns '{target_gene}' OFF): {len(necessary_activators)}")
+            for g in necessary_activators: print(f"    ! {g:40s}  [required activator]  {tags(g)}")
+            print(f"\n  Redundant activators ('{target_gene}' stays ON after KO): {len(redundant_activators)}")
+            for g in redundant_activators: print(f"    ~ {g:40s}  [dispensable]  {tags(g)}")
+            print(f"\n{'='*70}")
+            print(f"  Step 5 — Suppressor necessity and release (BoNesis):")
+            print(f"\n  Necessary suppressors (forced ON turns '{target_gene}' OFF): {len(necessary_suppressors)}")
+            for g in necessary_suppressors: print(f"    ! {g:40s}  [necessary suppressor]  {tags(g)}")
+            print(f"\n  Suppressor release (KO turns '{target_gene}' ON): {len(suppressor_releases)}")
+            for g in suppressor_releases: print(f"    ~ {g:40s}  [suppressor release]  {tags(g)}")
             if community:
                 print(f"\n{'='*70}")
                 cg = {}
@@ -283,11 +359,11 @@ while True:
                     for g in sorted(members)[:8]: print(f"    {g:40s}  {tags(g)}")
                     if len(members) > 8: print(f"    ... and {len(members)-8} more")
             print(f"\n{'='*70}")
-            print(f"  Sink nodes: {len(sink_nodes)}")
+            print(f"  Sink nodes — upstream genes with no further upstream regulators in subgraph")
+            print(f"  ({len(sink_nodes)} nodes). Candidate master regulators (no in-edges in model).")
             if sink_nodes:
-                sim_base, _, _ = simulate(bn_dict_pruned, all_ones_sub)
                 for g in sorted(sink_nodes):
-                    val = eval_rule_simple(sink_rules[g], sim_base[0])
+                    val = eval_rule_simple(sink_rules[g], att_perm[0])
                     print(f"    {g:40s}  permissive state: {'ON' if val else 'OFF':3s}  {tags(g)}")
             print(f"\n======================================================================")
             print(f"  TIMING SUMMARY — {target_gene}, hop {hops}")

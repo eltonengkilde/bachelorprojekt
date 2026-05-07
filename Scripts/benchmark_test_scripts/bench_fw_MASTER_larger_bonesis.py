@@ -67,11 +67,35 @@ def eval_rule_simple(rule, state):
     try: return 1 if eval(_to_py(rule), {"__builtins__": {}}, {g: bool(v) for g, v in state.items()}) else 0
     except: return 0
 
-def recover_sinks(attractors, sink_rules, src, src_val):
+def _topo_sort_sinks(sink_rules):
+    """Topological evaluation order for sink genes respecting intra-sink dependencies."""
+    sink_set = set(sink_rules)
+    deps = {g: set(re.findall(r'\b[a-zA-Z_]\w*\b', str(sink_rules[g]))) & sink_set
+            for g in sink_set}
+    dependents = {g: [] for g in sink_set}
+    in_degree  = {g: 0  for g in sink_set}
+    for g in sink_set:
+        for d in deps[g]:
+            dependents[d].append(g)
+            in_degree[g] += 1
+    queue = [g for g in sorted(sink_set) if in_degree[g] == 0]
+    order = []
+    while queue:
+        node = queue.pop(0); order.append(node)
+        for dep in sorted(dependents[node]):
+            in_degree[dep] -= 1
+            if in_degree[dep] == 0: queue.append(dep)
+    if len(order) < len(sink_set):
+        order.extend(g for g in sorted(sink_set) if g not in set(order))
+    return order
+
+def recover_sinks(attractors, sink_rules, src, src_val, sink_order):
+    """Evaluate sink gene states in topological order to respect intra-sink dependencies."""
     result = []
     for att in attractors:
         ext = {**att, src: src_val}
-        for sink, rule in sink_rules.items(): ext[sink] = eval_rule_simple(rule, ext)
+        for sink in sink_order:
+            ext[sink] = eval_rule_simple(sink_rules[sink], ext)
         result.append(ext)
     return result
 
@@ -234,11 +258,12 @@ while True:
 
             t_sink = time.perf_counter()
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
+            sink_order = _topo_sort_sinks(sink_rules)
             if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
-                dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0)
-                dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1)
-                perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0)
-                perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1)
+                dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0, sink_order)
+                dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1, sink_order)
+                perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0, sink_order)
+                perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1, sink_order)
             else:
                 print(f"  Sink recovery skipped ({len(sink_nodes)} sinks > {SINK_RECOVERY_THRESHOLD})")
                 dark_resting_full   = [{**a, source_gene: 0} for a in dark_resting_att]
@@ -251,8 +276,8 @@ while True:
                 g for g, f in bn_resting_dict.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(f))
             ) | {g for g, r in sink_rules.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(r))})
 
-            def stable_on(g, atts):  return all(a.get(g, 0) == 1 for a in atts)
-            def stable_off(g, atts): return all(a.get(g, 0) == 0 for a in atts)
+            def stable_on(g, atts):  return bool(atts) and all(a.get(g, 0) == 1 for a in atts)
+            def stable_off(g, atts): return bool(atts) and all(a.get(g, 0) == 0 for a in atts)
 
             G = set(bn_dict) | {source_gene}
             dark_activated  = sorted({g for g in G if stable_off(g, dark_resting_full)  and stable_on(g,  dark_perturbed_full)} - {source_gene})
@@ -281,26 +306,39 @@ while True:
             for g in variable_genes:
                 p = tuple(a.get(g, 0) for a in perm_perturbed_full)
                 if not all(isinstance(v, int) for v in p): continue
-                decisions.setdefault(p if p[0] == 0 else tuple(1-v for v in p), []).append(g)
+                decisions.setdefault(p, []).append(g)
 
             necessary, dispensable = [], []
             if perm_activated:
-                print(f"\n  Running necessity test on {len(direct_targets)} direct target(s)...")
+                print(f"\n  Running necessity test on {len(direct_targets)} direct target(s) (BoNesis)...")
                 t0 = time.perf_counter()
                 for candidate in direct_targets:
-                    ko = dict(bn_dict_pruned); ko[candidate] = "0"
-                    ko_states, _, _ = simulate(ko, all_on, source_gene, 1)
+                    if MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start) <= 0:
+                        print(f"  Necessity test budget exhausted — results partial"); break
+                    # Use bn_perturbed_dict so source_gene stays constant "1",
+                    # matching the perturbed condition that defined perm_activated.
+                    ko = dict(bn_perturbed_dict); ko[candidate] = "0"
+                    _bn_ko    = bonesis.BooleanNetwork(ko)
+                    ko_states = list(_bn_ko.attractors(reachable_from={g: 1 for g in ko}))
+                    # Recover sink states so sink nodes in perm_activated are
+                    # evaluated correctly rather than staying at initial value 1.
+                    ko_full = []
+                    for _att in ko_states:
+                        _ext = dict(_att); _ext[source_gene] = 1; _ext[candidate] = 0
+                        for _s in sink_order: _ext[_s] = eval_rule_simple(sink_rules[_s], _ext)
+                        ko_full.append(_ext)
                     lost = sorted(g for g in perm_activated if g != candidate
-                                  and not all(s.get(g, 0) == 1 for s in ko_states))
+                                  and not stable_on(g, ko_full))
                     if lost: necessary.append((candidate, lost))
                     else:    dispensable.append(candidate)
                 print(f"  Necessity test completed in {time.perf_counter()-t0:.3f}s")
             else:
                 print(f"\n  Necessity test skipped — no genes stably activated in permissive baseline.")
 
-            mode = "bonesis attractors"
             print(f"\n{'='*70}")
-            print(f"  {source_gene} — {hops} hop(s)  |  mode: {mode}")
+            print(f"  {source_gene} — {hops} hop(s)  |  BoNesis (complete attractor landscape)")
+            print(f"  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd")
+            print(f"  Necessity solver: BoNesis")
             print(f"\n  Direct targets: {len(direct_targets)}")
             for g in direct_targets: print(f"    {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
@@ -328,19 +366,27 @@ while True:
             for g in robust_suppressed: print(f"    - {g:40s}  {tags(g)}")
             if perm_activated:
                 print(f"\n{'='*70}")
-                print(f"  NECESSITY TEST  (knockout method: synchronous simulation from permissive background)")
-                print(f"    Necessary: {len(necessary)}")
+                print(f"  NECESSITY TEST  (method: BoNesis from permissive background)")
+                print(f"  Definition: a direct target is necessary if knocking it out causes at")
+                print(f"  least one permissive-activated gene to lose stable-ON status.")
+                print(f"    Necessary  ({len(necessary)}):")
                 for g, lost in necessary:
                     print(f"    ! {g:40s}  {tags(g)}")
-                    print(f"        causes loss of: {', '.join(lost)}")
-                print(f"    Dispensable: {len(dispensable)}")
+                    print(f"        loss of stable activation: {', '.join(lost)}")
+                print(f"    Dispensable ({len(dispensable)}):")
                 for g in dispensable: print(f"      {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
-            print(f"  Context-dependent: {len(variable_genes)} genes, {len(decisions)} decision(s)")
-            for i, genes in enumerate(sorted(decisions.values(), key=lambda x: x[0]), 1):
-                print(f"  Decision {i}:")
+            n_perturbed_att = len(perm_perturbed_full)
+            print(f"  Context-dependent genes: {len(variable_genes)} gene(s) in {len(decisions)} co-varying pattern(s)")
+            if variable_genes:
+                print(f"  (Different stable values across {n_perturbed_att} perturbed attractor(s); groups share identical ON/OFF patterns.)")
+            for i, (pattern, genes) in enumerate(sorted(decisions.items()), 1):
+                on_in  = [j + 1 for j, v in enumerate(pattern) if v == 1]
+                off_in = [j + 1 for j, v in enumerate(pattern) if v == 0]
+                print(f"\n  Pattern {i} — stably ON in attractor(s) {on_in or 'none'}  |  stably OFF in {off_in or 'none'}")
                 for g in sorted(genes): print(f"    {g:40s}  {tags(g)}")
-            print(f"\n{'='*70}\n  Sink nodes: {len(sink_nodes)}")
+            print(f"\n{'='*70}")
+            print(f"  Sink nodes — terminal downstream effectors ({len(sink_nodes)} node(s)):")
             for g in sorted(sink_nodes):
                 r = "ON" if stable_on(g, perm_resting_full) else "OFF" if stable_off(g, perm_resting_full) else "variable"
                 p = "ON" if stable_on(g, perm_perturbed_full) else "OFF" if stable_off(g, perm_perturbed_full) else "variable"

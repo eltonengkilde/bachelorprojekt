@@ -76,7 +76,7 @@ _, hist = gt.label_components(g_full)
 print(f"  SCCs: {hist.shape[0]}  |  non-trivial: {int((hist>1).sum())}  |  largest: {int(hist.max())} nodes")
 
 while True:
-    target_gene = input("\nTarget gene to activate (what gene do you want to turn ON?): ")
+    target_gene = input("\nTarget gene for upstream regulatory analysis: ")
     if target_gene not in node_idx:
         matches = sorted(n for n in all_nodes if target_gene.upper() in n.upper())
         print(f"WARNING: '{target_gene}' not found. Try again.")
@@ -98,6 +98,7 @@ dist  = gt.shortest_distance(g_rev, source=g_full.vertex(node_idx[target_gene]),
 subgraph_nodes = {node_list[i] for i in range(g_full.num_vertices()) if dist[i] <= MAX_HOPS}
 sub_node_list  = sorted(subgraph_nodes)
 sub_v_idx      = {name: i for i, name in enumerate(sub_node_list)}
+hop_of = {node_list[i]: int(dist[i]) for i in range(g_full.num_vertices()) if int(dist[i]) <= MAX_HOPS}
 
 print(f"\n{'='*70}")
 print(f"PHASE 2 — Upstream subgraph: {target_gene}, {MAX_HOPS} hop(s)  |  {len(subgraph_nodes)} nodes, "
@@ -172,6 +173,8 @@ print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_
 def tags(g):
     parts = [cat(g)]
     if g in sink_nodes: parts.append("sink")
+    h = hop_of.get(g)
+    if h is not None and h > 1: parts.append(f"hop {h}")
     return "[" + ", ".join(parts) + "]"
 
 def simulate(rules, start_state, locked=None, val=None, max_steps=MAX_SIM_STEPS):
@@ -195,65 +198,189 @@ def simulate(rules, start_state, locked=None, val=None, max_steps=MAX_SIM_STEPS)
         state = nw
     return [{g: state[idx[g]] for g in genes}], max_steps, False
 
-def target_on_any(atts): return any(a.get(target_gene, 0) == 1 for a in atts)
+def target_on_any(atts):  return any(a.get(target_gene, 0) == 1 for a in atts)
+def stable_on(g, atts):  return bool(atts) and all(a.get(g, 0) == 1 for a in atts)
+def stable_off(g, atts): return bool(atts) and all(a.get(g, 0) == 0 for a in atts)
 
 all_zeros_sub = {gene: 0 for gene in subgraph_nodes}
 all_ones_sub  = {gene: 1 for gene in subgraph_nodes}
 
-mode_str = (f"bonesis ({n_pruned} nodes)" if n_pruned <= SIMULATION_THRESHOLD
-            else f"synchronous simulation ({n_pruned} nodes)")
-print(f"  Mode: {mode_str}")
+# Attractor trace uses synchronous simulation; necessity test uses BoNesis for small networks.
+trace_mode = f"synchronous simulation ({n_pruned} nodes)"
+nec_mode   = (f"BoNesis ({n_pruned} nodes)" if n_pruned <= SIMULATION_THRESHOLD
+              else f"synchronous simulation ({n_pruned} nodes)")
+print(f"  Attractor trace: {trace_mode}")
+print(f"  Necessity / sufficiency tests: {nec_mode}")
 
 direct_activators  = sorted(g for g in activators.get(target_gene, set()) if g in subgraph_nodes)
 direct_suppressors = sorted(g for g in suppressors.get(target_gene, set()) if g in subgraph_nodes)
+all_upstream       = sorted(subgraph_nodes - {target_gene})
 
-baseline_states, _, _ = simulate(bn_dict_pruned, all_zeros_sub)
-baseline_target_on    = target_on_any(baseline_states)
-print(f"\n  Running sufficiency test on {len(direct_activators)} direct activator(s)...")
+# ── STEP 1: Two baseline simulations ─────────────────────────────────────────
+# "Dark" (all-zeros) and "permissive" (all-ones) initial conditions, mirroring
+# the forward analysis framing. Synchronous simulation finds ONE attractor per
+# starting condition; BoNesis (fewer hops) finds the full reachable landscape.
 t0 = time.perf_counter()
-sufficient_activators = []
-for candidate in direct_activators:
-    states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
-    if target_on_any(states) and not baseline_target_on:
-        sufficient_activators.append(candidate)
-print(f"  Sufficiency test completed in {time.perf_counter()-t0:.3f}s")
+att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub)
+att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub)
+print(f"\n  Baseline simulations: {time.perf_counter()-t0:.3f}s")
+if not dark_conv:
+    print(f"  WARNING: dark attractor did not converge within {MAX_SIM_STEPS} steps — results unreliable")
+if not perm_conv:
+    print(f"  WARNING: permissive attractor did not converge within {MAX_SIM_STEPS} steps — results unreliable")
+print(f"  NOTE: simulation finds ONE attractor per starting condition — "
+      f"full attractor landscape requires BoNesis (use fewer hops).")
+target_in_dark = target_on_any(att_dark)
+target_in_perm = target_on_any(att_perm)
+_att_label = lambda atts, conv: (
+    ("fixed point" if len(atts) == 1 else f"cycle/{len(atts)}") +
+    (" (converged)" if conv else " (max steps)"))
+print(f"  Dark attractor (all-zeros): target={'ON' if target_in_dark else 'OFF'}"
+      f"  |  {_att_label(att_dark, dark_conv)}")
+print(f"  Perm attractor (all-ones):  target={'ON' if target_in_perm else 'OFF'}"
+      f"  |  {_att_label(att_perm, perm_conv)}")
 
+# ── STEP 2: Hop-by-hop attractor state trace ──────────────────────────────────
+# For each upstream gene, record whether it is STABLY ON or STABLY OFF in each
+# attractor. "Stably ON" = ON in every state of the attractor cycle (or fixed
+# point). "Stably OFF" = OFF in every state. Genes that oscillate in a cyclic
+# attractor are counted as neither.
+#
+# IMPORTANT: differential stability between permissive and dark attractors is an
+# ATTRACTOR STATE CORRELATION, not established causation. A gene stably ON in
+# the permissive attractor when target is ON could be an upstream driver, a
+# downstream target regulated by feedback, or a coincidental co-activation.
+# The per-gene necessity and sufficiency tests (Steps 3–4) provide causal evidence.
+all_hops = sorted({hop_of[g] for g in all_upstream if hop_of.get(g) is not None})
+hop_perm_on_dark_off = {h: [] for h in all_hops}   # stably ON in perm, stably OFF in dark
+hop_perm_off_dark_on = {h: [] for h in all_hops}   # stably OFF in perm, stably ON in dark
+for g in all_upstream:
+    h = hop_of.get(g)
+    if h is None: continue
+    if stable_on(g, att_perm) and stable_off(g, att_dark): hop_perm_on_dark_off[h].append(g)
+    elif stable_off(g, att_perm) and stable_on(g, att_dark): hop_perm_off_dark_on[h].append(g)
+
+# ── STEP 3: Attractor-filtered candidate pools ────────────────────────────────
+# Filter candidates using attractor state before per-gene testing:
+#   Activator necessity: only genes STABLY ON in perm attractor can be necessary
+#     activators — a gene stably OFF cannot be necessary for target to be ON there.
+#   Sufficiency: stably ON in perm AND stably OFF in dark (differentially stable).
+#   Suppressor necessity: genes STABLY OFF in perm attractor — force them ON and
+#     check whether target turns OFF; their absence may be required for target ON.
+#   Suppressor release: only tested when target is OFF in perm attractor.
+perm_on_stable  = sorted(g for g in all_upstream if stable_on(g,  att_perm))
+perm_off_stable = sorted(g for g in all_upstream if stable_off(g, att_perm))
+
+necessity_act_candidates = perm_on_stable if target_in_perm else []
+sufficiency_candidates   = sorted(g for g in necessity_act_candidates
+                                  if stable_off(g, att_dark)) if (target_in_perm and not target_in_dark) else []
+necessity_sup_candidates = perm_off_stable if target_in_perm else []
+suppressor_release_cands = perm_off_stable if not target_in_perm else []
+
+print(f"\n  Attractor-filtered candidate pools:")
+print(f"    Sufficiency (stably ON-perm & OFF-dark): {len(sufficiency_candidates)}")
+print(f"    Necessity — activators (stably ON-perm):  {len(necessity_act_candidates)}")
+print(f"    Necessity — suppressors (stably OFF-perm):{len(necessity_sup_candidates)}")
+
+# ── STEP 4: Targeted per-gene tests with time budget ─────────────────────────
+GENE_TEST_BUDGET = 120   # total seconds; set to 0 to skip per-gene tests
+t_gene_tests = time.perf_counter()
+budget_exceeded = False
+
+# Determine baseline permissive target state using BoNesis (all attractors) for
+# small networks, simulation (one attractor) for large ones.
 if n_pruned <= SIMULATION_THRESHOLD:
-    bn_full    = bonesis.BooleanNetwork(bn_dict_pruned)
-    all_ones_p = {gene: 1 for gene in bn_dict_pruned}
-    baseline_all_on_target_on = target_on_any(list(bn_full.attractors(reachable_from=all_ones_p)))
+    bn_full = bonesis.BooleanNetwork(bn_dict_pruned)
+    _ones_p = {g: 1 for g in bn_dict_pruned}
+    baseline_perm_on = target_on_any(list(bn_full.attractors(reachable_from=_ones_p)))
     using_bonesis = True
 else:
-    baseline_states_on, _, _ = simulate(bn_dict_pruned, all_ones_sub)
-    baseline_all_on_target_on = target_on_any(baseline_states_on)
+    baseline_perm_on = target_in_perm
     using_bonesis = False
 
-necessary_activators, redundant_activators, suppressor_releases = [], [], []
-candidates = sorted(set(direct_activators) | set(direct_suppressors))
-print(f"\n  Running necessity test on {len(candidates)} direct regulator(s)...")
-t0 = time.perf_counter()
-for candidate in candidates:
+def _ko_target_on(candidate):
+    """Return (cand_base, ko_target_on) for necessity test of candidate."""
     ko = dict(bn_dict_pruned); ko[candidate] = "0"
     if using_bonesis:
-        bn_ko    = bonesis.BooleanNetwork(ko)
-        ko_start = {gene: 1 for gene in ko}
-        ko_target = target_on_any(list(bn_ko.attractors(reachable_from=ko_start)))
+        ko_t = target_on_any(list(bonesis.BooleanNetwork(ko).attractors(
+            reachable_from={g: 1 for g in ko})))
         if candidate not in bn_dict_pruned:
             pd = dict(bn_dict_pruned); pd[candidate] = "1"
-            cand_base = target_on_any(list(bonesis.BooleanNetwork(pd).attractors(
+            cb = target_on_any(list(bonesis.BooleanNetwork(pd).attractors(
                 reachable_from={g: 1 for g in pd})))
         else:
-            cand_base = baseline_all_on_target_on
+            cb = baseline_perm_on
     else:
-        ko_states, _, _ = simulate(ko, all_ones_sub, candidate, 0)
-        ko_target = target_on_any(ko_states)
-        cand_base = baseline_all_on_target_on
-    if candidate in direct_activators:
-        if cand_base and not ko_target: necessary_activators.append(candidate)
-        elif cand_base and ko_target:   redundant_activators.append(candidate)
-    if candidate in direct_suppressors:
-        if not cand_base and ko_target: suppressor_releases.append(candidate)
-print(f"  Necessity test completed in {time.perf_counter()-t0:.3f}s")
+        ko_st, _, _ = simulate(ko, all_ones_sub, candidate, 0)
+        ko_t = target_on_any(ko_st)
+        cb   = baseline_perm_on
+    return cb, ko_t
+
+def _forced_target_on(candidate):
+    """Return target_on after forcing candidate to 1 from permissive background."""
+    forced = dict(bn_dict_pruned); forced[candidate] = "1"
+    if using_bonesis:
+        return target_on_any(list(bonesis.BooleanNetwork(forced).attractors(
+            reachable_from={g: 1 for g in forced})))
+    else:
+        fs, _, _ = simulate(forced, all_ones_sub, candidate, 1)
+        return target_on_any(fs)
+
+# Sufficiency: fix candidate to ON from all-zeros; does target turn ON?
+sufficient_activators = []
+print(f"\n  Sufficiency test: {len(sufficiency_candidates)} candidates (budget: {GENE_TEST_BUDGET}s)...")
+t0 = time.perf_counter()
+for candidate in sufficiency_candidates:
+    if time.perf_counter() - t_gene_tests > GENE_TEST_BUDGET:
+        print(f"    Stopped: budget reached after {time.perf_counter()-t_gene_tests:.0f}s")
+        budget_exceeded = True; break
+    states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
+    if target_on_any(states) and not target_in_dark:
+        sufficient_activators.append(candidate)
+print(f"  Sufficiency: {time.perf_counter()-t0:.3f}s")
+
+# Necessity (activators): KO from permissive background; does target turn OFF?
+necessary_activators, redundant_activators = [], []
+print(f"\n  Necessity test (activators): {len(necessity_act_candidates)} candidates (budget: {GENE_TEST_BUDGET}s)...")
+t0 = time.perf_counter()
+for candidate in necessity_act_candidates:
+    if time.perf_counter() - t_gene_tests > GENE_TEST_BUDGET:
+        print(f"    Stopped: budget reached after {time.perf_counter()-t_gene_tests:.0f}s")
+        budget_exceeded = True; break
+    cb, ko_t = _ko_target_on(candidate)
+    if cb and not ko_t: necessary_activators.append(candidate)
+    elif cb and ko_t:   redundant_activators.append(candidate)
+print(f"  Necessity (activators): {time.perf_counter()-t0:.3f}s")
+
+# Necessity (suppressors): force candidate to ON from permissive background;
+# does target turn OFF? Tests whether the gene's OFF state is necessary for
+# target to remain ON — the complement of the activator KO test.
+necessary_suppressors = []
+print(f"\n  Necessity test (suppressors): {len(necessity_sup_candidates)} candidates (budget: {GENE_TEST_BUDGET}s)...")
+t0 = time.perf_counter()
+for candidate in necessity_sup_candidates:
+    if time.perf_counter() - t_gene_tests > GENE_TEST_BUDGET:
+        print(f"    Stopped: budget reached after {time.perf_counter()-t_gene_tests:.0f}s")
+        budget_exceeded = True; break
+    forced_t = _forced_target_on(candidate)
+    if baseline_perm_on and not forced_t:
+        necessary_suppressors.append(candidate)
+print(f"  Necessity (suppressors): {time.perf_counter()-t0:.3f}s")
+
+# Suppressor release: when target is OFF in permissive, KO a candidate; does
+# target turn ON? Identifies suppressors whose removal de-represses the target.
+suppressor_releases = []
+if not target_in_perm:
+    print(f"\n  Suppressor release test: {len(suppressor_release_cands)} candidates (budget: {GENE_TEST_BUDGET}s)...")
+    t0 = time.perf_counter()
+    for candidate in suppressor_release_cands:
+        if time.perf_counter() - t_gene_tests > GENE_TEST_BUDGET:
+            print(f"    Stopped: budget reached after {time.perf_counter()-t_gene_tests:.0f}s")
+            budget_exceeded = True; break
+        cb, ko_t = _ko_target_on(candidate)
+        if not cb and ko_t:
+            suppressor_releases.append(candidate)
+    print(f"  Suppressor release: {time.perf_counter()-t0:.3f}s")
 
 def eval_rule_simple(rule, state):
     try: return 1 if eval(_to_py(rule), {"__builtins__": {}}, {g: bool(v) for g, v in state.items()}) else 0
@@ -263,34 +390,86 @@ sink_rules = {g: bn_dict[g] for g in sink_nodes}
 
 print("\n" + "="*70)
 print(f"  RUN METADATA")
-print(f"  Network  : filtered_networkL_normalized.csv")
-print(f"  Gene     : {target_gene}  [{cat(target_gene)}]")
-print(f"  Hops     : {MAX_HOPS}  (upstream)")
-print(f"  Solver   : {mode_str}")
-print(f"  Subgraph : {len(subgraph_nodes)} nodes  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
-print(f"  Run time : {time.strftime('%Y-%m-%d %H:%M:%S')}")
+print(f"  Network       : filtered_networkL_normalized.csv")
+print(f"  Target gene   : {target_gene}  [{cat(target_gene)}]")
+print(f"  Hops upstream : {MAX_HOPS}")
+print(f"  Attractor trace   : {trace_mode}")
+print(f"  Necessity / suff  : {nec_mode}")
+print(f"  Subgraph      : {len(subgraph_nodes)} nodes  |  pruned BN: {n_pruned}  |  sinks: {len(sink_nodes)}")
+print(f"  Update scheme : synchronous (all genes updated simultaneously each step)")
+print(f"  Boolean rules : activators combined with OR; suppressors combined with AND NOT")
+print(f"  Run time      : {time.strftime('%Y-%m-%d %H:%M:%S')}")
 print("\n" + "="*70)
-print(f"  BACKWARDS ANALYSIS — what regulates '{target_gene}'?")
-print(f"  {target_gene} — {MAX_HOPS} hop(s) upstream  |  mode: {mode_str}")
+print(f"  UPSTREAM REGULATORY ANALYSIS of '{target_gene}'")
+print(f"  {MAX_HOPS} hop(s) upstream  |  {len(all_upstream)} upstream nodes")
 
-print(f"\n  Step 1 — Direct activators of '{target_gene}': {len(direct_activators)}")
-for gene in direct_activators: print(f"    + {gene:40s}  {tags(gene)}")
-print(f"\n  Step 1 — Direct suppressors of '{target_gene}': {len(direct_suppressors)}")
-for gene in direct_suppressors: print(f"    - {gene:40s}  {tags(gene)}")
-
+# ── OUTPUT STEP 1: Structural direct regulators ───────────────────────────────
 print(f"\n{'='*70}")
-print(f"  Step 2 — Sufficient activators (sufficient alone to activate {target_gene} from silent network): {len(sufficient_activators)}")
+print(f"  Step 1 — Structural direct regulators of '{target_gene}' (1-hop edges in network):")
+print(f"    Direct activators  ({len(direct_activators)}):")
+for gene in direct_activators:  print(f"      + {gene:40s}  {tags(gene)}")
+print(f"    Direct suppressors ({len(direct_suppressors)}):")
+for gene in direct_suppressors: print(f"      - {gene:40s}  {tags(gene)}")
+
+# ── OUTPUT STEP 2: Attractor state trace ─────────────────────────────────────
+print(f"\n{'='*70}")
+print(f"  Step 2 — Attractor state comparison (dark vs permissive initial conditions)")
+print(f"  Upstream gene states are compared between two attractor conditions,")
+print(f"  mirroring the dark/permissive framing of the forward analysis.")
+print(f"  CORRELATION ONLY — causal evidence requires the per-gene tests in Steps 3–5.")
+print(f"    Dark (all-zeros): target={'ON' if target_in_dark else 'OFF'}  "
+      f"|  {_att_label(att_dark, dark_conv)}")
+print(f"    Perm (all-ones):  target={'ON' if target_in_perm else 'OFF'}  "
+      f"|  {_att_label(att_perm, perm_conv)}")
+print(f"\n  Stable-state differential by hop:")
+print(f"  {'Hop':>4}  {'Total':>6}  {'Perm-ON/Dark-OFF':>17}  {'Perm-OFF/Dark-ON':>17}")
+for h in all_hops:
+    genes_h = [g for g in all_upstream if hop_of.get(g) == h]
+    n_pod = len(hop_perm_on_dark_off[h])
+    n_opd = len(hop_perm_off_dark_on[h])
+    print(f"  {h:>4}  {len(genes_h):>6}  {n_pod:>17}  {n_opd:>17}")
+    for gene in sorted(hop_perm_on_dark_off[h])[:8]:
+        print(f"      + {gene:40s}  [stably ON in perm, OFF in dark]  {tags(gene)}")
+    if n_pod > 8:
+        print(f"      ... and {n_pod-8} more stably perm-ON/dark-OFF at hop {h}")
+    for gene in sorted(hop_perm_off_dark_on[h])[:5]:
+        print(f"      - {gene:40s}  [stably OFF in perm, ON in dark]  {tags(gene)}")
+    if n_opd > 5:
+        print(f"      ... and {n_opd-5} more stably perm-OFF/dark-ON at hop {h}")
+
+# ── OUTPUT STEP 3: Sufficient activators ─────────────────────────────────────
+print(f"\n{'='*70}")
+print(f"  Step 3 — Sufficient upstream activators")
+print(f"  Definition: forcing the gene to ON from the dark (all-zeros) initial condition")
+print(f"  causes '{target_gene}' to be ON in the resulting attractor, when it would otherwise")
+print(f"  be OFF. Tested on {len(sufficiency_candidates)} differential candidates.")
+if budget_exceeded: print(f"  NOTE: {GENE_TEST_BUDGET}s budget reached — results may be partial.")
+print(f"  Found: {len(sufficient_activators)}")
 for gene in sufficient_activators: print(f"    + {gene:40s}  {tags(gene)}")
 
+# ── OUTPUT STEP 4: Necessary activators ──────────────────────────────────────
 print(f"\n{'='*70}")
-print(f"  Step 3 — Necessity test (knockout from permissive background; method: {'BoNesis' if using_bonesis else 'synchronous simulation'})")
-print(f"\n  Necessary activators (knockout turns '{target_gene}' OFF): {len(necessary_activators)}")
-for gene in necessary_activators: print(f"    ! {gene:40s}  [required]  {tags(gene)}")
-print(f"\n  Redundant activators ('{target_gene}' stays ON without them): {len(redundant_activators)}")
-for gene in redundant_activators: print(f"    {gene:40s}  [dispensable]  {tags(gene)}")
-print(f"\n  Suppressors whose removal de-represses '{target_gene}': {len(suppressor_releases)}")
-for gene in suppressor_releases: print(f"    ~ {gene:40s}  [KO turns target ON]  {tags(gene)}")
+print(f"  Step 4 — Necessary upstream regulators (knockout from permissive background)")
+print(f"  Method: {nec_mode}")
+if budget_exceeded: print(f"  NOTE: {GENE_TEST_BUDGET}s budget reached — results may be partial.")
+print(f"\n  Necessary activators — KO turns '{target_gene}' OFF ({len(necessary_activators)}):")
+for gene in necessary_activators: print(f"    ! {gene:40s}  [required activator]  {tags(gene)}")
+print(f"\n  Redundant activators — '{target_gene}' stays ON after KO ({len(redundant_activators)}):")
+for gene in redundant_activators: print(f"    ~ {gene:40s}  [dispensable]  {tags(gene)}")
 
+# ── OUTPUT STEP 5: Suppressor tests ──────────────────────────────────────────
+print(f"\n{'='*70}")
+print(f"  Step 5 — Suppressor necessity and release")
+print(f"  Necessary suppressors: genes whose ABSENCE (stably OFF in permissive attractor)")
+print(f"  is required for '{target_gene}' to be ON. Tested by forcing the gene to ON;")
+print(f"  target turning OFF confirms the gene is a necessary upstream suppressor.")
+print(f"\n  Necessary suppressors — forced ON turns '{target_gene}' OFF ({len(necessary_suppressors)}):")
+for gene in necessary_suppressors: print(f"    ! {gene:40s}  [necessary suppressor]  {tags(gene)}")
+if suppressor_releases:
+    print(f"\n  Suppressor release — KO turns '{target_gene}' ON ({len(suppressor_releases)}):")
+    for gene in suppressor_releases: print(f"    ~ {gene:40s}  [suppressor release]  {tags(gene)}")
+
+# ── OUTPUT: SBM community modules ────────────────────────────────────────────
 if community:
     print(f"\n{'='*70}")
     comm_groups = {}
@@ -301,12 +480,13 @@ if community:
         for gene in sorted(members)[:8]: print(f"    {gene:40s}  {tags(gene)}")
         if len(members) > 8: print(f"    ... and {len(members)-8} more")
 
+# ── OUTPUT: Sink nodes (candidate master regulators) ─────────────────────────
 print(f"\n{'='*70}")
-print(f"  Sink nodes — upstream branches that do not reach '{target_gene}': {len(sink_nodes)}")
+print(f"  Sink nodes — upstream genes with no further upstream regulators in this subgraph")
+print(f"  ({len(sink_nodes)} nodes). These are candidate master regulators (no in-edges in model).")
 if sink_nodes:
-    sim_base, _, _ = simulate(bn_dict_pruned, all_ones_sub)
     for gene in sorted(sink_nodes):
-        val = eval_rule_simple(sink_rules[gene], sim_base[0])
+        val = eval_rule_simple(sink_rules[gene], att_perm[0])
         print(f"    {gene:40s}  permissive state: {'ON' if val else 'OFF':3s}  {tags(gene)}")
 
 print(f"\n  Total analysis time: {time.perf_counter() - t_total_start:.2f}s")
