@@ -1,0 +1,200 @@
+# Benchmark: bench_bw_MASTER_larger_bonesis.py
+# Gene: MYB46  |  Hops: 3  |  Mode: BoNesis
+# Generated: 2026-05-12 15:47:11
+  [time] Subgraph extraction: 0.005s
+
+======================================================================
+PHASE 2 — Upstream: MYB46, 3 hop(s)  |  132 nodes, 205 edges
+      85  gene
+      17  protein
+      15  mutant
+       4  metabolite
+       4  treatment
+       3  phenotype
+       2  protein complex
+       1  peptide
+       1  receptor
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 119  |  non-trivial: 2
+  Largest SCC (11 nodes):
+    EDS1                                      [mutant]
+    GBF1                                      [gene]
+    JAZ1                                      [gene]
+    MPK3                                      [gene]
+    PAD4                                      [gene]
+    YDA                                       [gene]
+    bin2                                      [gene]
+    hy5                                       [gene]
+    mkk4                                      [gene]
+    myc2                                      [gene]
+    ... and 1 more
+
+  Betweenness (0.000s) — top 10:
+    myc2                                      0.065048  [gene]
+    MPK3                                      0.045306  [gene]
+    PAD4                                      0.033284  [gene]
+    hy5                                       0.021609  [gene]
+    bin2                                      0.012531  [gene]
+    mpk6                                      0.010620  [gene]
+    MYB46                                     0.009751  [phenotype]
+    YDA                                       0.009084  [gene]
+    nst1                                      0.007285  [gene]
+    SND1                                      0.006851  [gene]
+
+  Running SBM...
+  SBM (0.01s) — 4 modules:
+    Module 48:   55 nodes  (34 gene, 10 protein, 5 mutant, 2 metabolite, 1 treatment, 1 peptide, 1 phenotype, 1 receptor)
+    Module 58:   38 nodes  (26 gene, 5 mutant, 3 treatment, 2 phenotype, 2 protein)
+    Module 34:   31 nodes  (19 gene, 4 mutant, 4 protein, 2 metabolite, 2 protein complex)
+    Module 99:    8 nodes  (6 gene, 1 protein, 1 mutant)
+  Regulated: 48  |  pruned: 48  |  sinks: 0
+  [time] Baseline simulations: 0.001s
+  NOTE: simulation finds ONE attractor per starting condition.
+  NOTE: target gene locked to 0 (dark) and 1 (perm) — same method as forward analysis.
+  Dark (target locked OFF): fixed point (conv)
+  Perm (target locked ON):  fixed point (conv)
+  Candidate pools: suff=107  nec-act=109  nec-sup=22
+  Sufficiency test: 107 candidates (budget: 899s)...
+  [time] Sufficiency: 0.034s
+  BoNesis necessity test: 109 act + 22 sup candidates (48 nodes — budget: 899s)...
+  [time] BoNesis necessity: 4.298s
+
+======================================================================
+  UPSTREAM REGULATORY ANALYSIS of 'MYB46'
+  3 hop(s)  |  BoNesis + synchronous simulation (48 nodes)
+  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
+  NOTE: simulation finds ONE attractor per starting condition.
+
+  Step 1 — Structural direct regulators (1-hop):
+    Activators: 9
+      + ERF041_VP16                               [gene]
+      + SND1                                      [gene]
+      + SND1_protein_s                            [protein]
+      + VND1                                      [gene]
+      + VND2                                      [gene]
+      + VND3                                      [gene]
+      + VND4                                      [gene]
+      + VND5                                      [gene]
+      + nst1                                      [gene]
+    Suppressors: 3
+      - Tdp1                                      [gene]
+      - miR395c_overexpression                    [mutant]
+      - mpk6                                      [gene]
+
+======================================================================
+  Step 2 — Attractor state comparison (dark vs permissive) [CORRELATION ONLY]
+    Dark: target=OFF  |  Perm: target=ON
+   Hop   Total   Perm-ON/Dark-OFF   Perm-OFF/Dark-ON
+     1      12                  8                  1
+      + ERF041_VP16                               [stably ON perm / OFF dark]  [gene]
+      + SND1_protein_s                            [stably ON perm / OFF dark]  [protein]
+      + VND1                                      [stably ON perm / OFF dark]  [gene]
+      + VND2                                      [stably ON perm / OFF dark]  [gene]
+      + VND3                                      [stably ON perm / OFF dark]  [gene]
+      + VND4                                      [stably ON perm / OFF dark]  [gene]
+      + VND5                                      [stably ON perm / OFF dark]  [gene]
+      + miR395c_overexpression                    [stably ON perm / OFF dark]  [mutant]
+      - Tdp1                                      [stably OFF perm / ON dark]  [gene]
+     2      51                 41                  5
+      + ADR                                       [stably ON perm / OFF dark]  [gene, hop 2]
+      + AGB1                                      [stably ON perm / OFF dark]  [protein, hop 2]
+      + ANP1                                      [stably ON perm / OFF dark]  [gene, hop 2]
+      + ANP2                                      [stably ON perm / OFF dark]  [gene, hop 2]
+      + ANP3                                      [stably ON perm / OFF dark]  [gene, hop 2]
+      + ATX1                                      [stably ON perm / OFF dark]  [gene, hop 2]
+      + A_thaliana_MKP1                           [stably ON perm / OFF dark]  [gene, hop 2]
+      + AtPTP1                                    [stably ON perm / OFF dark]  [gene, hop 2]
+      ... and 33 more at hop 2
+      - ATHB15                                    [stably OFF perm / ON dark]  [gene, hop 2]
+      - MYB44                                     [stably OFF perm / ON dark]  [gene, hop 2]
+      - TCP24                                     [stably OFF perm / ON dark]  [gene, hop 2]
+      - edr1                                      [stably OFF perm / ON dark]  [gene, hop 2]
+      - mapkkk5                                   [stably OFF perm / ON dark]  [gene, hop 2]
+     3      68                 58                  2
+      + AIB                                       [stably ON perm / OFF dark]  [metabolite, hop 3]
+      + AIK1                                      [stably ON perm / OFF dark]  [protein, hop 3]
+      + ANAC017                                   [stably ON perm / OFF dark]  [gene, hop 3]
+      + AtNACK1                                   [stably ON perm / OFF dark]  [gene, hop 3]
+      + AtRTP5                                    [stably ON perm / OFF dark]  [gene, hop 3]
+      + BBD1                                      [stably ON perm / OFF dark]  [gene, hop 3]
+      + BIN2_mediated_phosphorylation             [stably ON perm / OFF dark]  [treatment, hop 3]
+      + BSL1                                      [stably ON perm / OFF dark]  [protein, hop 3]
+      ... and 50 more at hop 3
+      - fls2                                      [stably OFF perm / ON dark]  [receptor, hop 3]
+      - vip1                                      [stably OFF perm / ON dark]  [gene, hop 3]
+
+======================================================================
+  Step 3 — Sufficient upstream activators:
+  0 found
+
+======================================================================
+  Step 4 — Necessary activators (KO from permissive, BoNesis):
+
+  Necessary activators (KO turns 'MYB46' OFF): 1
+    ! CPT                                       [required activator]  [treatment, hop 2]
+
+  Redundant activators ('MYB46' stays ON after KO): 0
+
+======================================================================
+  Step 5 — Suppressor necessity and release (BoNesis):
+
+  Necessary suppressors (forced ON turns 'MYB46' OFF): 0
+
+  Suppressor release (KO turns 'MYB46' ON): 0
+
+======================================================================
+  REGULATORY MODULES (SBM) — 4 modules
+
+  Module 48: 55 nodes
+    AGB1                                      [protein, hop 2]
+    AIK1                                      [protein, hop 3]
+    ANAC017                                   [gene, hop 3]
+    ANP1                                      [gene, hop 2]
+    ANP2                                      [gene, hop 2]
+    ANP3                                      [gene, hop 2]
+    ATMKK5                                    [gene, hop 2]
+    A_thaliana_MKP1                           [gene, hop 2]
+    ... and 47 more
+
+  Module 58: 38 nodes
+    ADR                                       [gene, hop 2]
+    ATHB15                                    [gene, hop 2]
+    ATX1                                      [gene, hop 2]
+    CPT                                       [treatment, hop 2]
+    ERF041_VP16                               [gene]
+    Ectopic_expression_of_AtMYB26             [gene, hop 2]
+    MIR166A                                   [gene, hop 3]
+    MIR166g                                   [gene, hop 3]
+    ... and 30 more
+
+  Module 34: 31 nodes
+    AIB                                       [metabolite, hop 3]
+    AtRTP5                                    [gene, hop 3]
+    BBD1                                      [gene, hop 3]
+    Dof2_1                                    [gene, hop 3]
+    EDS1                                      [mutant, hop 3]
+    EDS1_complex                              [protein complex, hop 3]
+    JAI3                                      [protein, hop 3]
+    JASMONATE_ZIM_domain_JAZ                  [protein, hop 3]
+    ... and 23 more
+
+  Module 99: 8 nodes
+    EIN3                                      [protein, hop 3]
+    GBF1                                      [gene, hop 3]
+    RAP2_3                                    [gene, hop 3]
+    erf8                                      [gene, hop 2]
+    hy5                                       [gene, hop 3]
+    myc2                                      [gene, hop 2]
+    oxi1                                      [gene, hop 2]
+    rtp5_3                                    [mutant, hop 3]
+
+======================================================================
+  Sink nodes — upstream genes with no further upstream regulators in subgraph
+  (0 nodes). Candidate master regulators (no in-edges in model).
+
+======================================================================
+  TIMING SUMMARY — MYB46, hop 3
+    Total hop time: 4.350s  |  step times logged above
+======================================================================

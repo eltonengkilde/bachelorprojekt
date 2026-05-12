@@ -1,104 +1,101 @@
 # Benchmark: bench_bw_MASTER_larger_bonesis.py
 # Gene: MYB46  |  Hops: 1  |  Mode: BoNesis
-# Generated: 2026-05-07 16:52:44
-  [time] Subgraph extraction: 0.145s
+# Generated: 2026-05-12 15:47:10
+  [time] Subgraph extraction: 0.005s
 
 ======================================================================
-PHASE 2 — Upstream: MYB46, 1 hop(s)  |  23 nodes, 34 edges
-      17  Gene
-       3  Pathway
-       2  Metabolite
-       1  Phenotype
+PHASE 2 — Upstream: MYB46, 1 hop(s)  |  13 nodes, 13 edges
+      10  gene
+       1  phenotype
+       1  mutant
+       1  protein
 
 ======================================================================
 PHASE 2.5 — Subgraph topology
-  SCCs: 19  |  non-trivial: 2
-  Largest SCC (4 nodes):
-    JA                                        [Metabolite]
-    MPK6                                      [Gene]
-    MYB46                                     [Gene]
-    secondary_cell_wall_SCW_biosynthesis      [Pathway]
+  SCCs: 13  |  non-trivial: 0
 
-  Betweenness (0.002s) — top 10:
-    MYB46                                     0.123377  [Gene]
-    JA                                        0.086580  [Metabolite]
-    SND1                                      0.010823  [Gene]
-    XND1                                      0.008658  [Gene]
+  Betweenness (0.000s) — top 10:
 
   Running SBM...
-  SBM (0.02s) — 1 modules:
-    Module 0:   23 nodes  (17 Gene, 3 Pathway, 2 Metabolite, 1 Phenotype)
-  Regulated: 10  |  pruned: 10  |  sinks: 0
+  SBM (0.00s) — 1 modules:
+    Module 0:   13 nodes  (10 gene, 1 phenotype, 1 protein, 1 mutant)
+  Regulated: 2  |  pruned: 2  |  sinks: 0
   [time] Baseline simulations: 0.000s
   NOTE: simulation finds ONE attractor per starting condition.
   NOTE: target gene locked to 0 (dark) and 1 (perm) — same method as forward analysis.
   Dark (target locked OFF): fixed point (conv)
   Perm (target locked ON):  fixed point (conv)
-  Candidate pools: suff=19  nec-act=19  nec-sup=3
-  Sufficiency test: 19 candidates (budget: 120s)...
-  [time] Sufficiency: 0.001s
-  BoNesis necessity test: 19 act + 3 sup candidates (10 nodes — budget: 120s)...
-  [time] BoNesis necessity: 0.163s
+  Candidate pools: suff=12  nec-act=12  nec-sup=0
+  Sufficiency test: 12 candidates (budget: 900s)...
+  [time] Sufficiency: 0.000s
+  BoNesis necessity test: 12 act + 0 sup candidates (2 nodes — budget: 900s)...
+  [time] BoNesis necessity: 0.074s
 
 ======================================================================
   UPSTREAM REGULATORY ANALYSIS of 'MYB46'
-  1 hop(s)  |  BoNesis + synchronous simulation (10 nodes)
+  1 hop(s)  |  BoNesis + synchronous simulation (2 nodes)
   Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
   NOTE: simulation finds ONE attractor per starting condition.
 
   Step 1 — Structural direct regulators (1-hop):
-    Activators: 18
-      + AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
-      + JA                                        [Metabolite]
-      + MYB32_MYB7_and_MYB4                       [Gene]
-      + NST1                                      [Gene]
-      + NST2                                      [Gene]
-      + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [Gene]
-      + PtrEPSP_TF                                [Gene]
-      + SND1                                      [Gene]
-      + SND2                                      [Gene]
-      + SND3                                      [Gene]
-      + SND4                                      [Gene]
-      + SND5                                      [Gene]
-      + VND6_and_VND7                             [Gene]
-      + VND7_induction                            [Pathway]
-      + VND_and_NST_proteins                      [Gene]
-      + methyl_jasmonate_MJA                      [Metabolite]
-      + nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076  [Gene]
-      + secondary_cell_wall_SCW_biosynthesis      [Pathway]
-    Suppressors: 4
-      - AN                                        [Phenotype]
-      - MPK6                                      [Gene]
-      - XND1                                      [Gene]
-      - stress_and_hormone_dependent_activation_of_MPK6  [Pathway]
+    Activators: 9
+      + ERF041_VP16                               [gene]
+      + SND1                                      [gene]
+      + SND1_protein_s                            [protein]
+      + VND1                                      [gene]
+      + VND2                                      [gene]
+      + VND3                                      [gene]
+      + VND4                                      [gene]
+      + VND5                                      [gene]
+      + nst1                                      [gene]
+    Suppressors: 3
+      - Tdp1                                      [gene]
+      - miR395c_overexpression                    [mutant]
+      - mpk6                                      [gene]
 
 ======================================================================
   Step 2 — Attractor state comparison (dark vs permissive) [CORRELATION ONLY]
     Dark: target=OFF  |  Perm: target=ON
    Hop   Total   Perm-ON/Dark-OFF   Perm-OFF/Dark-ON
-     1      22                 19                  2
-      + AN                                        [stably ON perm / OFF dark]  [Phenotype]
-      + AtMYB4_AtMYB7_and_AtMYB32                 [stably ON perm / OFF dark]  [Gene]
-      + JA                                        [stably ON perm / OFF dark]  [Metabolite]
-      + MPK6                                      [stably ON perm / OFF dark]  [Gene]
-      + MYB32_MYB7_and_MYB4                       [stably ON perm / OFF dark]  [Gene]
-      + NST2                                      [stably ON perm / OFF dark]  [Gene]
-      + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [stably ON perm / OFF dark]  [Gene]
-      + PtrEPSP_TF                                [stably ON perm / OFF dark]  [Gene]
-      ... and 11 more at hop 1
-      - NST1                                      [stably OFF perm / ON dark]  [Gene]
-      - SND2                                      [stably OFF perm / ON dark]  [Gene]
+     1      12                 12                  0
+      + ERF041_VP16                               [stably ON perm / OFF dark]  [gene]
+      + SND1                                      [stably ON perm / OFF dark]  [gene]
+      + SND1_protein_s                            [stably ON perm / OFF dark]  [protein]
+      + Tdp1                                      [stably ON perm / OFF dark]  [gene]
+      + VND1                                      [stably ON perm / OFF dark]  [gene]
+      + VND2                                      [stably ON perm / OFF dark]  [gene]
+      + VND3                                      [stably ON perm / OFF dark]  [gene]
+      + VND4                                      [stably ON perm / OFF dark]  [gene]
+      ... and 4 more at hop 1
 
 ======================================================================
   Step 3 — Sufficient upstream activators:
-  0 found
+  9 found
+    + ERF041_VP16                               [gene]
+    + SND1                                      [gene]
+    + SND1_protein_s                            [protein]
+    + VND1                                      [gene]
+    + VND2                                      [gene]
+    + VND3                                      [gene]
+    + VND4                                      [gene]
+    + VND5                                      [gene]
+    + nst1                                      [gene]
 
 ======================================================================
   Step 4 — Necessary activators (KO from permissive, BoNesis):
 
   Necessary activators (KO turns 'MYB46' OFF): 0
 
-  Redundant activators ('MYB46' stays ON after KO): 0
+  Redundant activators ('MYB46' stays ON after KO): 9
+    ~ ERF041_VP16                               [dispensable]  [gene]
+    ~ SND1                                      [dispensable]  [gene]
+    ~ SND1_protein_s                            [dispensable]  [protein]
+    ~ VND1                                      [dispensable]  [gene]
+    ~ VND2                                      [dispensable]  [gene]
+    ~ VND3                                      [dispensable]  [gene]
+    ~ VND4                                      [dispensable]  [gene]
+    ~ VND5                                      [dispensable]  [gene]
+    ~ nst1                                      [dispensable]  [gene]
 
 ======================================================================
   Step 5 — Suppressor necessity and release (BoNesis):
@@ -110,16 +107,16 @@ PHASE 2.5 — Subgraph topology
 ======================================================================
   REGULATORY MODULES (SBM) — 1 modules
 
-  Module 0: 23 nodes
-    AN                                        [Phenotype]
-    AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
-    JA                                        [Metabolite]
-    MPK6                                      [Gene]
-    MYB32_MYB7_and_MYB4                       [Gene]
-    MYB46                                     [Gene]
-    NST1                                      [Gene]
-    NST2                                      [Gene]
-    ... and 15 more
+  Module 0: 13 nodes
+    ERF041_VP16                               [gene]
+    MYB46                                     [phenotype]
+    SND1                                      [gene]
+    SND1_protein_s                            [protein]
+    Tdp1                                      [gene]
+    VND1                                      [gene]
+    VND2                                      [gene]
+    VND3                                      [gene]
+    ... and 5 more
 
 ======================================================================
   Sink nodes — upstream genes with no further upstream regulators in subgraph
@@ -127,5 +124,5 @@ PHASE 2.5 — Subgraph topology
 
 ======================================================================
   TIMING SUMMARY — MYB46, hop 1
-    Total hop time: 0.395s  |  step times logged above
+    Total hop time: 0.086s  |  step times logged above
 ======================================================================

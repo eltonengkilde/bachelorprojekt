@@ -66,9 +66,8 @@ def eval_rule_simple(rule, state):
 # ── ONE-TIME DATA LOAD ─────────────────────────────────────────────────────────
 print(f"Loading: {SCRIPT_NAME}")
 activators, suppressors, edges_act, edges_sup, all_nodes, gene_category = {}, {}, [], [], set(), {}
-with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_normalized.csv"), newline="", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_GT_normalized.csv"), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
-        if row["source_category"] not in CATEGORIES_TO_KEEP or row["target_category"] not in CATEGORIES_TO_KEEP: continue
         rel = row["relationship_category"]
         if rel not in (ACT_REL, SUP_REL): continue
         s, t = clean_name(row["source"]), clean_name(row["target"])
@@ -250,7 +249,7 @@ while True:
                   f"  nec-sup={len(necessity_sup_candidates)}")
 
             # Cap per-gene budget at 120 s so one large hop cannot consume the whole run.
-            PER_HOP_BUDGET = min(120, max(0, (MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)) * 0.5))
+            PER_HOP_BUDGET = max(0, (MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)) * 0.5)
             t_gene_tests = time.perf_counter()
             budget_exceeded = False
 
