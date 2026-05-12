@@ -1,0 +1,153 @@
+# Benchmark: bench_bw_MASTER_larger_simulation.py
+# Gene: MYB46  |  Hops: 1  |  Mode: Synchronous simulation
+# Generated: 2026-05-07 13:16:27
+  [time] Subgraph extraction: 0.145s
+
+======================================================================
+PHASE 2 — Upstream: MYB46, 1 hop(s)  |  23 nodes, 34 edges
+      17  Gene
+       3  Pathway
+       2  Metabolite
+       1  Phenotype
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 19  |  non-trivial: 2
+  Largest SCC (4 nodes):
+    JA                                        [Metabolite]
+    MPK6                                      [Gene]
+    MYB46                                     [Gene]
+    secondary_cell_wall_SCW_biosynthesis      [Pathway]
+
+  Betweenness (0.000s) — top 10:
+    MYB46                                     0.123377  [Gene]
+    JA                                        0.086580  [Metabolite]
+    SND1                                      0.010823  [Gene]
+    XND1                                      0.008658  [Gene]
+
+  Running SBM...
+  SBM (0.00s) — 1 modules:
+    Module 0:   23 nodes  (17 Gene, 3 Pathway, 2 Metabolite, 1 Phenotype)
+  Regulated: 10  |  pruned: 10  |  sinks: 0
+  [time] Baseline simulations: 0.000s
+  NOTE: simulation finds ONE attractor per starting condition.
+  NOTE: target gene locked to 0 (dark) and 1 (perm) — same method as forward analysis.
+  Dark (target locked OFF): fixed point (conv)
+  Perm (target locked ON):  fixed point (conv)
+  Candidate pools: suff=19  nec-act=19  nec-sup=3
+  Sufficiency test: 19 candidates (budget: 120s)...
+  [time] Sufficiency: 0.005s
+  Necessity (activators): 19 candidates (budget: 120s)...
+  [time] Necessity (act): 0.001s
+  Necessity (suppressors): 3 candidates (budget: 120s)...
+  [time] Necessity (sup): 0.000s
+
+======================================================================
+  UPSTREAM REGULATORY ANALYSIS of 'MYB46'
+  1 hop(s)  |  synchronous simulation (10 nodes)
+  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
+  NOTE: simulation finds ONE attractor per starting condition.
+
+  Step 1 — Structural direct regulators (1-hop):
+    Activators: 18
+      + AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
+      + JA                                        [Metabolite]
+      + MYB32_MYB7_and_MYB4                       [Gene]
+      + NST1                                      [Gene]
+      + NST2                                      [Gene]
+      + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [Gene]
+      + PtrEPSP_TF                                [Gene]
+      + SND1                                      [Gene]
+      + SND2                                      [Gene]
+      + SND3                                      [Gene]
+      + SND4                                      [Gene]
+      + SND5                                      [Gene]
+      + VND6_and_VND7                             [Gene]
+      + VND7_induction                            [Pathway]
+      + VND_and_NST_proteins                      [Gene]
+      + methyl_jasmonate_MJA                      [Metabolite]
+      + nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076  [Gene]
+      + secondary_cell_wall_SCW_biosynthesis      [Pathway]
+    Suppressors: 4
+      - AN                                        [Phenotype]
+      - MPK6                                      [Gene]
+      - XND1                                      [Gene]
+      - stress_and_hormone_dependent_activation_of_MPK6  [Pathway]
+
+======================================================================
+  Step 2 — Attractor state comparison (dark vs permissive) [CORRELATION ONLY]
+    Dark: target=OFF  |  Perm: target=ON
+   Hop   Total   Perm-ON/Dark-OFF   Perm-OFF/Dark-ON
+     1      22                 19                  2
+      + AN                                        [stably ON perm / OFF dark]  [Phenotype]
+      + AtMYB4_AtMYB7_and_AtMYB32                 [stably ON perm / OFF dark]  [Gene]
+      + JA                                        [stably ON perm / OFF dark]  [Metabolite]
+      + MPK6                                      [stably ON perm / OFF dark]  [Gene]
+      + MYB32_MYB7_and_MYB4                       [stably ON perm / OFF dark]  [Gene]
+      + NST2                                      [stably ON perm / OFF dark]  [Gene]
+      + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [stably ON perm / OFF dark]  [Gene]
+      + PtrEPSP_TF                                [stably ON perm / OFF dark]  [Gene]
+      ... and 11 more at hop 1
+      - NST1                                      [stably OFF perm / ON dark]  [Gene]
+      - SND2                                      [stably OFF perm / ON dark]  [Gene]
+
+======================================================================
+  Step 3 — Sufficient upstream activators:
+  0 found
+
+======================================================================
+  Step 4 — Necessity test (synchronous simulation):
+
+  Necessary activators (KO turns 'MYB46' OFF): 19
+    ! AN                                        [required activator]  [Phenotype]
+    ! AtMYB4_AtMYB7_and_AtMYB32                 [required activator]  [Gene]
+    ! JA                                        [required activator]  [Metabolite]
+    ! MPK6                                      [required activator]  [Gene]
+    ! MYB32_MYB7_and_MYB4                       [required activator]  [Gene]
+    ! NST2                                      [required activator]  [Gene]
+    ! NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [required activator]  [Gene]
+    ! PtrEPSP_TF                                [required activator]  [Gene]
+    ! SND1                                      [required activator]  [Gene]
+    ! SND4                                      [required activator]  [Gene]
+    ! SND5                                      [required activator]  [Gene]
+    ! VND6_and_VND7                             [required activator]  [Gene]
+    ! VND7_induction                            [required activator]  [Pathway]
+    ! VND_and_NST_proteins                      [required activator]  [Gene]
+    ! XND1                                      [required activator]  [Gene]
+    ! methyl_jasmonate_MJA                      [required activator]  [Metabolite]
+    ! nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076  [required activator]  [Gene]
+    ! secondary_cell_wall_SCW_biosynthesis      [required activator]  [Pathway]
+    ! stress_and_hormone_dependent_activation_of_MPK6  [required activator]  [Pathway]
+
+  Redundant activators ('MYB46' stays ON without them): 0
+
+======================================================================
+  Step 5 — Necessary suppressors (forced ON turns 'MYB46' OFF): 3
+    ! NST1                                      [necessary suppressor]  [Gene]
+    ! SND2                                      [necessary suppressor]  [Gene]
+    ! SND3                                      [necessary suppressor]  [Gene]
+
+  Suppressor release (KO turns 'MYB46' ON): 0
+
+======================================================================
+  REGULATORY MODULES (SBM) — 1 modules
+
+  Module 0: 23 nodes
+    AN                                        [Phenotype]
+    AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
+    JA                                        [Metabolite]
+    MPK6                                      [Gene]
+    MYB32_MYB7_and_MYB4                       [Gene]
+    MYB46                                     [Gene]
+    NST1                                      [Gene]
+    NST2                                      [Gene]
+    ... and 15 more
+
+======================================================================
+  Sink nodes — upstream genes with no further upstream regulators in subgraph
+  (0 nodes). Candidate master regulators (no in-edges in model).
+
+======================================================================
+  TIMING SUMMARY — MYB46, hop 1
+    Total hop time: 0.209s  |  step times logged above
+======================================================================

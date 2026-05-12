@@ -1,7 +1,7 @@
 # Benchmark: bench_fw_MASTER_larger_simulation.py
 # Gene: MYB46  |  Hops: 2  |  Mode: Synchronous simulation
-# Generated: 2026-05-06 11:06:22
-  [time] Subgraph extraction: 0.069s
+# Generated: 2026-05-07 12:45:54
+  [time] Subgraph extraction: 0.070s
 
 ======================================================================
 PHASE 2 — MYB46, 2 hop(s)  |  1379 nodes, 3698 edges
@@ -39,25 +39,28 @@ PHASE 2.5 — Subgraph topology
     cell_division                             0.009794  [Pathway]
 
   Running SBM...
-  SBM (0.65s) — 6 modules:
-    Module 911:  761 nodes  (420 Pathway, 170 Phenotype, 112 Gene, 59 Metabolite)
-    Module 464:  272 nodes  (154 Pathway, 61 Gene, 45 Phenotype, 12 Metabolite)
-    Module 206:  181 nodes  (76 Pathway, 70 Gene, 20 Metabolite, 15 Phenotype)
-    Module 854:  151 nodes  (82 Pathway, 31 Phenotype, 27 Gene, 11 Metabolite)
-    Module 240:   13 nodes  (8 Metabolite, 3 Pathway, 1 Gene, 1 Phenotype)
+  SBM (0.62s) — 11 modules:
+    Module 105:  761 nodes  (420 Pathway, 170 Phenotype, 111 Gene, 60 Metabolite)
+    Module 296:  253 nodes  (143 Pathway, 53 Gene, 47 Phenotype, 10 Metabolite)
+    Module 1161:  155 nodes  (68 Pathway, 62 Gene, 14 Metabolite, 11 Phenotype)
+    Module 540:   61 nodes  (34 Pathway, 13 Phenotype, 8 Metabolite, 6 Gene)
+    Module 239:   42 nodes  (19 Gene, 18 Pathway, 5 Phenotype)
   Regulated: 1379  |  pruned: 315  |  sinks: 1064
   Running synchronous simulation (315 nodes)...
   dark rest: cycle/6 (conv)  pert: cycle/4 (conv)
   perm rest: cycle/6 (conv)  pert: cycle/4 (conv)
-  [time] Synchronous simulation: 0.017s
+  [time] Synchronous simulation: 0.018s
   NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.
-  [time] Sink recovery: 1.060s
+  [time] Sink recovery: 1.079s
 
-  Running necessity test on 32 direct target(s)...
-  Necessity test completed in 0.135s
+  Running necessity test on 32 direct target(s) (synchronous simulation)...
+  Necessity test completed in 7.036s
 
 ======================================================================
-  MYB46 — 2 hop(s)  |  mode: synchronous simulation
+  MYB46 — 2 hop(s)  |  synchronous simulation (one attractor per condition)
+  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
+  Necessity solver: synchronous simulation
+  NOTE: simulation finds ONE attractor per condition — use BoNesis benchmark for full landscape.
 
   Direct targets: 32
     AtC3H14_At1g66810                         [Gene]
@@ -982,31 +985,43 @@ PHASE 2.5 — Subgraph topology
     - transcriptional_function_of_MBW_complexes  [Pathway, sink]
 
 ======================================================================
-  NECESSITY TEST  (knockout method: synchronous simulation from permissive background)
-    Necessary: 3
+  NECESSITY TEST  (method: synchronous simulation from permissive background)
+  Definition: a direct target is necessary if knocking it out causes at
+  least one permissive-activated gene to lose stable-ON status.
+    Necessary  (11):
+    ! CCOAOMT1                                  [Gene]
+        loss of stable activation: degradation_of_bHLH010_bHLH089, nuclear_export_of_bHLH010_bHLH089
+    ! CCR                                       [Pathway]
+        loss of stable activation: unmethylated_lignins
+    ! CESA7                                     [Gene]
+        loss of stable activation: stem_development_and_cellulose_synthesis
+    ! F5H1                                      [Gene]
+        loss of stable activation: NST
     ! HCT                                       [Gene]
-        causes loss of: accumulation_of_flavonoids
+        loss of stable activation: accumulation_of_flavonoids, decisive_step_in_lignin_biosynthesis, diversification_of_pathotypes, hydrolysis
+    ! KNAT7                                     [Gene]
+        loss of stable activation: FRA8, IRX10, IRX14, IRX14L, IRX7_FRA8, MUCILAGE_MODIFIED_5_MUCILAGE_RELATED_21_MUM5_MUCI21, MUM4, MUM5_MUCI21, biosynthesis_of_mucilage_xylan, irx9, vascular_and_fiber_differentiation, xylan_biosynthesis, xylan_biosynthesis_in_seed_coat_mucilage, xylan_biosynthetic_genes_IRX10
     ! MYB32                                     [Gene]
-        causes loss of: caffeic_acid_O_methyltransferase
+        loss of stable activation: caffeic_acid_O_methyltransferase
     ! MYB4                                      [Gene]
-        causes loss of: flg22
-    Dispensable: 29
+        loss of stable activation: MT1C, PCS1, Petal2_stage, changes_under_normal_growth_conditions, flg22, genes_involved_in_lignin_biosynthesis_in_loblolly_pine, photomorphogenic_growth_at_various_wavelengths_of_light, proteins_involved_in_flavonoid_biosynthesis, sinapate_ester_accumulation
+    ! MYB63                                     [Gene]
+        loss of stable activation: DIR19, lignin_biosynthetic_pathway
+    ! secondary_cell_wall_synthesis             [Pathway]
+        loss of stable activation: formation_of_xylem_vessels
+    ! transcriptional_cascade                   [Pathway]
+        loss of stable activation: ABA_signal, differential_gene_expression, embryo_patterning
+    Dispensable (21):
       AtC3H14_At1g66810                         [Gene]
       C3H1                                      [Gene, sink]
       C4H                                       [Gene]
       CAD6                                      [Gene, sink]
-      CCOAOMT1                                  [Gene]
-      CCR                                       [Pathway]
       CCoAOMT                                   [Gene]
-      CESA7                                     [Gene]
       CesA4                                     [Gene]
       CesA8                                     [Gene]
-      F5H1                                      [Gene]
       JA                                        [Metabolite]
-      KNAT7                                     [Gene]
       LAC10                                     [Gene, sink]
       MYB58                                     [Gene]
-      MYB63                                     [Gene]
       MYB7                                      [Gene]
       PAL1                                      [Gene]
       PAL4                                      [Gene, sink]
@@ -1015,15 +1030,15 @@ PHASE 2.5 — Subgraph topology
       g4CL1                                     [Gene, sink]
       phenylpropanoid                           [Pathway]
       resistance_to_fungal_necrotrophs          [Phenotype, sink]
-      secondary_cell_wall_synthesis             [Pathway]
       secondary_wall_biosynthesis               [Pathway, sink]
       secondary_wall_synthesis                  [Pathway, sink]
-      transcriptional_cascade                   [Pathway]
       xylogenesis                               [Pathway]
 
 ======================================================================
-  Context-dependent: 209 genes, 5 decision(s)
-  Decision 1:
+  Context-dependent genes: 209 gene(s) in 10 co-varying pattern(s)
+  (Different stable values across 4 perturbed attractor(s); groups share identical ON/OFF patterns.)
+
+  Pattern 1 — stably ON in attractor(s) [4]  |  stably OFF in [1, 2, 3]
     AAL_toxin_induced_PCD                     [Pathway, sink]
     AAL_toxin_induced_cell_death              [Pathway, sink]
     DELLA_stabilization                       [Pathway, sink]
@@ -1033,7 +1048,6 @@ PHASE 2.5 — Subgraph topology
     Pin2                                      [Pathway]
     activation_of_defenses_against_necrotrophic_pathogens_and_herbivorous_insects  [Pathway, sink]
     biosynthesis_of_taxol                     [Pathway, sink]
-    cell_wall_remodeling_genes                [Gene, sink]
     certain_plant_pathogen_interactions       [Pathway, sink]
     defences_against_herbivores               [Pathway, sink]
     defences_against_necrotrophic_pathogens   [Pathway, sink]
@@ -1044,101 +1058,73 @@ PHASE 2.5 — Subgraph topology
     interaction_between_rose_and_B_cinerea    [Pathway, sink]
     pathogen_responsive_gene_expression       [Pathway, sink]
     plant_defense_responses_against_necrotrophic_pathogens  [Pathway, sink]
-  Decision 2:
+
+  Pattern 2 — stably ON in attractor(s) [3]  |  stably OFF in [1, 2, 4]
+    AM_colonization                           [Pathway]
+    PAL1                                      [Gene]
+    defense_response                          [Pathway]
+    disease_resistance                        [Phenotype]
+    leaves_in_N_metabolism_processes          [Pathway, sink]
+    plant_defense_responses                   [Pathway]
+    plant_immunity                            [Pathway]
+
+  Pattern 3 — stably ON in attractor(s) [2]  |  stably OFF in [1, 3, 4]
     ABA_signaling                             [Pathway]
     GA_signaling                              [Pathway]
-    MYB59                                     [Gene]
-    OsEDR1                                    [Gene]
-    OsTZF1                                    [Gene]
-    PAD4                                      [Gene]
     PAL4                                      [Gene, sink]
-    POD                                       [Gene]
-    Pal                                       [Gene]
     SbWRKY50                                  [Gene]
-    WRKY48                                    [Gene]
-    anthocyanidin_synthesis                   [Pathway, sink]
     auxin_response                            [Pathway]
-    developmental_senescence                  [Pathway]
     elevated_CO2_induced_stomatal_closure     [Pathway, sink]
-    ethylene_ET_production                    [Pathway]
     ethylene_biosynthesis                     [Pathway]
     ethylene_production                       [Pathway]
     gibberellin_GA_signaling                  [Pathway]
     growth_inhibition                         [Phenotype]
     hypocotyl_elongation                      [Phenotype]
-    isoliquiritigenin                         [Metabolite, sink]
-    licochalcone_A                            [Metabolite, sink]
-    liquiritigenin                            [Metabolite, sink]
-    liquiritin                                [Metabolite, sink]
     response_to_abiotic_stress                [Pathway, sink]
     root_development                          [Pathway, sink]
     white_berried_variants                    [Phenotype, sink]
-  Decision 3:
+
+  Pattern 4 — stably ON in attractor(s) [2, 4]  |  stably OFF in [1, 3]
     ABI3                                      [Pathway]
     ABI4                                      [Gene]
-    APETALA2                                  [Gene, sink]
     ASA1                                      [Gene, sink]
-    ASB1                                      [Gene]
     BR                                        [Metabolite]
     CBF                                       [Gene, sink]
     DWF4                                      [Pathway]
-    EIL1                                      [Pathway]
     ERF1                                      [Gene]
     G2_M_transition                           [Pathway, sink]
     GA                                        [Metabolite]
     GA2ox7                                    [Gene, sink]
     GA_inactivation                           [Pathway, sink]
-    MIA_biosynthesis                          [Pathway]
-    MPK1                                      [Gene]
-    MYB21                                     [Gene]
-    MYB24                                     [Gene]
-    MYB57                                     [Gene]
-    NRT1_5                                    [Gene]
     PIN1                                      [Gene]
     PIN3                                      [Gene]
     PN                                        [Phenotype, sink]
-    Populus_Laccaria_bicolor_ectomycorrhizas  [Pathway, sink]
     QC_division                               [Pathway, sink]
-    RAP2_3                                    [Gene]
-    RGL3                                      [Gene]
     SA_accumulation                           [Pathway]
     SOD                                       [Gene]
     TPS11                                     [Gene, sink]
     TPS21                                     [Gene, sink]
     VvERF1B                                   [Gene, sink]
-    abscission                                [Pathway]
     abscission_after_fertilization            [Pathway, sink]
-    adventitious_root_formation               [Pathway]
     ajmalicine                                [Metabolite, sink]
-    amino_acids                               [Metabolite]
     anthocyanin_accumulation                  [Pathway]
-    anthocyanin_synthesis                     [Pathway, sink]
-    antimicrobial_metabolites                 [Metabolite]
-    antioxidant_defenses                      [Pathway]
     antioxidant_enzyme                        [Pathway, sink]
-    antioxidant_systems                       [Pathway]
     ascorbate_glutathione_cycle               [Pathway, sink]
     auxin_biosynthesis                        [Pathway]
     blast_resistance                          [Phenotype, sink]
     bud_growth                                [Pathway, sink]
-    camalexin_biosynthesis                    [Pathway]
     carotenoid_metabolism                     [Pathway, sink]
     citrus_abscission                         [Pathway, sink]
     cold_resistance                           [Phenotype, sink]
-    cold_tolerance                            [Phenotype, sink]
     cotyledon_opening                         [Pathway, sink]
     de_novo_root_organogenesis                [Pathway, sink]
-    defence                                   [Pathway]
     degreening                                [Phenotype, sink]
-    ectomycorrhizal_formation                 [Pathway, sink]
     ethylene                                  [Metabolite]
     ethylene_response                         [Pathway, sink]
     exaggerated_apical_hook                   [Phenotype, sink]
     fiber_development                         [Pathway, sink]
-    fit                                       [Gene]
     fruit_coloration                          [Phenotype, sink]
     fruit_ripening_process                    [Pathway, sink]
-    gene                                      [Pathway]
     growth_processes                          [Pathway, sink]
     heavy_metal_toxicity                      [Phenotype, sink]
     hook_formation                            [Pathway, sink]
@@ -1147,51 +1133,29 @@ PHASE 2.5 — Subgraph topology
     latex_production                          [Pathway, sink]
     lignin_accumulation                       [Phenotype]
     mesocotyl_elongation                      [Phenotype, sink]
-    nectar_secretion                          [Pathway, sink]
     no                                        [Metabolite]
     onset_of_leaf_senescence                  [Pathway, sink]
     opening_and_closure_of_flowers            [Pathway, sink]
     pathogen_response                         [Pathway, sink]
     phi_thickening_induction                  [Pathway, sink]
-    plant_cold_tolerance                      [Phenotype, sink]
     plant_defense_response                    [Pathway, sink]
     plant_drought_tolerance                   [Phenotype, sink]
     plant_leaf_senescence                     [Pathway, sink]
-    plant_resistance_to_Botrytis_cinerea      [Phenotype, sink]
     plant_salt_tolerance                      [Phenotype, sink]
-    premature_senescence                      [Phenotype]
-    proline                                   [Metabolite]
     resistance_to_Botrytis_cinerea            [Phenotype, sink]
-    root_hair_formation                       [Pathway]
     root_meristem                             [Pathway]
     root_regeneration                         [Pathway, sink]
     salicylic_acid_SA_signaling               [Pathway]
-    salt_tolerance                            [Phenotype, sink]
     secondary_cell_wall_growth                [Pathway, sink]
     secondary_growth                          [Pathway, sink]
-    shade_avoidance                           [Phenotype]
-    skotomorphogenesis                        [Pathway]
     stem_elongation                           [Phenotype]
     stomatal_closure                          [Pathway]
-    stomatal_development_in_cotyledons_and_leaves  [Pathway, sink]
-    sugars                                    [Metabolite]
     trichome_initiation                       [Pathway, sink]
     tuber_formation                           [Pathway, sink]
     volatile_emission                         [Pathway, sink]
     wound_responses                           [Phenotype, sink]
-  Decision 4:
-    AM_colonization                           [Pathway]
-    BR_signaling                              [Pathway]
-    PAL1                                      [Gene]
-    defense_response                          [Pathway]
-    disease_resistance                        [Phenotype]
-    leaves_in_N_metabolism_processes          [Pathway, sink]
-    plant_defense_responses                   [Pathway]
-    plant_immunity                            [Pathway]
-    salicylic_acid_SA_accumulation            [Pathway]
-    stone_cell_formation_and_lignin_content   [Phenotype, sink]
-    thermotolerance                           [Phenotype, sink]
-  Decision 5:
+
+  Pattern 5 — stably ON in attractor(s) [2, 3, 4]  |  stably OFF in [1]
     Bph9_Bph14_Bph26_and_Bph29_mediated_resistance  [Pathway, sink]
     Ca2_increases                             [Phenotype, sink]
     EL                                        [Phenotype, sink]
@@ -1202,7 +1166,6 @@ PHASE 2.5 — Subgraph topology
     ROS_wave                                  [Phenotype, sink]
     ROXY18                                    [Gene, sink]
     SA                                        [Metabolite]
-    TuMV_infection                            [Phenotype, sink]
     age_related_expression_of_PR1_proteins    [Pathway, sink]
     aliphatic_glucosinolate_accumulation      [Phenotype, sink]
     artemisinin_content                       [Phenotype, sink]
@@ -1214,11 +1177,8 @@ PHASE 2.5 — Subgraph topology
     defence_mechanisms                        [Pathway, sink]
     defence_priming                           [Pathway, sink]
     defense_signaling                         [Pathway, sink]
-    detrimental_impact_on_chloroplast_ultrastructure  [Phenotype, sink]
     disease_response_to_necrotrophic_fungal_pathogens  [Pathway, sink]
     downstream_defence_responses              [Pathway, sink]
-    each_other                                [Pathway, sink]
-    female_nematode_development               [Pathway, sink]
     herbivore_associated_molecular_patterns_and_microbe_associated_molecular_patterns  [Metabolite, sink]
     indolic_glucosinolate_accumulation        [Pathway, sink]
     inducible_defences_in_response_to_herbivore_and_pathogen_attack  [Pathway, sink]
@@ -1229,17 +1189,86 @@ PHASE 2.5 — Subgraph topology
     plant_senescence                          [Pathway, sink]
     promotion_of_leaf_senescence              [Pathway, sink]
     reactive_oxygen_species_ROS_wave          [Pathway, sink]
-    reproduction                              [Pathway]
     salt_tolerance_in_plants                  [Phenotype, sink]
     salvianolic_acid_SalA_biosynthesis        [Pathway, sink]
     specific_healing_and_defence_responses    [Phenotype, sink]
     tolerance_to_abiotic_stress               [Phenotype, sink]
     tolerance_to_biotic_stress                [Phenotype, sink]
     various_regulatory_pathways               [Pathway, sink]
+
+  Pattern 6 — stably ON in attractor(s) [1]  |  stably OFF in [2, 3, 4]
+    TuMV_infection                            [Phenotype, sink]
+    detrimental_impact_on_chloroplast_ultrastructure  [Phenotype, sink]
+    each_other                                [Pathway, sink]
+    female_nematode_development               [Pathway, sink]
+    reproduction                              [Pathway]
     vegetative_growth                         [Pathway, sink]
 
+  Pattern 7 — stably ON in attractor(s) [1, 3]  |  stably OFF in [2, 4]
+    APETALA2                                  [Gene, sink]
+    ASB1                                      [Gene]
+    EIL1                                      [Pathway]
+    MIA_biosynthesis                          [Pathway]
+    MPK1                                      [Gene]
+    MYB21                                     [Gene]
+    MYB24                                     [Gene]
+    MYB57                                     [Gene]
+    NRT1_5                                    [Gene]
+    Populus_Laccaria_bicolor_ectomycorrhizas  [Pathway, sink]
+    RAP2_3                                    [Gene]
+    RGL3                                      [Gene]
+    abscission                                [Pathway]
+    adventitious_root_formation               [Pathway]
+    amino_acids                               [Metabolite]
+    anthocyanin_synthesis                     [Pathway, sink]
+    antimicrobial_metabolites                 [Metabolite]
+    antioxidant_defenses                      [Pathway]
+    antioxidant_systems                       [Pathway]
+    camalexin_biosynthesis                    [Pathway]
+    cold_tolerance                            [Phenotype, sink]
+    defence                                   [Pathway]
+    ectomycorrhizal_formation                 [Pathway, sink]
+    fit                                       [Gene]
+    gene                                      [Pathway]
+    nectar_secretion                          [Pathway, sink]
+    plant_cold_tolerance                      [Phenotype, sink]
+    plant_resistance_to_Botrytis_cinerea      [Phenotype, sink]
+    premature_senescence                      [Phenotype]
+    proline                                   [Metabolite]
+    root_hair_formation                       [Pathway]
+    salt_tolerance                            [Phenotype, sink]
+    shade_avoidance                           [Phenotype]
+    skotomorphogenesis                        [Pathway]
+    stomatal_development_in_cotyledons_and_leaves  [Pathway, sink]
+    sugars                                    [Metabolite]
+
+  Pattern 8 — stably ON in attractor(s) [1, 3, 4]  |  stably OFF in [2]
+    MYB59                                     [Gene]
+    OsEDR1                                    [Gene]
+    OsTZF1                                    [Gene]
+    PAD4                                      [Gene]
+    POD                                       [Gene]
+    Pal                                       [Gene]
+    WRKY48                                    [Gene]
+    anthocyanidin_synthesis                   [Pathway, sink]
+    developmental_senescence                  [Pathway]
+    ethylene_ET_production                    [Pathway]
+    isoliquiritigenin                         [Metabolite, sink]
+    licochalcone_A                            [Metabolite, sink]
+    liquiritigenin                            [Metabolite, sink]
+    liquiritin                                [Metabolite, sink]
+
+  Pattern 9 — stably ON in attractor(s) [1, 2, 4]  |  stably OFF in [3]
+    BR_signaling                              [Pathway]
+    salicylic_acid_SA_accumulation            [Pathway]
+    stone_cell_formation_and_lignin_content   [Phenotype, sink]
+    thermotolerance                           [Phenotype, sink]
+
+  Pattern 10 — stably ON in attractor(s) [1, 2, 3]  |  stably OFF in [4]
+    cell_wall_remodeling_genes                [Gene, sink]
+
 ======================================================================
-  Sink nodes: 1064
+  Sink nodes — terminal downstream effectors (1064 node(s)):
     AAL_toxin_induced_PCD                     resting: variable  perturbed: variable  [Pathway, sink]
     AAL_toxin_induced_cell_death              resting: variable  perturbed: variable  [Pathway, sink]
     AA_synthesis_and_recycling                resting: OFF       perturbed: OFF       [Pathway, sink]
@@ -2306,9 +2335,9 @@ PHASE 2.5 — Subgraph topology
     xylem_phosphorus_P_concentration_in_phosphorus_deficient_rice  resting: OFF       perturbed: OFF       [Phenotype, sink]
 
 ======================================================================
-  REGULATORY MODULES (SBM) — 6 modules
+  REGULATORY MODULES (SBM) — 11 modules
 
-  Module 911: 761 nodes
+  Module 105: 761 nodes
     AA_synthesis_and_recycling                [Pathway, sink]
     ABA_dependent_salinity_tolerance          [Pathway, sink]
     ABA_efflux_activity_of_ABCG16             [Pathway, sink]
@@ -2319,7 +2348,7 @@ PHASE 2.5 — Subgraph topology
     ABA_signaling_to_delay_seed_germination   [Pathway, sink]
     ... and 753 more
 
-  Module 464: 272 nodes
+  Module 296: 253 nodes
     AAL_toxin_induced_PCD                     [Pathway, sink]
     AAL_toxin_induced_cell_death              [Pathway, sink]
     ABA_induced_delay_of_seed_germination     [Phenotype, sink]
@@ -2328,9 +2357,9 @@ PHASE 2.5 — Subgraph topology
     AN_biosynthesis                           [Pathway, sink]
     APETALA2                                  [Gene, sink]
     APETALA2_ETHYLENE_RESPONSE_FACTOR_AP2_ERF_ORA59  [Gene, sink]
-    ... and 264 more
+    ... and 245 more
 
-  Module 206: 181 nodes
+  Module 1161: 155 nodes
     ABA_induced_inhibition_of_seed_germination  [Pathway, sink]
     ABA_signal                                [Pathway, sink]
     AtC3H14_At1g66810                         [Gene]
@@ -2339,31 +2368,31 @@ PHASE 2.5 — Subgraph topology
     C3H1                                      [Gene, sink]
     C4H                                       [Gene]
     C4H_CYP73A5                               [Gene, sink]
-    ... and 173 more
+    ... and 147 more
 
-  Module 854: 151 nodes
-    ABA_signaling                             [Pathway]
-    ABA_signalling                            [Pathway]
+  Module 540: 61 nodes
+    ASA                                       [Metabolite]
+    Cat                                       [Gene]
+    ETI                                       [Pathway]
+    MDA                                       [Metabolite]
+    OGs                                       [Metabolite]
+    OsEDR1                                    [Gene]
+    PAD4                                      [Gene]
+    PCD                                       [Pathway]
+    ... and 53 more
+
+  Module 239: 42 nodes
     ABI3                                      [Pathway]
     ABI4                                      [Gene]
-    ABI5                                      [Gene]
+    AaGSW1                                    [Gene]
+    AaMYC2                                    [Gene]
+    AaORA                                     [Gene]
     BR_signaling                              [Pathway]
-    Cat                                       [Gene]
     DELLA                                     [Gene]
-    ... and 143 more
-
-  Module 240: 13 nodes
-    AbA                                       [Metabolite]
-    BR                                        [Metabolite]
-    ET                                        [Metabolite]
-    ETI                                       [Pathway]
-    GA                                        [Metabolite]
-    MYC2                                      [Gene]
-    ROS                                       [Metabolite]
-    SA                                        [Metabolite]
-    ... and 5 more
+    EIL1                                      [Pathway]
+    ... and 34 more
 
 ======================================================================
   TIMING SUMMARY — MYB46, hop 2
-    Total hop time: 2.032s  |  step times logged above
+    Total hop time: 8.916s  |  step times logged above
 ======================================================================

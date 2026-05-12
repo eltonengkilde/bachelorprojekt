@@ -7,22 +7,28 @@
 
 \f0\fs24 \cf0 For the benchmark testing of BW it performed 2 hops analysis but reached timeout after 1328 seconds and never performed the analysis of subgraph with 3 hops with 7711nodes. However it could analyze 2 hops subgraph with 540 nodes. \
 \
-Loading: bench_bw_MASTER_larger_bonesis\
-Loaded 451121 edges  (492450 nodes)\
-graph-tool: 492450 vertices, 451121 edges  (2.20s)\
-Phase 1: PageRank top hub: plant_growth, SCCs: 483902, largest: 8295\
-Gene 'MYB46' confirmed in network [Gene].\
-Benchmark (BACKWARDS): time limit 1800s (0h) | Mode: BoNesis (budget-limited)\
-\
-  Hop 1... (remaining: 1800s) 0.3s [BoNesis] | 23 nodes \uc0\u8594  bench_bw_MASTER_larger_bonesis_MYB46_hops1.txt\
-  Hop 2... (remaining: 1800s) 235.4s [BoNesis] | 540 nodes \uc0\u8594  bench_bw_MASTER_larger_bonesis_MYB46_hops2.txt\
-  Hop 3... (remaining: 1564s) 1564.4s [Timeout] | 7711 nodes \uc0\u8594  budget exhausted, stopping.\
-\
-======================================================================\
-BENCHMARK SUMMARY: bench_bw_MASTER_larger_bonesis\
-Gene: MYB46  |  Mode: BoNesis (budget-limited)\
-  Hops    Time (s)          Mode  Output file\
-------  ----------  ------------  ---------------------------------------------\
-     1        0.29       BoNesis  bench_bw_MASTER_larger_bonesis_MYB46_hops1.txt\
-     2      235.44       BoNesis  bench_bw_MASTER_larger_bonesis_MYB46_hops2.txt\
-     3     1564.35       Timeout  bench_bw_MASTER_larger_bonesis_MYB46_hops3.txt}
+Loading: bench_bw_MASTER_larger_bonesis
+Loaded 451121 edges  (492450 nodes)
+graph-tool: 492450 vertices, 451121 edges  (2.17s)
+Phase 1: PageRank top hub: plant_growth, SCCs: 483902, largest: 8295
+Gene 'MYB46' confirmed in network [Gene].
+Benchmark (BACKWARDS): time limit 1800s (0h) | Mode: BoNesis (budget-limited)
+
+  Hop 1... (remaining: 1800s)   pruned BN: 10 nodes  |  target ON in perm attractor
+  candidates: suff=19  nec-act=19  nec-sup=3  budget=120s
+    [sufficiency  19 cands] done 0 found  0.0s
+    [BoNesis nec  act=19 sup=3  budget=120s] done  0.2s
+0.4s [BoNesis] | 23 nodes → bench_bw_MASTER_larger_bonesis_MYB46_hops1.txt
+  Hop 2... (remaining: 1800s)   pruned BN: 151 nodes  |  target ON in perm attractor
+  candidates: suff=413  nec-act=448  nec-sup=91  budget=120s
+    [sufficiency  413 cands] done 408 found  0.9s
+    [BoNesis nec  act=448 sup=91  budget=120s] timed out after 124s
+125.3s [Timeout] | 540 nodes → budget exhausted, stopping.
+
+======================================================================
+BENCHMARK SUMMARY: bench_bw_MASTER_larger_bonesis
+Gene: MYB46  |  Mode: BoNesis (budget-limited)
+  Hops    Time (s)          Mode  Output file
+------  ----------  ------------  ---------------------------------------------
+     1        0.40       BoNesis  bench_bw_MASTER_larger_bonesis_MYB46_hops1.txt
+     2      125.26       Timeout  bench_bw_MASTER_larger_bonesis_MYB46_hops2.txt

@@ -1,5 +1,5 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
-import csv, os, re, heapq, time, keyword, contextlib, threading
+import csv, os, re, heapq, time, keyword, contextlib, threading, sys
 import graph_tool.all as gt
 import bonesis
 
@@ -212,19 +212,22 @@ while True:
             direct_suppressors = sorted(g for g in suppressors.get(target_gene, set()) if g in subgraph_nodes)
             all_upstream       = sorted(subgraph_nodes - {target_gene})
 
-            # Two baseline simulations (dark / permissive)
+            # Two baseline simulations — target gene locked, mirroring the forward analysis.
+            # Dark: lock target=0 → "what upstream state when target is OFF?"
+            # Perm: lock target=1 → "what upstream state when target is ON?"
             t0 = time.perf_counter()
-            att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub)
-            att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub)
+            att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub, locked=target_gene, val=0)
+            att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub,  locked=target_gene, val=1)
             print(f"  [time] Baseline simulations: {time.perf_counter()-t0:.3f}s")
             if not dark_conv: print(f"  WARNING: dark attractor did not converge within {MAX_SIM_STEPS} steps")
             if not perm_conv: print(f"  WARNING: perm attractor did not converge within {MAX_SIM_STEPS} steps")
             print(f"  NOTE: simulation finds ONE attractor per starting condition.")
-            target_in_dark = target_on_any(att_dark)
-            target_in_perm = target_on_any(att_perm)
+            print(f"  NOTE: target gene locked to 0 (dark) and 1 (perm) — same method as forward analysis.")
+            target_in_dark = target_on_any(att_dark)   # always False (locked=0)
+            target_in_perm = target_on_any(att_perm)   # always True  (locked=1)
             _lbl = lambda atts, c: ("fixed point" if len(atts)==1 else f"cycle/{len(atts)}") + (" (conv)" if c else " (max)")
-            print(f"  Dark: target={'ON' if target_in_dark else 'OFF'}  {_lbl(att_dark, dark_conv)}")
-            print(f"  Perm: target={'ON' if target_in_perm else 'OFF'}  {_lbl(att_perm, perm_conv)}")
+            print(f"  Dark (target locked OFF): {_lbl(att_dark, dark_conv)}")
+            print(f"  Perm (target locked ON):  {_lbl(att_perm, perm_conv)}")
 
             # Hop-by-hop stable-state attractor trace
             all_hops = sorted({hop_of[g] for g in all_upstream if hop_of.get(g) is not None})
@@ -246,12 +249,22 @@ while True:
             print(f"  Candidate pools: suff={len(sufficiency_candidates)}  nec-act={len(necessity_act_candidates)}"
                   f"  nec-sup={len(necessity_sup_candidates)}")
 
-            PER_HOP_BUDGET = max(0, (MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)) * 0.5)
+            # Cap per-gene budget at 120 s so one large hop cannot consume the whole run.
+            PER_HOP_BUDGET = min(120, max(0, (MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)) * 0.5))
             t_gene_tests = time.perf_counter()
             budget_exceeded = False
 
+            # _con writes to the real terminal even though stdout is redirected to the file.
+            def _con(msg):
+                sys.__stdout__.write(msg); sys.__stdout__.flush()
+
+            _con(f"  pruned BN: {n_pruned} nodes  |  target {'ON' if target_in_perm else 'OFF'} in perm attractor\n")
+            _con(f"  candidates: suff={len(sufficiency_candidates)}  nec-act={len(necessity_act_candidates)}"
+                 f"  nec-sup={len(necessity_sup_candidates)}  budget={PER_HOP_BUDGET:.0f}s\n")
+
             sufficient_activators = []
             print(f"  Sufficiency test: {len(sufficiency_candidates)} candidates (budget: {PER_HOP_BUDGET:.0f}s)...")
+            _con(f"    [sufficiency  {len(sufficiency_candidates)} cands] ")
             t0 = time.perf_counter()
             for candidate in sufficiency_candidates:
                 if time.perf_counter() - t_gene_tests > PER_HOP_BUDGET:
@@ -259,12 +272,14 @@ while True:
                 states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
                 if target_on_any(states) and not target_in_dark:
                     sufficient_activators.append(candidate)
+            _con(f"done {len(sufficient_activators)} found  {time.perf_counter()-t0:.1f}s\n")
             print(f"  [time] Sufficiency: {time.perf_counter()-t0:.3f}s")
 
             necessary_activators, redundant_activators, necessary_suppressors, suppressor_releases = [], [], [], []
-            _remaining = max(0, MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start))
+            _remaining = min(PER_HOP_BUDGET, max(0, MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)))
             print(f"  BoNesis necessity test: {len(necessity_act_candidates)} act + {len(necessity_sup_candidates)} sup"
                   f" candidates ({n_pruned} nodes — budget: {_remaining:.0f}s)...")
+            _con(f"    [BoNesis nec  act={len(necessity_act_candidates)} sup={len(necessity_sup_candidates)}  budget={_remaining:.0f}s] ")
             t_bn = time.perf_counter()
             _box = []
             def _run_bonesis_necessity():
@@ -301,8 +316,10 @@ while True:
             _t.start(); _t.join(_remaining)
             if _box:
                 baseline_perm_on, necessary_activators, redundant_activators, necessary_suppressors, suppressor_releases = _box[0]
+                _con(f"done  {time.perf_counter()-t_bn:.1f}s\n")
                 print(f"  [time] BoNesis necessity: {time.perf_counter()-t_bn:.3f}s")
             else:
+                _con(f"timed out after {time.perf_counter()-t_bn:.0f}s\n")
                 print(f"  BoNesis necessity timed out — budget exhausted after {time.perf_counter()-t_bn:.0f}s")
                 raise _BudgetExhausted()
 

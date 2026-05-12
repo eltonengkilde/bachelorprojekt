@@ -1,0 +1,1637 @@
+﻿Direction,Source_Gene,Hop,Solver,Prediction_Type,Gene,Category,Is_Gene
+Backward,MYB46,1,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,1,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_ON_Dark_OFF,MPK6,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_ON_Dark_OFF,NST2,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_OFF_Dark_ON,NST1,Gene,Yes
+Backward,MYB46,1,Simulation,Perm_OFF_Dark_ON,SND2,Gene,Yes
+Backward,MYB46,1,Simulation,Necessary_Suppressor,NST1,Gene,Yes
+Backward,MYB46,1,Simulation,Necessary_Suppressor,SND2,Gene,Yes
+Backward,MYB46,1,Simulation,Necessary_Suppressor,SND3,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,2,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_OFF_Dark_ON,NST2,Gene,Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,ABR1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,AOC3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_OFF_Dark_ON,MPK3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_OFF_Dark_ON,MPK4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Perm_OFF_Dark_ON,MYB26,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ABR1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AOC3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ATHB15,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AaERF1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AabZIP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_MKK2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_MKP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_PP2C_phosphatase_A2PC1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_RD26,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_WRKY22,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_WRKY29,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Arabidopsis_homologue_AtWRKY50_At5g26170,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AtERF_109_REDOX_RESPONSIVE_TRANSCRIPTION_FACTOR1_RRTF1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AtGH3_3_AtGH3_5_or_AtGH3_6_genes,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AtMKK4_and_AtMKK5,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AtMKP2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,BOS1_MYB108,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,BT4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Bemisia_tabaci_B_tabaci_effector_BtFer1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,C2_trans_activator_protein,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CDK8_HUA_ENHANCER3_HEN3_and_CDKE1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CLE9,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,COBRA_like_4_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CaLOX2_silencing,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Ccrboh,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CesA4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CesA8,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CrMYC2a,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CsLOX10,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CsLOX3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,CsLOX7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Csk1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,EMF1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ERF4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,F3H,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,FERONIA_receptor,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,FL7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,FaMPK6,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GA_and_auxin_responsive_factors,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GLIP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GLV6_peptide,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GRL,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GRX480_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,G_type_LecRLK_JF919621,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GbTCP,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GhWRKY70,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GmERF3_in_soybean,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,GmPRL1b,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,HYR,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,HopAi1_effector,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,HvHDAC2_1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,HvHDAC2_2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,IAA8,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,IGL,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,IbKCS,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,JAZ1_JAZ5_JAZ6_JAZ7_and_JAZ9,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,JAmyb_JA_inducible_rice_myb_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,JERF3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Jacalin_1_JAC1_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,LOX1_LOX2_Hv_1_LOX2_Hv_2_and_LOX2_Hv_3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,LOX4_candidate_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,LOX6_LIPOXYGENASE_6,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,L_LecRKs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,LsNRL4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MAP_kinase_kinase_MAP2K_protein_MKK2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MITOCHONDRIAL_CALCIUM_UNIPORTER_cMCU,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MKK10_WT,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MKK3_and_MKK4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MKP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MPKK10_2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MYB34,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MYB4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MYB44,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MaMPK19,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MdMYB85,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,MdPYL4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Myb_transcription_factor_homologue_of_At1g74840,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Myb_transcription_factor_homologue_of_At3g09600,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,NAC_transcription_factors,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,NAI1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,NUCLEOTIDE_BINDING_SITE_LEUCINE_RICH_REPEAT_NBS_LRR_gene_GbaNA1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,NopT_GS0123,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,NtPP2C2b,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,O3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OPR1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OmBBD_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsBIRH1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsERF103,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsJAR1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsMOGS,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsMP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsMYB30,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsMYB4P,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsNAP,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsNF_YA1_2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsPIN5a,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsPP18,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsSLR1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsSnRK1a,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsWRKY33_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,OsWRKY70,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PALs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PAP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PAP2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PDF1_2_VSP2_JIN1_and_ERF1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PEN2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PLD_1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PR10,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PROPEP_proteins,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PROPEPs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PRRs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PTP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PUB22,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PYL5,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PacMYBA,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PagMYB31,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PhPDR2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,RLK7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,RNS1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,RSOsPR10,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Raf30,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,RhERF005,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,RhPR10_1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Rp2155,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SAP11,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SAUR49,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SHAT3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SHORT_ROOT_SHR_glucocorticoid_receptor_SHR_GR,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SND5,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SOMATIC_EMBRYOGENESIS_RECEPTOR_KINASE_3_BRASSINOSTEROID_INSENSITIVE_1_ASSOCIATED_RECEPTOR_KINASE_1_SERK3_BAK1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SQN,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,S_RNases,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ScJAZ1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,SlVQ7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,Solanum_nigrum_JAR4_SnJAR4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,StbZIP61,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TCP4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TDP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TENGU,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TERMINATING_FLOWER_TMF_in_tomato,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TGG2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,THI2_1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TIC,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TMF,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TPS5,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TPS_genes,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,TaABCC3_1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,VASCULAR_RELATED_NAC_DOMAIN_VND,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,VND1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,VSP1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,VmPR1c,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,WI12_Rhg1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,WRKY12,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,WRKY12_transcription_factor,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,WRKY13,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,WRKY57,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,WRKY75,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,YODA_mitogen_activated_protein_kinase_kinase_kinase,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ZINC_FINGER_PROTEIN_EXPRESSED_IN_INFLORESCENCE_MERISTEM_ZIM1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ZmLOX10,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ZmPep1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,a_set_of_miRNAs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,antiviral_NLRs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ascorbate_oxidase_AO_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,atx1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,auxin_responsive_factors_OsARF6_and_OsARF17,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,bHLH18_bHLH19_bHLH20_and_bHLH25,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,basic_helix_loop_helix_bHLH_transcription_factor_AaMYC2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,cLEI3O14,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,cellulase_1_4_endoglucanase,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,chloroplast_proteins_EXECUTER1_EX1_EX2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,dirigent_protein_PR4_wheat_protein_and_OsMPK1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,edr1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,ferulate_5_hydroxyconiferaldehyde_5_hydroxylase_gene,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,g13_LOX,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,gene_coding_for_glutathione_dependent_formaldehyde_dehydrogenase_FALDH_in_Arabidopsis,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,glucose_oxidase,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,lectin_receptor_kinase_RDA2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,miR408_precursor,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,miR5998,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,myrosinase_binding_protein,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,non_self_S_RNase,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,osjar1_1_mutant_protein,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,osjar1_2_mutant,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,pattern_recognition_receptors_such_as_FLS2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,pepper_ERF_gene_CaPF1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,phospholipid_hydrolyzing_enzymes,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,receptor_like_cytoplasmic_kinase_RLCK185,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,rice_MPKK10_2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,rice_OsWRKY89,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,rmc,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,rph1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,salivary_elicitor_LsPDI1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,salivary_elicitor_NlG14,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,salivary_elicitor_NlMLP,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,salivary_elicitor_NlVgN,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,self_S_RNase,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,various_SAGs,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Sufficient_Activator,wound_and_herbivore_induced_13_lipoxygenase_LOX3_isoform,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,ACO,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,ALKBH10B,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,ANAC055,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,AaGSW1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,AaMYC2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,AaMYC3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,CHI,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,CHS,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,DFR,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,ERF1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,G,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,GCN2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,GH3_10,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,GR,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,JAZ,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,LBD29,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,LjGlb1_1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MAP3K18,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MKK2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MKK3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MKK4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MKK7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MKK9,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MPK3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MPK4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MYB24,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MYB26,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MYB7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MYC2,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,MYC3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,NST1,Gene,Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,NST2,Gene,Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,OsRMC,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,PAD4,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,PUCHI,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,SHR,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,SND1,Gene,Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,SND2,Gene,Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,SND3,Gene,Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,TOR,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,VND7,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,WRKY33,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,WRKY45,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,cellulase,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,eds1,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,gl3,"Gene, hop 2",Yes
+Backward,MYB46,2,Simulation,Necessary_Suppressor,jar1,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,3,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AOC3,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AabZIP1,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,ATHB15,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,BOS1_MYB108,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,CHI,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,ABI1,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,ABI2,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Perm_OFF_Dark_ON,AGL15,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,CesA8,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,MIDD1,"Gene, hop 3",Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,PhPDR2,"Gene, hop 2",Yes
+Backward,MYB46,3,Simulation,Sufficient_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,4,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,SND1,Gene,Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,BOS1_MYB108,"Gene, hop 2",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,4,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,4,Simulation,Perm_OFF_Dark_ON,ABI3_ABI4_and_ABI5,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,5,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ABA_importer_AIT1_1,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ABCB4,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,5,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,6,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,6,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,APG,"Gene, hop 6",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,APO1,"Gene, hop 6",Yes
+Backward,MYB46,6,Simulation,Perm_OFF_Dark_ON,BG3,"Gene, hop 6",Yes
+Backward,MYB46,7,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,7,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,7,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,CaWRKY6,"Gene, hop 7",Yes
+Backward,MYB46,7,Simulation,Perm_OFF_Dark_ON,DREB1C_CBF2,"Gene, hop 7",Yes
+Backward,MYB46,8,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,8,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,8,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,GmmiR156b,"Gene, hop 8",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,SAPK1,"Gene, hop 8",Yes
+Backward,MYB46,8,Simulation,Perm_OFF_Dark_ON,VaPIF3,"Gene, hop 8",Yes
+Backward,MYB46,9,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,9,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,9,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,9,Simulation,Perm_OFF_Dark_ON,PRK6,"Gene, hop 9",Yes
+Backward,MYB46,10,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,10,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,10,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,10,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,11,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,11,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,11,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,11,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,12,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,12,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,12,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,12,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,13,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,13,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,13,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,13,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,14,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,14,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,14,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,14,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,15,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,15,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,15,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,15,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,16,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,16,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,16,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,16,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,17,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,17,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,17,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,17,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,18,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,18,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,18,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,18,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,19,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,19,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,19,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,19,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,20,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,20,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,20,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,20,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes
+Backward,MYB46,21,Simulation,Direct_Activator,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,NST1,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,NST2,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,SND1,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,SND2,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,SND3,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,SND4,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,SND5,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,VND6_and_VND7,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,VND_and_NST_proteins,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Activator,nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Suppressor,MPK6,Gene,Yes
+Backward,MYB46,21,Simulation,Direct_Suppressor,XND1,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AtMYB4_AtMYB7_and_AtMYB32,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,MYB32_MYB7_and_MYB4,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,PtrEPSP_TF,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,SND4,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,SND5,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,VND6_and_VND7,Gene,Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABA_receptors_PYL4_and_PYL5,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ANAC019,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ANAC072,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AOS2,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AP2C1,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AP2_ERF_domain_transcription_factor_gene_ORA59,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ATGSTF7_gene,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ACO,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,AaERF2,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,AabHLH93,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,AhRRS5,"Gene, hop 2",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AAA_ATPase,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AACT1,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AAPK,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABA_8_hydroxylase_HvCYP707A1,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABA_RECEPTOR_PYL9,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ABA3,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ABA_8_hydroxylase,"Gene, hop 3",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,A6_RGA,"Gene, hop 4",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,A9,"Gene, hop 4",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AA1_member_from_Magnaporthe_oryzae,"Gene, hop 4",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AAA_ATPase_LRD_6,"Gene, hop 4",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AAT_Rhg1,"Gene, hop 4",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ABCG14,"Gene, hop 4",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AAR2,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AAT,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABA1,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABAP1,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABAR_CHLH_ABAR_CHLH,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ABCG37,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ACC_synthase,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ADC,"Gene, hop 5",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,A20_AN1_zinc_finger_protein_OsDOG,"Gene, hop 6",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABA8h_gene,"Gene, hop 6",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,ADH,"Gene, hop 6",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ABA_activated_kinases_SnRK2_2_2_3_2_6,"Gene, hop 7",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,AtNUDX9_Arabidopsis_NUDIX_hydrolase_9,"Gene, hop 7",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,CAT2_endogene,"Gene, hop 7",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,CRA2_receptor,"Gene, hop 7",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,FveARF18A,"Gene, hop 8",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,HST,"Gene, hop 8",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,LHCB2_4,"Gene, hop 8",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,MADS78_and_MADS79,"Gene, hop 8",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AtIMA1_and_AtIMA3,"Gene, hop 9",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,AvrXa7_and_PthXo3,"Gene, hop 9",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,BECN1,"Gene, hop 9",Yes
+Backward,MYB46,21,Simulation,Perm_OFF_Dark_ON,GmEXPA7,"Gene, hop 9",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,Arabidopsis_purine_permease_1,"Gene, hop 10",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,ELF3_or_natural_variants_mutants_thereof,"Gene, hop 10",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,GDP1,"Gene, hop 10",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,GLV4_RGF7,"Gene, hop 10",Yes
+Backward,MYB46,21,Simulation,Perm_ON_Dark_OFF,g6_phosphogluconate_dehydrogenase_6PGDH_in_PPP,"Gene, hop 11",Yes

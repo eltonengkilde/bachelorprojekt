@@ -1,0 +1,58 @@
+# Benchmark: bench_bw_MASTER_larger_bonesis.py
+# Gene: MYB46  |  Hops: 2  |  Mode: BoNesis
+# Generated: 2026-05-07 16:52:44
+  [time] Subgraph extraction: 0.143s
+
+======================================================================
+PHASE 2 — Upstream: MYB46, 2 hop(s)  |  540 nodes, 1405 edges
+     284  Gene
+     130  Pathway
+      92  Metabolite
+      34  Phenotype
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 399  |  non-trivial: 1
+  Largest SCC (142 nodes):
+    ABR1                                      [Gene]
+    ACO                                       [Gene]
+    ALKBH10B                                  [Gene]
+    AN                                        [Phenotype]
+    ANAC019                                   [Gene]
+    ANAC055                                   [Gene]
+    ANAC072                                   [Gene]
+    ATMYC2                                    [Gene]
+    ATP                                       [Metabolite]
+    ATP_induced_calcium_influx                [Pathway]
+    ... and 132 more
+
+  Betweenness (0.002s) — top 10:
+    JA                                        0.186198  [Metabolite]
+    AbA                                       0.051807  [Metabolite]
+    MPK6                                      0.037859  [Gene]
+    MYB46                                     0.028430  [Gene]
+    SA                                        0.025763  [Metabolite]
+    MYC2                                      0.015224  [Gene]
+    ethylene                                  0.015073  [Metabolite]
+    auxin                                     0.013158  [Metabolite]
+    ROS                                       0.011448  [Metabolite]
+    H2O2                                      0.009940  [Metabolite]
+
+  Running SBM...
+  SBM (0.13s) — 10 modules:
+    Module 195:  216 nodes  (95 Gene, 76 Pathway, 26 Metabolite, 19 Phenotype)
+    Module 343:  154 nodes  (96 Gene, 26 Metabolite, 24 Pathway, 8 Phenotype)
+    Module 461:   64 nodes  (37 Gene, 16 Metabolite, 10 Pathway, 1 Phenotype)
+    Module 193:   61 nodes  (40 Gene, 14 Pathway, 5 Phenotype, 2 Metabolite)
+    Module 29:   16 nodes  (9 Metabolite, 3 Pathway, 3 Gene, 1 Phenotype)
+  Regulated: 151  |  pruned: 151  |  sinks: 0
+  [time] Baseline simulations: 0.004s
+  NOTE: simulation finds ONE attractor per starting condition.
+  NOTE: target gene locked to 0 (dark) and 1 (perm) — same method as forward analysis.
+  Dark (target locked OFF): cycle/4 (conv)
+  Perm (target locked ON):  fixed point (conv)
+  Candidate pools: suff=413  nec-act=448  nec-sup=91
+  Sufficiency test: 413 candidates (budget: 120s)...
+  [time] Sufficiency: 0.864s
+  BoNesis necessity test: 448 act + 91 sup candidates (151 nodes — budget: 120s)...
+  BoNesis necessity timed out — budget exhausted after 124s

@@ -217,12 +217,15 @@ direct_suppressors = sorted(g for g in suppressors.get(target_gene, set()) if g 
 all_upstream       = sorted(subgraph_nodes - {target_gene})
 
 # ── STEP 1: Two baseline simulations ─────────────────────────────────────────
-# "Dark" (all-zeros) and "permissive" (all-ones) initial conditions, mirroring
-# the forward analysis framing. Synchronous simulation finds ONE attractor per
-# starting condition; BoNesis (fewer hops) finds the full reachable landscape.
+# The target gene is LOCKED — mirroring the forward analysis where the source
+# gene is locked to 0 (resting) or 1 (perturbed).
+# Dark: lock target=0 from all-zeros  → upstream state when target is SILENT.
+# Perm: lock target=1 from all-ones   → upstream state when target is ACTIVE.
+# Without locking, AND NOT suppressor rules collapse target to 0 from all-ones,
+# giving an empty perm attractor identical to the dark one and no candidates.
 t0 = time.perf_counter()
-att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub)
-att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub)
+att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub, locked=target_gene, val=0)
+att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub,  locked=target_gene, val=1)
 print(f"\n  Baseline simulations: {time.perf_counter()-t0:.3f}s")
 if not dark_conv:
     print(f"  WARNING: dark attractor did not converge within {MAX_SIM_STEPS} steps — results unreliable")
@@ -230,15 +233,13 @@ if not perm_conv:
     print(f"  WARNING: permissive attractor did not converge within {MAX_SIM_STEPS} steps — results unreliable")
 print(f"  NOTE: simulation finds ONE attractor per starting condition — "
       f"full attractor landscape requires BoNesis (use fewer hops).")
-target_in_dark = target_on_any(att_dark)
-target_in_perm = target_on_any(att_perm)
+target_in_dark = target_on_any(att_dark)   # always False (locked=0)
+target_in_perm = target_on_any(att_perm)   # always True  (locked=1)
 _att_label = lambda atts, conv: (
     ("fixed point" if len(atts) == 1 else f"cycle/{len(atts)}") +
     (" (converged)" if conv else " (max steps)"))
-print(f"  Dark attractor (all-zeros): target={'ON' if target_in_dark else 'OFF'}"
-      f"  |  {_att_label(att_dark, dark_conv)}")
-print(f"  Perm attractor (all-ones):  target={'ON' if target_in_perm else 'OFF'}"
-      f"  |  {_att_label(att_perm, perm_conv)}")
+print(f"  Dark attractor (target locked OFF, all-zeros start):  {_att_label(att_dark, dark_conv)}")
+print(f"  Perm attractor (target locked ON,  all-ones start):   {_att_label(att_perm, perm_conv)}")
 
 # ── STEP 2: Hop-by-hop attractor state trace ──────────────────────────────────
 # For each upstream gene, record whether it is STABLY ON or STABLY OFF in each

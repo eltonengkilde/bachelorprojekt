@@ -1,7 +1,7 @@
 # Benchmark: bench_fw_MASTER_larger_simulation.py
 # Gene: MYB46  |  Hops: 1  |  Mode: Synchronous simulation
-# Generated: 2026-05-06 11:06:22
-  [time] Subgraph extraction: 0.073s
+# Generated: 2026-05-07 12:45:54
+  [time] Subgraph extraction: 0.075s
 
 ======================================================================
 PHASE 2 — MYB46, 1 hop(s)  |  33 nodes, 43 edges
@@ -32,11 +32,14 @@ PHASE 2.5 — Subgraph topology
   NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.
   [time] Sink recovery: 0.000s
 
-  Running necessity test on 32 direct target(s)...
-  Necessity test completed in 0.005s
+  Running necessity test on 32 direct target(s) (synchronous simulation)...
+  Necessity test completed in 0.008s
 
 ======================================================================
-  MYB46 — 1 hop(s)  |  mode: synchronous simulation
+  MYB46 — 1 hop(s)  |  synchronous simulation (one attractor per condition)
+  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
+  Necessity solver: synchronous simulation
+  NOTE: simulation finds ONE attractor per condition — use BoNesis benchmark for full landscape.
 
   Direct targets: 32
     AtC3H14_At1g66810                         [Gene, sink]
@@ -178,9 +181,11 @@ PHASE 2.5 — Subgraph topology
     - resistance_to_fungal_necrotrophs          [Phenotype, sink]
 
 ======================================================================
-  NECESSITY TEST  (knockout method: synchronous simulation from permissive background)
-    Necessary: 0
-    Dispensable: 32
+  NECESSITY TEST  (method: synchronous simulation from permissive background)
+  Definition: a direct target is necessary if knocking it out causes at
+  least one permissive-activated gene to lose stable-ON status.
+    Necessary  (0):
+    Dispensable (32):
       AtC3H14_At1g66810                         [Gene, sink]
       C3H1                                      [Gene, sink]
       C4H                                       [Gene]
@@ -215,10 +220,10 @@ PHASE 2.5 — Subgraph topology
       xylogenesis                               [Pathway, sink]
 
 ======================================================================
-  Context-dependent: 0 genes, 0 decision(s)
+  Context-dependent genes: 0 gene(s) in 0 co-varying pattern(s)
 
 ======================================================================
-  Sink nodes: 24
+  Sink nodes — terminal downstream effectors (24 node(s)):
     AtC3H14_At1g66810                         resting: OFF       perturbed: ON        [Gene, sink]
     C3H1                                      resting: OFF       perturbed: ON        [Gene, sink]
     CAD6                                      resting: OFF       perturbed: ON        [Gene, sink]
@@ -260,5 +265,5 @@ PHASE 2.5 — Subgraph topology
 
 ======================================================================
   TIMING SUMMARY — MYB46, hop 1
-    Total hop time: 0.145s  |  step times logged above
+    Total hop time: 0.150s  |  step times logged above
 ======================================================================

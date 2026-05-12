@@ -1,0 +1,170 @@
+# Benchmark: bench_bw_MASTER_larger_simulation.py
+# Gene: MYB46  |  Hops: 4  |  Mode: Synchronous simulation
+# Generated: 2026-05-07 13:18:30
+  [time] Subgraph extraction: 0.163s
+
+======================================================================
+PHASE 2 — Upstream: MYB46, 4 hop(s)  |  33971 nodes, 68153 edges
+    12879  Gene
+    12549  Pathway
+    5046  Metabolite
+    3497  Phenotype
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 28923  |  non-trivial: 38
+  Largest SCC (5008 nodes):
+    AA                                        [Metabolite]
+    AAAs                                      [Metabolite]
+    AAL_toxin                                 [Metabolite]
+    AAO3                                      [Gene]
+    AAPK                                      [Gene]
+    ABA                                       [Metabolite]
+    ABA2                                      [Gene]
+    ABA3                                      [Gene]
+    ABAR                                      [Pathway]
+    ABA_INSENSITIVE_5_ABI5_degradation        [Pathway]
+    ... and 4998 more
+  Betweenness skipped (33971 nodes > 5000)
+
+  SBM skipped (33971 nodes > 2000)
+  Regulated: 6459  |  pruned: 6459  |  sinks: 0
+  [time] Baseline simulations: 0.392s
+  NOTE: simulation finds ONE attractor per starting condition.
+  NOTE: target gene locked to 0 (dark) and 1 (perm) — same method as forward analysis.
+  Dark (target locked OFF): cycle/20 (conv)
+  Perm (target locked ON):  cycle/4 (conv)
+  Candidate pools: suff=29038  nec-act=30077  nec-sup=3773
+  Sufficiency test: 29038 candidates (budget: 120s)...
+    Stopped: per-hop budget reached
+  [time] Sufficiency: 120.196s
+  Necessity (activators): 30077 candidates (budget: 120s)...
+    Stopped: per-hop budget reached
+  [time] Necessity (act): 0.000s
+  Necessity (suppressors): 3773 candidates (budget: 120s)...
+    Stopped: per-hop budget reached
+  [time] Necessity (sup): 0.000s
+
+======================================================================
+  UPSTREAM REGULATORY ANALYSIS of 'MYB46'
+  4 hop(s)  |  synchronous simulation (6459 nodes)
+  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
+  NOTE: simulation finds ONE attractor per starting condition.
+
+  Step 1 — Structural direct regulators (1-hop):
+    Activators: 18
+      + AtMYB4_AtMYB7_and_AtMYB32                 [Gene]
+      + JA                                        [Metabolite]
+      + MYB32_MYB7_and_MYB4                       [Gene]
+      + NST1                                      [Gene]
+      + NST2                                      [Gene]
+      + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [Gene]
+      + PtrEPSP_TF                                [Gene]
+      + SND1                                      [Gene]
+      + SND2                                      [Gene]
+      + SND3                                      [Gene]
+      + SND4                                      [Gene]
+      + SND5                                      [Gene]
+      + VND6_and_VND7                             [Gene]
+      + VND7_induction                            [Pathway]
+      + VND_and_NST_proteins                      [Gene]
+      + methyl_jasmonate_MJA                      [Metabolite]
+      + nac_domain_containing_protein_76_NAC076_AT4G36160_vascular_related_nac_domain_protein_VND2_nac_domain_containing_protein_ANAC076  [Gene]
+      + secondary_cell_wall_SCW_biosynthesis      [Pathway]
+    Suppressors: 4
+      - AN                                        [Phenotype]
+      - MPK6                                      [Gene]
+      - XND1                                      [Gene]
+      - stress_and_hormone_dependent_activation_of_MPK6  [Pathway]
+
+======================================================================
+  Step 2 — Attractor state comparison (dark vs permissive) [CORRELATION ONLY]
+    Dark: target=OFF  |  Perm: target=ON
+   Hop   Total   Perm-ON/Dark-OFF   Perm-OFF/Dark-ON
+     1      22                 11                  2
+      + AtMYB4_AtMYB7_and_AtMYB32                 [stably ON perm / OFF dark]  [Gene]
+      + MYB32_MYB7_and_MYB4                       [stably ON perm / OFF dark]  [Gene]
+      + NST3_AT1G32770_secondary_wall_associated_nac_domain_protein_1_ATSND1_ANAC012_NAC012_and_SND1  [stably ON perm / OFF dark]  [Gene]
+      + PtrEPSP_TF                                [stably ON perm / OFF dark]  [Gene]
+      + SND5                                      [stably ON perm / OFF dark]  [Gene]
+      + VND6_and_VND7                             [stably ON perm / OFF dark]  [Gene]
+      + VND7_induction                            [stably ON perm / OFF dark]  [Pathway]
+      + VND_and_NST_proteins                      [stably ON perm / OFF dark]  [Gene]
+      ... and 3 more at hop 1
+      - SND1                                      [stably OFF perm / ON dark]  [Gene]
+      - secondary_cell_wall_SCW_biosynthesis      [stably OFF perm / ON dark]  [Pathway]
+     2     517                328                 36
+      + ABA_induced_susceptibility_to_RRNs_in_rice  [stably ON perm / OFF dark]  [Phenotype, hop 2]
+      + ABA_receptors_PYL4_and_PYL5               [stably ON perm / OFF dark]  [Gene, hop 2]
+      + ANAC019                                   [stably ON perm / OFF dark]  [Gene, hop 2]
+      + ANAC072                                   [stably ON perm / OFF dark]  [Gene, hop 2]
+      + AOS2                                      [stably ON perm / OFF dark]  [Gene, hop 2]
+      + AP2C1                                     [stably ON perm / OFF dark]  [Gene, hop 2]
+      + AP2_ERF_domain_transcription_factor_gene_ORA59  [stably ON perm / OFF dark]  [Gene, hop 2]
+      + ATGSTF7_gene                              [stably ON perm / OFF dark]  [Gene, hop 2]
+      ... and 320 more at hop 2
+      - ACO                                       [stably OFF perm / ON dark]  [Gene, hop 2]
+      - ATP_induced_calcium_influx                [stably OFF perm / ON dark]  [Pathway, hop 2]
+      - AabHLH93                                  [stably OFF perm / ON dark]  [Gene, hop 2]
+      - AhRRS5                                    [stably OFF perm / ON dark]  [Gene, hop 2]
+      - BOS1_MYB108                               [stably OFF perm / ON dark]  [Gene, hop 2]
+      ... and 31 more at hop 2
+     3    7171               5390                424
+      + AAA_ATPase                                [stably ON perm / OFF dark]  [Gene, hop 3]
+      + AACT1                                     [stably ON perm / OFF dark]  [Gene, hop 3]
+      + AAL_toxins_and_fumonisins_including_FB1   [stably ON perm / OFF dark]  [Metabolite, hop 3]
+      + AAPK                                      [stably ON perm / OFF dark]  [Gene, hop 3]
+      + AA_deficiency                             [stably ON perm / OFF dark]  [Phenotype, hop 3]
+      + ABA                                       [stably ON perm / OFF dark]  [Metabolite, hop 3]
+      + ABA_8_hydroxylase_HvCYP707A1              [stably ON perm / OFF dark]  [Gene, hop 3]
+      + ABA_RECEPTOR_PYL9                         [stably ON perm / OFF dark]  [Gene, hop 3]
+      ... and 5382 more at hop 3
+      - ABAR                                      [stably OFF perm / ON dark]  [Pathway, hop 3]
+      - ABA_8_hydroxylase                         [stably OFF perm / ON dark]  [Gene, hop 3]
+      - ABA_accumulation_in_guard_cells           [stably OFF perm / ON dark]  [Pathway, hop 3]
+      - ABA_induced_activation_of_OsDMI3          [stably OFF perm / ON dark]  [Pathway, hop 3]
+      - ABF4                                      [stably OFF perm / ON dark]  [Pathway, hop 3]
+      ... and 419 more at hop 3
+     4   26260              23309                579
+      + A6_RGA                                    [stably ON perm / OFF dark]  [Gene, hop 4]
+      + A9                                        [stably ON perm / OFF dark]  [Gene, hop 4]
+      + A9_programme                              [stably ON perm / OFF dark]  [Pathway, hop 4]
+      + AA1_member_from_Magnaporthe_oryzae        [stably ON perm / OFF dark]  [Gene, hop 4]
+      + AAA_ATPase_LRD_6                          [stably ON perm / OFF dark]  [Gene, hop 4]
+      + AAL_toxin                                 [stably ON perm / OFF dark]  [Metabolite, hop 4]
+      + AAL_toxin_and_fumonisin_B1                [stably ON perm / OFF dark]  [Metabolite, hop 4]
+      + AAT_Rhg1                                  [stably ON perm / OFF dark]  [Gene, hop 4]
+      ... and 23301 more at hop 4
+      - ABA_and_GA                                [stably OFF perm / ON dark]  [Metabolite, hop 4]
+      - ABA_induced_H2O2_production               [stably OFF perm / ON dark]  [Pathway, hop 4]
+      - ABA_sensitivity                           [stably OFF perm / ON dark]  [Phenotype, hop 4]
+      - ABCG14                                    [stably OFF perm / ON dark]  [Gene, hop 4]
+      - ABI3_ABI4_and_ABI5                        [stably OFF perm / ON dark]  [Gene, hop 4]
+      ... and 574 more at hop 4
+
+======================================================================
+  Step 3 — Sufficient upstream activators:
+    NOTE: per-hop budget reached — results may be partial
+  0 found
+
+======================================================================
+  Step 4 — Necessity test (synchronous simulation):
+    NOTE: per-hop budget reached — results may be partial
+
+  Necessary activators (KO turns 'MYB46' OFF): 0
+
+  Redundant activators ('MYB46' stays ON without them): 0
+
+======================================================================
+  Step 5 — Necessary suppressors (forced ON turns 'MYB46' OFF): 0
+
+  Suppressor release (KO turns 'MYB46' ON): 0
+
+======================================================================
+  Sink nodes — upstream genes with no further upstream regulators in subgraph
+  (0 nodes). Candidate master regulators (no in-edges in model).
+
+======================================================================
+  TIMING SUMMARY — MYB46, hop 4
+    Total hop time: 121.462s  |  step times logged above
+======================================================================

@@ -276,13 +276,14 @@ def recover_sinks(attractors, sink_rules, src, src_val, sink_order):
     return result
 
 sink_rules = {g: bn_dict[g] for g in sink_nodes}
-sink_order = _topo_sort_sinks(sink_rules)
 if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
+    sink_order = _topo_sort_sinks(sink_rules)
     dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0, sink_order)
     dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1, sink_order)
     perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0, sink_order)
     perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1, sink_order)
 else:
+    sink_order = []   # empty — KO necessity loop becomes a no-op, no topo-sort overhead
     print(f"  Sink recovery skipped ({len(sink_nodes)} sinks > {SINK_RECOVERY_THRESHOLD}) — sinks excluded from classification")
     dark_resting_full   = [{**a, source_gene: 0} for a in dark_resting_att]
     dark_perturbed_full = [{**a, source_gene: 1} for a in dark_perturbed_att]
