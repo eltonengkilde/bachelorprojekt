@@ -1,0 +1,1735 @@
+﻿Source_Gene,Hop,Solver,Prediction_Type,Gene,Category,Is_Gene
+MYB46,1,Bonesis,Dark_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,CESA4,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,CSE,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,CesA7,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,CslA9,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,MYB32,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,MYB85,gene,Yes
+MYB46,1,Bonesis,Dark_Activated,cesa8,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Activated,knat7,"gene, sink",Yes
+MYB46,1,Bonesis,Dark_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,CESA4,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,CSE,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,CesA7,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,CslA9,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,MYB32,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,MYB85,gene,Yes
+MYB46,1,Bonesis,Perm_Activated,cesa8,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Activated,knat7,"gene, sink",Yes
+MYB46,1,Bonesis,Perm_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,CESA4,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,CSE,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,CesA7,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,CslA9,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,MYB32,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,MYB85,gene,Yes
+MYB46,1,Bonesis,Robust_Activated,cesa8,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Activated,knat7,"gene, sink",Yes
+MYB46,1,Bonesis,Robust_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,2,Bonesis,Dark_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,2,Bonesis,Dark_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,2,Bonesis,Dark_Activated,CSE,gene,Yes
+MYB46,2,Bonesis,Dark_Activated,CesA7,"gene, sink",Yes
+MYB46,2,Bonesis,Dark_Activated,CslA9,"gene, sink",Yes
+MYB46,2,Bonesis,Dark_Activated,MYB85,gene,Yes
+MYB46,2,Bonesis,Dark_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,2,Bonesis,Dark_Suppressed,nst1_3_plant_s,"mutant, sink",No
+MYB46,2,Bonesis,Dark_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,2,Bonesis,Perm_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,2,Bonesis,Perm_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,2,Bonesis,Perm_Activated,CSE,gene,Yes
+MYB46,2,Bonesis,Perm_Activated,CesA7,"gene, sink",Yes
+MYB46,2,Bonesis,Perm_Activated,CslA9,"gene, sink",Yes
+MYB46,2,Bonesis,Perm_Activated,MYB85,gene,Yes
+MYB46,2,Bonesis,Perm_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,2,Bonesis,Perm_Suppressed,nst1_3_plant_s,"mutant, sink",No
+MYB46,2,Bonesis,Perm_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,2,Bonesis,Robust_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,2,Bonesis,Robust_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,2,Bonesis,Robust_Activated,CSE,gene,Yes
+MYB46,2,Bonesis,Robust_Activated,CesA7,"gene, sink",Yes
+MYB46,2,Bonesis,Robust_Activated,CslA9,"gene, sink",Yes
+MYB46,2,Bonesis,Robust_Activated,MYB85,gene,Yes
+MYB46,2,Bonesis,Robust_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,2,Bonesis,Robust_Suppressed,nst1_3_plant_s,"mutant, sink",No
+MYB46,2,Bonesis,Robust_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,2,Bonesis,Necessary_Direct_Target,MYB85,gene,Yes
+MYB46,3,Bonesis,Dark_Activated,ABR_gene_s_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,BdG1,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,COR47,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,CesA7,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,CslA9,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,GPAT4,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,MAN5_gene_s_expression,"phenotype, sink",No
+MYB46,3,Bonesis,Dark_Activated,MYB33_during_seed_germination,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,MYB49_binding_to_downstream_regulatory_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,MYB49_binding_to_promoters_of_downstream_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,MYB85,gene,Yes
+MYB46,3,Bonesis,Dark_Activated,PIN1_accumulation,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,cor15A,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,kin1,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,overshoot_of_sucrose_induced_AtSUC1_expression,"phenotype, sink",No
+MYB46,3,Bonesis,Dark_Activated,pho1,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Activated,shb1,"mutant, sink",No
+MYB46,3,Bonesis,Dark_Suppressed,ABA_treated_ect2_3_4_mutant,"mutant, sink",No
+MYB46,3,Bonesis,Dark_Suppressed,ABA_triggered_recruitment_of_SPL9,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,At2g46680,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,CAT1_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,CAT1_transcription,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,CATALASE_1_CAT1,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,COR6_6,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,EM6_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,FLC_transactivation,"phenotype, sink",No
+MYB46,3,Bonesis,Dark_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,SND3,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,bzip60,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,expression_of_EM1,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,expression_of_EM6,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,grs1_1_mutants,"mutant, sink",No
+MYB46,3,Bonesis,Dark_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,3,Bonesis,Dark_Suppressed,psy2l,"mutant, sink",No
+MYB46,3,Bonesis,Dark_Suppressed,quint_and_hda19_plant_s,"mutant, sink",No
+MYB46,3,Bonesis,Perm_Activated,ABR_gene_s_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,BdG1,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,COR47,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,CesA7,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,CslA9,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,GPAT4,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,MAN5_gene_s_expression,"phenotype, sink",No
+MYB46,3,Bonesis,Perm_Activated,MYB33_during_seed_germination,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,MYB49_binding_to_downstream_regulatory_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,MYB49_binding_to_promoters_of_downstream_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,MYB85,gene,Yes
+MYB46,3,Bonesis,Perm_Activated,PIN1_accumulation,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,cor15A,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,kin1,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,overshoot_of_sucrose_induced_AtSUC1_expression,"phenotype, sink",No
+MYB46,3,Bonesis,Perm_Activated,pho1,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Activated,shb1,"mutant, sink",No
+MYB46,3,Bonesis,Perm_Suppressed,ABA_treated_ect2_3_4_mutant,"mutant, sink",No
+MYB46,3,Bonesis,Perm_Suppressed,ABA_triggered_recruitment_of_SPL9,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,At2g46680,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,CAT1_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,CAT1_transcription,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,CATALASE_1_CAT1,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,COR6_6,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,EM6_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,FLC_transactivation,"phenotype, sink",No
+MYB46,3,Bonesis,Perm_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,SND3,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,bzip60,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,expression_of_EM1,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,expression_of_EM6,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,grs1_1_mutants,"mutant, sink",No
+MYB46,3,Bonesis,Perm_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,3,Bonesis,Perm_Suppressed,psy2l,"mutant, sink",No
+MYB46,3,Bonesis,Perm_Suppressed,quint_and_hda19_plant_s,"mutant, sink",No
+MYB46,3,Bonesis,Robust_Activated,ABR_gene_s_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,BdG1,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,COR47,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,CesA7,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,CslA9,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,GPAT4,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,MAN5_gene_s_expression,"phenotype, sink",No
+MYB46,3,Bonesis,Robust_Activated,MYB33_during_seed_germination,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,MYB49_binding_to_downstream_regulatory_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,MYB49_binding_to_promoters_of_downstream_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,MYB85,gene,Yes
+MYB46,3,Bonesis,Robust_Activated,PIN1_accumulation,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,cor15A,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,kin1,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,overshoot_of_sucrose_induced_AtSUC1_expression,"phenotype, sink",No
+MYB46,3,Bonesis,Robust_Activated,pho1,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Activated,shb1,"mutant, sink",No
+MYB46,3,Bonesis,Robust_Suppressed,ABA_treated_ect2_3_4_mutant,"mutant, sink",No
+MYB46,3,Bonesis,Robust_Suppressed,ABA_triggered_recruitment_of_SPL9,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,At2g46680,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,CAT1_expression,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,CAT1_transcription,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,CATALASE_1_CAT1,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,COR6_6,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,EM6_gene_s,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,FLC_transactivation,"phenotype, sink",No
+MYB46,3,Bonesis,Robust_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,SND3,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,bzip60,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,expression_of_EM1,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,expression_of_EM6,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,grs1_1_mutants,"mutant, sink",No
+MYB46,3,Bonesis,Robust_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,3,Bonesis,Robust_Suppressed,psy2l,"mutant, sink",No
+MYB46,3,Bonesis,Robust_Suppressed,quint_and_hda19_plant_s,"mutant, sink",No
+MYB46,3,Bonesis,Necessary_Direct_Target,MYB32,gene,Yes
+MYB46,3,Bonesis,Necessary_Direct_Target,MYB85,gene,Yes
+MYB46,4,Bonesis,Dark_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Activated,CesA7,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Activated,CslA9,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Activated,GGP_enzyme,"protein, sink",No
+MYB46,4,Bonesis,Dark_Activated,GGP_translation,"phenotype, sink",No
+MYB46,4,Bonesis,Dark_Activated,MYB85,gene,Yes
+MYB46,4,Bonesis,Dark_Activated,etr1_1,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Activated,gai_1_mutants,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Activated,prt6_mutant_seeds,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Activated,reduced_seed_dormancy_of_fip1,"phenotype, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,CYP703A2,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,Cpr5,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,F5H_expression,"process, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,Oma1,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,R_gene_s_SNC1,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,SND3,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,abi5_1,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,etr1_mutant,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,fla_mutants,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,ftsh4_1,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,ftsh4_2,"mutant, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,pif3_endosperm,"organ, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,recruitment_of_RAD51,"protein, sink",No
+MYB46,4,Bonesis,Dark_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,4,Bonesis,Dark_Suppressed,shoot_mesophyll_cells,"cell type, sink",No
+MYB46,4,Bonesis,Perm_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Activated,CesA7,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Activated,CslA9,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Activated,GGP_enzyme,"protein, sink",No
+MYB46,4,Bonesis,Perm_Activated,GGP_translation,"phenotype, sink",No
+MYB46,4,Bonesis,Perm_Activated,MYB85,gene,Yes
+MYB46,4,Bonesis,Perm_Activated,etr1_1,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Activated,gai_1_mutants,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Activated,prt6_mutant_seeds,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Activated,reduced_seed_dormancy_of_fip1,"phenotype, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,CYP703A2,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,Cpr5,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,F5H_expression,"process, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,Oma1,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,R_gene_s_SNC1,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,SND3,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,abi5_1,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,etr1_mutant,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,fla_mutants,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,ftsh4_1,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,ftsh4_2,"mutant, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,pif3_endosperm,"organ, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,recruitment_of_RAD51,"protein, sink",No
+MYB46,4,Bonesis,Perm_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,4,Bonesis,Perm_Suppressed,shoot_mesophyll_cells,"cell type, sink",No
+MYB46,4,Bonesis,Robust_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Activated,CesA7,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Activated,CslA9,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Activated,GGP_enzyme,"protein, sink",No
+MYB46,4,Bonesis,Robust_Activated,GGP_translation,"phenotype, sink",No
+MYB46,4,Bonesis,Robust_Activated,MYB85,gene,Yes
+MYB46,4,Bonesis,Robust_Activated,etr1_1,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Activated,gai_1_mutants,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Activated,prt6_mutant_seeds,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Activated,reduced_seed_dormancy_of_fip1,"phenotype, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,BR_regulated_BZR1_targets,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,CYP703A2,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,Cpr5,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,F5H_expression,"process, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,Oma1,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,R_gene_s_SNC1,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,SND3,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,abi5_1,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,etr1_mutant,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,fla_mutants,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,ftsh4_1,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,ftsh4_2,"mutant, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,pif3_endosperm,"organ, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,recruitment_of_RAD51,"protein, sink",No
+MYB46,4,Bonesis,Robust_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,4,Bonesis,Robust_Suppressed,shoot_mesophyll_cells,"cell type, sink",No
+MYB46,4,Bonesis,Necessary_Direct_Target,MYB32,gene,Yes
+MYB46,4,Bonesis,Necessary_Direct_Target,MYB85,gene,Yes
+MYB46,5,Bonesis,Dark_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,5,Bonesis,Dark_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Dark_Activated,CesA7,"gene, sink",Yes
+MYB46,5,Bonesis,Dark_Activated,CslA9,"gene, sink",Yes
+MYB46,5,Bonesis,Dark_Activated,MYB85,gene,Yes
+MYB46,5,Bonesis,Dark_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,5,Bonesis,Dark_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,5,Bonesis,Dark_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Activated,CesA7,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Activated,CslA9,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Activated,MYB85,gene,Yes
+MYB46,5,Bonesis,Perm_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,5,Bonesis,Perm_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ABA3,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,AGL8,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ALDEHYDE_OXIDASE_3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ANAC019,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ANAC078_lines,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,AP1_CAL_promoters,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,AP2_expression_during_early_flower_development,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,AP3,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,AP3_transcription,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ARR16,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ARR7,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,ASPG1_OE2_plant_s,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,A_thaliana_DREB1a,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Ap1,process,No
+MYB46,5,Bonesis,Conditional_Activated,At2g33830,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,AtPPRT1_overexpressing_lines,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,AtPYL2_overexpression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,At_CBF1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,BAM1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,BIN2_localization_to_plasma_membrane,"subcellular compartment, sink",No
+MYB46,5,Bonesis,Conditional_Activated,BZR1_itself,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,CAX1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,CAX1_like_chimeric_transporters,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,CBF1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,COR15B,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,CPC_promoter_activation,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,CYTOCHROME_P450_75B1_F3_H_TT7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Ca2_transport_into_vacuole,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,Crc,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,DREB2a,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,EIL1_transcription_factors,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,EIN2,mutant,No
+MYB46,5,Bonesis,Conditional_Activated,EIN3_EILs_mediated_transcriptional_cascades,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,EIN3_ETHYLENE_INSENSITIVE3_LIKE_EIL_dependent_transcriptional_cascade,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,EIN3_family_of_transcription_factors,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,EIN3_transcription_factors,"tf, sink",No
+MYB46,5,Bonesis,Conditional_Activated,EUI_LIKE_P450_A1_ELA1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Expression_of_ABI4,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,FCA_action,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,FLC_transcription,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,GA2OX3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,GA2ox7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,GA2ox8,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,GAI,protein,No
+MYB46,5,Bonesis,Conditional_Activated,GASA14,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,GCR1_overexpressors,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,GGP_enzyme,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,GGP_translation,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,GRF7,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,GRF8,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,H_Ca2_antiporters,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,IKU2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,JUB1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,Kinase_activity_of_SOS2,"process, sink",No
+MYB46,5,Bonesis,Conditional_Activated,LMI2,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,MDP40,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,MDP40_MICROTUBULE_DESTABILIZING_protein_s_40,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,MINI3,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,MPK6_phosphorylation,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,MYB67,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,NDPK2_autophosphorylation_activity,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,NPR1_independent_resistance_response,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,NSP2_OE,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,NUCLEOSTEMIN_LIKE_1_NSN1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Na_H_antiporter_SOS1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Na_H_exchange_activity_of_SOS1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Nhx1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,OE_ABI4,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,PAD2_1,mutant,No
+MYB46,5,Bonesis,Conditional_Activated,PIF3_degradation,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,PIF4_gene_s_expression,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,PRE1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,PSEUDO_RESPONSE_REGULATOR_5,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Plasma_membrane_Na_H_antiporter_SOS1,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,RD29A_LUC_transgene,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,REPRESSOR_OF_GA_RGA_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,RGL1,protein,No
+MYB46,5,Bonesis,Conditional_Activated,RSM1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,Rd29A,inducible promoter,No
+MYB46,5,Bonesis,Conditional_Activated,SAUR17,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,SAUR19_subfamily_members,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,SHP2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,SOS1_Na_H_antiporter,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,SOS1_on_the_plasma_membrane,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,SOS1_transport,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,SOS2,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,SOS2_SOS3_complex,protein complex,No
+MYB46,5,Bonesis,Conditional_Activated,SOS2_kinase,protein,No
+MYB46,5,Bonesis,Conditional_Activated,SOS2_protein_s_kinase,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,SOS3,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,SSP_gene_s,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,STYLISH2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Sos1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,SufE2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,TFL1_transcription,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,TGA2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,TGA5,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,THI2_1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,TRN2_expression_in_stage_6_floral_buds,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,Transgenic_plant_s_of_AtCBF1,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,Transgenic_plant_s_of_AtCBF3,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,UDP_GLUCOSYL_TRANSFERASE_78D2_UGT78D2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,WER_EGL3_transcriptional_activity,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,WOX5_transcription_factor_gene_s,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,WRKY33_gene_s_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,XAL2,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,YUC9,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,ZP1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,aba2,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,abi4_101_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,abi5_10_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,activation_by_GL1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,activation_by_GL3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,activation_of_AP1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,activation_of_CAPRICE_CPC_promoter,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,activity_of_SOS1,"process, sink",No
+MYB46,5,Bonesis,Conditional_Activated,ada2b_1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,agb1_2,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,aha2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,amp1_1,mutant,No
+MYB46,5,Bonesis,Conditional_Activated,antiporter_function_of_SOS1,"protein function, sink",No
+MYB46,5,Bonesis,Conditional_Activated,arr10,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,ashh2_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,atpprt1_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,bam3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,bas1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,bzr1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,cbf2,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,cell_elongation_by_suppressing_expression_of_PIF4,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,clv1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,cor15A,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,crf2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,crm1_13,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,cyp78a5,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,cytokinin_biosynthetic_gene_s_LOG1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,cytokinin_degradation_gene_s_CKX3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,degradation_of_EBF1_2,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,degradation_of_EIL1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,degradation_of_EIN3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,ect2_3_4_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,ectopic_STY2_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,etr1_1,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,etr1_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,ett,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,eve1_D_plant_s,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,eve_1D_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,expression_of_AP1_CAL,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_DREB2A_DEHYDRATION_RESPONSIVE_ELEMENT_BINDING_protein_s_2A,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_Gl2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_HLS1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_IKU2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_KTN1,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,expression_of_MINI3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_PLT1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_RGA,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_RGL3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_SAUR19_subfamily_members,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,expression_of_TRN2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,g35S_LOV1_plant_s,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,g35S_WRKY41,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,g35S_WRKY53,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,gai_1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,gcn5_1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,glb1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,growth_defects_of_pin1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,grs1_1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,hos1_mutant_lines,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,kin1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,knu,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,leucine_rich_repeat_protein_s_kinase_family_protein_s_AT3G46370,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,lfy,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,lov1_4_mutants,mutant,No
+MYB46,5,Bonesis,Conditional_Activated,miR164_regulated_NAM_gene_s,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,myb118,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,myb52,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,overexpression_line_of_ATL12,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,pid,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,pkl_1_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,plasma_membrane_Na_H_antiporter_SOS1,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Activated,promoting_effects_of_SHORT_ROOT_SHR_on_periclinal_division,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,protein_s_kinase_SOS2,protein,No
+MYB46,5,Bonesis,Conditional_Activated,prt6_mutant_seeds,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Activated,reduced_seed_dormancy_of_fip1,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,rga,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,shb1,mutant,No
+MYB46,5,Bonesis,Conditional_Activated,sob7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,stk,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,substrate_phosphorylation_activity_of_SOS2,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Activated,tfl1,gene,Yes
+MYB46,5,Bonesis,Conditional_Activated,the_auxin_synthesis_gene_s_YUC4,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,the_cytokinin_signaling_negative_regulator_ARR7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,tonoplast_Na_H_antiporter_NHX1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,transcript_levels_of_SUPPRESSOR_OF_OVEREXPRESSION_OF_CO1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,transcription_of_SAUR17_promoter,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,trn2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Activated,yuc7_1D_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ABI5_transcriptional_activity,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ACO4_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,AGL8,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,AGO10,protein,No
+MYB46,5,Bonesis,Conditional_Suppressed,AIF2,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ANAC019,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ANAC078_lines,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,AP1_CAL_promoters,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,AP2_expression_during_early_flower_development,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,AP3,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,AP3_transcription,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ARR16,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ARR7,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ASPG1_OE2_plant_s,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,A_thaliana_DREB1a,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Ap1,process,No
+MYB46,5,Bonesis,Conditional_Suppressed,AtPPRT1_overexpressing_lines,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,AtPYL2_overexpression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,At_CBF1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,BIN2_localization_to_plasma_membrane,"subcellular compartment, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,BIN2_phosphorylation,"process, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,BZS1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,BZS1_transcriptional_level,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,CAX1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,CAX1_like_chimeric_transporters,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,CBF1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,COR15B,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,CPC_promoter_activation,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,CPD_transcription,"process, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,CUC3_transcription,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,CYTOCHROME_P450_75B1_F3_H_TT7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Ca2_transport_into_vacuole,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,Crc,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,DREB2a,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,DWF4_transcription,"process, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,EIL1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,EIL1_transcription_factors,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,EIN2,mutant,No
+MYB46,5,Bonesis,Conditional_Suppressed,EIN3_EILs_mediated_transcriptional_cascades,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,EIN3_ETHYLENE_INSENSITIVE3_LIKE_EIL_dependent_transcriptional_cascade,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,EIN3_family_of_transcription_factors,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,EIN3_transcription_factors,"tf, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ERF72,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,EUI_LIKE_P450_A1_ELA1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Elip1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Expression_of_ABI4,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,FCA_action,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,FHL,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GA2OX3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GA2ox7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GA2ox8,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,GAI,protein,No
+MYB46,5,Bonesis,Conditional_Suppressed,GASA14,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GASA2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GASA3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GATA2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,GATA2_transcription,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,GCR1_overexpressors,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,H_Ca2_antiporters,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,IBH1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,JUB1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,KAO1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Kinase_activity_of_SOS2,"process, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,LMI2,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,LONG_HYPOCOTYL_IN_FAR_RED_LIGHT1_HFR1_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,MPK6_phosphorylation,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,MYB42,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,NDPK2_autophosphorylation_activity,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,NPR1_independent_resistance_response,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,Na_H_antiporter_SOS1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Na_H_exchange_activity_of_SOS1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Nhx1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Oma1,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,PAD2_1,mutant,No
+MYB46,5,Bonesis,Conditional_Suppressed,PIF3_degradation,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,PIN1_GFP_fusion_construct,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,PSEUDO_RESPONSE_REGULATOR_5,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Plasma_membrane_Na_H_antiporter_SOS1,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,RD29A_LUC_transgene,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,REPRESSOR_OF_GA_RGA_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,RGL1,protein,No
+MYB46,5,Bonesis,Conditional_Suppressed,RSM1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Rd29A,inducible promoter,No
+MYB46,5,Bonesis,Conditional_Suppressed,SHP2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,SOS1_Na_H_antiporter,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,SOS1_on_the_plasma_membrane,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,SOS1_transport,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,SOS2,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,SOS2_SOS3_complex,protein complex,No
+MYB46,5,Bonesis,Conditional_Suppressed,SOS2_kinase,protein,No
+MYB46,5,Bonesis,Conditional_Suppressed,SOS2_protein_s_kinase,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,SOS3,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,SSP_gene_s,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,STYLISH2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Scl1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Sos1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,SufE2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,TFL1_transcription,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,TGA2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,TGA5,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,THI2_1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,TRN2_expression_in_stage_6_floral_buds,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,TT10,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,Transgenic_plant_s_of_AtCBF1,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,Transgenic_plant_s_of_AtCBF3,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,UDP_GLUCOSYL_TRANSFERASE_78D2_UGT78D2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,WER_EGL3_transcriptional_activity,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,WOX5_transcription_factor_gene_s,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,WRKY33_gene_s_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,XAL2,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,YUC9,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ZP1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,abi5_10_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,activation_by_GL1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,activation_by_GL3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,activation_of_AP1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,activation_of_CAPRICE_CPC_promoter,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,activity_of_SOS1,"process, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,agb1_2,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,aha2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,amp1_21,mutant,No
+MYB46,5,Bonesis,Conditional_Suppressed,antiporter_function_of_SOS1,"protein function, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,arr10,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ashh2_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,atino80_5_m56_1_triple_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,atpprt1_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,auxin_anabolic_gene_s_NIT1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,bam3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,bas1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,bri1,receptor,No
+MYB46,5,Bonesis,Conditional_Suppressed,cbf2,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,cell_elongation_by_suppressing_expression_of_PIF4,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,clv1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,cor15A,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,crm1_13,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,cytokinin_biosynthetic_gene_s_LOG1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,cytokinin_degradation_gene_s_CKX3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,degradation_of_EBF1_2,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,degradation_of_EIL1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,degradation_of_EIN3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ect2_3_4_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ectopic_STY2_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,etr1_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ett,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,eve1_D_plant_s,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,eve_1D_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_AP1_CAL,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_DREB2A_DEHYDRATION_RESPONSIVE_ELEMENT_BINDING_protein_s_2A,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_EBF1_gene_s,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_FLD,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_Gl2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_PIN_auxin_efflux_carriers,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_PLT1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_RGA,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_RGL3,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,expression_of_TRN2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,fla_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,fld,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,ftsh4_1,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,ftsh4_2,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,g35S_LOV1_plant_s,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,g35S_WRKY41,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,g35S_WRKY53,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,growth_defects_of_pin1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,grs1_1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,hos1_mutant_lines,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,increased_cell_size_in_an3_4_line,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,kin1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,knu,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,leucine_rich_repeat_protein_s_kinase_family_protein_s_AT3G46370,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,lfy,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,lov1_4_mutants,mutant,No
+MYB46,5,Bonesis,Conditional_Suppressed,miR164_regulated_NAM_gene_s,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,overexpression_line_of_ATL12,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,phenotypes_of_BR_insensitive_bri1_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,phenotypes_of_bin2_mutants,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,pid,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,pif3_endosperm,"organ, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,pkl_1_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,plasma_membrane_Na_H_antiporter_SOS1,"protein, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,protein_s_kinase_SOS2,protein,No
+MYB46,5,Bonesis,Conditional_Suppressed,puchi_1,"mutant, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,rga,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,shoot_mesophyll_cells,"cell type, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,sob7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,stk,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,stop1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,substrate_phosphorylation_activity_of_SOS2,"phenotype, sink",No
+MYB46,5,Bonesis,Conditional_Suppressed,tfl1,gene,Yes
+MYB46,5,Bonesis,Conditional_Suppressed,the_auxin_synthesis_gene_s_YUC4,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,the_cytokinin_signaling_negative_regulator_ARR7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,tonoplast_Na_H_antiporter_NHX1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,transcript_levels_of_SUPPRESSOR_OF_OVEREXPRESSION_OF_CO1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,transcription_of_CPD,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,transcriptional_activity_of_PLT1,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,transcriptional_activity_of_RGA,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,trn2,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,xth7,"gene, sink",Yes
+MYB46,5,Bonesis,Conditional_Suppressed,yuc7_1D_mutant,"mutant, sink",No
+MYB46,5,Bonesis,Robust_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,5,Bonesis,Robust_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,5,Bonesis,Robust_Activated,CesA7,"gene, sink",Yes
+MYB46,5,Bonesis,Robust_Activated,CslA9,"gene, sink",Yes
+MYB46,5,Bonesis,Robust_Activated,MYB85,gene,Yes
+MYB46,5,Bonesis,Robust_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,5,Bonesis,Robust_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,5,Bonesis,Robust_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,5,Bonesis,Necessary_Direct_Target,MYB85,gene,Yes
+MYB46,6,Bonesis,Dark_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Activated,CesA7,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Activated,CslA9,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Activated,MYB85,gene,Yes
+MYB46,6,Bonesis,Dark_Suppressed,CYP703A2,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Suppressed,F5H_expression,"process, sink",No
+MYB46,6,Bonesis,Dark_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Suppressed,SND3,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,6,Bonesis,Dark_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Activated,CesA7,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Activated,CslA9,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Activated,MYB85,gene,Yes
+MYB46,6,Bonesis,Perm_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,6,Bonesis,Perm_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ABCB19,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ABI3_regulon_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS11_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS7_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS9_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS_promoters,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ACS_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AGA2ox1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AGL8,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,AGO10,protein,No
+MYB46,6,Bonesis,Conditional_Activated,AGO1_silencing_activity,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AGO9,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,AHA1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AHL15,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,AHP6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AIL6,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ANR1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ANS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP1_CAL_promoters,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP1_activities,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AP2_ERF_TFs,"gene family, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AP2_ERF_transcription_factor,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_LIKE_gene_s,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_expression_during_early_flower_development,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AP2_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_family_members,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_family_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_like_TF_s_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_like_gene_s_Cleistogamy1_Cly1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_like_protein_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_like_target_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_like_transcripts,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_likes_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_protein_s_accumulation,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP2_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AP3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,AP3_in_second_and_third_whorl_cells,"cell type, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AP3_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,APETALA2_AP2_like_TFs,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,APETALA2_like_AP2_floral_repressors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,APETALA2_like_AP2_like_gene_s_family,"gene family, sink",No
+MYB46,6,Bonesis,Conditional_Activated,APETALA2_like_AP2_like_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,APETALA_2_AP2_like_family_of_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ARF6,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ARF6_DNA_binding,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ARF6_binding_to_target_gene_s,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ARF7,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ARF7_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ARF8,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ASL19,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,AT1G28370,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AT1G74930,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AT2S3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AT5G47250_expression,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AT5G52020,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AUX1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,A_thaliana_HDA6_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,Ap1,process,No
+MYB46,6,Bonesis,Conditional_Activated,At1g178101_putative_aquaporin,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,At1g43850_SEUSS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,At2g22660_DUF1399,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,At4g34410,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,At5g65480,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AtALY4_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AtHb1_seeds,"organ, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AtLEC2_GR,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AtMYB56,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,AtPPRT1_overexpressing_lines,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,AtSdr4L,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Atsdr4l_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BADC1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BADC2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BADC3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BBM,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,BCCP1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BES1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,BOP2_overexpressing_strains,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BRI1_kinase_activity,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BR_insensitive_bri1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BSK1,protein,No
+MYB46,6,Bonesis,Conditional_Activated,BSL1_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BSU1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,BZR1_DNA_binding_ability,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BZR1_family_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BZR1_homologues,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BZR1_s_ability_to_bind_DNA,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BZR1_s_ability_to_regulate_transcription,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,BZR1_s_binding_to_target_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,BZR2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Bop1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,C4H,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,CBF1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,CBF3_LUC,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,CDG1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,CHS_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,CLV3_transcription,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,COOLAIR_class_I_antisense_transcript,"transcript, sink",No
+MYB46,6,Bonesis,Conditional_Activated,COOLAIR_isoforms,"rna, sink",No
+MYB46,6,Bonesis,Conditional_Activated,COR15B,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,CPD,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,CUC2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,CYCB1_1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,CYCB1_1_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,CYCB1_2_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,CYTOCHROME_P450_75B1_F3_H_TT7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Ca2_CPKs_NLPs_signaling_pathway,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Activated,Ca2_burst,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,Cpr5,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Crc,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,D14_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,DA1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,DNA_binding_activities_of_BZR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,DNA_binding_activity_of_LBD37,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,DREB19,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,DREB26,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,DREB2B,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,DREB2c,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Dephosphorylation_of_BZR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,EMS1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ERF104,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ERF2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,EUI_LIKE_P450_A1_ELA1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_levels_of_LFY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_ABI4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_CHS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_CYP79B3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_F3H,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_LATE_ELONGATED_HYPOCOTYL_LHY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_NRT2_1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Expression_of_STM,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,FAD3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,FCA,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,FCA_action,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,FLC_mRNA_accumulation,"molecule, sink",No
+MYB46,6,Bonesis,Conditional_Activated,FLS1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,FLS_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,FRK6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,FUS3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,GA20OX1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,GA20OX4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GA20ox2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,GA2OX6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GA2ox2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,GA2ox7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GA2ox8,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,GA3ox2_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GAI,protein,No
+MYB46,6,Bonesis,Conditional_Activated,GAI_protein_s_stability,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,GAI_stability,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,GASA14,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GCR1_overexpressors,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,GID1a,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GSL8,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GSL8_pro_LUC_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,GST_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Gun5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,HDA15_OE_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,HL_treated_pgr5,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,HSP70_4,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Activated,HSP90_2,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,Hsp90_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,IAA1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IAA20,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IAA30,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IAA5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IAA9,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IPT1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IPT3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,IPT7,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,JA_induced_transcription_of_PDF1_2s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,KAN1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,KNAT1_BP,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,KNAT6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,KasI,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LACS2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LBD37,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,LBD37_38_39_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LBD37_binding_ability,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LBD37_function_in_lateral_root_s_growth,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,LEC2_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,LHY_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LMI2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,LOG4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LOX2_LIPOXYGENASE_2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LSH3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LSH4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,LUH,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,MIR164A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,MIR165,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,MIR165_6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,MIR172,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,MPK6_phosphorylation,phenotype,No
+MYB46,6,Bonesis,Conditional_Activated,MYB24,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,MYB44_OE,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,MYB57,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,MiR166,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,NRT1_1_QSK1_complex_formation,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,NRT2_2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Nrt1_1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Nrt2_4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,OSD1,mutant,No
+MYB46,6,Bonesis,Conditional_Activated,PAL2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,PEPR1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,PIF4_protein_s_accumulation,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,PIF5_protein_s_accumulation,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,PIN1_GFP_fusion_construct,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,PIN1_transcription,"gene expression, sink",No
+MYB46,6,Bonesis,Conditional_Activated,POR_construct,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,PP2A,protein,No
+MYB46,6,Bonesis,Conditional_Activated,PRE5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,PRH1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,PR_4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,PSEUDO_RESPONSE_REGULATOR_5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Phb,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Pin1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,RAC7_OX,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,RAP2_7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,RAV1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,REPRESSOR_OF_GA_RGA_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,RGAT1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,RGL1,protein,No
+MYB46,6,Bonesis,Conditional_Activated,ROD1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,RSL4,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Rap2_6L,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,SAL1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SAUR15,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SAUR19_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,SAUR19_subfamily,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,SHP1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SHP2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SMR1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SMZ,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SNZ,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SPL3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SPL4,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SPL5,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SPL_gene_s,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,SPL_transcription_factor_gene_s_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,SR45_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,STM,mutant,No
+MYB46,6,Bonesis,Conditional_Activated,STM_expression_at_globular_stage,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,STYLISH2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,TCP20,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,TCP20_mediated_transactivation_of_proGH3_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,TFL1_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,TOE2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,TPD1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,TRN2_expression_in_stage_6_floral_buds,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,TSF,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,TT4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,UDP_GLUCOSYL_TRANSFERASE_78D2_UGT78D2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,UF3GT,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,UGT74D1_overexpression_lines,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,UPB1_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,UVI4,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,VND6,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,VND7,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,VND7_induced_expression_of_vessel_specific_gene_s,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,VND7_transactivation_activity,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,WOX4,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,WOX4_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,WOX5_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,WOX5_transcription_factor_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,WRI1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,WRI1_regulated_gene_s_involved_in_fatty_acid_synthesis,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,WRKY44,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,Wuschel,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,XAL2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,XTH19,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,XTH23,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,YAB3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,YDA_MAPK_signaling_pathway,"signaling pathway, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ZHD5,phenotype,No
+MYB46,6,Bonesis,Conditional_Activated,ZP1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ZPR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ZPR2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ZPR3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,Zat12_luc,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,aba2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ability_of_BZR1_to_bind_to_target_promoters,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Activated,abs,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,abs1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,accumulation_of_miR165_166,"metabolite, sink",No
+MYB46,6,Bonesis,Conditional_Activated,accumulation_of_miR165_6,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,acs6,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,activation_of_AP1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,activity_of_FRK6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,activity_of_GSK3_kinase_BIN2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,agl15,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ap1_10,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ap3_like_phenotypes,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,arf5,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,as1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,as11,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,as2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,asa1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ashh2_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,atnced3,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,atnsf_1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,atpprt1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,auxin_degrading_protein_s_Gretchen_Hagen_3_3_GH3_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,bHLH,protein,No
+MYB46,6,Bonesis,Conditional_Activated,bHLH_Transcription_Factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,bam3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,bas1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,binding_of_ABI5_to_promoter_regions,"subcellular compartment, sink",No
+MYB46,6,Bonesis,Conditional_Activated,binding_of_ABI5_to_promoter_regions_of_downstream_gene_s,"subcellular compartment, sink",No
+MYB46,6,Bonesis,Conditional_Activated,bop2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,bri1,receptor,No
+MYB46,6,Bonesis,Conditional_Activated,bri1_235,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,bri1_5_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,bri1_dwarfism,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,cbf2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,cca1_gene_s,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,chromatin_changes_at_FLC,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,clv1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,cpl1_3_mutant_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,crm1_13,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,cuc1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,cuc3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,cyp707a2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,cytokinin_biosynthetic_gene_s_LOG1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,cytokinin_degradation_gene_s_CKX3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,dao1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,degradation_of_miR165_166,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,degradation_of_miR165_6,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,deletion_of_NAA15,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,dephosphorylation_of_BES1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,det2_9,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,developing_siliques_of_the_lec1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,disease_resistance_of_cpr5,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,dissociation_of_BKI1,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Activated,drb1_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,drb2_Cd_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,drb4_Cd_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,dwf1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,eRF1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ectopic_STY2_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,edr1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,endoreduplication_defects_of_uvi4,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,eno2,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,epfl2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,erf019_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ethylene_insensitivity_of_etr1_1,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,eto1_4,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,etr1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ett,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,eve1_D_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,eve_1D_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,expression_levels_of_AtAP1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AP1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AP1_CAL,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AP2_Like_AP2L_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AP2_transcription_factor,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AtCOR15A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AtCOR15b,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AtKIN1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_AtLOX2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_BAS1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_CBF1_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_CLV1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_COR15A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_CUC1_2_3_during_postembryonic_development,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,expression_of_FLS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_Gl2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_KNAT1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_KNAT2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_LFY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_PORA,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_RD29A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_RGA,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_RGL3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_SAUR15,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_SRS5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_TOE1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_TOE2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_TRN2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_Zat12,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_aux1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_gene_s_regulated_by_VND7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,expression_of_miR172_target_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,fil,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,floral_meristem_identity_gene_s_LFY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,flowering_repressor_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,formation_of_PIN1_convergence_sites,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,fri,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,fructose_phosphorylating_activity_of_FRK6,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ftip1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,function_of_TCP20,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,g35S_AtGRDP2_OE3_line,mutant,No
+MYB46,6,Bonesis,Conditional_Activated,g35S_WRKY41,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,g35S_WRKY53,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,g3_to_5_truncation_of_miR165_6,"mirna, sink",No
+MYB46,6,Bonesis,Conditional_Activated,g9_palmitoyl_ACP_desaturases,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,generation_of_PIN1_dependent_auxin_activity_maxima,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,generation_of_PIN1_mediated_auxin_maxima,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,gh3_5,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,gid1b,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,gis,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,glb1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,glu1_2_mutant_leaf,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,gpat1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,growth_defects_of_pin1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,grs1_1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hda15_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hdt1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hec1_2_3_triple_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hfr1_4_sics1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,high_FLC_expression_levels,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hos1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hsi2_2_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,hsi2_4_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,iaa17,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,ick1_2_5_6_7_calli,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,if1_mutant_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,incorporation_of_WUS_expressing_cells_into_organ_primordia,"organ, sink",No
+MYB46,6,Bonesis,Conditional_Activated,increased_expression_of_FIL,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,int1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,integument_fusion_Ats_phenotype,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,ipt5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,kin1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,kinase_activity_of_FRK6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,knat2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,knu,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,lacs1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,lax3,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,lec1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,lec2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,leucine_rich_repeat_protein_s_kinase_family_protein_s_AT3G46370,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,lfy,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,lfy_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,lox2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,m6A_deposition_on_COOLAIR,"rna modification, sink",No
+MYB46,6,Bonesis,Conditional_Activated,miR156A,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,miR164_regulated_NAM_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,miR165_166_activity,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,miR165_166_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,miR165_6_degradation,"mirna, sink",No
+MYB46,6,Bonesis,Conditional_Activated,miR166_165,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,miR172_maturation,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,miR172_target_gene_s_expression,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,mir156c,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,mtn1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,myb118,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,myb21,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,myb30,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,naa15,mutant,No
+MYB46,6,Bonesis,Conditional_Activated,pAP3_CsNAC2_A_thaliana,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,pal1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,phenotype_of_autonomous_mutant_fca,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,phenotype_of_dominant_FRI_line,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,phenotypes_of_BR_insensitive_bri1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,phenotypes_of_bin2_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,phenylpropanoid_biosynthetic_gene_s_CHS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,phenylpropanoid_biosynthetic_gene_s_F3H,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,phenylpropanoid_biosynthetic_gene_s_FLS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,phv_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,pleiotropic_phenotypes_of_cpr5,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,polyadenylation_of_COOLAIR,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,ppdk,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,pre_squaring_stage,"developmental stage, sink",No
+MYB46,6,Bonesis,Conditional_Activated,production_of_FLC_sense_and_antisense_transcripts,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,protein_s_stability_of_SPCH,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,proximal_polyadenylation_of_COOLAIR,"rna processing, sink",No
+MYB46,6,Bonesis,Conditional_Activated,proximal_polyadenylation_of_the_sense_nascent_FLC_transcript,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,recruitment_of_RAD51,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Activated,reduced_seed_dormancy_of_fip1,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,rga,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,root_s_hair_bHLH_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,root_s_of_bri1_mutants_compared_to_WT,"organism, sink",No
+MYB46,6,Bonesis,Conditional_Activated,shoot_determinants_STM,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,sly1_2_DvsWT_dry_seed_comparison,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,sly1_2_seeds,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,sob7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,spt_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,srk2d_e_i_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,stk,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,stk_background,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,sus2,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,tar2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,tfl1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,the_auxin_synthesis_gene_s_YUC4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,the_cytokinin_signaling_negative_regulator_ARR7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,tir3_1_allele_of_BIG,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,toe1,gene,Yes
+MYB46,6,Bonesis,Conditional_Activated,transactivation_ability_of_bHLH48,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transactivation_ability_of_bHLH60,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcription_activation_ability_of_bHLH48,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcription_activation_function_of_WRKY45,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcription_of_COOLAIR,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,transcription_of_LSH3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcription_of_LSH4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcription_of_MIR172_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcriptional_activation_activities_of_ATAF2,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,transcriptional_activation_activities_of_VND7,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,transcriptional_activation_activity_of_ATAF2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcriptional_activities_of_BZR1,"gene expression, sink",No
+MYB46,6,Bonesis,Conditional_Activated,transcriptional_activity_of_BZR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,transcriptional_activity_of_bZIP_TFs,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Activated,transient_repression_of_NRT1_2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,trn2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Activated,tt16_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,tt2_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Activated,upb1,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Activated,usage_of_proximal_poly_A_sites_of_FLC_antisense_transcripts,"process, sink",No
+MYB46,6,Bonesis,Conditional_Activated,young_flowers_of_ga1_3,"organ, sink",No
+MYB46,6,Bonesis,Conditional_Activated,yuc2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ABCB19,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ABI3_regulon_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS11_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS7_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS9_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS_promoters,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ACS_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AGA2ox1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AGL8,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AGO10,protein,No
+MYB46,6,Bonesis,Conditional_Suppressed,AGO1_silencing_activity,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AGO9,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AHA1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AHL15,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AHP6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AIL6,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ANR1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ANS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP1_CAL_promoters,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP1_activities,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_ERF_TFs,"gene family, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_ERF_transcription_factor,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_LIKE_gene_s,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_expression_during_early_flower_development,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_family_members,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_family_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_like_TF_s_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_like_gene_s_Cleistogamy1_Cly1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_like_protein_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_like_target_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_like_transcripts,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_likes_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_protein_s_accumulation,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP2_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AP3_in_second_and_third_whorl_cells,"cell type, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AP3_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,APETALA2_AP2_like_TFs,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,APETALA2_like_AP2_floral_repressors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,APETALA2_like_AP2_like_gene_s_family,"gene family, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,APETALA2_like_AP2_like_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,APETALA_2_AP2_like_family_of_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ARF6,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ARF6_DNA_binding,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ARF6_binding_to_target_gene_s,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ARF7,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ARF7_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ARF8,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ASL19,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AT1G28370,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AT1G74930,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AT2S3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AT5G47250_expression,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AT5G52020,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AUX1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,A_thaliana_HDA6_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,Ap1,process,No
+MYB46,6,Bonesis,Conditional_Suppressed,At1g178101_putative_aquaporin,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,At1g43850_SEUSS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,At2g22660_DUF1399,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,At4g34410,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,At5g65480,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AtALY4_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AtHb1_seeds,"organ, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AtLEC2_GR,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AtMYB56,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,AtPPRT1_overexpressing_lines,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,AtSdr4L,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Atsdr4l_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BADC1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BADC2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BADC3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BBM,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BCCP1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BES1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BOP2_overexpressing_strains,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BRI1_kinase_activity,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BR_insensitive_bri1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BSK1,protein,No
+MYB46,6,Bonesis,Conditional_Suppressed,BSL1_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BSU1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BZR1_DNA_binding_ability,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BZR1_family_transcription_factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BZR1_homologues,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BZR1_s_ability_to_bind_DNA,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BZR1_s_ability_to_regulate_transcription,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,BZR1_s_binding_to_target_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,BZR2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Bop1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,C4H,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CBF1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CBF3_LUC,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CDG1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CHS_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CLV3_transcription,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,COOLAIR_class_I_antisense_transcript,"transcript, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,COOLAIR_isoforms,"rna, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,COR15B,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CPD,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CUC2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CYCB1_1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CYCB1_1_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CYCB1_2_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CYP703A2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,CYTOCHROME_P450_75B1_F3_H_TT7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Ca2_CPKs_NLPs_signaling_pathway,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,Ca2_burst,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,Cpr5,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Crc,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,D14_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DA1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DNA_binding_activities_of_BZR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DNA_binding_activity_of_LBD37,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DREB19,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DREB26,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DREB2B,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,DREB2c,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Dephosphorylation_of_BZR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,EMS1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ERF104,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ERF2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,EUI_LIKE_P450_A1_ELA1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_levels_of_LFY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_ABI4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_CHS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_CYP79B3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_F3H,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_LATE_ELONGATED_HYPOCOTYL_LHY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_NRT2_1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Expression_of_STM,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,F5H_expression,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,FAD3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,FCA,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,FCA_action,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,FLC_mRNA_accumulation,"molecule, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,FLS1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,FLS_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,FRK6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,FUS3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA20OX1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA20OX4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA20ox2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA2OX6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA2ox2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA2ox7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GA2ox8,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,GA3ox2_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GAI,protein,No
+MYB46,6,Bonesis,Conditional_Suppressed,GAI_protein_s_stability,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,GAI_stability,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,GASA14,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GCR1_overexpressors,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,GID1a,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GSL8,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GSL8_pro_LUC_gene_s_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,GST_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Gun5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,HDA15_OE_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,HL_treated_pgr5,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,HSP70_4,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,HSP90_2,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,Hsp90_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,IAA1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IAA20,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IAA30,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IAA5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IAA9,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IPT1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IPT3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,IPT7,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,JA_induced_transcription_of_PDF1_2s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,KAN1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,KNAT1_BP,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,KNAT6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,KasI,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LACS2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LBD37,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LBD37_38_39_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LBD37_binding_ability,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LBD37_function_in_lateral_root_s_growth,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,LEC2_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,LHY_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LMI2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LOG4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LOX2_LIPOXYGENASE_2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LSH3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LSH4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,LUH,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MIR164A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MIR165,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MIR165_6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MIR172,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MPK6_phosphorylation,phenotype,No
+MYB46,6,Bonesis,Conditional_Suppressed,MYB24,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MYB44_OE,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,MYB57,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,MiR166,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,NRT1_1_QSK1_complex_formation,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,NRT2_2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Nrt1_1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Nrt2_4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,OSD1,mutant,No
+MYB46,6,Bonesis,Conditional_Suppressed,PAL2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PEPR1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PIF4_protein_s_accumulation,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,PIF5_protein_s_accumulation,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,PIN1_GFP_fusion_construct,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PIN1_transcription,"gene expression, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,POR_construct,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PP2A,protein,No
+MYB46,6,Bonesis,Conditional_Suppressed,PRE5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PRH1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PR_4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,PSEUDO_RESPONSE_REGULATOR_5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Phb,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Pin1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,RAC7_OX,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,RAP2_7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,RAV1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,REPRESSOR_OF_GA_RGA_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,RGAT1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,RGL1,protein,No
+MYB46,6,Bonesis,Conditional_Suppressed,ROD1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,RSL4,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Rap2_6L,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SAL1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SAUR15,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SAUR19_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SAUR19_subfamily,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SHP1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SHP2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SMR1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SMZ,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SND3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SNZ,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SPL3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SPL4,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SPL5,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SPL_gene_s,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SPL_transcription_factor_gene_s_family,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,SR45_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,STM,mutant,No
+MYB46,6,Bonesis,Conditional_Suppressed,STM_expression_at_globular_stage,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,STYLISH2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TCP20,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TCP20_mediated_transactivation_of_proGH3_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TFL1_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TOE2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TPD1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TRN2_expression_in_stage_6_floral_buds,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TSF,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,TT4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,UDP_GLUCOSYL_TRANSFERASE_78D2_UGT78D2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,UF3GT,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,UGT74D1_overexpression_lines,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,UPB1_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,UVI4,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,VND6,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,VND7,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,VND7_induced_expression_of_vessel_specific_gene_s,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,VND7_transactivation_activity,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,WOX4,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,WOX4_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,WOX5_transcription,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,WOX5_transcription_factor_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,WRI1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,WRI1_regulated_gene_s_involved_in_fatty_acid_synthesis,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,WRKY44,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Wuschel,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,XAL2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,XTH19,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,XTH23,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,YAB3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,YDA_MAPK_signaling_pathway,"signaling pathway, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ZHD5,phenotype,No
+MYB46,6,Bonesis,Conditional_Suppressed,ZP1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ZPR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ZPR2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ZPR3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,Zat12_luc,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,aba2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ability_of_BZR1_to_bind_to_target_promoters,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,abs,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,abs1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,accumulation_of_miR165_166,"metabolite, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,accumulation_of_miR165_6,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,acs6,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,activation_of_AP1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,activity_of_FRK6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,activity_of_GSK3_kinase_BIN2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,agl15,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ap1_10,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ap3_like_phenotypes,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,arf5,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,as1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,as11,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,as2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,asa1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ashh2_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,atnced3,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,atnsf_1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,atpprt1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,auxin_degrading_protein_s_Gretchen_Hagen_3_3_GH3_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,bHLH,protein,No
+MYB46,6,Bonesis,Conditional_Suppressed,bHLH_Transcription_Factors,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,bam3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,bas1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,binding_of_ABI5_to_promoter_regions,"subcellular compartment, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,binding_of_ABI5_to_promoter_regions_of_downstream_gene_s,"subcellular compartment, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,bop2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,bri1,receptor,No
+MYB46,6,Bonesis,Conditional_Suppressed,bri1_235,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,bri1_5_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,bri1_dwarfism,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,cbf2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,cca1_gene_s,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,chromatin_changes_at_FLC,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,clv1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,cpl1_3_mutant_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,crm1_13,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,cuc1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,cuc3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,cyp707a2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,cytokinin_biosynthetic_gene_s_LOG1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,cytokinin_degradation_gene_s_CKX3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,dao1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,degradation_of_miR165_166,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,degradation_of_miR165_6,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,deletion_of_NAA15,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,dephosphorylation_of_BES1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,det2_9,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,developing_siliques_of_the_lec1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,disease_resistance_of_cpr5,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,dissociation_of_BKI1,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,drb1_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,drb2_Cd_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,drb4_Cd_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,dwf1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,eRF1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ectopic_STY2_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,edr1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,endoreduplication_defects_of_uvi4,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,eno2,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,epfl2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,erf019_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ethylene_insensitivity_of_etr1_1,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,eto1_4,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,etr1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ett,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,eve1_D_plant_s,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,eve_1D_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,expression_levels_of_AtAP1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AP1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AP1_CAL,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AP2_Like_AP2L_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AP2_transcription_factor,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AtCOR15A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AtCOR15b,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AtKIN1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_AtLOX2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_BAS1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_CBF1_3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_CLV1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_COR15A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_CUC1_2_3_during_postembryonic_development,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_FLS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_Gl2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_KNAT1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_KNAT2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_LFY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_PORA,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_RD29A,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_RGA,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_RGL3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_SAUR15,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_SRS5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_TOE1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_TOE2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_TRN2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_Zat12,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_aux1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_gene_s_regulated_by_VND7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,expression_of_miR172_target_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,fil,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,floral_meristem_identity_gene_s_LFY,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,flowering_repressor_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,formation_of_PIN1_convergence_sites,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,fri,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,fructose_phosphorylating_activity_of_FRK6,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ftip1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,function_of_TCP20,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,g35S_AtGRDP2_OE3_line,mutant,No
+MYB46,6,Bonesis,Conditional_Suppressed,g35S_WRKY41,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,g35S_WRKY53,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,g3_to_5_truncation_of_miR165_6,"mirna, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,g9_palmitoyl_ACP_desaturases,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,generation_of_PIN1_dependent_auxin_activity_maxima,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,generation_of_PIN1_mediated_auxin_maxima,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,gh3_5,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,gid1b,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,gis,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,glb1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,glu1_2_mutant_leaf,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,gpat1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,growth_defects_of_pin1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,grs1_1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hda15_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hdt1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hec1_2_3_triple_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hfr1_4_sics1_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,high_FLC_expression_levels,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hos1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hsi2_2_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,hsi2_4_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,iaa17,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ick1_2_5_6_7_calli,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,if1_mutant_seedlings,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,incorporation_of_WUS_expressing_cells_into_organ_primordia,"organ, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,increased_expression_of_FIL,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,int1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,integument_fusion_Ats_phenotype,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,ipt5,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,kin1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,kinase_activity_of_FRK6,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,knat2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,knu,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,lacs1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,lax3,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,lec1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,lec2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,leucine_rich_repeat_protein_s_kinase_family_protein_s_AT3G46370,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,lfy,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,lfy_1,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,lox2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,m6A_deposition_on_COOLAIR,"rna modification, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,miR156A,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,miR164_regulated_NAM_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,miR165_166_activity,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,miR165_166_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,miR165_6_degradation,"mirna, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,miR166_165,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,miR172_maturation,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,miR172_target_gene_s_expression,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,mir156c,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,mtn1_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,myb103,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,myb118,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,myb21,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,myb30,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,naa15,mutant,No
+MYB46,6,Bonesis,Conditional_Suppressed,pAP3_CsNAC2_A_thaliana,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,pal1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,phenotype_of_autonomous_mutant_fca,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,phenotype_of_dominant_FRI_line,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,phenotypes_of_BR_insensitive_bri1_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,phenotypes_of_bin2_mutants,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,phenylpropanoid_biosynthetic_gene_s_CHS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,phenylpropanoid_biosynthetic_gene_s_F3H,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,phenylpropanoid_biosynthetic_gene_s_FLS,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,phv_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,pleiotropic_phenotypes_of_cpr5,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,polyadenylation_of_COOLAIR,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,ppdk,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,pre_squaring_stage,"developmental stage, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,production_of_FLC_sense_and_antisense_transcripts,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,protein_s_stability_of_SPCH,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,proximal_polyadenylation_of_COOLAIR,"rna processing, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,proximal_polyadenylation_of_the_sense_nascent_FLC_transcript,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,recruitment_of_RAD51,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,reduced_seed_dormancy_of_fip1,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,rga,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,root_s_hair_bHLH_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,root_s_of_bri1_mutants_compared_to_WT,"organism, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,shoot_determinants_STM,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,sly1_2_DvsWT_dry_seed_comparison,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,sly1_2_seeds,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,sob7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,spt_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,srk2d_e_i_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,stk,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,stk_background,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,sus2,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,tar2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,tfl1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,the_auxin_synthesis_gene_s_YUC4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,the_cytokinin_signaling_negative_regulator_ARR7,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,tir3_1_allele_of_BIG,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,toe1,gene,Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transactivation_ability_of_bHLH48,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transactivation_ability_of_bHLH60,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcription_activation_ability_of_bHLH48,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcription_activation_function_of_WRKY45,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcription_of_COOLAIR,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,transcription_of_LSH3,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcription_of_LSH4,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcription_of_MIR172_gene_s,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcriptional_activation_activities_of_ATAF2,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,transcriptional_activation_activities_of_VND7,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,transcriptional_activation_activity_of_ATAF2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcriptional_activities_of_BZR1,"gene expression, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,transcriptional_activity_of_BZR1,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,transcriptional_activity_of_bZIP_TFs,"phenotype, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,transient_repression_of_NRT1_2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,trn2,"gene, sink",Yes
+MYB46,6,Bonesis,Conditional_Suppressed,tt16_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,tt2_mutant,"mutant, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,upb1,"protein, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,usage_of_proximal_poly_A_sites_of_FLC_antisense_transcripts,"process, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,young_flowers_of_ga1_3,"organ, sink",No
+MYB46,6,Bonesis,Conditional_Suppressed,yuc2,gene,Yes
+MYB46,6,Bonesis,Robust_Activated,A_thaliana_MYB4,"gene, sink",Yes
+MYB46,6,Bonesis,Robust_Activated,At4CL1_expression,"gene, sink",Yes
+MYB46,6,Bonesis,Robust_Activated,CesA7,"gene, sink",Yes
+MYB46,6,Bonesis,Robust_Activated,CslA9,"gene, sink",Yes
+MYB46,6,Bonesis,Robust_Activated,MYB85,gene,Yes
+MYB46,6,Bonesis,Robust_Suppressed,Medicago_F5H_promoter,"gene, sink",Yes
+MYB46,6,Bonesis,Robust_Suppressed,promoter_activity_of_AtACO4,"gene, sink",Yes
+MYB46,6,Bonesis,Robust_Suppressed,same_set_of_direct_targets_as_MYB46,"gene, sink",Yes

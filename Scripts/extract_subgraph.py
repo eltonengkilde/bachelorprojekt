@@ -30,7 +30,7 @@ MIN_HOPS = 1
 MAX_HOPS = 12
 
 BASE     = "/Users/elton_1stboot/Documents/Bachelor Git/bachelorprojekt"
-NET_FILE = BASE + "/networks_used_by_scripts/filtered_networkL_normalized.csv"
+NET_FILE = BASE + "/networks_used_by_scripts/filtered_GT_normalized.csv"
 OUT_DIR  = BASE
 # ══════════════════════════════════════════════════════════════════════════════
 

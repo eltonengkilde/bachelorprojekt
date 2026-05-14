@@ -34,14 +34,42 @@ import re, csv, os
 BASE = "/Users/elton_1stboot/Documents/Bachelor Git/bachelorprojekt"
 
 FILES = [
-    BASE + "/Benchmark BoNesis simulation BW/bench_bw_MASTER_larger_bonesis_MYB46_hops1.txt",
-    BASE + "/Benchmark BoNesis simulation BW/bench_bw_MASTER_larger_bonesis_MYB46_hops2.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops1.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops2.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops3.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops4.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops5.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops6.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops7.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops8.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops9.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops10.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops11.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops12.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops13.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops14.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops15.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops16.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops17.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops18.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops19.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops20.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops21.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops22.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops23.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops24.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops25.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops26.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops27.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops28.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops29.txt",
+    BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops30.txt",
 
     
     
     
     # Add more files here, e.g.:
-    # BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_larger_simulation_MYB46_hops3.txt",
+    # BASE + "/Benchmark synchronous simulation BW/bench_bw_MASTER_simulation_MYB46_hops3.txt",
 ]
 
 # Same output file as extract_predictions.py — append so both scripts feed one sheet.
@@ -64,7 +92,7 @@ _STEP1_ACT = re.compile(r'Activators:\s*\d+', re.I)
 _STEP1_SUP = re.compile(r'Suppressors:\s*\d+', re.I)
 _STEP2     = re.compile(r'Step 2.*Attractor state', re.I)
 _STEP3     = re.compile(r'Step 3.*Sufficient upstream', re.I)
-_STEP4     = re.compile(r'Step 4.*Necessity.*activator', re.I)
+_STEP4     = re.compile(r'Step 4', re.I)
 _STEP5     = re.compile(r'Step 5.*Suppressor', re.I)
 
 # Step 1 & 2: 6-space indent, optional second bracket for Step 2

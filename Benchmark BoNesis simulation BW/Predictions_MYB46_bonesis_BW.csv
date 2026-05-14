@@ -1,0 +1,164 @@
+﻿Direction,Source_Gene,Hop,Solver,Prediction_Type,Gene,Category,Is_Gene
+Backward,MYB46,1,Bonesis,Direct_Activator,ERF041_VP16,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,SND1,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,SND1_protein_s,protein,No
+Backward,MYB46,1,Bonesis,Direct_Activator,VND1,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,VND2,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,VND3,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,VND4,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,VND5,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Activator,nst1,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Suppressor,Tdp1,gene,Yes
+Backward,MYB46,1,Bonesis,Direct_Suppressor,miR395c_overexpression,mutant,No
+Backward,MYB46,1,Bonesis,Direct_Suppressor,mpk6,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,ERF041_VP16,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,SND1,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,SND1_protein_s,protein,No
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,Tdp1,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,VND1,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,VND2,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,VND3,gene,Yes
+Backward,MYB46,1,Bonesis,Perm_ON_Dark_OFF,VND4,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,ERF041_VP16,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,SND1,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,SND1_protein_s,protein,No
+Backward,MYB46,1,Bonesis,Sufficient_Activator,VND1,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,VND2,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,VND3,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,VND4,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,VND5,gene,Yes
+Backward,MYB46,1,Bonesis,Sufficient_Activator,nst1,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,ERF041_VP16,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,SND1,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,SND1_protein_s,protein,No
+Backward,MYB46,2,Bonesis,Direct_Activator,VND1,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,VND2,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,VND3,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,VND4,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,VND5,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Activator,nst1,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Suppressor,Tdp1,gene,Yes
+Backward,MYB46,2,Bonesis,Direct_Suppressor,miR395c_overexpression,mutant,No
+Backward,MYB46,2,Bonesis,Direct_Suppressor,mpk6,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ERF041_VP16,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,SND1_protein_s,protein,No
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,VND1,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,VND2,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,VND3,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,VND4,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,VND5,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,miR395c_overexpression,mutant,No
+Backward,MYB46,2,Bonesis,Perm_OFF_Dark_ON,Tdp1,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_OFF_Dark_ON,mpk6,gene,Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ADR,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,AGB1,"protein, hop 2",No
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ANP1,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ANP2,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ANP3,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ATHB15,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ATMKK5,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_ON_Dark_OFF,ATX1,"gene, hop 2",Yes
+Backward,MYB46,2,Bonesis,Perm_OFF_Dark_ON,MKK5_protein_s,"protein, hop 2",No
+Backward,MYB46,3,Bonesis,Direct_Activator,ERF041_VP16,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,SND1,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,SND1_protein_s,protein,No
+Backward,MYB46,3,Bonesis,Direct_Activator,VND1,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,VND2,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,VND3,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,VND4,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,VND5,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Activator,nst1,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Suppressor,Tdp1,gene,Yes
+Backward,MYB46,3,Bonesis,Direct_Suppressor,miR395c_overexpression,mutant,No
+Backward,MYB46,3,Bonesis,Direct_Suppressor,mpk6,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ERF041_VP16,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,SND1_protein_s,protein,No
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,VND1,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,VND2,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,VND3,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,VND4,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,VND5,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,miR395c_overexpression,mutant,No
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,Tdp1,gene,Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ADR,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,AGB1,"protein, hop 2",No
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ANP1,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ANP2,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ANP3,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ATX1,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,A_thaliana_MKP1,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,AtPTP1,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,ATHB15,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,MYB44,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,TCP24,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,edr1,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,mapkkk5,"gene, hop 2",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,AIB,"metabolite, hop 3",No
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,AIK1,"protein, hop 3",No
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,ANAC017,"gene, hop 3",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,AtNACK1,"gene, hop 3",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,AtRTP5,"gene, hop 3",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,BBD1,"gene, hop 3",Yes
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,BIN2_mediated_phosphorylation,"treatment, hop 3",No
+Backward,MYB46,3,Bonesis,Perm_ON_Dark_OFF,BSL1,"protein, hop 3",No
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,fls2,"receptor, hop 3",No
+Backward,MYB46,3,Bonesis,Perm_OFF_Dark_ON,vip1,"gene, hop 3",Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,ERF041_VP16,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,SND1,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,SND1_protein_s,protein,No
+Backward,MYB46,4,Bonesis,Direct_Activator,VND1,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,VND2,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,VND3,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,VND4,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,VND5,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Activator,nst1,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Suppressor,Tdp1,gene,Yes
+Backward,MYB46,4,Bonesis,Direct_Suppressor,miR395c_overexpression,mutant,No
+Backward,MYB46,4,Bonesis,Direct_Suppressor,mpk6,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ERF041_VP16,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,SND1_protein_s,protein,No
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,VND1,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,VND2,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,VND3,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,VND4,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,VND5,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,miR395c_overexpression,mutant,No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,Tdp1,gene,Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ADR,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AGB1,"protein, hop 2",No
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ANP1,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ANP2,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ANP3,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ATX1,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,A_thaliana_MKP1,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AtPTP1,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,ATHB15,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,MYB44,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,TCP24,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,edr1,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,mapkkk5,"gene, hop 2",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AIB,"metabolite, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AIK1,"protein, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AtNACK1,"gene, hop 3",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AtRTP5,"gene, hop 3",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,BBD1,"gene, hop 3",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,BSL1,"protein, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,Dof2_1,"gene, hop 3",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,EDS1_complex,"protein complex, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,PDK1,"protein, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,SSP,"phenotype, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,fls2,"receptor, hop 3",No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,vip1,"gene, hop 3",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ABIG1,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AOX1A_OEX,"mutant, hop 4",No
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,ATG4,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,A_thaliana_BIK1,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,Activated_BSU1,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AtOZF1,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AtSRT2,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_ON_Dark_OFF,AtWAKL10_OE2_line,"mutant, hop 4",No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,AOs,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,EIN2,"mutant, hop 4",No
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,LSD1,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,SR1,"gene, hop 4",Yes
+Backward,MYB46,4,Bonesis,Perm_OFF_Dark_ON,bbx28,"protein, hop 4",No

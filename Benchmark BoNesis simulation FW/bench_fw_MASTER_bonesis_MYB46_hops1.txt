@@ -1,0 +1,145 @@
+# Benchmark: bench_fw_MASTER_bonesis.py
+# Gene: MYB46  |  Hops: 1  |  Mode: BoNesis
+# Generated: 2026-05-14 15:01:08
+  [time] Subgraph extraction: 0.006s
+
+======================================================================
+PHASE 2 — MYB46, 1 hop(s)  |  11 nodes, 11 edges
+      10  gene
+       1  phenotype
+
+======================================================================
+PHASE 2.5 — Subgraph topology
+  SCCs: 11  |  non-trivial: 0
+
+  Betweenness (0.001s) — top 10:
+
+  Running SBM...
+  SBM (0.02s) — 1 modules:
+    Module 0:   11 nodes  (10 gene, 1 phenotype)
+  Regulated: 10  |  pruned: 1  |  sinks: 9
+  Running BoNesis (1 nodes — budget remaining: 1800s)...
+  [time] BoNesis attractors: 0.041s
+  [time] Sink recovery: 0.000s
+
+  Running necessity test on 10 direct target(s) (BoNesis)...
+  Necessity test completed in 0.013s
+
+======================================================================
+  MYB46 — 1 hop(s)  |  BoNesis (complete attractor landscape)
+  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd
+  Necessity solver: BoNesis
+
+  Direct targets: 10
+    A_thaliana_MYB4                           [gene, sink]
+    CESA4                                     [gene, sink]
+    CSE                                       [gene, sink]
+    CesA7                                     [gene, sink]
+    CslA9                                     [gene, sink]
+    MYB32                                     [gene, sink]
+    MYB85                                     [gene]
+    cesa8                                     [gene, sink]
+    knat7                                     [gene, sink]
+    promoter_activity_of_AtACO4               [gene, sink]
+
+======================================================================
+  EXP A — dark background  |  1 resting / 1 perturbed attractor(s)
+
+  Activated (OFF→ON): 9
+    + A_thaliana_MYB4                           [gene, sink]
+    + CESA4                                     [gene, sink]
+    + CSE                                       [gene, sink]
+    + CesA7                                     [gene, sink]
+    + CslA9                                     [gene, sink]
+    + MYB32                                     [gene, sink]
+    + MYB85                                     [gene]
+    + cesa8                                     [gene, sink]
+    + knat7                                     [gene, sink]
+
+  Suppressed (ON→OFF): 1
+    - promoter_activity_of_AtACO4               [gene, sink]
+
+======================================================================
+  EXP B — permissive background  |  1 resting / 1 perturbed attractor(s)
+
+  Activated (OFF→ON): 9
+    + A_thaliana_MYB4                           [gene, sink]
+    + CESA4                                     [gene, sink]
+    + CSE                                       [gene, sink]
+    + CesA7                                     [gene, sink]
+    + CslA9                                     [gene, sink]
+    + MYB32                                     [gene, sink]
+    + MYB85                                     [gene]
+    + cesa8                                     [gene, sink]
+    + knat7                                     [gene, sink]
+
+  Suppressed (ON→OFF): 1
+    - promoter_activity_of_AtACO4               [gene, sink]
+
+======================================================================
+  ROBUST EFFECTS
+
+  Robustly activated: 9
+    + A_thaliana_MYB4                           [gene, sink]
+    + CESA4                                     [gene, sink]
+    + CSE                                       [gene, sink]
+    + CesA7                                     [gene, sink]
+    + CslA9                                     [gene, sink]
+    + MYB32                                     [gene, sink]
+    + MYB85                                     [gene]
+    + cesa8                                     [gene, sink]
+    + knat7                                     [gene, sink]
+
+  Robustly suppressed: 1
+    - promoter_activity_of_AtACO4               [gene, sink]
+
+======================================================================
+  NECESSITY TEST  (method: BoNesis from permissive background)
+  Definition: a direct target is necessary if knocking it out causes at
+  least one permissive-activated gene to lose stable-ON status.
+    Necessary  (0):
+    Dispensable (10):
+      A_thaliana_MYB4                           [gene, sink]
+      CESA4                                     [gene, sink]
+      CSE                                       [gene, sink]
+      CesA7                                     [gene, sink]
+      CslA9                                     [gene, sink]
+      MYB32                                     [gene, sink]
+      MYB85                                     [gene]
+      cesa8                                     [gene, sink]
+      knat7                                     [gene, sink]
+      promoter_activity_of_AtACO4               [gene, sink]
+
+======================================================================
+  Context-dependent genes: 0 gene(s) in 0 co-varying pattern(s)
+
+======================================================================
+  Sink nodes — terminal downstream effectors (9 node(s)):
+    A_thaliana_MYB4                           resting: OFF       perturbed: ON        [gene, sink]
+    CESA4                                     resting: OFF       perturbed: ON        [gene, sink]
+    CSE                                       resting: OFF       perturbed: ON        [gene, sink]
+    CesA7                                     resting: OFF       perturbed: ON        [gene, sink]
+    CslA9                                     resting: OFF       perturbed: ON        [gene, sink]
+    MYB32                                     resting: OFF       perturbed: ON        [gene, sink]
+    cesa8                                     resting: OFF       perturbed: ON        [gene, sink]
+    knat7                                     resting: OFF       perturbed: ON        [gene, sink]
+    promoter_activity_of_AtACO4               resting: ON        perturbed: OFF       [gene, sink]
+
+======================================================================
+  REGULATORY MODULES (SBM) — 1 modules
+
+  Module 0: 11 nodes
+    A_thaliana_MYB4                           [gene, sink]
+    CESA4                                     [gene, sink]
+    CSE                                       [gene, sink]
+    CesA7                                     [gene, sink]
+    CslA9                                     [gene, sink]
+    MYB32                                     [gene, sink]
+    MYB46                                     [phenotype]
+    MYB85                                     [gene]
+    ... and 3 more
+
+======================================================================
+  TIMING SUMMARY — MYB46, hop 1
+    Total hop time: 0.083s  |  step times logged above
+======================================================================
