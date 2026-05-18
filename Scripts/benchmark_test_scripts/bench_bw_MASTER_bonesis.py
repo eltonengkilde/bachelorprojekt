@@ -100,6 +100,8 @@ if GENE not in node_idx:
 print(f"Gene '{GENE}' confirmed in network [{cat(GENE)}].")
 print(f"Benchmark (BACKWARDS): time limit {MAX_TOTAL_SECONDS}s ({MAX_TOTAL_SECONDS//3600}h) | Mode: BoNesis (budget-limited)\n")
 
+class _BudgetExhausted(Exception): pass
+
 # ── BENCHMARK LOOP ─────────────────────────────────────────────────────────────
 t_benchmark_start = time.perf_counter()
 timings = []
@@ -315,40 +317,14 @@ while True:
             _t = threading.Thread(daemon=True, target=_run_bonesis_necessity)
             _t.start(); _t.join(_remaining)
             if _box:
-                using_bonesis = True
                 baseline_perm_on, necessary_activators, redundant_activators, necessary_suppressors, suppressor_releases = _box[0]
                 _con(f"done  {time.perf_counter()-t_bn:.1f}s\n")
                 print(f"  [time] BoNesis necessity: {time.perf_counter()-t_bn:.3f}s")
             else:
-                using_bonesis = False
-                _con(f"timed out after {time.perf_counter()-t_bn:.0f}s — falling back to simulation\n")
-                print(f"  BoNesis necessity timed out after {time.perf_counter()-t_bn:.0f}s — falling back to synchronous simulation")
-                baseline_perm_on = target_in_perm
-                t_sim_fb = time.perf_counter()
-                sim_fb_budget = max(0, MAX_TOTAL_SECONDS - (time.perf_counter() - t_benchmark_start)) * 0.5
-                _con(f"    [sim fallback  budget={sim_fb_budget:.0f}s] ")
-                for cand in necessity_act_candidates:
-                    if time.perf_counter() - t_sim_fb > sim_fb_budget:
-                        budget_exceeded = True; break
-                    ko = dict(bn_dict_pruned); ko[cand] = "0"
-                    ko_st, _, _ = simulate(ko, all_ones_sub, cand, 0)
-                    if baseline_perm_on and not target_on_any(ko_st): necessary_activators.append(cand)
-                    elif baseline_perm_on and target_on_any(ko_st):   redundant_activators.append(cand)
-                for cand in necessity_sup_candidates:
-                    if time.perf_counter() - t_sim_fb > sim_fb_budget:
-                        budget_exceeded = True; break
-                    forced = dict(bn_dict_pruned); forced[cand] = "1"
-                    f_st, _, _ = simulate(forced, all_ones_sub, cand, 1)
-                    if baseline_perm_on and not target_on_any(f_st): necessary_suppressors.append(cand)
-                for cand in suppressor_release_cands:
-                    if time.perf_counter() - t_sim_fb > sim_fb_budget:
-                        budget_exceeded = True; break
-                    ko = dict(bn_dict_pruned); ko[cand] = "0"
-                    ko_st, _, _ = simulate(ko, all_ones_sub, cand, 0)
-                    if not baseline_perm_on and target_on_any(ko_st): suppressor_releases.append(cand)
-                _con(f"done  {time.perf_counter()-t_sim_fb:.1f}s\n")
-                print(f"  [time] Simulation fallback necessity: {time.perf_counter()-t_sim_fb:.3f}s")
-            nec_mode_str = "BoNesis" if using_bonesis else "synchronous simulation (fallback)"
+                _con(f"timed out after {time.perf_counter()-t_bn:.0f}s — stopping hop\n")
+                print(f"  BoNesis necessity timed out after {time.perf_counter()-t_bn:.0f}s — stopping (BoNesis-only benchmark)")
+                raise _BudgetExhausted()
+            nec_mode_str = "BoNesis"
 
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
 
@@ -417,9 +393,14 @@ while True:
             print(f"======================================================================")
 
         elapsed = time.perf_counter() - t_start
-        mode_used = "BoNesis" if using_bonesis else "Sim-fallback"
-        timings.append((hops, elapsed, mode_used))
-        print(f"{elapsed:.1f}s [{mode_used}] | {len(subgraph_nodes)} nodes → {os.path.basename(out_file)}")
+        timings.append((hops, elapsed, "BoNesis"))
+        print(f"{elapsed:.1f}s [BoNesis] | {len(subgraph_nodes)} nodes → {os.path.basename(out_file)}")
+
+    except _BudgetExhausted:
+        elapsed = time.perf_counter() - t_start
+        timings.append((hops, elapsed, "Timeout"))
+        print(f"{elapsed:.1f}s [Timeout] | {len(subgraph_nodes)} nodes → budget exhausted, stopping.")
+        break
 
     except Exception as e:
         import traceback
