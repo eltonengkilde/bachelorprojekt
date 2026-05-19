@@ -23,6 +23,7 @@ CAT_MAP = {
     "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism": "Pathway",
 }
 
+# make sure all node names are valid Python identifiers before building rules
 def clean_name(name):
     if not name or not isinstance(name, str): return "unknown"
     name = re.sub(r"_+", "_", re.sub(r"[^a-zA-Z0-9_]", "_", name)).strip("_")
@@ -33,6 +34,7 @@ def clean_name(name):
 
 def _to_py(r): return r.replace("!", " not ").replace("|", " or ").replace("&", " and ")
 
+# read the network CSV, filter by entity category, build activator and suppressor dicts
 activators, suppressors, edges_act, edges_sup, all_nodes, gene_category = {}, {}, [], [], set(), {}
 with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_normalized.csv"), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
@@ -47,6 +49,7 @@ with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_networkL_
 
 print(f"Loaded {len(edges_act)+len(edges_sup)} edges  ({len(all_nodes)} nodes)")
 
+# shorthand for entity type, then print how many nodes fall into each category
 def cat(g): c = gene_category.get(g); return CAT_MAP.get(c, c or "?")
 
 cat_counts = {}
@@ -54,6 +57,7 @@ for c in gene_category.values(): cat_counts[c] = cat_counts.get(c, 0) + 1
 print(f"\nEntity categories ({len(cat_counts)}):")
 for c, n in sorted(cat_counts.items(), key=lambda x: x[1], reverse=True): print(f"  {n:>6}  {c}")
 
+# build the graph-tool graph, activation edges flagged True and suppression edges False
 t0 = time.perf_counter()
 node_list = sorted(all_nodes)
 node_idx = {name: i for i, name in enumerate(node_list)}
@@ -65,11 +69,12 @@ for s, t in edges_sup: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = Fal
 g_full.ep["etype"] = gt_etype
 print(f"\ngraph-tool: {g_full.num_vertices()} vertices, {g_full.num_edges()} edges  ({time.perf_counter()-t0:.2f}s)")
 
+# phase 1 - characterise the full network, find hubs with PageRank, check for feedback loops
 print(f"\n{'='*70}")
-print(f"PHASE 1 — nodes: {len(all_nodes)}  |  edges: {len(edges_act)+len(edges_sup)} ({len(edges_act)} act / {len(edges_sup)} sup)")
+print(f"PHASE 1  nodes: {len(all_nodes)}  |  edges: {len(edges_act)+len(edges_sup)} ({len(edges_act)} act / {len(edges_sup)} sup)")
 t0 = time.perf_counter()
 pr = gt.pagerank(g_full)
-print(f"  PageRank ({time.perf_counter()-t0:.2f}s) — top 10:")
+print(f"  PageRank ({time.perf_counter()-t0:.2f}s), top 10:")
 for i in sorted(range(g_full.num_vertices()), key=lambda i: pr[i], reverse=True)[:10]:
     print(f"    {node_list[i]:40s}  PR: {pr[i]:.6f}  [{cat(node_list[i])}]")
 _, hist = gt.label_components(g_full)
@@ -77,8 +82,9 @@ print(f"  SCCs: {hist.shape[0]}  |  non-trivial: {int((hist>1).sum())}  |  large
 
 t_total_start = time.perf_counter()
 
+# ask which node to analyse and how many hops downstream
 while True:
-    source_gene = input("\nSource gene to investigate: ")
+    source_gene = input("\nSource node to investigate: ")
     if source_gene not in all_nodes:
         matches = [n for n in all_nodes if source_gene.upper() in n.upper()]
         print(f"WARNING: '{source_gene}' not found.")
@@ -87,27 +93,29 @@ while True:
         print(f"OK: '{source_gene}'  [{cat(source_gene)}]"); break
 
 while True:
-    MAX_HOPS = int(input("\nHops to explore downstream: "))
+    MAX_HOPS = int(input("\nNumber of hops to explore downstream: "))
     if MAX_HOPS < 1: print("Must be >= 1")
     else: print(f"OK: {MAX_HOPS} hop(s)"); break
 
 if input('\nType "yolo" to run: ') != "yolo":
     print("Exiting."); exit()
 
+# BFS from source node, keep every node reachable within MAX_HOPS directed steps
 dist = gt.shortest_distance(g_full, source=g_full.vertex(node_idx[source_gene]), directed=True)
 subgraph_nodes = {node_list[i] for i in range(g_full.num_vertices()) if dist[i] <= MAX_HOPS}
 sub_node_list  = sorted(subgraph_nodes)
 sub_node_idx   = {name: i for i, name in enumerate(sub_node_list)}
 
 print(f"\n{'='*70}")
-print(f"PHASE 2 — {source_gene}, {MAX_HOPS} hop(s)  |  {len(subgraph_nodes)} nodes, "
+print(f"PHASE 2  {source_gene}, {MAX_HOPS} hop(s)  |  {len(subgraph_nodes)} nodes, "
       f"{sum(1 for s,t in edges_act+edges_sup if s in subgraph_nodes and t in subgraph_nodes)} edges")
 sc = {}
 for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
 for c, n in sorted(sc.items(), key=lambda x: x[1], reverse=True): print(f"    {n:>4}  {c}")
 
+# characterise the subgraph - SCCs, betweenness centrality and SBM regulatory modules
 print(f"\n{'='*70}")
-print(f"PHASE 2.5 — Subgraph topology (graph-tool)")
+print(f"PHASE 2.5  Subgraph topology (graph-tool)")
 g_sub = gt.Graph(directed=True)
 g_sub.add_vertex(len(sub_node_list))
 sub_etype = g_sub.new_edge_property("bool")
@@ -130,7 +138,7 @@ community = {}
 if len(subgraph_nodes) <= 5000:
     t0 = time.perf_counter()
     vb, _ = gt.betweenness(g_sub)
-    print(f"\n  Betweenness ({time.perf_counter()-t0:.3f}s) — top 10:")
+    print(f"\n  Betweenness ({time.perf_counter()-t0:.3f}s), top 10:")
     for name in sorted(sub_node_list, key=lambda n: vb[sub_node_idx[n]], reverse=True)[:10]:
         score = vb[sub_node_idx[name]]
         if score > 0: print(f"    {name:40s}  {score:.6f}  [{cat(name)}]")
@@ -146,7 +154,7 @@ if len(subgraph_nodes) <= 2000:
     for name in sub_node_list: community[name] = int(b[sub_node_idx[name]])
     comm_sizes = {}
     for c in community.values(): comm_sizes[c] = comm_sizes.get(c, 0) + 1
-    print(f"  SBM ({time.perf_counter()-t0:.2f}s) — {len(comm_sizes)} modules:")
+    print(f"  SBM ({time.perf_counter()-t0:.2f}s), {len(comm_sizes)} modules:")
     for cid, sz in sorted(comm_sizes.items(), key=lambda x: x[1], reverse=True)[:5]:
         cats = {}
         for m in (n for n, c in community.items() if c == cid): cats[cat(m)] = cats.get(cat(m), 0) + 1
@@ -154,8 +162,10 @@ if len(subgraph_nodes) <= 2000:
 else:
     print(f"\n  SBM (Stochastic Block Model) skipped ({len(subgraph_nodes)} nodes > 2000)")
 
-# Boolean rules: activators OR'd (any activator sufficient); suppressors AND NOT'd (any suppressor dominant).
-# Rule form: (act1 | act2 | ...) & !sup1 & !sup2 & ...  — models functional redundancy + dominant repression.
+# build one Boolean rule per regulated node, activators OR'd, suppressors AND NOT'd
+# any single activator is enough to turn a node ON (functional redundancy)
+# any suppressor keeps it OFF regardless of activators (dominant repression)
+# rule form: (act1 | act2 | ...) & !sup1 & !sup2 & ...
 bn_dict = {}
 for target in set(activators) | set(suppressors):
     if target not in subgraph_nodes: continue
@@ -165,6 +175,8 @@ for target in set(activators) | set(suppressors):
     elif act: bn_dict[target] = act
     elif sup: bn_dict[target] = sup
 
+# sinks are regulated but nothing else depends on them, separate them out before simulation
+# they get excluded from the BN and evaluated afterwards using their own rules
 referenced = set()
 for rule in bn_dict.values(): referenced |= set(re.findall(r'\b[a-zA-Z_]\w*\b', str(rule)))
 sink_nodes = {g for g in bn_dict if g not in referenced and g != source_gene}
@@ -172,8 +184,11 @@ bn_dict_pruned = {g: f for g, f in bn_dict.items() if g not in sink_nodes}
 n_pruned = len(bn_dict_pruned)
 print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
 
+# two starting conditions: all nodes OFF (dark) or all ON (permissive), source node locked
 bn_resting_dict   = dict(bn_dict_pruned); bn_resting_dict[source_gene]   = "0"
 bn_perturbed_dict = dict(bn_dict_pruned); bn_perturbed_dict[source_gene] = "1"
+
+# synchronous simulation - update all nodes at once each step until a state repeats
 def simulate(rules, start_state, locked, val, max_steps=MAX_SIM_STEPS):
     genes = sorted(start_state.keys())
     idx   = {g: i for i, g in enumerate(genes)}
@@ -196,14 +211,15 @@ def simulate(rules, start_state, locked, val, max_steps=MAX_SIM_STEPS):
 def _sim_label(states, conv):
     return ("fixed point" if len(states) == 1 else f"cycle/{len(states)}") + (" (conv)" if conv else " (max steps)")
 
+# try BoNesis first to get the full attractor landscape, fall back to simulation on timeout
 bn_resting   = bonesis.BooleanNetwork(bn_resting_dict)
 bn_perturbed = bonesis.BooleanNetwork(bn_perturbed_dict)
 dark_start = {g: 0 for g in bn_resting_dict}   # bn_resting_dict always includes source_gene
 perm_start = {g: 1 for g in bn_resting_dict}
 print(f"  Attempting BoNesis ({n_pruned} nodes, timeout: {BONESIS_TIMEOUT}s)...")
 _bonesis_ok = False; t0 = time.perf_counter(); _box = []
-# Daemon thread: if BoNesis stalls past BONESIS_TIMEOUT, the thread is abandoned (not killed).
-# It runs until the process exits — there is no safe way to interrupt a running solver.
+# daemon thread: if BoNesis stalls past BONESIS_TIMEOUT the thread is left running in the background
+# it keeps running until the process exits, there is no clean way to stop a running solver
 _t = threading.Thread(daemon=True, target=lambda: _box.append((
     list(bn_resting.attractors(reachable_from=dark_start)),
     list(bn_perturbed.attractors(reachable_from=dark_start)),
@@ -216,7 +232,7 @@ if _box:
     print(f"  BoNesis: {time.perf_counter()-t0:.2f}s")
     _bonesis_ok = True
 else:
-    print(f"  BoNesis timed out ({BONESIS_TIMEOUT}s) — falling back to synchronous simulation")
+    print(f"  BoNesis timed out after {BONESIS_TIMEOUT}s, falling back to synchronous simulation")
     t0 = time.perf_counter()
     dr_states, _, dr_conv = simulate(bn_dict_pruned, dark_start, source_gene, 0)
     dp_states, _, dp_conv = simulate(bn_dict_pruned, dark_start, source_gene, 1)
@@ -227,26 +243,27 @@ else:
     print(f"  Simulation: {time.perf_counter()-t0:.3f}s")
     if not all([dr_conv, dp_conv, pr_conv, pp_conv]):
         print(f"  WARNING: not all runs converged within {MAX_SIM_STEPS} steps")
-    print(f"  NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.")
+    print(f"  NOTE: simulation finds ONE attractor per condition, use BoNesis at fewer hops for the full landscape")
     dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = dr_states, dp_states, pr_states, pp_states
 
 using_simulation = not _bonesis_ok
 
+# sinks were excluded from the BN, re-evaluate their states from the attractor using their original rules
 def eval_rule_simple(rule, state):
     expr = _to_py(rule)
     try: return 1 if eval(expr, {"__builtins__": {}}, {g: bool(v) for g, v in state.items()}) else 0
     except: return 0
 
 def _topo_sort_sinks(sink_rules):
-    """Topological evaluation order so that if sink B references sink A, A is evaluated first."""
+    """Topological order so that if sink B depends on sink A, A is evaluated first."""
     sink_set = set(sink_rules)
     deps = {g: set(re.findall(r'\b[a-zA-Z_]\w*\b', str(sink_rules[g]))) & sink_set
             for g in sink_set}
     return list(graphlib.TopologicalSorter(deps).static_order())
 
 def recover_sinks(attractors, sink_rules, src, src_val, sink_order):
-    """Evaluate sink gene states from attractor in topological order so that
-    a sink whose rule references another sink uses the recovered value."""
+    """Evaluate sink node states from attractor in topological order so that
+    a sink whose rule references another sink uses the already-recovered value."""
     result = []
     for att in attractors:
         ext = {**att, src: src_val}
@@ -263,17 +280,19 @@ if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
     perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0, sink_order)
     perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1, sink_order)
 else:
-    sink_order = []   # empty — KO necessity loop becomes a no-op, no topo-sort overhead
-    print(f"  Sink recovery skipped ({len(sink_nodes)} sinks > {SINK_RECOVERY_THRESHOLD}) — sinks excluded from classification")
+    sink_order = []   # empty, the KO necessity loop skips all sinks and no topo-sort is needed
+    print(f"  Sink recovery skipped ({len(sink_nodes)} sinks > {SINK_RECOVERY_THRESHOLD}), sinks excluded from classification")
     dark_resting_full   = [{**a, source_gene: 0} for a in dark_resting_att]
     dark_perturbed_full = [{**a, source_gene: 1} for a in dark_perturbed_att]
     perm_resting_full   = [{**a, source_gene: 0} for a in perm_resting_att]
     perm_perturbed_full = [{**a, source_gene: 1} for a in perm_perturbed_att]
 
+# direct targets are nodes whose Boolean rule contains source_gene by name
 direct_targets = sorted(set(
     g for g, f in bn_resting_dict.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(f))
 ) | {g for g, r in sink_rules.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(r))})
 
+# classify each node: activated means it goes from OFF to ON when source is perturbed, suppressed is the reverse
 def stable_on(g, atts):  return bool(atts) and all(a.get(g, 0) == 1 for a in atts)
 def stable_off(g, atts): return bool(atts) and all(a.get(g, 0) == 0 for a in atts)
 def tags(g): return "[" + ", ".join([cat(g)] + (["sink"] if g in sink_nodes else [])) + "]"
@@ -299,40 +318,30 @@ conditional_suppressed = sorted(
     and any(a.get(g, 0) == 0 for a in perm_perturbed_full)
 )
 
-if not using_simulation:
-    gstates = {}
-    for att in perm_perturbed_full:
-        for g, v in att.items(): gstates.setdefault(g, set()).add(v)
-    variable_genes = sorted(g for g, vs in gstates.items() if len(vs) > 1)
-    decisions = {}
-    for g in variable_genes:
-        p = tuple(a.get(g, 0) for a in perm_perturbed_full)
-        if not all(isinstance(v, int) for v in p): continue
-        decisions.setdefault(p, []).append(g)
-
+# KO each direct target and check if any perm-activated node loses its stable ON state
 necessary, dispensable = [], []
 if perm_activated:
-    # Use the same solver as the attractor analysis for methodological consistency.
-    # BoNesis finds all reachable attractors; simulation finds one from all-ones.
+    # use the same solver as the attractor analysis to stay consistent
+    # BoNesis checks all attractors, simulation follows one trajectory from all-ones
     nec_method = "BoNesis" if not using_simulation else "synchronous simulation"
-    print(f"\n  Necessity test ({len(direct_targets)} direct target(s); method: {nec_method})...")
+    print(f"\n  Necessity test ({len(direct_targets)} direct target(s), method: {nec_method})...")
     t0 = time.perf_counter()
     for candidate in direct_targets:
         # BoNesis path: base on bn_perturbed_dict so source_gene is constant "1",
         # matching the perturbed condition used to define perm_activated.
-        # Simulation path: source_gene is fixed externally via locked/val.
+        # simulation path: source_gene is fixed externally via locked/val.
         if not using_simulation:
             ko = dict(bn_perturbed_dict); ko[candidate] = "0"
             _bn_ko    = bonesis.BooleanNetwork(ko)
             ko_states = list(_bn_ko.attractors(reachable_from={g: 1 for g in ko}))
         else:
             ko = dict(bn_dict_pruned)
-            if candidate in bn_dict_pruned:  # sinks have no BN rule — pin handled in ko_full below
+            if candidate in bn_dict_pruned:  # sinks have no BN rule, pin handled in ko_full below
                 ko[candidate] = "0"
             ko_states, _, _ = simulate(ko, perm_start, source_gene, 1)
-        # Recover sink states for the KO condition. Sinks are absent from the BN
-        # and would otherwise remain at their initial value (1), masking any true
-        # loss of activation for sink nodes that appear in perm_activated.
+        # recover sink states for the KO condition - sinks are absent from the BN
+        # and would otherwise stay at their initial value (1), which would mask any
+        # real loss of activation for sink nodes that appear in perm_activated
         ko_full = []
         for _att in ko_states:
             _ext = dict(_att); _ext[source_gene] = 1; _ext[candidate] = 0
@@ -344,47 +353,49 @@ if perm_activated:
     print(f"  Necessity: {time.perf_counter()-t0:.3f}s")
 else:
     nec_method = "N/A"
-    print(f"\n  Necessity test skipped — no genes stably activated in permissive baseline.")
+    print(f"\n  Necessity test skipped, no nodes stably activated in permissive baseline.")
 
+# print run metadata
 mode = "synchronous simulation" if using_simulation else "BoNesis (complete attractor landscape)"
 print(f"\n" + "="*70)
 print(f"  RUN METADATA")
 print(f"  Network          : filtered_networkL_normalized.csv")
-print(f"  Gene             : {source_gene}  [{cat(source_gene)}]")
+print(f"  Node             : {source_gene}  [{cat(source_gene)}]")
 print(f"  Hops             : {MAX_HOPS}  (downstream)")
 print(f"  Attractor solver : {mode}  |  BoNesis timeout: {BONESIS_TIMEOUT}s")
 print(f"  Necessity solver : {nec_method}")
-print(f"  Update scheme    : synchronous (all genes updated simultaneously per step)")
+print(f"  Update scheme    : synchronous (all nodes updated simultaneously per step)")
 print(f"  Boolean rules    : activators combined with OR; suppressors combined with AND NOT")
 print(f"  Subgraph         : {len(subgraph_nodes)} nodes  |  pruned BN: {n_pruned}  |  sinks: {len(sink_nodes)}")
 print(f"  Run time         : {time.strftime('%Y-%m-%d %H:%M:%S')}")
 print(f"\n" + "="*70)
-print(f"  {source_gene} — {MAX_HOPS} hop(s)  |  mode: {mode}")
+print(f"  {source_gene} -- {MAX_HOPS} hop(s)  |  mode: {mode}")
 
 print(f"\n  Direct targets: {len(direct_targets)}")
 for g in direct_targets: print(f"    {g:40s}  {tags(g)}")
 
+# print the results
 if (dark_activated == perm_activated and dark_suppressed == perm_suppressed
         and not conditional_derepressed and not conditional_suppressed):
     print(f"\n{'='*70}")
-    print(f"  EXP A ≡ EXP B — dark and permissive backgrounds produce identical effects")
+    print(f"  EXP A = EXP B, dark and permissive backgrounds produce identical effects")
     print(f"  (dark: {len(dark_resting_att)} rest/{len(dark_perturbed_att)} pert att  |  perm: {len(perm_resting_att)} rest/{len(perm_perturbed_att)} pert att)")
-    print(f"\n  Activated (OFF→ON): {len(perm_activated)}")
+    print(f"\n  Activated (OFF->ON): {len(perm_activated)}")
     for g in perm_activated: print(f"    + {g:40s}  {tags(g)}")
-    print(f"\n  Suppressed (ON→OFF): {len(perm_suppressed)}")
+    print(f"\n  Suppressed (ON->OFF): {len(perm_suppressed)}")
     for g in perm_suppressed: print(f"    - {g:40s}  {tags(g)}")
 else:
     print(f"\n{'='*70}")
-    print(f"  EXP A — dark background  |  {len(dark_resting_att)} resting / {len(dark_perturbed_att)} perturbed attractor(s)")
-    print(f"\n  Activated (OFF→ON): {len(dark_activated)}")
+    print(f"  EXP A (dark background)  |  {len(dark_resting_att)} resting / {len(dark_perturbed_att)} perturbed attractor(s)")
+    print(f"\n  Activated (OFF->ON): {len(dark_activated)}")
     for g in dark_activated: print(f"    + {g:40s}  {tags(g)}")
-    print(f"\n  Suppressed (ON→OFF): {len(dark_suppressed)}")
+    print(f"\n  Suppressed (ON->OFF): {len(dark_suppressed)}")
     for g in dark_suppressed: print(f"    - {g:40s}  {tags(g)}")
     print(f"\n{'='*70}")
-    print(f"  EXP B — permissive background  |  {len(perm_resting_att)} resting / {len(perm_perturbed_att)} perturbed attractor(s)")
-    print(f"\n  Activated (OFF→ON): {len(perm_activated)}")
+    print(f"  EXP B (permissive background)  |  {len(perm_resting_att)} resting / {len(perm_perturbed_att)} perturbed attractor(s)")
+    print(f"\n  Activated (OFF->ON): {len(perm_activated)}")
     for g in perm_activated: print(f"    + {g:40s}  {tags(g)}")
-    print(f"\n  Suppressed (ON→OFF): {len(perm_suppressed)}")
+    print(f"\n  Suppressed (ON->OFF): {len(perm_suppressed)}")
     for g in perm_suppressed: print(f"    - {g:40s}  {tags(g)}")
     if conditional_derepressed or conditional_suppressed:
         print(f"\n  Conditional effects:")
@@ -402,7 +413,7 @@ if perm_activated:
     print(f"\n{'='*70}")
     print(f"  NECESSITY TEST  (method: {nec_method} from permissive background)")
     print(f"  Definition: a direct target is necessary if knocking it out (fixing to OFF)")
-    print(f"  causes at least one permissive-activated gene to lose stable-ON status.")
+    print(f"  causes at least one permissive-activated node to lose stable ON status.")
     print(f"    Necessary  ({len(necessary)}):")
     for g, lost in necessary:
         print(f"    ! {g:38s}  {tags(g)}")
@@ -411,24 +422,9 @@ if perm_activated:
     for g in dispensable: print(f"      {g:40s}  {tags(g)}")
 
 print(f"\n{'='*70}")
-if using_simulation:
-    print(f"  Context-dependent genes: N/A — requires BoNesis (simulation finds one attractor per condition)")
-else:
-    n_perturbed_att = len(perm_perturbed_full)
-    print(f"  Context-dependent genes: {len(variable_genes)} gene(s) in {len(decisions)} co-varying pattern(s)")
-    if variable_genes:
-        print(f"  (Genes with different stable values across the {n_perturbed_att} perturbed attractor(s).")
-        print(f"   Each group shares an identical ON/OFF pattern across attractors.)")
-    for i, (pattern, genes) in enumerate(sorted(decisions.items()), 1):
-        on_in  = [j + 1 for j, v in enumerate(pattern) if v == 1]
-        off_in = [j + 1 for j, v in enumerate(pattern) if v == 0]
-        print(f"\n  Pattern {i} — stably ON in attractor(s) {on_in or 'none'}  |  stably OFF in {off_in or 'none'}")
-        for g in sorted(genes): print(f"    {g:40s}  {tags(g)}")
-
-print(f"\n{'='*70}")
-print(f"  Sink nodes — terminal downstream effectors ({len(sink_nodes)} node(s)):")
+print(f"  Sink nodes (terminal downstream effectors, {len(sink_nodes)} node(s)):")
 if len(sink_nodes) > SINK_RECOVERY_THRESHOLD:
-    print(f"  (States not evaluated — sink count exceeds recovery threshold of {SINK_RECOVERY_THRESHOLD}.)")
+    print(f"  (States not evaluated, sink count exceeds recovery threshold of {SINK_RECOVERY_THRESHOLD}.)")
     for g in sorted(sink_nodes)[:20]: print(f"    {g:40s}  {tags(g)}")
     if len(sink_nodes) > 20: print(f"    ... and {len(sink_nodes)-20} more")
 else:
@@ -442,7 +438,7 @@ if community:
     print(f"\n{'='*70}")
     comm_groups = {}
     for g, cid in community.items(): comm_groups.setdefault(cid, []).append(g)
-    print(f"  REGULATORY MODULES (SBM) — {len(comm_groups)} modules")
+    print(f"  REGULATORY MODULES (SBM): {len(comm_groups)} modules")
     for cid, members in sorted(comm_groups.items(), key=lambda x: len(x[1]), reverse=True)[:5]:
         print(f"\n  Module {cid}: {len(members)} nodes")
         for g in sorted(members)[:8]: print(f"    {g:40s}  {tags(g)}")
