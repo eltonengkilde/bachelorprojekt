@@ -1,9 +1,17 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
-import csv, os, re, time, keyword, threading
+import csv, os, re, sys, time, keyword, threading
 import graph_tool.all as gt
 import bonesis
 
 BASE_DIR        = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUTPUT_DIR      = os.path.join(BASE_DIR, "output")
+
+class _Tee:
+    def __init__(self, *files): self.files = files
+    def write(self, data):
+        for f in self.files: f.write(data)
+    def flush(self):
+        for f in self.files: f.flush()
 BONESIS_TIMEOUT = 60    # seconds; BoNesis necessity runs first, simulation fallback if stalled
 MAX_SIM_STEPS   = 1000  # max synchronous simulation steps before non-convergence warning
 CATEGORIES_TO_KEEP = {
@@ -97,6 +105,13 @@ while True:
 
 if input('\nType and enter "yolo" to run the analysis: ') != "yolo":
     print("Invalid input, exiting."); exit()
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+_safe_gene = re.sub(r'[^a-zA-Z0-9_-]', '_', target_gene)
+_outpath = os.path.join(OUTPUT_DIR, f"{_safe_gene}_{MAX_HOPS}hop_bw_{time.strftime('%Y%m%d_%H%M%S')}.txt")
+_logfile = open(_outpath, "w", encoding="utf-8")
+sys.stdout = _Tee(sys.__stdout__, _logfile)
+print(f"Output → {_outpath}")
 
 # reverse the graph and BFS from target node, collect all nodes that can reach it within MAX_HOPS
 g_rev = gt.GraphView(g_full, reversed=True)
@@ -491,3 +506,7 @@ if sink_nodes:
 
 print(f"\n  Total analysis time: {time.perf_counter() - t_total_start:.2f}s")
 print(f"\n{'='*70}")
+
+sys.stdout = sys.__stdout__
+_logfile.close()
+print(f"\nOutput saved to: {_outpath}")

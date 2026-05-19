@@ -1,9 +1,17 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
-import csv, os, re, time, keyword, threading, graphlib
+import csv, os, re, sys, time, keyword, threading, graphlib
 import graph_tool.all as gt
 import bonesis
 
 BASE_DIR             = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUTPUT_DIR           = os.path.join(BASE_DIR, "output")
+
+class _Tee:
+    def __init__(self, *files): self.files = files
+    def write(self, data):
+        for f in self.files: f.write(data)
+    def flush(self):
+        for f in self.files: f.flush()
 BONESIS_TIMEOUT      = 60    # seconds; BoNesis runs first, simulation fallback if stalled
 MAX_SIM_STEPS        = 1000  # max synchronous simulation steps before non-convergence warning
 SINK_RECOVERY_THRESHOLD = 10000
@@ -99,6 +107,13 @@ while True:
 
 if input('\nType "yolo" to run: ') != "yolo":
     print("Exiting."); exit()
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+_safe_gene = re.sub(r'[^a-zA-Z0-9_-]', '_', source_gene)
+_outpath = os.path.join(OUTPUT_DIR, f"{_safe_gene}_{MAX_HOPS}hop_{time.strftime('%Y%m%d_%H%M%S')}.txt")
+_logfile = open(_outpath, "w", encoding="utf-8")
+sys.stdout = _Tee(sys.__stdout__, _logfile)
+print(f"Output → {_outpath}")
 
 # BFS from source node, keep every node reachable within MAX_HOPS directed steps
 dist = gt.shortest_distance(g_full, source=g_full.vertex(node_idx[source_gene]), directed=True)
@@ -446,3 +461,7 @@ if community:
 
 print(f"\n  Total: {time.perf_counter()-t_total_start:.2f}s")
 print(f"\n{'='*70}")
+
+sys.stdout = sys.__stdout__
+_logfile.close()
+print(f"\nOutput saved to: {_outpath}")
