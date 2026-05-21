@@ -35,8 +35,8 @@ def clean_name(name):
     if not name or not isinstance(name, str): return "unknown"
     name = re.sub(r"_+", "_", re.sub(r"[^a-zA-Z0-9_]", "_", name)).strip("_")
     if not name: return "unknown"
-    if name[0].isdigit(): return "g" + name
-    if name.upper() in BOOLEAN_RESERVED or keyword.iskeyword(name): return "gene_" + name
+    if name[0].isdigit(): return "n" + name
+    if name.upper() in BOOLEAN_RESERVED or keyword.iskeyword(name): return "node_" + name
     return name
 
 def _to_py(r): return r.replace("!", " not ").replace("|", " or ").replace("&", " and ")
