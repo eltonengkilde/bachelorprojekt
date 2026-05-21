@@ -4,7 +4,7 @@ import graph_tool.all as gt
 import bonesis
 
 BASE_DIR        = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-OUTPUT_DIR      = os.path.join(BASE_DIR, "output")
+OUTPUT_DIR      = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
 
 class _Tee:
     def __init__(self, *files): self.files = files
@@ -71,10 +71,8 @@ t_total_start = time.perf_counter()
 t0 = time.perf_counter()
 g_full = gt.Graph(directed=True)
 g_full.add_vertex(len(node_list))
-gt_etype = g_full.new_edge_property("bool")
-for s, t in edges_act: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = True
-for s, t in edges_sup: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = False
-g_full.ep["etype"] = gt_etype
+for s, t in edges_act: g_full.add_edge(node_idx[s], node_idx[t])
+for s, t in edges_sup: g_full.add_edge(node_idx[s], node_idx[t])
 print(f"\ngraph-tool: {g_full.num_vertices()} vertices, {g_full.num_edges()} edges  ({time.perf_counter()-t0:.2f}s)")
 
 # phase 1 - characterise the full network, find hubs with PageRank, check for feedback loops
@@ -128,17 +126,15 @@ sc = {}
 for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
 for c, n in sorted(sc.items(), key=lambda x: x[1], reverse=True): print(f"    {n:>4}  {c}")
 
-# characterise the subgraph - SCCs, betweenness centrality and SBM regulatory modules
+# characterise the subgraph - SCCs
 print(f"\n{'='*70}")
 print(f"PHASE 2.5  Subgraph topology (graph-tool)")
 g_sub = gt.Graph(directed=True)
 g_sub.add_vertex(len(sub_node_list))
-sub_etype = g_sub.new_edge_property("bool")
 for s, t in set((s, t) for s, t in edges_act if s in sub_v_idx and t in sub_v_idx):
-    sub_etype[g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])] = True
+    g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
 for s, t in set((s, t) for s, t in edges_sup if s in sub_v_idx and t in sub_v_idx):
-    sub_etype[g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])] = False
-g_sub.ep["etype"] = sub_etype
+    g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
 
 sub_comp, sub_hist = gt.label_components(g_sub)
 large_sub = int((sub_hist > 1).sum())
@@ -148,34 +144,6 @@ if large_sub:
     print(f"  Largest SCC ({int(sub_hist.max())} nodes):")
     for m in sorted(scc_members)[:10]: print(f"    {m:40s}  [{cat(m)}]")
     if len(scc_members) > 10: print(f"    ... and {len(scc_members)-10} more")
-
-community = {}
-if len(subgraph_nodes) <= 5000:
-    t0 = time.perf_counter()
-    vb, _ = gt.betweenness(g_sub)
-    print(f"\n  Betweenness ({time.perf_counter()-t0:.3f}s), top 10:")
-    for name in sorted(sub_node_list, key=lambda n: vb[sub_v_idx[n]], reverse=True)[:10]:
-        score = vb[sub_v_idx[name]]
-        if score > 0: print(f"    {name:40s}  {score:.6f}  [{cat(name)}]")
-else:
-    print(f"  Betweenness skipped ({len(subgraph_nodes)} nodes > 5000)")
-
-if len(subgraph_nodes) <= 2000:
-    t0 = time.perf_counter()
-    print(f"\n  Running SBM...")
-    gt.seed_rng(42)
-    state = gt.minimize_blockmodel_dl(g_sub)
-    b = state.get_blocks()
-    for name in sub_node_list: community[name] = int(b[sub_v_idx[name]])
-    comm_sizes = {}
-    for c in community.values(): comm_sizes[c] = comm_sizes.get(c, 0) + 1
-    print(f"  SBM ({time.perf_counter()-t0:.2f}s), {len(comm_sizes)} modules:")
-    for cid, sz in sorted(comm_sizes.items(), key=lambda x: x[1], reverse=True)[:5]:
-        cats = {}
-        for m in (n for n, c in community.items() if c == cid): cats[cat(m)] = cats.get(cat(m), 0) + 1
-        print(f"    Module {cid}: {sz:>4} nodes  ({', '.join(f'{v} {k}' for k,v in sorted(cats.items(), key=lambda x: x[1], reverse=True))})")
-else:
-    print(f"\n  SBM skipped ({len(subgraph_nodes)} nodes > 2000)")
 
 # build one Boolean rule per regulated node, activators OR'd, suppressors AND NOT'd
 # any single activator is enough to turn a node ON (functional redundancy)
@@ -244,70 +212,68 @@ direct_activators  = sorted(g for g in activators.get(target_gene, set()) if g i
 direct_suppressors = sorted(g for g in suppressors.get(target_gene, set()) if g in subgraph_nodes)
 all_upstream       = sorted(subgraph_nodes - {target_gene})
 
-# STEP 1: two baseline simulations
-# the target node is LOCKED, mirroring the forward analysis where the source
-# node is locked to 0 (resting) or 1 (perturbed)
-# dark: lock target=0 from all-zeros -> upstream state when target is SILENT
-# perm: lock target=1 from all-ones  -> upstream state when target is ACTIVE
-# without locking, AND NOT suppressor rules collapse target to 0 from all-ones,
-# giving an empty perm attractor identical to the dark one and no candidates
+# STEP 1: four baseline simulations — two backgrounds × two target states
+# Each pair holds the initial state constant and only varies the target lock.
+# This ensures any differential is caused by the target, not the global state flip.
+# dark background (all-zeros): target=0 vs target=1
+# perm background (all-ones):  target=0 vs target=1
 t0 = time.perf_counter()
-att_dark, _, dark_conv = simulate(bn_dict_pruned, all_zeros_sub, locked=target_gene, val=0)
-att_perm, _, perm_conv = simulate(bn_dict_pruned, all_ones_sub,  locked=target_gene, val=1)
-print(f"\n  Baseline simulations: {time.perf_counter()-t0:.3f}s")
-if not dark_conv:
-    print(f"  WARNING: dark attractor did not converge within {MAX_SIM_STEPS} steps, results unreliable")
-if not perm_conv:
-    print(f"  WARNING: permissive attractor did not converge within {MAX_SIM_STEPS} steps, results unreliable")
+dark_att_off, _, dark_off_conv = simulate(bn_dict_pruned, all_zeros_sub, locked=target_gene, val=0)
+dark_att_on,  _, dark_on_conv  = simulate(bn_dict_pruned, all_zeros_sub, locked=target_gene, val=1)
+perm_att_off, _, perm_off_conv = simulate(bn_dict_pruned, all_ones_sub,  locked=target_gene, val=0)
+perm_att_on,  _, perm_on_conv  = simulate(bn_dict_pruned, all_ones_sub,  locked=target_gene, val=1)
+print(f"\n  Baseline simulations (4): {time.perf_counter()-t0:.3f}s")
+for _lbl, _conv in [("dark/off", dark_off_conv), ("dark/on", dark_on_conv),
+                    ("perm/off", perm_off_conv), ("perm/on",  perm_on_conv)]:
+    if not _conv: print(f"  WARNING: {_lbl} attractor did not converge within {MAX_SIM_STEPS} steps")
 print(f"  NOTE: simulation finds ONE attractor per starting condition, "
       f"use BoNesis at fewer hops for the full attractor landscape")
-target_in_dark = target_on_any(att_dark)   # always False (locked=0)
-target_in_perm = target_on_any(att_perm)   # always True  (locked=1)
+target_in_perm = target_on_any(perm_att_on)
 _att_label = lambda atts, conv: (
     ("fixed point" if len(atts) == 1 else f"cycle/{len(atts)}") +
     (" (converged)" if conv else " (max steps)"))
-print(f"  Dark attractor (target locked OFF, all-zeros start):  {_att_label(att_dark, dark_conv)}")
-print(f"  Perm attractor (target locked ON,  all-ones start):   {_att_label(att_perm, perm_conv)}")
+print(f"  Dark/OFF (all-zeros, target=0): {_att_label(dark_att_off, dark_off_conv)}")
+print(f"  Dark/ON  (all-zeros, target=1): {_att_label(dark_att_on,  dark_on_conv)}")
+print(f"  Perm/OFF (all-ones,  target=0): {_att_label(perm_att_off, perm_off_conv)}")
+print(f"  Perm/ON  (all-ones,  target=1): {_att_label(perm_att_on,  perm_on_conv)}")
 
 # STEP 2: hop-by-hop attractor state trace
-# for each upstream node, record whether it is STABLY ON or STABLY OFF in each attractor
-# stably ON means ON in every state of the attractor cycle (or fixed point)
-# stably OFF means OFF in every state; nodes that oscillate are counted as neither
-#
-# IMPORTANT: the differential stability between permissive and dark attractors is an
-# ATTRACTOR STATE CORRELATION, not established causation. A node stably ON in
-# the permissive attractor when target is ON could be an upstream driver,
-# a downstream target via feedback, or just coincidental co-activation.
-# The per-node necessity and sufficiency tests in Steps 3 to 5 provide causal evidence.
+# a node is target-responsive if its stable state flips when the target flips,
+# holding the background (all-zeros or all-ones) constant.
+# robust: responsive in BOTH backgrounds — genuine feedback regardless of context.
 all_hops = sorted({hop_of[g] for g in all_upstream if hop_of.get(g) is not None})
-hop_perm_on_dark_off = {h: [] for h in all_hops}   # stably ON in perm, stably OFF in dark
-hop_perm_off_dark_on = {h: [] for h in all_hops}   # stably OFF in perm, stably ON in dark
+hop_dark_on  = {h: [] for h in all_hops}   # target-responsive in dark background (OFF→ON)
+hop_perm_on  = {h: [] for h in all_hops}   # target-responsive in perm background (OFF→ON)
+hop_robust   = {h: [] for h in all_hops}   # responsive in both backgrounds
 for g in all_upstream:
     h = hop_of.get(g)
     if h is None: continue
-    if stable_on(g, att_perm) and stable_off(g, att_dark): hop_perm_on_dark_off[h].append(g)
-    elif stable_off(g, att_perm) and stable_on(g, att_dark): hop_perm_off_dark_on[h].append(g)
+    dark_resp = stable_off(g, dark_att_off) and stable_on(g, dark_att_on)
+    perm_resp = stable_off(g, perm_att_off) and stable_on(g, perm_att_on)
+    if dark_resp: hop_dark_on[h].append(g)
+    if perm_resp: hop_perm_on[h].append(g)
+    if dark_resp and perm_resp: hop_robust[h].append(g)
 
 # STEP 3: filter candidates by attractor state before per-node testing
-# activator necessity: only nodes STABLY ON in perm attractor can be necessary activators,
-#   a node stably OFF cannot be necessary for target to be ON there
-# sufficiency: stably ON in perm AND stably OFF in dark (differentially stable)
-# suppressor necessity: nodes STABLY OFF in perm attractor, force them ON and
-#   check whether target turns OFF; their absence may be required for target ON
-# suppressor release: only tested when target is OFF in perm attractor
-perm_on_stable  = sorted(g for g in all_upstream if stable_on(g,  att_perm))
-perm_off_stable = sorted(g for g in all_upstream if stable_off(g, att_perm))
+# necessity (activator): stably ON in perm_att_on — these are candidates that could be required
+# necessity (suppressor): stably OFF in perm_att_on — their absence may be required for target ON
+# sufficiency: genuinely flips OFF→ON when target flips 0→1 from dark background
+# suppressor release: only tested when target is OFF in perm_att_on
+perm_on_stable  = sorted(g for g in all_upstream if stable_on(g,  perm_att_on))
+perm_off_stable = sorted(g for g in all_upstream if stable_off(g, perm_att_on))
 
 necessity_act_candidates = perm_on_stable if target_in_perm else []
-sufficiency_candidates   = sorted(g for g in necessity_act_candidates
-                                  if stable_off(g, att_dark)) if (target_in_perm and not target_in_dark) else []
+sufficiency_candidates   = sorted(
+    g for g in all_upstream
+    if stable_off(g, dark_att_off) and stable_on(g, dark_att_on)
+) if target_in_perm else []
 necessity_sup_candidates = perm_off_stable if target_in_perm else []
 suppressor_release_cands = perm_off_stable if not target_in_perm else []
 
 print(f"\n  Attractor-filtered candidate pools:")
-print(f"    Sufficiency (stably ON-perm & OFF-dark): {len(sufficiency_candidates)}")
-print(f"    Necessity, activators (stably ON-perm):  {len(necessity_act_candidates)}")
-print(f"    Necessity, suppressors (stably OFF-perm):{len(necessity_sup_candidates)}")
+print(f"    Sufficiency (target-responsive in dark):  {len(sufficiency_candidates)}")
+print(f"    Necessity, activators (stably ON-perm):   {len(necessity_act_candidates)}")
+print(f"    Necessity, suppressors (stably OFF-perm): {len(necessity_sup_candidates)}")
 
 # STEP 4: per-node tests
 GENE_TEST_BUDGET = 120   # total seconds for sufficiency + simulation fallback
@@ -323,7 +289,7 @@ for candidate in sufficiency_candidates:
         print(f"    Stopped: budget reached after {time.perf_counter()-t_gene_tests:.0f}s")
         budget_exceeded = True; break
     states, _, _ = simulate(bn_dict_pruned, all_zeros_sub, candidate, 1)
-    if target_on_any(states) and not target_in_dark:  # target_in_dark always False (locked 0), defensive check
+    if target_on_any(states) and not target_on_any(dark_att_off):
         sufficient_activators.append(candidate)
 print(f"  Sufficiency: {time.perf_counter()-t0:.3f}s")
 
@@ -426,29 +392,22 @@ for gene in direct_suppressors: print(f"      - {gene:40s}  {tags(gene)}")
 
 # OUTPUT STEP 2: attractor state trace
 print(f"\n{'='*70}")
-print(f"  Step 2: Attractor state comparison (dark vs permissive initial conditions)")
-print(f"  Upstream states are compared between two attractor conditions,")
-print(f"  mirroring the dark/permissive framing of the forward analysis.")
-print(f"  CORRELATION ONLY, causal evidence requires the per-node tests in Steps 3 to 5.")
-print(f"    Dark (all-zeros): target={'ON' if target_in_dark else 'OFF'}  "
-      f"|  {_att_label(att_dark, dark_conv)}")
-print(f"    Perm (all-ones):  target={'ON' if target_in_perm else 'OFF'}  "
-      f"|  {_att_label(att_perm, perm_conv)}")
-print(f"\n  Stable-state differential by hop:")
-print(f"  {'Hop':>4}  {'Total':>6}  {'Perm-ON/Dark-OFF':>17}  {'Perm-OFF/Dark-ON':>17}")
+print(f"  Step 2: Target-responsive nodes (attractor state flips when target flips)")
+print(f"  Each background is tested independently: only the target lock changes.")
+print(f"  Robust = responsive in both dark and permissive backgrounds.")
+print(f"    Dark/OFF (all-zeros, target=0): {_att_label(dark_att_off, dark_off_conv)}")
+print(f"    Dark/ON  (all-zeros, target=1): {_att_label(dark_att_on,  dark_on_conv)}")
+print(f"    Perm/OFF (all-ones,  target=0): {_att_label(perm_att_off, perm_off_conv)}")
+print(f"    Perm/ON  (all-ones,  target=1): {_att_label(perm_att_on,  perm_on_conv)}")
+print(f"\n  Target-responsive nodes by hop:")
+print(f"  {'Hop':>4}  {'Total':>6}  {'Dark-resp':>10}  {'Perm-resp':>10}  {'Robust':>8}")
 for h in all_hops:
     genes_h = [g for g in all_upstream if hop_of.get(g) == h]
-    n_pod = len(hop_perm_on_dark_off[h])
-    n_opd = len(hop_perm_off_dark_on[h])
-    print(f"  {h:>4}  {len(genes_h):>6}  {n_pod:>17}  {n_opd:>17}")
-    for gene in sorted(hop_perm_on_dark_off[h])[:8]:
-        print(f"      + {gene:40s}  [stably ON in perm, OFF in dark]  {tags(gene)}")
-    if n_pod > 8:
-        print(f"      ... and {n_pod-8} more stably perm-ON/dark-OFF at hop {h}")
-    for gene in sorted(hop_perm_off_dark_on[h])[:5]:
-        print(f"      - {gene:40s}  [stably OFF in perm, ON in dark]  {tags(gene)}")
-    if n_opd > 5:
-        print(f"      ... and {n_opd-5} more stably perm-OFF/dark-ON at hop {h}")
+    nd = len(hop_dark_on[h]); np_ = len(hop_perm_on[h]); nr = len(hop_robust[h])
+    print(f"  {h:>4}  {len(genes_h):>6}  {nd:>10}  {np_:>10}  {nr:>8}")
+    for gene in sorted(hop_robust[h])[:8]:
+        print(f"      ~ {gene:40s}  [robust target-responsive]  {tags(gene)}")
+    if nr > 8: print(f"      ... and {nr-8} more robust target-responsive at hop {h}")
 
 # OUTPUT STEP 3: sufficient activators
 print(f"\n{'='*70}")
@@ -483,24 +442,13 @@ if suppressor_releases:
     print(f"\n  Suppressor release, KO turns '{target_gene}' ON ({len(suppressor_releases)}):")
     for gene in suppressor_releases: print(f"    ~ {gene:40s}  [suppressor release]  {tags(gene)}")
 
-# OUTPUT: SBM regulatory modules
-if community:
-    print(f"\n{'='*70}")
-    comm_groups = {}
-    for gene, cid in community.items(): comm_groups.setdefault(cid, []).append(gene)
-    print(f"  REGULATORY MODULES (SBM): {len(comm_groups)} modules")
-    for cid, members in sorted(comm_groups.items(), key=lambda x: len(x[1]), reverse=True)[:5]:
-        print(f"\n  Module {cid}: {len(members)} nodes")
-        for gene in sorted(members)[:8]: print(f"    {gene:40s}  {tags(gene)}")
-        if len(members) > 8: print(f"    ... and {len(members)-8} more")
-
 # OUTPUT: sink nodes
 print(f"\n{'='*70}")
 print(f"  Sink nodes: upstream nodes with no further upstream regulators in this subgraph")
 print(f"  ({len(sink_nodes)} nodes). These are candidate master regulators (no in-edges in model).")
 if sink_nodes:
     for gene in sorted(sink_nodes)[:30]:
-        val = eval_rule_simple(sink_rules[gene], att_perm[0])
+        val = eval_rule_simple(sink_rules[gene], perm_att_on[0])
         print(f"    {gene:40s}  permissive state: {'ON' if val else 'OFF':3s}  {tags(gene)}")
     if len(sink_nodes) > 30: print(f"    ... and {len(sink_nodes)-30} more")
 

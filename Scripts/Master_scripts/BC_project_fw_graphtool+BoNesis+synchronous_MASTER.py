@@ -4,7 +4,7 @@ import graph_tool.all as gt
 import bonesis
 
 BASE_DIR             = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-OUTPUT_DIR           = os.path.join(BASE_DIR, "output")
+OUTPUT_DIR           = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
 
 class _Tee:
     def __init__(self, *files): self.files = files
@@ -71,10 +71,8 @@ node_list = sorted(all_nodes)
 node_idx = {name: i for i, name in enumerate(node_list)}
 g_full = gt.Graph(directed=True)
 g_full.add_vertex(len(node_list))
-gt_etype = g_full.new_edge_property("bool")
-for s, t in edges_act: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = True
-for s, t in edges_sup: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = False
-g_full.ep["etype"] = gt_etype
+for s, t in edges_act: g_full.add_edge(node_idx[s], node_idx[t])
+for s, t in edges_sup: g_full.add_edge(node_idx[s], node_idx[t])
 print(f"\ngraph-tool: {g_full.num_vertices()} vertices, {g_full.num_edges()} edges  ({time.perf_counter()-t0:.2f}s)")
 
 # phase 1 - characterise the full network, find hubs with PageRank, check for feedback loops
@@ -128,17 +126,15 @@ sc = {}
 for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
 for c, n in sorted(sc.items(), key=lambda x: x[1], reverse=True): print(f"    {n:>4}  {c}")
 
-# characterise the subgraph - SCCs, betweenness centrality and SBM regulatory modules
+# characterise the subgraph - SCCs
 print(f"\n{'='*70}")
 print(f"PHASE 2.5  Subgraph topology (graph-tool)")
 g_sub = gt.Graph(directed=True)
 g_sub.add_vertex(len(sub_node_list))
-sub_etype = g_sub.new_edge_property("bool")
 for s, t in set((s, t) for s, t in edges_act if s in sub_node_idx and t in sub_node_idx):
-    sub_etype[g_sub.add_edge(sub_node_idx[s], sub_node_idx[t])] = True
+    g_sub.add_edge(sub_node_idx[s], sub_node_idx[t])
 for s, t in set((s, t) for s, t in edges_sup if s in sub_node_idx and t in sub_node_idx):
-    sub_etype[g_sub.add_edge(sub_node_idx[s], sub_node_idx[t])] = False
-g_sub.ep["etype"] = sub_etype
+    g_sub.add_edge(sub_node_idx[s], sub_node_idx[t])
 
 sub_comp, sub_hist = gt.label_components(g_sub)
 large_sub = int((sub_hist > 1).sum())
@@ -148,34 +144,6 @@ if large_sub:
     print(f"  Largest SCC ({int(sub_hist.max())} nodes):")
     for m in sorted(scc_members)[:10]: print(f"    {m:40s}  [{cat(m)}]")
     if len(scc_members) > 10: print(f"    ... and {len(scc_members)-10} more")
-
-community = {}
-if len(subgraph_nodes) <= 5000:
-    t0 = time.perf_counter()
-    vb, _ = gt.betweenness(g_sub)
-    print(f"\n  Betweenness ({time.perf_counter()-t0:.3f}s), top 10:")
-    for name in sorted(sub_node_list, key=lambda n: vb[sub_node_idx[n]], reverse=True)[:10]:
-        score = vb[sub_node_idx[name]]
-        if score > 0: print(f"    {name:40s}  {score:.6f}  [{cat(name)}]")
-else:
-    print(f"  Betweenness skipped ({len(subgraph_nodes)} nodes > 5000)")
-
-if len(subgraph_nodes) <= 2000:
-    t0 = time.perf_counter()
-    print(f"\n  Running SBM (Stochastic Block Model)...")
-    gt.seed_rng(42)
-    state = gt.minimize_blockmodel_dl(g_sub)
-    b = state.get_blocks()
-    for name in sub_node_list: community[name] = int(b[sub_node_idx[name]])
-    comm_sizes = {}
-    for c in community.values(): comm_sizes[c] = comm_sizes.get(c, 0) + 1
-    print(f"  SBM ({time.perf_counter()-t0:.2f}s), {len(comm_sizes)} modules:")
-    for cid, sz in sorted(comm_sizes.items(), key=lambda x: x[1], reverse=True)[:5]:
-        cats = {}
-        for m in (n for n, c in community.items() if c == cid): cats[cat(m)] = cats.get(cat(m), 0) + 1
-        print(f"    Module {cid}: {sz:>4} nodes  ({', '.join(f'{v} {k}' for k,v in sorted(cats.items(), key=lambda x: x[1], reverse=True))})")
-else:
-    print(f"\n  SBM (Stochastic Block Model) skipped ({len(subgraph_nodes)} nodes > 2000)")
 
 # build one Boolean rule per regulated node, activators OR'd, suppressors AND NOT'd
 # any single activator is enough to turn a node ON (functional redundancy)
@@ -448,16 +416,6 @@ else:
         p = "ON" if stable_on(g, perm_perturbed_full) else "OFF" if stable_off(g, perm_perturbed_full) else "var"
         print(f"    {g:40s}  resting: {r:3s}  perturbed: {p:3s}  {tags(g)}")
     if len(sink_nodes) > 30: print(f"    ... and {len(sink_nodes)-30} more")
-
-if community:
-    print(f"\n{'='*70}")
-    comm_groups = {}
-    for g, cid in community.items(): comm_groups.setdefault(cid, []).append(g)
-    print(f"  REGULATORY MODULES (SBM): {len(comm_groups)} modules")
-    for cid, members in sorted(comm_groups.items(), key=lambda x: len(x[1]), reverse=True)[:5]:
-        print(f"\n  Module {cid}: {len(members)} nodes")
-        for g in sorted(members)[:8]: print(f"    {g:40s}  {tags(g)}")
-        if len(members) > 8: print(f"    ... and {len(members)-8} more")
 
 print(f"\n  Total: {time.perf_counter()-t_total_start:.2f}s")
 print(f"\n{'='*70}")

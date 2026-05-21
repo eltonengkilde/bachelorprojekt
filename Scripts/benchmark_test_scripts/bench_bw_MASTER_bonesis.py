@@ -85,10 +85,8 @@ node_idx  = {n: i for i, n in enumerate(node_list)}
 t0 = time.perf_counter()
 g_full = gt.Graph(directed=True)
 g_full.add_vertex(len(node_list))
-gt_etype = g_full.new_edge_property("bool")
-for s, t in edges_act: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = True
-for s, t in edges_sup: gt_etype[g_full.add_edge(node_idx[s], node_idx[t])] = False
-g_full.ep["etype"] = gt_etype
+for s, t in edges_act: g_full.add_edge(node_idx[s], node_idx[t])
+for s, t in edges_sup: g_full.add_edge(node_idx[s], node_idx[t])
 print(f"graph-tool: {g_full.num_vertices()} vertices, {g_full.num_edges()} edges  ({time.perf_counter()-t0:.2f}s)")
 
 pr_map  = gt.pagerank(g_full)
@@ -141,12 +139,10 @@ while True:
             print(f"\n{'='*70}\nPHASE 2.5 — Subgraph topology")
             g_sub = gt.Graph(directed=True)
             g_sub.add_vertex(len(sub_node_list))
-            sub_etype = g_sub.new_edge_property("bool")
             for s, t in set((s,t) for s,t in edges_act if s in sub_v_idx and t in sub_v_idx):
-                sub_etype[g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])] = True
+                g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
             for s, t in set((s,t) for s,t in edges_sup if s in sub_v_idx and t in sub_v_idx):
-                sub_etype[g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])] = False
-            g_sub.ep["etype"] = sub_etype
+                g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
             sub_comp, sub_hist = gt.label_components(g_sub)
             large_sub = int((sub_hist > 1).sum())
             print(f"  SCCs: {sub_hist.shape[0]}  |  non-trivial: {large_sub}")
@@ -155,30 +151,6 @@ while True:
                 print(f"  Largest SCC ({int(sub_hist.max())} nodes):")
                 for m in sorted(scc_m)[:10]: print(f"    {m:40s}  [{cat(m)}]")
                 if len(scc_m) > 10: print(f"    ... and {len(scc_m)-10} more")
-            community = {}
-            if len(subgraph_nodes) <= 5000:
-                t0 = time.perf_counter(); vb, _ = gt.betweenness(g_sub)
-                print(f"\n  Betweenness ({time.perf_counter()-t0:.3f}s) — top 10:")
-                for name in sorted(sub_node_list, key=lambda n: vb[sub_v_idx[n]], reverse=True)[:10]:
-                    sc2 = vb[sub_v_idx[name]]
-                    if sc2 > 0: print(f"    {name:40s}  {sc2:.6f}  [{cat(name)}]")
-            else:
-                print(f"  Betweenness skipped ({len(subgraph_nodes)} nodes > 5000)")
-            if len(subgraph_nodes) <= 2000:
-                t0 = time.perf_counter(); print(f"\n  Running SBM...")
-                gt.seed_rng(42)
-                sbm_s = gt.minimize_blockmodel_dl(g_sub); b = sbm_s.get_blocks()
-                for name in sub_node_list: community[name] = int(b[sub_v_idx[name]])
-                cs = {}
-                for c in community.values(): cs[c] = cs.get(c, 0) + 1
-                print(f"  SBM ({time.perf_counter()-t0:.2f}s) — {len(cs)} modules:")
-                for cid, sz in sorted(cs.items(), key=lambda x: x[1], reverse=True)[:5]:
-                    mems = [n for n, c in community.items() if c == cid]
-                    cats = {}
-                    for m in mems: cats[cat(m)] = cats.get(cat(m), 0) + 1
-                    print(f"    Module {cid}: {sz:>4} nodes  ({', '.join(f'{v} {k}' for k,v in sorted(cats.items(), key=lambda x: x[1], reverse=True))})")
-            else:
-                print(f"\n  SBM skipped ({len(subgraph_nodes)} nodes > 2000)")
 
             # Boolean rules: activators OR'd (any activator sufficient); suppressors AND NOT'd (any suppressor dominant).
             # Rule form: (act1 | act2 | ...) & !sup1 & !sup2 & ...  — models functional redundancy + dominant repression.
@@ -370,15 +342,6 @@ while True:
             for g in necessary_suppressors: print(f"    ! {g:40s}  [necessary suppressor]  {tags(g)}")
             print(f"\n  Suppressor release (KO turns '{target_gene}' ON): {len(suppressor_releases)}")
             for g in suppressor_releases: print(f"    ~ {g:40s}  [suppressor release]  {tags(g)}")
-            if community:
-                print(f"\n{'='*70}")
-                cg = {}
-                for g, cid in community.items(): cg.setdefault(cid, []).append(g)
-                print(f"  REGULATORY MODULES (SBM) — {len(cg)} modules")
-                for cid, members in sorted(cg.items(), key=lambda x: len(x[1]), reverse=True)[:5]:
-                    print(f"\n  Module {cid}: {len(members)} nodes")
-                    for g in sorted(members)[:8]: print(f"    {g:40s}  {tags(g)}")
-                    if len(members) > 8: print(f"    ... and {len(members)-8} more")
             print(f"\n{'='*70}")
             print(f"  Sink nodes — upstream genes with no further upstream regulators in subgraph")
             print(f"  ({len(sink_nodes)} nodes). Candidate master regulators (no in-edges in model).")
