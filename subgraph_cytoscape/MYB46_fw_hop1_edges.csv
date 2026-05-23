@@ -1,0 +1,12 @@
+﻿Source,Target,Interaction
+MYB46,CSE,Activation
+MYB85,CSE,Activation
+MYB46,MYB32,Activation
+MYB46,A_thaliana_MYB4,Activation
+MYB46,knat7,Activation
+MYB46,CslA9,Activation
+MYB46,CESA4,Activation
+MYB46,CesA7,Activation
+MYB46,cesa8,Activation
+MYB46,MYB85,Activation
+MYB46,promoter_activity_of_AtACO4,Repression

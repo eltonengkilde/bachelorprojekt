@@ -6,33 +6,40 @@ GENE                    = "MYB46"
 MAX_TOTAL_SECONDS       = 1800   # 0.5-hour budget; a new hop only starts if time remains
 MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
 MAX_SIM_STEPS           = 1000
-SCRIPT_NAME = os.path.basename(__file__).replace('.py', '')
-OUT_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+SCRIPT_NAME  = os.path.basename(__file__).replace('.py', '')
+NETWORK_FILE = "filtered_GT_normalized.csv"
+OUT_DIR      = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.makedirs(OUT_DIR, exist_ok=True)
 
 CATEGORIES_TO_KEEP = {
-    "Gene / Protein",
-    "Phenotype / Trait / Disease",
-    "Chemical / Metabolite / Cofactor / Ligand",
-    "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism",
+    "gene",
+    "protein",
+    "mutant",
+    "metabolite",
+    "process",
+    "phenotype",
 }
 BOOLEAN_RESERVED = {"TRUE", "FALSE", "NOT", "AND", "OR"}
 ACT_REL = "Activation / Induction / Causation / Result"
 SUP_REL = "Repression / Inhibition / Negative Regulation"
 CAT_MAP = {
-    "Gene / Protein": "Gene",
-    "Phenotype / Trait / Disease": "Phenotype",
-    "Chemical / Metabolite / Cofactor / Ligand": "Metabolite",
-    "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism": "Pathway",
+    "gene":       "Gene",
+    "protein":    "Protein",
+    "mutant":     "Mutant",
+    "metabolite": "Metabolite",
+    "process":    "Process",
+    "phenotype":  "Phenotype",
 }
+CAT_PRIORITY   = {"gene": 0, "protein": 1, "metabolite": 2, "mutant": 3, "process": 4, "phenotype": 5}
+MOLECULAR_CATS = {"gene", "protein", "metabolite"}
 
 def clean_name(name):
     if not name or not isinstance(name, str): return "unknown"
     name = re.sub(r"_+", "_", re.sub(r"[^a-zA-Z0-9_]", "_", name)).strip("_")
     if not name: return "unknown"
-    if name[0].isdigit(): return "g" + name
-    if name.upper() in BOOLEAN_RESERVED or keyword.iskeyword(name): return "gene_" + name
+    if name[0].isdigit(): return "n" + name
+    if name.upper() in BOOLEAN_RESERVED or keyword.iskeyword(name): return "node_" + name
     return name
 
 def _to_py(r): return r.replace("!", " not ").replace("|", " or ").replace("&", " and ")
@@ -64,19 +71,28 @@ def eval_rule_simple(rule, state):
 
 # ── ONE-TIME DATA LOAD ─────────────────────────────────────────────────────────
 print(f"Loading: {SCRIPT_NAME}")
-activators, suppressors, edges_act, edges_sup, all_nodes, gene_category = {}, {}, [], [], set(), {}
-with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_GT_normalized.csv"), newline="", encoding="utf-8") as f:
+activators, suppressors, all_nodes, gene_category = {}, {}, set(), {}
+_seen_act, _seen_sup = set(), set()
+with open(os.path.join(BASE_DIR, "networks_used_by_scripts", NETWORK_FILE), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
+        if row["source_category"] not in CATEGORIES_TO_KEEP: continue
+        if row["target_category"] not in CATEGORIES_TO_KEEP: continue
         rel = row["relationship_category"]
         if rel not in (ACT_REL, SUP_REL): continue
         s, t = clean_name(row["source"]), clean_name(row["target"])
         all_nodes.update((s, t))
-        gene_category[s] = row["source_category"]; gene_category[t] = row["target_category"]
-        if rel == ACT_REL: activators.setdefault(t, set()).add(s); edges_act.append((s, t))
-        else:              suppressors.setdefault(t, set()).add(s); edges_sup.append((s, t))
-print(f"Loaded {len(edges_act)+len(edges_sup)} edges  ({len(all_nodes)} nodes)")
+        for _node, _col in ((s, "source_category"), (t, "target_category")):
+            _new_c = row[_col]
+            if _node not in gene_category or CAT_PRIORITY.get(_new_c, 99) < CAT_PRIORITY.get(gene_category[_node], 99):
+                gene_category[_node] = _new_c
+        if rel == ACT_REL: activators.setdefault(t, set()).add(s); _seen_act.add((s, t))
+        else:              suppressors.setdefault(t, set()).add(s); _seen_sup.add((s, t))
+edges_act = sorted(_seen_act); edges_sup = sorted(_seen_sup)
+del _seen_act, _seen_sup
+print(f"Loaded {len(edges_act)+len(edges_sup)} unique edges  ({len(all_nodes)} nodes)")
 
 def cat(g): c = gene_category.get(g); return CAT_MAP.get(c, c or "?")
+def mol_flag(g): return " !" if gene_category.get(g) not in MOLECULAR_CATS else ""
 
 node_list = sorted(all_nodes)
 node_idx  = {n: i for i, n in enumerate(node_list)}
@@ -169,7 +185,7 @@ while True:
                 if g in sink_nodes: parts.append("sink")
                 h = hop_of.get(g)
                 if h is not None and h > 1: parts.append(f"hop {h}")
-                return "[" + ", ".join(parts) + "]"
+                return "[" + ", ".join(parts) + "]" + mol_flag(g)
 
             all_zeros_sub = {g: 0 for g in subgraph_nodes}
             all_ones_sub  = {g: 1 for g in subgraph_nodes}
@@ -295,13 +311,14 @@ while True:
                 _con(f"done {len(suppressor_releases)} found  {time.perf_counter()-t0:.1f}s\n")
                 print(f"  [time] Suppressor release: {time.perf_counter()-t0:.3f}s")
 
-            sink_rules = {g: bn_dict[g] for g in sink_nodes}
+            sink_rules   = {g: bn_dict[g] for g in sink_nodes}
+            nec_mode_str = "Simulation"
 
             print(f"\n{'='*70}")
             print(f"  UPSTREAM REGULATORY ANALYSIS of '{target_gene}'")
-            print(f"  {hops} hop(s)  |  synchronous simulation ({n_pruned} nodes)")
+            print(f"  {hops} hop(s)  |  {nec_mode_str} ({n_pruned} nodes)")
             print(f"  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd")
-            print(f"  NOTE: simulation finds ONE attractor per starting condition.")
+            print(f"  ! = non-molecular node (mutant / process / phenotype)")
             print(f"\n  Step 1 — Structural direct regulators (1-hop):")
             print(f"    Activators: {len(direct_activators)}")
             for g in direct_activators:  print(f"      + {g:40s}  {tags(g)}")
@@ -321,23 +338,86 @@ while True:
                     print(f"      - {g:40s}  [stably OFF perm / ON dark]  {tags(g)}")
                 if len(hop_opd[h]) > 5: print(f"      ... and {len(hop_opd[h])-5} more at hop {h}")
             print(f"\n{'='*70}")
-            print(f"  Step 3 — Sufficient upstream activators:")
+            print(f"  Step 3 — Sufficient upstream activators (single-gene activation drives '{target_gene}' ON):")
             if budget_exceeded: print(f"    NOTE: per-hop budget reached — results may be partial")
-            print(f"  {len(sufficient_activators)} found")
-            for g in sufficient_activators: print(f"    + {g:40s}  {tags(g)}")
+            if sufficient_activators:
+                for h in all_hops:
+                    sa_h = sorted(g for g in sufficient_activators if hop_of.get(g) == h)
+                    if sa_h:
+                        print(f"    Hop {h}:")
+                        for g in sa_h: print(f"      ++ {g:40s}  {tags(g)}")
+            else:
+                print(f"    None found")
             print(f"\n{'='*70}")
-            print(f"  Step 4 — Necessity test (synchronous simulation):")
+            print(f"  Step 4 — Activator necessity ({nec_mode_str} — KO from permissive):")
             if budget_exceeded: print(f"    NOTE: per-hop budget reached — results may be partial")
             print(f"\n  Necessary activators (KO turns '{target_gene}' OFF): {len(necessary_activators)}")
-            for g in necessary_activators: print(f"    ! {g:40s}  [required activator]  {tags(g)}")
-            print(f"\n  Redundant activators ('{target_gene}' stays ON without them): {len(redundant_activators)}")
-            for g in redundant_activators[:20]: print(f"    ~ {g:40s}  [dispensable]  {tags(g)}")
+            if necessary_activators:
+                for h in all_hops:
+                    na_h = sorted(g for g in necessary_activators if hop_of.get(g) == h)
+                    if na_h:
+                        print(f"    Hop {h}:")
+                        for g in na_h: print(f"      +  {g:40s}  [required]  {tags(g)}")
+            print(f"\n  Redundant activators ('{target_gene}' stays ON after KO): {len(redundant_activators)}")
+            _red_shown = 0
+            for h in all_hops:
+                if _red_shown >= 20: break
+                red_h = sorted(g for g in redundant_activators if hop_of.get(g) == h)
+                if red_h:
+                    print(f"    Hop {h}:")
+                    for g in red_h:
+                        if _red_shown >= 20: break
+                        print(f"      ~  {g:40s}  [dispensable]  {tags(g)}"); _red_shown += 1
             if len(redundant_activators) > 20: print(f"    ... and {len(redundant_activators)-20} more [dispensable]")
             print(f"\n{'='*70}")
-            print(f"  Step 5 — Necessary suppressors (forced ON turns '{target_gene}' OFF): {len(necessary_suppressors)}")
-            for g in necessary_suppressors: print(f"    ! {g:40s}  [necessary suppressor]  {tags(g)}")
+            print(f"  Step 5 — Suppressor necessity and release ({nec_mode_str}):")
+            print(f"\n  Necessary suppressors (forced ON turns '{target_gene}' OFF): {len(necessary_suppressors)}")
+            if necessary_suppressors:
+                for h in all_hops:
+                    ns_h = sorted(g for g in necessary_suppressors if hop_of.get(g) == h)
+                    if ns_h:
+                        print(f"    Hop {h}:")
+                        for g in ns_h: print(f"      -! {g:40s}  [required suppressor]  {tags(g)}")
             print(f"\n  Suppressor release (KO turns '{target_gene}' ON): {len(suppressor_releases)}")
-            for g in suppressor_releases: print(f"    ~ {g:40s}  [KO turns target ON]  {tags(g)}")
+            if suppressor_releases:
+                for h in all_hops:
+                    sr_h = sorted(g for g in suppressor_releases if hop_of.get(g) == h)
+                    if sr_h:
+                        print(f"    Hop {h}:")
+                        for g in sr_h: print(f"      -~ {g:40s}  [release]  {tags(g)}")
+            print(f"\n{'='*70}")
+            print(f"  Step 6 — REGULATORY SUMMARY BY HOP ({nec_mode_str})")
+            print(f"  Classifies every upstream node by predicted regulatory role.")
+            print(f"  ++ = sufficient activator  +  = necessary activator   ~  = redundant")
+            print(f"  -! = necessary suppressor  -~ = suppressor release    .+ = correlated activator (attractor only)")
+            print(f"  .- = correlated suppressor (attractor only)           no mark = no role detected")
+            print(f"  Use this section to compare against known MYB46 regulators hop by hop.")
+            _suff_set    = set(sufficient_activators)
+            _nec_act_set = set(necessary_activators)
+            _red_act_set = set(redundant_activators)
+            _nec_sup_set = set(necessary_suppressors)
+            _sup_rel_set = set(suppressor_releases)
+            _pod_set     = {g for nodes in hop_pod.values() for g in nodes}
+            _opd_set     = {g for nodes in hop_opd.values() for g in nodes}
+            for h in all_hops:
+                nodes_at_h = sorted(g for g in all_upstream if hop_of.get(g) == h)
+                _func, _corr, _neut = [], [], []
+                for g in nodes_at_h:
+                    if   g in _suff_set:    _func.append((g, "++", "sufficient activator"))
+                    elif g in _nec_act_set: _func.append((g, "+ ", "necessary activator"))
+                    elif g in _red_act_set: _func.append((g, "~ ", "redundant activator"))
+                    elif g in _nec_sup_set: _func.append((g, "-!", "necessary suppressor"))
+                    elif g in _sup_rel_set: _func.append((g, "-~", "suppressor release"))
+                    elif g in _pod_set:     _corr.append((g, ".+", "correlated activator"))
+                    elif g in _opd_set:     _corr.append((g, ".-", "correlated suppressor"))
+                    else:                   _neut.append(g)
+                print(f"\n  Hop {h}  ({len(nodes_at_h)} nodes — {len(_func)} functional  {len(_corr)} correlated  {len(_neut)} neutral):")
+                for g, sym, role in sorted(_func, key=lambda x: x[0]):
+                    print(f"    {sym}  {g:40s}  [{role}]  {tags(g)}")
+                for g, sym, role in sorted(_corr, key=lambda x: x[0]):
+                    print(f"    {sym}  {g:40s}  [{role}]  {tags(g)}")
+                if _neut:
+                    print(f"    ..  {len(_neut)} neutral node(s) at hop {h}")
             print(f"\n{'='*70}")
             print(f"  Sink nodes — upstream genes with no further upstream regulators in subgraph")
             print(f"  ({len(sink_nodes)} nodes). Candidate master regulators (no in-edges in model).")

@@ -13,28 +13,38 @@ OUT_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results"
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.makedirs(OUT_DIR, exist_ok=True)
 
+# network to load - change this value to switch networks
+NETWORK_FILE = "filtered_GT_normalized.csv"
+
+# categories for filtered_GT_normalized.csv / filtered_GT.csv:
 CATEGORIES_TO_KEEP = {
-    "Gene / Protein",
-    "Phenotype / Trait / Disease",
-    "Chemical / Metabolite / Cofactor / Ligand",
-    "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism",
+    "gene",
+    "protein",
+    "mutant",
+    "metabolite",
+    "process",
+    "phenotype",
 }
 BOOLEAN_RESERVED = {"TRUE", "FALSE", "NOT", "AND", "OR"}
 ACT_REL = "Activation / Induction / Causation / Result"
 SUP_REL = "Repression / Inhibition / Negative Regulation"
 CAT_MAP = {
-    "Gene / Protein": "Gene",
-    "Phenotype / Trait / Disease": "Phenotype",
-    "Chemical / Metabolite / Cofactor / Ligand": "Metabolite",
-    "Biological Process / Pathway / Function / Regulatory / Signaling Mechanism": "Pathway",
+    "gene":       "Gene",
+    "protein":    "Protein",
+    "mutant":     "Mutant",
+    "metabolite": "Metabolite",
+    "process":    "Process",
+    "phenotype":  "Phenotype",
 }
+CAT_PRIORITY   = {"gene": 0, "protein": 1, "metabolite": 2, "mutant": 3, "process": 4, "phenotype": 5}
+MOLECULAR_CATS = {"gene", "protein", "metabolite"}
 
 def clean_name(name):
     if not name or not isinstance(name, str): return "unknown"
     name = re.sub(r"_+", "_", re.sub(r"[^a-zA-Z0-9_]", "_", name)).strip("_")
     if not name: return "unknown"
-    if name[0].isdigit(): return "g" + name
-    if name.upper() in BOOLEAN_RESERVED or keyword.iskeyword(name): return "gene_" + name
+    if name[0].isdigit(): return "n" + name
+    if name.upper() in BOOLEAN_RESERVED or keyword.iskeyword(name): return "node_" + name
     return name
 
 def _to_py(r): return r.replace("!", " not ").replace("|", " or ").replace("&", " and ")
@@ -80,20 +90,29 @@ def recover_sinks(attractors, sink_rules, src, src_val, sink_order):
     return result
 
 # ── ONE-TIME DATA LOAD ─────────────────────────────────────────────────────────
-print(f"Loading: {SCRIPT_NAME}")
-activators, suppressors, edges_act, edges_sup, all_nodes, gene_category = {}, {}, [], [], set(), {}
-with open(os.path.join(BASE_DIR, "networks_used_by_scripts", "filtered_GT_normalized.csv"), newline="", encoding="utf-8") as f:
+print(f"Loading: {SCRIPT_NAME}  |  network: {NETWORK_FILE}")
+activators, suppressors, all_nodes, gene_category = {}, {}, set(), {}
+_seen_act, _seen_sup = set(), set()
+with open(os.path.join(BASE_DIR, "networks_used_by_scripts", NETWORK_FILE), newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
+        if row["source_category"] not in CATEGORIES_TO_KEEP: continue
+        if row["target_category"] not in CATEGORIES_TO_KEEP: continue
         rel = row["relationship_category"]
         if rel not in (ACT_REL, SUP_REL): continue
         s, t = clean_name(row["source"]), clean_name(row["target"])
         all_nodes.update((s, t))
-        gene_category[s] = row["source_category"]; gene_category[t] = row["target_category"]
-        if rel == ACT_REL: activators.setdefault(t, set()).add(s); edges_act.append((s, t))
-        else:              suppressors.setdefault(t, set()).add(s); edges_sup.append((s, t))
-print(f"Loaded {len(edges_act)+len(edges_sup)} edges  ({len(all_nodes)} nodes)")
+        for _node, _col in ((s, "source_category"), (t, "target_category")):
+            _new_c = row[_col]
+            if _node not in gene_category or CAT_PRIORITY.get(_new_c, 99) < CAT_PRIORITY.get(gene_category[_node], 99):
+                gene_category[_node] = _new_c
+        if rel == ACT_REL: activators.setdefault(t, set()).add(s); _seen_act.add((s, t))
+        else:              suppressors.setdefault(t, set()).add(s); _seen_sup.add((s, t))
+edges_act = sorted(_seen_act); edges_sup = sorted(_seen_sup)
+del _seen_act, _seen_sup
+print(f"Loaded {len(edges_act)+len(edges_sup)} unique edges  ({len(all_nodes)} nodes)")
 
 def cat(g): c = gene_category.get(g); return CAT_MAP.get(c, c or "?")
+def mol_flag(g): return " !" if gene_category.get(g) not in MOLECULAR_CATS else ""
 
 node_list = sorted(all_nodes)
 node_idx  = {n: i for i, n in enumerate(node_list)}
@@ -147,7 +166,7 @@ while True:
             for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
             print(f"\n{'='*70}")
             print(f"PHASE 2 — {source_gene}, {hops} hop(s)  |  {len(subgraph_nodes)} nodes, "
-                  f"{sum(1 for s,t in edges_act+edges_sup if s in subgraph_nodes and t in subgraph_nodes)} edges")
+                  f"{sum(1 for s,t in edges_act if s in subgraph_nodes and t in subgraph_nodes) + sum(1 for s,t in edges_sup if s in subgraph_nodes and t in subgraph_nodes)} edges")
             for c, n in sorted(sc.items(), key=lambda x: x[1], reverse=True): print(f"    {n:>4}  {c}")
 
             print(f"\n{'='*70}\nPHASE 2.5 — Subgraph topology")
@@ -181,7 +200,7 @@ while True:
             bn_dict_pruned = {g: f for g, f in bn_dict.items() if g not in sink_nodes}
             n_pruned = len(bn_dict_pruned)
             print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
-            def tags(g): return "[" + ", ".join([cat(g)] + (["sink"] if g in sink_nodes else [])) + "]"
+            def tags(g): return "[" + ", ".join([cat(g)] + (["sink"] if g in sink_nodes else [])) + "]" + mol_flag(g)
 
             bn_resting_dict   = dict(bn_dict_pruned); bn_resting_dict[source_gene]   = "0"
             bn_perturbed_dict = dict(bn_dict_pruned); bn_perturbed_dict[source_gene] = "1"
@@ -226,9 +245,10 @@ while True:
                 perm_perturbed_full = [{**a, source_gene: 1} for a in perm_perturbed_att]
             print(f"  [time] Sink recovery: {time.perf_counter()-t_sink:.3f}s")
 
-            direct_targets = sorted(set(
-                g for g, f in bn_resting_dict.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(f))
-            ) | {g for g, r in sink_rules.items() if re.search(r'\b' + re.escape(source_gene) + r'\b', str(r))})
+            direct_targets = sorted(
+                {t for t in bn_resting_dict if source_gene in activators.get(t, set()) or source_gene in suppressors.get(t, set())}
+                | {t for t in sink_nodes    if source_gene in activators.get(t, set()) or source_gene in suppressors.get(t, set())}
+            )
 
             def stable_on(g, atts):  return bool(atts) and all(a.get(g, 0) == 1 for a in atts)
             def stable_off(g, atts): return bool(atts) and all(a.get(g, 0) == 0 for a in atts)
@@ -251,6 +271,25 @@ while True:
                 for g in G if g not in perm_suppressed and g != source_gene
                 and any(a.get(g, 0) == 1 for a in perm_resting_full)
                 and any(a.get(g, 0) == 0 for a in perm_perturbed_full))
+
+            # knockout from the active network
+            ko_maintained = []; ko_suppressed = []; ko_cycle_note = ""
+            if len(dark_perturbed_att) == 1:
+                ko_att, _, _ = simulate(bn_dict_pruned, dark_perturbed_att[0], source_gene, 0)
+                ko_full = recover_sinks(ko_att, sink_rules, source_gene, 0, sink_order)
+                ko_maintained = sorted(g for g in G if stable_on(g,  dark_perturbed_full) and not stable_on(g, ko_full) and g != source_gene)
+                ko_suppressed = sorted(g for g in G if stable_off(g, dark_perturbed_full) and     stable_on(g, ko_full) and g != source_gene)
+            else:
+                ko_cycle_note = f" (cycle/{len(dark_perturbed_att)}: intersection across all {len(dark_perturbed_att)} starting states)"
+                cand_m = {g for g in G if stable_on(g,  dark_perturbed_full) and g != source_gene}
+                cand_s = {g for g in G if stable_off(g, dark_perturbed_full) and g != source_gene}
+                for cs in dark_perturbed_att:
+                    if not cand_m and not cand_s: break
+                    ko_att, _, _ = simulate(bn_dict_pruned, cs, source_gene, 0)
+                    ko_full = recover_sinks(ko_att, sink_rules, source_gene, 0, sink_order)
+                    cand_m = {g for g in cand_m if not stable_on(g, ko_full)}
+                    cand_s = {g for g in cand_s if     stable_on(g, ko_full)}
+                ko_maintained = sorted(cand_m); ko_suppressed = sorted(cand_s)
 
             gstates = {}
             for att in perm_perturbed_full:
@@ -293,6 +332,7 @@ while True:
             print(f"  {source_gene} — {hops} hop(s)  |  BoNesis (complete attractor landscape)")
             print(f"  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd")
             print(f"  Necessity solver: BoNesis")
+            print(f"  ! = experimental perturbation node (mutant / process / phenotype) - not an endogenous gene product")
             print(f"\n  Direct targets: {len(direct_targets)}")
             for g in direct_targets: print(f"    {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
@@ -318,6 +358,12 @@ while True:
             for g in robust_activated: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n  Robustly suppressed: {len(robust_suppressed)}")
             for g in robust_suppressed: print(f"    - {g:40s}  {tags(g)}")
+            print(f"\n{'='*70}")
+            print(f"  KNOCKOUT FROM ACTIVE STATE  (source removed from settled network){ko_cycle_note}")
+            print(f"\n  Activated (ON in active, falls OFF after KO): {len(ko_maintained)}")
+            for g in ko_maintained: print(f"    + {g:40s}  {tags(g)}")
+            print(f"\n  Suppressed (OFF in active, turns ON after KO): {len(ko_suppressed)}")
+            for g in ko_suppressed: print(f"    - {g:40s}  {tags(g)}")
             if perm_activated:
                 print(f"\n{'='*70}")
                 print(f"  NECESSITY TEST  (method: BoNesis from permissive background)")
