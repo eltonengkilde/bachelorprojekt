@@ -374,24 +374,37 @@ try:
     # attractor state. Only recover sinks whose rule evaluates differently (i.e. actually change
     # state when source_gene is perturbed). Topological order handles sink-on-sink dependencies.
     _sink_pre_order = _topo_sort_sinks(sink_rules)
-    _ns_r = {g: bool(v) for g, v in (dark_resting_att[0]   if dark_resting_att   else {}).items()}
-    _ns_p = {g: bool(v) for g, v in (dark_perturbed_att[0] if dark_perturbed_att else {}).items()}
-    _ns_r[source_gene] = False; _ns_p[source_gene] = True
+    # Check all four representative states (dark and permissive × resting and perturbed).
+    # A sink is kept if its rule evaluates differently in EITHER background — checking only
+    # the dark background misses sinks that are exclusively relevant in the permissive condition.
     _NB = {"__builtins__": {}}
+    _ns_dr = {g: (False if v == '*' else bool(v)) for g, v in (dark_resting_att[0]   if dark_resting_att   else {}).items()}
+    _ns_dp = {g: (False if v == '*' else bool(v)) for g, v in (dark_perturbed_att[0] if dark_perturbed_att else {}).items()}
+    _ns_pr = {g: (False if v == '*' else bool(v)) for g, v in (perm_resting_att[0]   if perm_resting_att   else {}).items()}
+    _ns_pp = {g: (False if v == '*' else bool(v)) for g, v in (perm_perturbed_att[0] if perm_perturbed_att else {}).items()}
+    _ns_dr[source_gene] = False; _ns_dp[source_gene] = True
+    _ns_pr[source_gene] = False; _ns_pp[source_gene] = True
     _sink_relevant = set()
     for _g in _sink_pre_order:
         _expr = _to_py(sink_rules[_g])
-        try:    _rv = eval(_expr, _NB, _ns_r)
-        except: _rv = None
-        try:    _pv = eval(_expr, _NB, _ns_p)
-        except: _pv = None
-        _ns_r[_g] = bool(_rv) if _rv is not None else False
-        _ns_p[_g] = bool(_pv) if _pv is not None else False
-        if _rv is None or _pv is None or _rv != _pv:
+        try:    _rv_d = eval(_expr, _NB, _ns_dr)
+        except: _rv_d = None
+        try:    _pv_d = eval(_expr, _NB, _ns_dp)
+        except: _pv_d = None
+        try:    _rv_p = eval(_expr, _NB, _ns_pr)
+        except: _rv_p = None
+        try:    _pv_p = eval(_expr, _NB, _ns_pp)
+        except: _pv_p = None
+        _ns_dr[_g] = bool(_rv_d) if _rv_d is not None else False
+        _ns_dp[_g] = bool(_pv_d) if _pv_d is not None else False
+        _ns_pr[_g] = bool(_rv_p) if _rv_p is not None else False
+        _ns_pp[_g] = bool(_pv_p) if _pv_p is not None else False
+        if (_rv_d is None or _pv_d is None or _rv_d != _pv_d or
+                _rv_p is None or _pv_p is None or _rv_p != _pv_p):
             _sink_relevant.add(_g)
     sink_nodes = _sink_relevant
     sink_rules = {g: sink_rules[g] for g in sink_nodes}
-    print(f"  Sink pre-filter: {len(sink_nodes)} / {_n_sinks_total} sinks change state between resting and perturbed", flush=True)
+    print(f"  Sink pre-filter: {len(sink_nodes)} / {_n_sinks_total} sinks change state in at least one background", flush=True)
 
     if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
         _n_att_total = sum(len(a) for a in (dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att))

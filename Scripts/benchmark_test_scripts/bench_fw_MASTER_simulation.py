@@ -1,5 +1,6 @@
 #!/opt/anaconda3/envs/bachelor_env/bin/python
 import csv, os, re, time, keyword, contextlib, graphlib
+from collections import Counter
 import graph_tool.all as gt
 
 GENE                    = "MYB46"
@@ -12,19 +13,10 @@ OUT_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results"
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# network to load - change this value to switch networks
 NETWORK_FILE = "filtered_GT_normalized.csv"
 
-# categories for filtered_GT_normalized.csv / filtered_GT.csv:
-CATEGORIES_TO_KEEP = {
-    "gene",
-    "protein",
-    "mutant",
-    "metabolite",
-    "process",
-    "phenotype",
-}
-BOOLEAN_RESERVED = {"TRUE", "FALSE", "NOT", "AND", "OR"}
+CATEGORIES_TO_KEEP = {"gene", "protein", "mutant", "metabolite", "process", "phenotype"}
+BOOLEAN_RESERVED   = {"TRUE", "FALSE", "NOT", "AND", "OR"}
 ACT_REL = "Activation / Induction / Causation / Result"
 SUP_REL = "Repression / Inhibition / Negative Regulation"
 CAT_MAP = {
@@ -37,6 +29,7 @@ CAT_MAP = {
 }
 CAT_PRIORITY   = {"gene": 0, "protein": 1, "metabolite": 2, "mutant": 3, "process": 4, "phenotype": 5}
 MOLECULAR_CATS = {"gene", "protein", "metabolite"}
+
 
 def clean_name(name):
     if not name or not isinstance(name, str): return "unknown"
@@ -71,25 +64,28 @@ def _sim_label(states, conv):
     return ("fixed point" if len(states) == 1 else f"cycle/{len(states)}") + (" (conv)" if conv else " (max steps)")
 
 def eval_rule_simple(rule, state):
-    try: return 1 if eval(_to_py(rule), {"__builtins__": {}}, {g: bool(v) for g, v in state.items()}) else 0
+    try: return 1 if eval(_to_py(rule), {"__builtins__": {}},
+                          {g: (False if v == '*' else bool(v)) for g, v in state.items()}) else 0
     except: return 0
 
 def _topo_sort_sinks(sink_rules):
-    """Topological evaluation order so that if sink B references sink A, A is evaluated first."""
     sink_set = set(sink_rules)
     deps = {g: set(re.findall(r'\b[a-zA-Z_]\w*\b', str(sink_rules[g]))) & sink_set
             for g in sink_set}
     return list(graphlib.TopologicalSorter(deps).static_order())
 
-def recover_sinks(attractors, sink_rules, src, src_val, sink_order):
-    """Evaluate sink gene states in topological order to respect intra-sink dependencies."""
+def recover_sinks(attractors, sink_rules, src, src_val, sink_order, extra_pins=None):
+    """Evaluate sink rules in topological order; extra_pins forces additional node values."""
     result = []
     for att in attractors:
         ext = {**att, src: src_val}
+        if extra_pins:
+            ext.update(extra_pins)
         for sink in sink_order:
             ext[sink] = eval_rule_simple(sink_rules[sink], ext)
         result.append(ext)
     return result
+
 
 # ── ONE-TIME DATA LOAD ─────────────────────────────────────────────────────────
 print(f"Loading: {SCRIPT_NAME}  |  network: {NETWORK_FILE}")
@@ -156,26 +152,54 @@ while True:
             print(f"# Benchmark: {SCRIPT_NAME}.py")
             print(f"# Gene: {GENE}  |  Hops: {hops}  |  Mode: Synchronous simulation")
             print(f"# Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"\n{'='*70}")
+            print(f"FORWARD SIGNALING ANALYSIS — METHODOLOGY")
+            print(f"  Node of interest : {GENE}")
+            print(f"  Network          : {NETWORK_FILE}")
+            print(f"  Hop radius       : {hops}")
+            print(f"  Attractor solver : Synchronous simulation — one deterministic trajectory")
+            print(f"                     per initial condition. Finds ONE attractor (fixed point")
+            print(f"                     or limit cycle) per condition. For the complete attractor")
+            print(f"                     landscape use the BoNesis benchmark instead.")
+            print(f"")
+            print(f"  Subgraph: all nodes reachable from {GENE} in ≤{hops} directed steps.")
+            print(f"  Boolean rules: any activator is sufficient (OR); any suppressor dominates (AND-NOT).")
+            print(f"  Rule form: (act1 | act2 | ...) & !sup1 & !sup2 & ...")
+            print(f"  Update scheme: synchronous (all nodes updated simultaneously each step).")
+            print(f"")
+            print(f"  Experimental conditions compared:")
+            print(f"    (A) Dark background      — all nodes initialised to 0 (all pathways inactive)")
+            print(f"    (B) Permissive background — all nodes initialised to 1 (all pathways active)")
+            print(f"  Within each background, resting ({GENE}=0) vs. perturbed ({GENE}=1) are compared.")
+            print(f"  A node is classified as:")
+            print(f"    Activated  : stable OFF in resting AND stable ON  in perturbed attractor")
+            print(f"    Suppressed : stable ON  in resting AND stable OFF in perturbed attractor")
+            print(f"    Robust     : activated/suppressed consistently in BOTH backgrounds")
+            print(f"")
+            print(f"  Sink nodes: regulated by others but regulating nothing in the subgraph.")
+            print(f"  Evaluated post-hoc by applying their Boolean rule to settled attractor states.")
+            print(f"  Pre-filtered: only sinks that change state between conditions are reported.")
+            print(f"  ! = experimental perturbation node (mutant/process/phenotype) — not a gene product")
+            print(f"{'='*70}")
 
             dist = gt.shortest_distance(g_full, source=g_full.vertex(node_idx[source_gene]), directed=True)
             subgraph_nodes = {node_list[i] for i in range(g_full.num_vertices()) if dist[i] <= hops}
             sub_node_list  = sorted(subgraph_nodes)
             sub_v_idx      = {name: i for i, name in enumerate(sub_node_list)}
             print(f"  [time] Subgraph extraction: {time.perf_counter()-t_start:.3f}s")
-            sc = {}
-            for n in subgraph_nodes: sc[cat(n)] = sc.get(cat(n), 0) + 1
+
+            _sub_edges = sum(1 for s, t in edges_act + edges_sup if s in subgraph_nodes and t in subgraph_nodes)
             print(f"\n{'='*70}")
-            print(f"PHASE 2 — {source_gene}, {hops} hop(s)  |  {len(subgraph_nodes)} nodes, "
-                  f"{sum(1 for s,t in edges_act if s in subgraph_nodes and t in subgraph_nodes) + sum(1 for s,t in edges_sup if s in subgraph_nodes and t in subgraph_nodes)} edges")
-            for c, n in sorted(sc.items(), key=lambda x: x[1], reverse=True): print(f"    {n:>4}  {c}")
+            print(f"PHASE 2 — {source_gene}, {hops} hop(s)  |  {len(subgraph_nodes)} nodes, {_sub_edges} edges")
+            for c, n in sorted(Counter(cat(nd) for nd in subgraph_nodes).items(), key=lambda x: x[1], reverse=True):
+                print(f"    {n:>4}  {c}")
 
             print(f"\n{'='*70}\nPHASE 2.5 — Subgraph topology")
             g_sub = gt.Graph(directed=True)
             g_sub.add_vertex(len(sub_node_list))
-            for s, t in set((s,t) for s,t in edges_act if s in sub_v_idx and t in sub_v_idx):
-                g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
-            for s, t in set((s,t) for s,t in edges_sup if s in sub_v_idx and t in sub_v_idx):
-                g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
+            for s, t in edges_act + edges_sup:
+                if s in sub_v_idx and t in sub_v_idx:
+                    g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
             sub_comp, sub_hist = gt.label_components(g_sub)
             large_sub = int((sub_hist > 1).sum())
             print(f"  SCCs: {sub_hist.shape[0]}  |  non-trivial: {large_sub}")
@@ -184,8 +208,7 @@ while True:
                 print(f"  Largest SCC ({int(sub_hist.max())} nodes):")
                 for m in sorted(scc_m)[:10]: print(f"    {m:40s}  [{cat(m)}]")
                 if len(scc_m) > 10: print(f"    ... and {len(scc_m)-10} more")
-            # Boolean rules: activators OR'd (any activator sufficient); suppressors AND NOT'd (any suppressor dominant).
-            # Rule form: (act1 | act2 | ...) & !sup1 & !sup2 & ...  — models functional redundancy + dominant repression.
+
             bn_dict = {}
             for target in set(activators) | set(suppressors):
                 if target not in subgraph_nodes: continue
@@ -200,11 +223,10 @@ while True:
             bn_dict_pruned = {g: f for g, f in bn_dict.items() if g not in sink_nodes}
             n_pruned = len(bn_dict_pruned)
             print(f"  Regulated: {len(bn_dict)}  |  pruned: {n_pruned}  |  sinks: {len(sink_nodes)}")
-            def tags(g): return "[" + ", ".join([cat(g)] + (["sink"] if g in sink_nodes else [])) + "]" + mol_flag(g)
 
             bn_resting_dict   = dict(bn_dict_pruned); bn_resting_dict[source_gene]   = "0"
             bn_perturbed_dict = dict(bn_dict_pruned); bn_perturbed_dict[source_gene] = "1"
-            dark_start = {g: 0 for g in bn_resting_dict}   # bn_resting_dict always includes source_gene
+            dark_start = {g: 0 for g in bn_resting_dict}
             perm_start = {g: 1 for g in bn_resting_dict}
 
             print(f"  Running synchronous simulation ({n_pruned} nodes)...")
@@ -218,25 +240,59 @@ while True:
             print(f"  [time] Synchronous simulation: {time.perf_counter()-t_sim:.3f}s")
             if not all([dr_c, dp_c, pr_c, pp_c]):
                 print(f"  WARNING: not all runs converged within {MAX_SIM_STEPS} steps")
-            print(f"  NOTE: simulation finds ONE attractor per condition — use bonesis (fewer hops) for full landscape.")
             dark_resting_att, dark_perturbed_att, perm_resting_att, perm_perturbed_att = dr_s, dp_s, pr_s, pp_s
 
-            t_sink = time.perf_counter()
+            # Sink pre-filter: evaluate each sink once per representative state in each background.
+            # Topological order handles sink-on-sink dependencies. A sink is kept only if its rule
+            # evaluates differently between resting and perturbed in AT LEAST ONE background
+            # (dark or permissive), so sinks relevant only in the permissive background are not missed.
             sink_rules = {g: bn_dict[g] for g in sink_nodes}
+            _n_sinks_total = len(sink_nodes)
+            _sink_pre_order = _topo_sort_sinks(sink_rules)
+            _NB = {"__builtins__": {}}
+            _ns_dr = {g: bool(v) for g, v in (dark_resting_att[0]   if dark_resting_att   else {}).items()}
+            _ns_dp = {g: bool(v) for g, v in (dark_perturbed_att[0] if dark_perturbed_att else {}).items()}
+            _ns_pr = {g: bool(v) for g, v in (perm_resting_att[0]   if perm_resting_att   else {}).items()}
+            _ns_pp = {g: bool(v) for g, v in (perm_perturbed_att[0] if perm_perturbed_att else {}).items()}
+            _ns_dr[source_gene] = False; _ns_dp[source_gene] = True
+            _ns_pr[source_gene] = False; _ns_pp[source_gene] = True
+            _sink_relevant = set()
+            for _g in _sink_pre_order:
+                _expr = _to_py(sink_rules[_g])
+                try:    _rv_d = eval(_expr, _NB, _ns_dr)
+                except: _rv_d = None
+                try:    _pv_d = eval(_expr, _NB, _ns_dp)
+                except: _pv_d = None
+                try:    _rv_p = eval(_expr, _NB, _ns_pr)
+                except: _rv_p = None
+                try:    _pv_p = eval(_expr, _NB, _ns_pp)
+                except: _pv_p = None
+                _ns_dr[_g] = bool(_rv_d) if _rv_d is not None else False
+                _ns_dp[_g] = bool(_pv_d) if _pv_d is not None else False
+                _ns_pr[_g] = bool(_rv_p) if _rv_p is not None else False
+                _ns_pp[_g] = bool(_pv_p) if _pv_p is not None else False
+                if (_rv_d is None or _pv_d is None or _rv_d != _pv_d or
+                        _rv_p is None or _pv_p is None or _rv_p != _pv_p):
+                    _sink_relevant.add(_g)
+            sink_nodes = _sink_relevant
+            sink_rules = {g: sink_rules[g] for g in sink_nodes}
+            print(f"  Sink pre-filter: {len(sink_nodes)} / {_n_sinks_total} sinks change state in at least one background")
+
+            t_sink = time.perf_counter()
             if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
                 sink_order = _topo_sort_sinks(sink_rules)
                 dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0, sink_order)
                 dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1, sink_order)
                 perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0, sink_order)
                 perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1, sink_order)
+                print(f"  [time] Sink recovery: {time.perf_counter()-t_sink:.3f}s")
             else:
-                sink_order = []   # empty — KO necessity loop becomes a no-op, no topo-sort overhead
+                sink_order = []
                 print(f"  Sink recovery skipped ({len(sink_nodes)} sinks > {SINK_RECOVERY_THRESHOLD})")
                 dark_resting_full   = [{**a, source_gene: 0} for a in dark_resting_att]
                 dark_perturbed_full = [{**a, source_gene: 1} for a in dark_perturbed_att]
                 perm_resting_full   = [{**a, source_gene: 0} for a in perm_resting_att]
                 perm_perturbed_full = [{**a, source_gene: 1} for a in perm_perturbed_att]
-            print(f"  [time] Sink recovery: {time.perf_counter()-t_sink:.3f}s")
 
             direct_targets = sorted(
                 {t for t in bn_resting_dict if source_gene in activators.get(t, set()) or source_gene in suppressors.get(t, set())}
@@ -245,6 +301,8 @@ while True:
 
             def stable_on(g, atts):  return bool(atts) and all(a.get(g, 0) == 1 for a in atts)
             def stable_off(g, atts): return bool(atts) and all(a.get(g, 0) == 0 for a in atts)
+            def slabel(g, atts): return "ON" if stable_on(g, atts) else "OFF" if stable_off(g, atts) else "var"
+            def tags(g): return "[" + ", ".join([cat(g)] + (["sink"] if g in sink_nodes else [])) + "]" + mol_flag(g)
 
             G = set(bn_dict) | {source_gene}
             dark_activated  = sorted({g for g in G if stable_off(g, dark_resting_full)  and stable_on(g,  dark_perturbed_full)} - {source_gene})
@@ -258,32 +316,34 @@ while True:
                 (g, sum(1 for a in perm_resting_full if a.get(g, 0) == 0))
                 for g in G if g not in perm_activated and g != source_gene
                 and any(a.get(g, 0) == 0 for a in perm_resting_full)
-                and any(a.get(g, 0) == 1 for a in perm_perturbed_full))
+                and any(a.get(g, 0) == 1 for a in perm_perturbed_full)
+            )
             conditional_suppressed = sorted(
                 (g, sum(1 for a in perm_resting_full if a.get(g, 0) == 1))
                 for g in G if g not in perm_suppressed and g != source_gene
                 and any(a.get(g, 0) == 1 for a in perm_resting_full)
-                and any(a.get(g, 0) == 0 for a in perm_perturbed_full))
+                and any(a.get(g, 0) == 0 for a in perm_perturbed_full)
+            )
 
-            # knockout from the active network
-            ko_maintained = []; ko_suppressed = []; ko_cycle_note = ""
-            if len(dark_perturbed_att) == 1:
-                ko_att, _, _ = simulate(bn_dict_pruned, dark_perturbed_att[0], source_gene, 0)
+            # KO from the active (perturbed) state — unified loop handles both fixed-point and
+            # cycle cases; fixed-point just runs once, cycle intersects across all cycle states
+            ko_all_conv   = True
+            ko_cycle_note = (f" (cycle/{len(dark_perturbed_att)}: intersection across all "
+                             f"{len(dark_perturbed_att)} starting states)") if len(dark_perturbed_att) > 1 else ""
+            cand_maintained = {g for g in G if stable_on(g,  dark_perturbed_full) and g != source_gene}
+            cand_suppressed = {g for g in G if stable_off(g, dark_perturbed_full) and g != source_gene}
+            for cs in dark_perturbed_att:
+                if not cand_maintained and not cand_suppressed: break
+                ko_att, _, _conv = simulate(bn_dict_pruned, cs, source_gene, 0)
+                if not _conv: ko_all_conv = False
                 ko_full = recover_sinks(ko_att, sink_rules, source_gene, 0, sink_order)
-                ko_maintained = sorted(g for g in G if stable_on(g,  dark_perturbed_full) and not stable_on(g, ko_full) and g != source_gene)
-                ko_suppressed = sorted(g for g in G if stable_off(g, dark_perturbed_full) and     stable_on(g, ko_full) and g != source_gene)
-            else:
-                ko_cycle_note = f" (cycle/{len(dark_perturbed_att)}: intersection across all {len(dark_perturbed_att)} starting states)"
-                cand_m = {g for g in G if stable_on(g,  dark_perturbed_full) and g != source_gene}
-                cand_s = {g for g in G if stable_off(g, dark_perturbed_full) and g != source_gene}
-                for cs in dark_perturbed_att:
-                    if not cand_m and not cand_s: break
-                    ko_att, _, _ = simulate(bn_dict_pruned, cs, source_gene, 0)
-                    ko_full = recover_sinks(ko_att, sink_rules, source_gene, 0, sink_order)
-                    cand_m = {g for g in cand_m if not stable_on(g, ko_full)}
-                    cand_s = {g for g in cand_s if     stable_on(g, ko_full)}
-                ko_maintained = sorted(cand_m); ko_suppressed = sorted(cand_s)
+                cand_maintained = {g for g in cand_maintained if not stable_on(g, ko_full)}
+                cand_suppressed = {g for g in cand_suppressed if     stable_on(g, ko_full)}
+            ko_maintained = sorted(cand_maintained)
+            ko_suppressed = sorted(cand_suppressed)
 
+            # Variable genes: nodes with different stable states across cycle states in the
+            # perturbed attractor (only non-trivial when simulation finds a limit cycle)
             gstates = {}
             for att in perm_perturbed_full:
                 for g, v in att.items(): gstates.setdefault(g, set()).add(v)
@@ -297,34 +357,26 @@ while True:
             necessary, dispensable = [], []
             if perm_activated:
                 print(f"\n  Running necessity test on {len(direct_targets)} direct target(s) (synchronous simulation)...")
-                t0 = time.perf_counter()
+                t0_nec = time.perf_counter()
                 for candidate in direct_targets:
                     ko = dict(bn_dict_pruned)
-                    if candidate in bn_dict_pruned:  # sinks have no BN rule — pin handled in ko_full below
+                    if candidate in bn_dict_pruned:
                         ko[candidate] = "0"
                     ko_states, _, _ = simulate(ko, perm_start, source_gene, 1)
-                    # Recover sink states so sink nodes in perm_activated are
-                    # evaluated correctly rather than staying at initial value 1.
-                    ko_full = []
-                    for _att in ko_states:
-                        _ext = dict(_att); _ext[source_gene] = 1; _ext[candidate] = 0
-                        for _s in sink_order: _ext[_s] = eval_rule_simple(sink_rules[_s], _ext)
-                        ko_full.append(_ext)
-                    lost = sorted(g for g in perm_activated if g != candidate
-                                  and not stable_on(g, ko_full))
+                    ko_full = recover_sinks(ko_states, sink_rules, source_gene, 1, sink_order,
+                                           extra_pins={candidate: 0})
+                    lost = sorted(g for g in perm_activated if g != candidate and not stable_on(g, ko_full))
                     if lost: necessary.append((candidate, lost))
                     else:    dispensable.append(candidate)
-                print(f"  Necessity test completed in {time.perf_counter()-t0:.3f}s")
+                print(f"  Necessity test completed in {time.perf_counter()-t0_nec:.3f}s")
             else:
                 print(f"\n  Necessity test skipped — no genes stably activated in permissive baseline.")
 
+            # ── OUTPUT ────────────────────────────────────────────────────────
             print(f"\n{'='*70}")
             print(f"  {source_gene} — {hops} hop(s)  |  synchronous simulation (one attractor per condition)")
-            print(f"  Update: synchronous  |  Rules: activators OR'd, suppressors AND NOT'd")
-            print(f"  Necessity solver: synchronous simulation")
             print(f"  NOTE: simulation finds ONE attractor per condition — use BoNesis benchmark for full landscape.")
-            print(f"  ! = experimental perturbation node (mutant / process / phenotype) - not an endogenous gene product")
-            print(f"\n  Direct targets: {len(direct_targets)}")
+            print(f"\n  Direct targets of {source_gene}: {len(direct_targets)}")
             for g in direct_targets: print(f"    {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
             print(f"  EXP A — dark background  |  {len(dark_resting_att)} resting / {len(dark_perturbed_att)} perturbed attractor(s)")
@@ -344,13 +396,15 @@ while True:
                     print(f"    + ({count}/{len(perm_resting_att)} resting OFF) {g:36s}  {tags(g)}")
                 for g, count in conditional_suppressed:
                     print(f"    - ({count}/{len(perm_resting_att)} resting ON)  {g:36s}  {tags(g)}")
-            print(f"\n{'='*70}\n  ROBUST EFFECTS")
+            print(f"\n{'='*70}")
+            print(f"  ROBUST EFFECTS")
             print(f"\n  Robustly activated: {len(robust_activated)}")
             for g in robust_activated: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n  Robustly suppressed: {len(robust_suppressed)}")
             for g in robust_suppressed: print(f"    - {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
             print(f"  KNOCKOUT FROM ACTIVE STATE  (source removed from settled network){ko_cycle_note}")
+            if not ko_all_conv: print(f"  WARNING: KO simulation did not converge within {MAX_SIM_STEPS} steps")
             print(f"\n  Activated (ON in active, falls OFF after KO): {len(ko_maintained)}")
             for g in ko_maintained: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n  Suppressed (OFF in active, turns ON after KO): {len(ko_suppressed)}")
@@ -370,33 +424,26 @@ while True:
             n_perturbed_att = len(perm_perturbed_full)
             print(f"  Context-dependent genes: {len(variable_genes)} gene(s) in {len(decisions)} co-varying pattern(s)")
             if variable_genes:
-                print(f"  (Different stable values across {n_perturbed_att} perturbed attractor(s); groups share identical ON/OFF patterns.)")
+                print(f"  (Different stable values across {n_perturbed_att} perturbed attractor state(s); groups share identical ON/OFF patterns.)")
             for i, (pattern, genes) in enumerate(sorted(decisions.items()), 1):
                 on_in  = [j + 1 for j, v in enumerate(pattern) if v == 1]
                 off_in = [j + 1 for j, v in enumerate(pattern) if v == 0]
                 print(f"\n  Pattern {i} — stably ON in attractor(s) {on_in or 'none'}  |  stably OFF in {off_in or 'none'}")
                 for g in sorted(genes): print(f"    {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
-            print(f"  Sink nodes — terminal downstream effectors ({len(sink_nodes)} node(s)):")
-            if len(sink_nodes) > SINK_RECOVERY_THRESHOLD:
-                print(f"  (States not evaluated — sink count exceeds recovery threshold of {SINK_RECOVERY_THRESHOLD}.)")
-                for g in sorted(sink_nodes)[:20]: print(f"    {g:40s}  {tags(g)}")
-                if len(sink_nodes) > 20: print(f"    ... and {len(sink_nodes)-20} more")
-            else:
-                for g in sorted(sink_nodes)[:30]:
-                    r = "ON" if stable_on(g, perm_resting_full) else "OFF" if stable_off(g, perm_resting_full) else "variable"
-                    p = "ON" if stable_on(g, perm_perturbed_full) else "OFF" if stable_off(g, perm_perturbed_full) else "variable"
-                    print(f"    {g:40s}  resting: {r:8s}  perturbed: {p:8s}  {tags(g)}")
-                if len(sink_nodes) > 30: print(f"    ... and {len(sink_nodes)-30} more")
-            print(f"\n======================================================================")
+            print(f"  Sink nodes: {len(sink_nodes)} of {_n_sinks_total} change state when {source_gene} is perturbed")
+            for g in sorted(sink_nodes):
+                r = slabel(g, perm_resting_full)
+                p = slabel(g, perm_perturbed_full)
+                print(f"    {g:40s}  resting: {r:3s}  perturbed: {p:3s}  {tags(g)}")
+            print(f"\n{'='*70}")
             print(f"  TIMING SUMMARY — {source_gene}, hop {hops}")
-            print(f"    Total hop time: {time.perf_counter()-t_start:.3f}s  |  step times logged above")
-            print(f"======================================================================")
+            print(f"    Total hop time: {time.perf_counter()-t_start:.3f}s")
+            print(f"{'='*70}")
 
         elapsed = time.perf_counter() - t_start
-        mode_used = "Simulation"
-        timings.append((hops, elapsed, mode_used))
-        print(f"{elapsed:.1f}s [{mode_used}] | {len(subgraph_nodes)} nodes → {os.path.basename(out_file)}")
+        timings.append((hops, elapsed, "Simulation"))
+        print(f"{elapsed:.1f}s [Simulation] | {len(subgraph_nodes)} nodes → {os.path.basename(out_file)}")
 
     except Exception as e:
         import traceback

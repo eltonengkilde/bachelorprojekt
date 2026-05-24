@@ -163,11 +163,7 @@ while True:
     try:
         MAX_HOPS = int(input("\nNumber of hops to explore upstream: "))
         if MAX_HOPS < 1: print("Must be a whole number larger than 0")
-        else:
-            if MAX_HOPS > 5:
-                print(f"  WARNING: {MAX_HOPS} hops may produce a very large subgraph "
-                      f"and dilute biological signal. Consider 4 hops or fewer.")
-            print(f"OK: {MAX_HOPS} hops upstream from '{target_gene}'"); break
+        else: print(f"OK: {MAX_HOPS} hops upstream from '{target_gene}'"); break
     except ValueError:
         print("Please enter a whole number.")
 
@@ -230,12 +226,34 @@ try:
     print(f"  Activators  ({len(direct_act)}): {', '.join(direct_act) or '(none)'}")
     print(f"  Suppressors ({len(direct_sup)}): {', '.join(direct_sup) or '(none)'}")
 
+    # characterise the upstream subgraph topology before sign propagation
+    # non-trivial SCCs mean feedback loops are present; sign propagation may produce mixed results
+    subgraph_nodes = set(hop_of.keys())
+    _sub_node_list = sorted(subgraph_nodes)
+    _sub_node_idx  = {name: i for i, name in enumerate(_sub_node_list)}
+    g_sub = gt.Graph(directed=True)
+    g_sub.add_vertex(len(_sub_node_list))
+    for s, t in edges_act + edges_sup:
+        if s in _sub_node_idx and t in _sub_node_idx:
+            g_sub.add_edge(_sub_node_idx[s], _sub_node_idx[t])
+    _sub_comp, _sub_hist = gt.label_components(g_sub)
+    _large_sub = int((_sub_hist > 1).sum())
+    print(f"\n{'='*70}")
+    print(f"UPSTREAM SUBGRAPH TOPOLOGY")
+    print(f"  SCCs: {_sub_hist.shape[0]}  |  non-trivial: {_large_sub}")
+    if _large_sub:
+        _scc_members = [_sub_node_list[i] for i in range(g_sub.num_vertices())
+                        if int(_sub_comp[i]) == int(_sub_hist.argmax())]
+        print(f"  Largest SCC ({int(_sub_hist.max())} nodes) — feedback loops present; "
+              f"sign propagation may yield mixed results for these nodes:")
+        for m in sorted(_scc_members)[:10]: print(f"    {m:40s}  [{cat(m)}]{mol_flag(m)}")
+        if len(_scc_members) > 10: print(f"    ... and {len(_scc_members)-10} more")
+
     # propagate signs iteratively over all edges within the subgraph until no node changes
     # lateral edges between same-hop nodes are included on every iteration
     # activation keeps the sign, suppression flips it (double negative = activating)
     # frozenset({+1}) = activator, frozenset({-1}) = suppressor, {+1,-1} = mixed, empty = no path found
     # convergence is guaranteed because sign sets only grow (monotone lattice)
-    subgraph_nodes = set(hop_of.keys())
     net_sign       = {target_gene: frozenset({+1})}
     shell_conns    = {}   # shell_conns[N] = [(downstream node, '+' or '-'), ...]
     for _iter in range(MAX_SIGN_ITER):

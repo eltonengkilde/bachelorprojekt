@@ -155,10 +155,10 @@ while True:
             print(f"\n{'='*70}\nPHASE 2.5 — Subgraph topology")
             g_sub = gt.Graph(directed=True)
             g_sub.add_vertex(len(sub_node_list))
-            for s, t in set((s,t) for s,t in edges_act if s in sub_v_idx and t in sub_v_idx):
-                g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
-            for s, t in set((s,t) for s,t in edges_sup if s in sub_v_idx and t in sub_v_idx):
-                g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
+            for s, t in edges_act:
+                if s in sub_v_idx and t in sub_v_idx: g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
+            for s, t in edges_sup:
+                if s in sub_v_idx and t in sub_v_idx: g_sub.add_edge(sub_v_idx[s], sub_v_idx[t])
             sub_comp, sub_hist = gt.label_components(g_sub)
             large_sub = int((sub_hist > 1).sum())
             print(f"  SCCs: {sub_hist.shape[0]}  |  non-trivial: {large_sub}")
