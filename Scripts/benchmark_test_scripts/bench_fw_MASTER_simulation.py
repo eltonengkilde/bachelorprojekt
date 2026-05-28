@@ -7,7 +7,7 @@ GENE                    = "MYB46"
 MAX_TOTAL_SECONDS       = 1800   # 0.5-hour budget; a new hop only starts if time remains
 MAX_HOPS                =  30     # safety cap — time limit is the primary stop condition
 MAX_SIM_STEPS           = 1000
-SINK_RECOVERY_THRESHOLD = 10000
+
 SCRIPT_NAME = os.path.basename(__file__).replace('.py', '')
 OUT_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 BASE_DIR    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -279,20 +279,12 @@ while True:
             print(f"  Sink pre-filter: {len(sink_nodes)} / {_n_sinks_total} sinks change state in at least one background")
 
             t_sink = time.perf_counter()
-            if len(sink_nodes) <= SINK_RECOVERY_THRESHOLD:
-                sink_order = _topo_sort_sinks(sink_rules)
-                dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0, sink_order)
-                dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1, sink_order)
-                perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0, sink_order)
-                perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1, sink_order)
-                print(f"  [time] Sink recovery: {time.perf_counter()-t_sink:.3f}s")
-            else:
-                sink_order = []
-                print(f"  Sink recovery skipped ({len(sink_nodes)} sinks > {SINK_RECOVERY_THRESHOLD})")
-                dark_resting_full   = [{**a, source_gene: 0} for a in dark_resting_att]
-                dark_perturbed_full = [{**a, source_gene: 1} for a in dark_perturbed_att]
-                perm_resting_full   = [{**a, source_gene: 0} for a in perm_resting_att]
-                perm_perturbed_full = [{**a, source_gene: 1} for a in perm_perturbed_att]
+            sink_order = _topo_sort_sinks(sink_rules)
+            dark_resting_full   = recover_sinks(dark_resting_att,   sink_rules, source_gene, 0, sink_order)
+            dark_perturbed_full = recover_sinks(dark_perturbed_att, sink_rules, source_gene, 1, sink_order)
+            perm_resting_full   = recover_sinks(perm_resting_att,   sink_rules, source_gene, 0, sink_order)
+            perm_perturbed_full = recover_sinks(perm_perturbed_att, sink_rules, source_gene, 1, sink_order)
+            print(f"  [time] Sink recovery: {time.perf_counter()-t_sink:.3f}s")
 
             direct_targets = sorted(
                 {t for t in bn_resting_dict if source_gene in activators.get(t, set()) or source_gene in suppressors.get(t, set())}
@@ -354,24 +346,6 @@ while True:
                 if not all(isinstance(v, int) for v in p): continue
                 decisions.setdefault(p, []).append(g)
 
-            necessary, dispensable = [], []
-            if perm_activated:
-                print(f"\n  Running necessity test on {len(direct_targets)} direct target(s) (synchronous simulation)...")
-                t0_nec = time.perf_counter()
-                for candidate in direct_targets:
-                    ko = dict(bn_dict_pruned)
-                    if candidate in bn_dict_pruned:
-                        ko[candidate] = "0"
-                    ko_states, _, _ = simulate(ko, perm_start, source_gene, 1)
-                    ko_full = recover_sinks(ko_states, sink_rules, source_gene, 1, sink_order,
-                                           extra_pins={candidate: 0})
-                    lost = sorted(g for g in perm_activated if g != candidate and not stable_on(g, ko_full))
-                    if lost: necessary.append((candidate, lost))
-                    else:    dispensable.append(candidate)
-                print(f"  Necessity test completed in {time.perf_counter()-t0_nec:.3f}s")
-            else:
-                print(f"\n  Necessity test skipped — no genes stably activated in permissive baseline.")
-
             # ── OUTPUT ────────────────────────────────────────────────────────
             print(f"\n{'='*70}")
             print(f"  {source_gene} — {hops} hop(s)  |  synchronous simulation (one attractor per condition)")
@@ -409,17 +383,6 @@ while True:
             for g in ko_maintained: print(f"    + {g:40s}  {tags(g)}")
             print(f"\n  Suppressed (OFF in active, turns ON after KO): {len(ko_suppressed)}")
             for g in ko_suppressed: print(f"    - {g:40s}  {tags(g)}")
-            if perm_activated:
-                print(f"\n{'='*70}")
-                print(f"  NECESSITY TEST  (method: synchronous simulation from permissive background)")
-                print(f"  Definition: a direct target is necessary if knocking it out causes at")
-                print(f"  least one permissive-activated gene to lose stable-ON status.")
-                print(f"    Necessary  ({len(necessary)}):")
-                for g, lost in necessary:
-                    print(f"    ! {g:40s}  {tags(g)}")
-                    print(f"        loss of stable activation: {', '.join(lost)}")
-                print(f"    Dispensable ({len(dispensable)}):")
-                for g in dispensable: print(f"      {g:40s}  {tags(g)}")
             print(f"\n{'='*70}")
             n_perturbed_att = len(perm_perturbed_full)
             print(f"  Context-dependent genes: {len(variable_genes)} gene(s) in {len(decisions)} co-varying pattern(s)")
